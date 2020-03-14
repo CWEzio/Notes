@@ -1,7 +1,7 @@
 # Bug and Solution
 
 ## Cannot open terminal with ctrl+alt+t
-At first I think the problem is locale configuration is wrong. However, after reconfigure locale with every methods I have found from internet, this problem persist.
+At first I think the problem is locale configuration is wrong. However, after reconfigure locale with every methods I have found from internet, this problem persists.
 
 I note https://askubuntu.com/questions/1040566/cant-open-terminal-in-ubuntu-18-04-after-upgrade-from-17-10.
 
