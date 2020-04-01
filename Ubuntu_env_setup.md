@@ -4,18 +4,24 @@ Original tutorial is from Huangjian. Will modify soon.
 
 
 
-## 如何解决Ubuntu16.04与Windows系统时间不同步
-
->* `timedatectl set-local-rtc true`
-
+## Solving ubuntu windows time conflict
+Check time date setting
+```
+timedatectl
+```
+Set RTC in local TZ to yes
+```
+timedatectl set-local-rtc 1 --adjust-system-clock
+```
+You may see warning, this is fine.
 ## Mouse and Touchpad
 
 * [x] nautural scrolling
 
 ## 搜狗中文输入法
 
-  >* install sougou package,官网;
-  >* 打开System Setting,找到Language Support，install简体中文;"apply system-wide";将键盘输入法系统由默认的iBus改成fcitx;
+  >* download and install;
+  >* `im-config -n fcitx` change from ibus to fcitx;
   >* `sudo reboot`
   >* (4)点击右上角输入法小图标,选择config，去掉勾，点击左下角小加号，找到Sogou Pinyin添加即可
   >* 若在菜单栏的右上角出现两个输入法图标，则：`sudo apt remove fcitx-ui-qimpanel`;再重启
