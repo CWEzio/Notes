@@ -14,6 +14,17 @@ Set RTC in local TZ to yes
 timedatectl set-local-rtc 1 --adjust-system-clock
 ```
 You may see warning, this is fine.
+
+## Fcitx disable extra trigger key (shift)
+```
+code ~/.config/fcitx/config
+```
+change SwitchKey=SHIFT Both to SwitchKey=Disable
+After saving
+```
+chmod 400 config
+```
+To make this setting persist after restart.
 ## Mouse and Touchpad
 
 * [x] nautural scrolling
@@ -26,6 +37,7 @@ You may see warning, this is fine.
   >* (4)点击右上角输入法小图标,选择config，去掉勾，点击左下角小加号，找到Sogou Pinyin添加即可
   >* 若在菜单栏的右上角出现两个输入法图标，则：`sudo apt remove fcitx-ui-qimpanel`;再重启
   >* 搜狗拼音的简体、繁体相互转换：Ctrl+Shift+F
+
 
 ## system monitor
 
