@@ -76,3 +76,40 @@ Solution
 sudo apt-get install ros-melodic-rviz-visual-tools
 ```
 Check this https://answers.ros.org/question/335514/ros-graph-messages-build/ for more information.
+
+## No module named 'rospkg'
+Problem description
+```
+... logging to /home/chenwang/.ros/log/e247848c-94f8-11ea-8e01-04d4c448372e/roslaunch-chenwang-System-Product-Name-12456.log
+Checking log directory for disk usage. This may take a while.
+Press Ctrl-C to interrupt
+Done checking log file disk usage. Usage is <1GB.
+
+xacro: in-order processing became default in ROS Melodic. You can drop the option.
+xacro: in-order processing became default in ROS Melodic. You can drop the option.
+xacro: in-order processing became default in ROS Melodic. You can drop the option.
+substitution args not supported:  No module named 'rospkg'
+when processing file: /opt/ros/melodic/share/xpp_hyq/urdf/hyq.urdf.xacro
+RLException: while processing /opt/ros/melodic/share/xpp_hyq/launch/all.launch:
+while processing /opt/ros/melodic/share/xpp_hyq/launch/hyq.launch:
+Invalid <param> tag: Cannot load command parameter [hyq_rviz_urdf_robot_description]: command [['/opt/ros/melodic/lib/xacro/xacro', '--inorder', '/opt/ros/melodic/share/xpp_hyq/urdf/hyq.urdf.xacro']] returned with code [2]. 
+
+Param xml is <param command="$(find xacro)/xacro --inorder '$(find xpp_hyq)/urdf/hyq.urdf.xacro'" name="hyq_rviz_urdf_robot_description"/>
+The traceback for the exception was written to the log file
+```
+
+Solution
+```
+conda install -c conda-forge rospkg
+```
+Check this https://answers.ros.org/question/331455/xacro-substitution-args-not-supported-no-module-named-rospkg/ for more information.
+
+## Mujoco_py
+### Error: GLEW initialization error: Missing GL version
+
+```
+sudo apt-get update -y
+sudo apt-get install -y libglew-dev
+export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libGLEW.so
+```
+See this issue https://github.com/openai/mujoco-py/issues/268
