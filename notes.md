@@ -16,3 +16,6 @@
   ```
   conda deactivate
   ```
+Or simply follow this tutorial
+https://janakiev.com/blog/jupyter-virtual-envs/
+It contains more information.
