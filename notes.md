@@ -19,3 +19,9 @@
 Or simply follow this tutorial
 https://janakiev.com/blog/jupyter-virtual-envs/
 It contains more information.
+
+## Write python module
+
+Refer to np8's answer
+https://stackoverflow.com/questions/714063/importing-modules-from-parent-folder
+One thing to note is that setup.py need to be above the main folder.
