@@ -134,6 +134,30 @@ AttributeError: module 'tensorflow._api.v1.io.gfile' has no attribute 'get_files
 
 See this issue https://github.com/pytorch/pytorch/issues/30966
 
+## CMAKE error, cannot find catkin package
+### error log
+```
+By not providing "Findcatkin.cmake" in CMAKE_MODULE_PATH this project has
+asked CMake to find a package configuration file provided by "catkin", but
+CMake did not find one.
+
+Could not find a package configuration file provided by "catkin" with any
+of the following names:
+
+catkinConfig.cmake
+catkin-config.cmake
+
+Add the installation prefix of "catkin" to CMAKE_PREFIX_PATH or set
+"catkin_DIR" to a directory containing one of the above files. If "catkin"
+provides a separate development package or SDK, be sure it has been
+installed.
+```
+### Solution
+I have already install ros. It turns out the problem is caused by not sourcing setup.bash. Since I use clion, I need to at first source the setup.bash file at terminal and then use that terminal to open clion. 
+```console
+source /opt/ros/melodic/setup.zsh 
+```
+
 ## Mujoco_py
 ### Error: GLEW initialization error: Missing GL version
 
