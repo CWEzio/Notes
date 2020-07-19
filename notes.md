@@ -59,3 +59,29 @@ Change this line to
 sys.path.append("path of your drake_gdb")
 ```
 will solve this problem. Also use $DRAKE_GDB_ROOT is not necessary.
+
+## Mujoco convert urdf to xml
+Some useful reference.
+https://zhuanlan.zhihu.com/p/99991106
+http://www.mujoco.org/forum/index.php?threads/meshes-ignored-when-converting-urdf-to-mjcf.3433/#post-5423
+* Add tag to urdf file
+  ```xml
+  <mujoco>
+        <compiler 
+        meshdir="../meshes_mujoco/" 
+        balanceinertia="true" 
+        discardvisual="false" />
+  </mujoco>
+  ```
+  Note that this tag is under \<robot name="sawyer" xmlns:xacro="http://www.ros.org/wiki/xacro"\>
+
+* Mujoco does not support dae. Therefore, we need to convert dae file to stl file. Meshlab can be used.
+
+* Do other necessary changes to the urdf file. For example, path to mesh files, change .dae to .stl etc.
+
+* Use compile in mujoco/bin to convert urdf to mjdf
+  ```
+  $./compile /path/to/model.urdf /path/to/model.xml
+  ```
+
+
