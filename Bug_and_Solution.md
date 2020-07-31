@@ -158,6 +158,17 @@ I have already install ros. It turns out the problem is caused by not sourcing s
 source /opt/ros/melodic/setup.zsh 
 ```
 
+## Undefined Symbol when using pybind11
+When I use pybind11 to write a python wrapper of a c++ robot controller, I encounter a undefined symbol issue. At first I directly compile a module with all cpp files (robot controller source files and binder souce files), then import this module from python will cause undefined symbol issue. Then I at first compile the robot controller into a library, then link it with the pybind11 generated module. This solves the undefined symbol problem. To be honest I do not know the actual reason, but there are some clues from this helpful website https://stackoverflow.com/questions/12573816/what-is-an-undefined-reference-unresolved-external-symbol-error-and-how-do-i-fix.
+
+Also when look at the undefined symbol problem, some tools are helpful. Such as c++filt, this can use to demangle the symbol that a linker sees. 
+
+```
+nm RobotCtrl_py.cpython-37m-x86_64-linux-gnu.so --demangle -Du
+
+```
+This command can be used to see the symbol information in a binary file.
+Check this https://medium.com/fcamels-notes/%E8%A7%A3%E6%B1%BA-linux-%E4%B8%8A-c-c-%E7%9A%84-undefined-symbol-%E6%88%96-undefined-reference-a80ee8f85425 website for further information.
 ## Mujoco_py
 ### Error: GLEW initialization error: Missing GL version
 

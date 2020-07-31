@@ -82,6 +82,8 @@ http://www.mujoco.org/forum/index.php?threads/meshes-ignored-when-converting-urd
 * Use compile in mujoco/bin to convert urdf to mjdf
   ```
   $./compile /path/to/model.urdf /path/to/model.xml
-  ```
 
+  ```
+Notes:
+* After converting, the mjdf file will have some geoms with type box, cylinder etc. They are for collision detection. The mesh geom cannot be used for collision detection. In simulation, just not render group 0 will make them not visulizable.
 
