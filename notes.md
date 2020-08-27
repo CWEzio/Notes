@@ -87,3 +87,5 @@ http://www.mujoco.org/forum/index.php?threads/meshes-ignored-when-converting-urd
 Notes:
 * After converting, the mjdf file will have some geoms with type box, cylinder etc. They are for collision detection. The mesh geom cannot be used for collision detection. In simulation, just not render group 0 will make them not visulizable.
 
+## MUJOCO
+* The quantities in mjData that start with "x" are expressed in global coordinates. Refer to **Coordinate frames and transformations** section in http://www.mujoco.org/book/programming.html#siCoordinate for detail.
