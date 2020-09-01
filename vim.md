@@ -24,6 +24,7 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
     - like `d{motion}` followed by `i`
 - `x` delete character (equal to `dl`) 
 - `s` substitute character (equal to `xi`)
+- `v` visual mode and select current character, `V` visual mode and select whole line 
 - Visual mode + manipulation
     - select text, `d` to delete it or `c` to change it
 - `u` to undo, `<C-r>` to redo    
