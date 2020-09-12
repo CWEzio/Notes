@@ -34,6 +34,7 @@ Original tutorial is from Huangjian. Will modify soon.
     }
     ``` 
     to file `~/.zshrc`. (Set the port the same as v2ray's port)
+* For github, you should use "https://github.com/CWEzio/spinningup.git". "git@github.com:CWEzio/spinningup.git" require setting ssh config file and simply set *http_proxy* enviornment variable does not help.
 ## Mendeley    
 
 ## Solving ubuntu windows time conflict
