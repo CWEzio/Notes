@@ -23,15 +23,19 @@ Original tutorial is from Huangjian. Will modify soon.
 ## terminal proxy
  * add 
     ```
-    set_proxy(){
-      export https_proxy=socks5://127.0.0.1:8080
-      export http_proxy=socks5://127.0.0.1:8080
-    }
+set_proxy(){
+        export https_proxy=http://127.0.0.1:8889
+        export http_proxy=http://127.0.0.1:8889
+        export telnet_proxy=http://127.0.0.1:8889
+        export ftp_proxy=http://127.0.0.1:8889
+}
+unset_proxy(){
+        unset https_proxy
+        unset http_proxy
+        unset telnet_proxy
+        unset ftp_proxy
+}
 
-    unset_proxy(){
-      unset https_proxy
-      unset http_proxy
-    }
     ``` 
     to file `~/.zshrc`. (Set the port the same as v2ray's port)
 * For github, you should use "https://github.com/CWEzio/spinningup.git". "git@github.com:CWEzio/spinningup.git" require setting ssh config file and simply set *http_proxy* enviornment variable does not help.
