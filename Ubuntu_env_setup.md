@@ -1,8 +1,40 @@
 Original tutorial is from Huangjian. Will modify soon.
 
-# Ubuntu16.04重装系统后的软件环境安装指南
+# Ubuntu18.04重装系统后的软件环境安装指南
 
+## install expressvpn
+  >* just follow the official guide
 
+## install pycharm 
+
+## Google Chrome
+
+  >* install Chrome using package;
+  >* sign in google account, chrome will automatically restore all the things 
+  >* SwitchyOmega:  
+
+## install Qv2ray
+
+  >* get latest release from https://github.com/Qv2ray/Qv2ray/releases/tag/v2.6.3
+  >* follow the guide https://qv2ray.net/getting-started/ to configure Qv2ray
+
+## install vscode
+
+## terminal proxy
+ * add 
+    ```
+    set_proxy(){
+      export https_proxy=socks5://127.0.0.1:8080
+      export http_proxy=socks5://127.0.0.1:8080
+    }
+
+    unset_proxy(){
+      unset https_proxy
+      unset http_proxy
+    }
+    ``` 
+    to file `~/.zshrc`. (Set the port the same as v2ray's port)
+## Mendeley    
 
 ## Solving ubuntu windows time conflict
 Check time date setting
@@ -54,14 +86,6 @@ To make this setting persist after restart.
   >* `sudo apt install shadowsocks-qt5`
   >* 在Startup Application里面设置shadowsocks开机自动启动
 
-## Google Chrome
-
-  >* install Chrome using package;
-  >* then, remove <http://dl.google.com/linux/chrome/deb/> from the software source!
-  >* 打开shadowsocks,设置全局代理；然后，登录google账号，更新Chrome的设置(这个需要一些时间，约10分钟)。
-  >* 插件1：Adblock Plus的设置
-  >* 插件2：SwitchyOmega auto-switch的设置：github上已经保存了设置文件
-
 ## 更换Terminal
 
 终端采用zsh和oh-my-zsh，既美观又简单易用，主要是能提高你的逼格！！！ZSH, also called the Z shell
@@ -74,10 +98,8 @@ To make this setting persist after restart.
 
   `chsh -s /bin/zsh   #注意：不要使用sudo`
 
-  >* 安装oh-my-zsh 项目来帮我们配置 zsh，采用wget安装：
-
-  `wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh`
-
+  >* 安装oh-my-zsh 项目来帮我们配置 zsh，采用curl安装：
+  `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
   >* 安装zsh-syntax-highlighting语法高亮插件
 
   ```bash
