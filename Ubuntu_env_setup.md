@@ -23,18 +23,18 @@ Original tutorial is from Huangjian. Will modify soon.
 ## terminal proxy
  * add 
     ```
-set_proxy(){
+    set_proxy(){
         export https_proxy=http://127.0.0.1:8889
         export http_proxy=http://127.0.0.1:8889
         export telnet_proxy=http://127.0.0.1:8889
         export ftp_proxy=http://127.0.0.1:8889
-}
-unset_proxy(){
+    }
+   unset_proxy(){
         unset https_proxy
         unset http_proxy
         unset telnet_proxy
         unset ftp_proxy
-}
+    }
 
     ``` 
     to file `~/.zshrc`. (Set the port the same as v2ray's port)
