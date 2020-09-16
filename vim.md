@@ -31,6 +31,7 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
 - `y` to copy ("yank", some other command like `d` also copy)
 - `p` to paste
 - Lots more to learn: e.g. `~` flips the case of a character 
+- `>` to indent (after selection), `<` to shift left
 ## Counts
 - `3w` moves 3 words forward
 - `5j` moves 5 lines down
