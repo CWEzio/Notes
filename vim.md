@@ -32,6 +32,8 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
 - `p` to paste
 - Lots more to learn: e.g. `~` flips the case of a character 
 - `>` to indent (after selection), `<` to shift left
+- ':8,10 s/**search**/**replace**/g' do search and replece from line 8 to line 10, where **search** is the string to be replaced and **replace** is the string to replace
+- ':%s/search/replace' in the whole file 
 ## Counts
 - `3w` moves 3 words forward
 - `5j` moves 5 lines down

@@ -89,3 +89,5 @@ Notes:
 
 ## MUJOCO
 * The quantities in mjData that start with "x" are expressed in global coordinates. Refer to **Coordinate frames and transformations** section in http://www.mujoco.org/book/programming.html#siCoordinate for detail.
+## PYTHON
+* In fact, In fact, Python formally acknowledges that the names defined as for loop targets (a more formally rigorous name for "index variables") leak into the enclosing function scope. See https://eli.thegreenplace.net/2015/the-scope-of-index-variables-in-pythons-for-loops/ for more information. 
