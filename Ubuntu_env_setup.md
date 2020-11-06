@@ -26,9 +26,7 @@ Recently, I bought a new computer with RTX 3070, I need to install the driver ma
 
  > Open Software&Updates, open *other software* tab, check the two graphics drivers ppa. Then update the ppa information.
 
- > ```terminal
-   sudo apt install nvidia-driver-455
-   ```
+ > sudo apt install nvidia-driver-455 
 
 ## terminal proxy
  * add 
