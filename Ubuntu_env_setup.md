@@ -23,8 +23,10 @@ Original tutorial is from Huangjian. Will modify soon.
 ## install graphics driver
 Recently, I bought a new computer with RTX 3070, I need to install the driver manually.
  > First add the ubuntu Graphics Drivers PPA. More information can be found on https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa/+index?batch=75&direction=backwards&memo=75
+
  > Open Software&Updates, open *other software* tab, check the two graphics drivers ppa. Then update the ppa information.
- > ```
+
+ > ```terminal
    sudo apt install nvidia-driver-455
    ```
 
