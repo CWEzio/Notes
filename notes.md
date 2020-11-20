@@ -93,3 +93,15 @@ Notes:
 * In fact, In fact, Python formally acknowledges that the names defined as for loop targets (a more formally rigorous name for "index variables") leak into the enclosing function scope. See https://eli.thegreenplace.net/2015/the-scope-of-index-variables-in-pythons-for-loops/ for more information. 
 ## Machine Learning
 * During using supervised learning to train a mlp, I encounter a strange problem. In the beginning of each epoch, the loss will jump, and then slowly decrease. It turns out to be that numpy's shuffle's randomness is not enough. Using pytorch's dataloader's shuffle solves this problem.
+## Tmux
+* Add the following to ~/.tmux.conf to make tmux more user friendly
+```
+# remap prefix from 'C-b' to 'C-a'
+unbind C-b
+set-option -g prefix C-a
+bind-key C-a send-prefix
+# set mode to vi mode
+set-window-option -g mode-keys vi
+```
+For more information, refer to this blog https://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/
+
