@@ -91,3 +91,22 @@ Notes:
 * The quantities in mjData that start with "x" are expressed in global coordinates. Refer to **Coordinate frames and transformations** section in http://www.mujoco.org/book/programming.html#siCoordinate for detail.
 ## PYTHON
 * In fact, In fact, Python formally acknowledges that the names defined as for loop targets (a more formally rigorous name for "index variables") leak into the enclosing function scope. See https://eli.thegreenplace.net/2015/the-scope-of-index-variables-in-pythons-for-loops/ for more information. 
+
+
+## Installing Vim-key bindings for jupyter notebook
+* ```bash
+  pip install jupyter_contrib_nbextensions
+
+  ```
+* ```bash
+  jupyter nbextensions_configurator enable --user
+  ```
+* ```bash
+  # You may need the following to create the directoy
+  mkdir -p $(jupyter --data-dir)/nbextensions
+  # Now clone the repository
+  cd $(jupyter --data-dir)/nbextensions
+  git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding
+  chmod -R go-w vim_binding
+  ```
+* Launch a Jupyter notebook session. Then, in a browser, go to <root>/nbextensions/; for example, if the notebook is hosted under localhost:8888, go to http://localhost:8888/nbextensions/. Activate VIM binding from the list of extensions. Check documentation for more details.
