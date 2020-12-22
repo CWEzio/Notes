@@ -110,3 +110,19 @@ Notes:
   chmod -R go-w vim_binding
   ```
 * Launch a Jupyter notebook session. Then, in a browser, go to <root>/nbextensions/; for example, if the notebook is hosted under localhost:8888, go to http://localhost:8888/nbextensions/. Activate VIM binding from the list of extensions. Check documentation for more details.
+
+## Machine Learning
+* During using supervised learning to train a mlp, I encounter a strange problem. In the beginning of each epoch, the loss will jump, and then slowly decrease. It turns out to be that numpy's shuffle's randomness is not enough. Using pytorch's dataloader's shuffle solves this problem.
+
+## Tmux
+* Add the following to ~/.tmux.conf to make tmux more user friendly
+```
+# remap prefix from 'C-b' to 'C-a'
+unbind C-b
+set-option -g prefix C-a
+bind-key C-a send-prefix
+# set mode to vi mode
+set-window-option -g mode-keys vi
+```
+For more information, refer to this blog https://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/
+
