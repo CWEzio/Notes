@@ -169,6 +169,31 @@ nm RobotCtrl_py.cpython-37m-x86_64-linux-gnu.so --demangle -Du
 ```
 This command can be used to see the symbol information in a binary file.
 Check this https://medium.com/fcamels-notes/%E8%A7%A3%E6%B1%BA-linux-%E4%B8%8A-c-c-%E7%9A%84-undefined-symbol-%E6%88%96-undefined-reference-a80ee8f85425 website for further information.
+
+
+## Gazebo
+### Symbolic lookup error
+Detail:
+```
+gazebo: symbol lookup error: /usr/lib/x86_64-linux-gnu/libsdformat.so.6: undefined symbol: _ZTIN8ignition4math2v45ColorE
+```
+Solution:
+```Bash
+sudo apt upgrade
+```
+
+## Python
+### Missing dependencies for SOCKS support
+Currently I am using electron-ssr. However, this gives me an exception 
+```
+requests.exceptions.InvalidSchema: Missing dependencies for SOCKS support.      
+
+```
+I solve this by 
+```console
+export all_proxy="http://127.0.0.1:12333"
+```
+Here http://127.0.0.1:12333 is my ssr port address.
 ## Mujoco_py
 ### Error: GLEW initialization error: Missing GL version
 
