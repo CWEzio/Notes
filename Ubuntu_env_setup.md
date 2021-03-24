@@ -60,6 +60,22 @@ timedatectl set-local-rtc 1 --adjust-system-clock
 ```
 You may see warning, this is fine.
 
+## Setup github SSH key
+```bash
+ssh-keygen -t rsa -C "chenwang0234@gmail.com"
+```
+Open github, account setting. Choose SSH and GPG keys.
+```bash
+vim ~/.ssh/id_rsa.pub
+```
+Copy the content of `id_rsa.pub` to add SSH key.
+
+## Setup git user email and name
+```bash
+git config --global user.email "chenwang0234@gmail.com"
+git config --global user.name "chenwang"
+```
+
 ## Fcitx disable extra trigger key (shift)
 ```
 code ~/.config/fcitx/config
