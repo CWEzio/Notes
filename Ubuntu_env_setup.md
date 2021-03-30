@@ -2,24 +2,6 @@ Original tutorial is from Huangjian. Will modify soon.
 
 # Ubuntu18.04重装系统后的软件环境安装指南
 
-## install expressvpn
-  >* just follow the official guide
-
-## install pycharm 
-
-## Google Chrome
-
-  >* install Chrome using package;
-  >* sign in google account, chrome will automatically restore all the things 
-  >* SwitchyOmega:  
-
-## install Qv2ray
-
-  >* get latest release from https://github.com/Qv2ray/Qv2ray/releases/tag/v2.6.3
-  >* follow the guide https://qv2ray.net/getting-started/ to configure Qv2ray
-
-## install vscode
-
 ## install graphics driver
 Recently, I bought a new computer with RTX 3070, I need to install the driver manually.
  > First add the ubuntu Graphics Drivers PPA. More information can be found on https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa/+index?batch=75&direction=backwards&memo=75
@@ -27,6 +9,20 @@ Recently, I bought a new computer with RTX 3070, I need to install the driver ma
  > Open Software&Updates, open *other software* tab, check the two graphics drivers ppa. Then update the ppa information.
 
  > sudo apt install nvidia-driver-455 
+
+## install expressvpn
+  >* just follow the official guide
+
+## Google Chrome
+  >* install Chrome using package;
+  >* sign in google account, chrome will automatically restore all the things 
+  >* SwitchyOmega:  
+
+## install Qv2ray
+  >* get latest release from https://github.com/Qv2ray/Qv2ray/releases/tag/v2.6.3
+  >* follow the guide https://qv2ray.net/getting-started/ to configure Qv2ray
+
+## install clashy
 
 ## terminal proxy
  * add 
@@ -46,19 +42,22 @@ Recently, I bought a new computer with RTX 3070, I need to install the driver ma
 
     ``` 
     to file `~/.zshrc`. (Set the port the same as v2ray's port)
-* For github, you should use "https://github.com/CWEzio/spinningup.git". "git@github.com:CWEzio/spinningup.git" require setting ssh config file and simply set *http_proxy* enviornment variable does not help.
-## Mendeley    
 
-## Solving ubuntu windows time conflict
-Check time date setting
+## install vscode
+```bash
+sudo apt install snap
 ```
-timedatectl
+Open Ubuntu Software, search for vscode and install.
+
+## install vim
+```bash
+sudo apt install vim
 ```
-Set RTC in local TZ to yes
+
+## Install git 
+```bash
+sudo apt install git 
 ```
-timedatectl set-local-rtc 1 --adjust-system-clock
-```
-You may see warning, this is fine.
 
 ## Setup github SSH key
 ```bash
@@ -75,45 +74,6 @@ Copy the content of `id_rsa.pub` to add SSH key.
 git config --global user.email "chenwang0234@gmail.com"
 git config --global user.name "chenwang"
 ```
-
-## Fcitx disable extra trigger key (shift)
-```
-code ~/.config/fcitx/config
-```
-change SwitchKey=SHIFT Both to SwitchKey=Disable
-After saving
-```
-chmod 400 config
-```
-To make this setting persist after restart.
-## Mouse and Touchpad
-
-* [x] nautural scrolling
-
-## 搜狗中文输入法
-
-  >* download and install;
-  >* `im-config -n fcitx` change from ibus to fcitx;
-  >* `sudo reboot`
-  >* (4)点击右上角输入法小图标,选择config，去掉勾，点击左下角小加号，找到Sogou Pinyin添加即可
-  >* 若在菜单栏的右上角出现两个输入法图标，则：`sudo apt remove fcitx-ui-qimpanel`;再重启
-  >* 搜狗拼音的简体、繁体相互转换：Ctrl+Shift+F
-
-
-## system monitor
-
-  >* `sudo add-apt-repository ppa:fossfreedom/indicator-sysmonitor`
-  >* `sudo apt update`
-  >* `sudo apt install indicator-sysmonitor`
-
-启动，右击设置"Run on startup"
-
-## Shadowsocks(optional)
-
-  >* `sudo add-apt-repository ppa:hzwhuang/ss-qt5`
-  >* `sudo apt update`
-  >* `sudo apt install shadowsocks-qt5`
-  >* 在Startup Application里面设置shadowsocks开机自动启动
 
 ## 更换Terminal
 
@@ -148,6 +108,84 @@ To make this setting persist after restart.
 
   >* 修改透明度为10%
   >* 命令行自动提示：没多大用，用Tab即可
+
+## Install python virtual environment
+```bash
+sudo apt install python3-venv
+```
+
+## Installing Vim-key bindings for jupyter notebook
+* ```bash
+  pip install jupyter_contrib_nbextensions
+
+  ```
+* ```bash
+  jupyter nbextensions_configurator enable --user
+  ```
+* ```bash
+  # You may need the following to create the directoy
+  mkdir -p $(jupyter --data-dir)/nbextensions
+  # Now clone the repository
+  cd $(jupyter --data-dir)/nbextensions
+  git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding
+  chmod -R go-w vim_binding
+  ```
+* Launch a Jupyter notebook session. Then, in a browser, go to <root>/nbextensions/; for example, if the notebook is hosted under localhost:8888, go to http://localhost:8888/nbextensions/. Activate VIM binding from the list of extensions. Check documentation for more details.
+
+## Solving ubuntu windows time conflict
+Check time date setting
+```
+timedatectl
+```
+Set RTC in local TZ to yes
+```
+timedatectl set-local-rtc 1 --adjust-system-clock
+```
+You may see warning, this is fine.
+
+## Fcitx disable extra trigger key (shift)
+```
+code ~/.config/fcitx/config
+```
+change SwitchKey=SHIFT Both to SwitchKey=Disable
+After saving
+```
+chmod 400 config
+```
+To make this setting persist after restart.
+## Mouse and Touchpad
+
+* [x] nautural scrolling
+
+## install pycharm 
+
+## Mendeley    
+
+## 搜狗中文输入法
+
+  >* download and install;
+  >* `im-config -n fcitx` change from ibus to fcitx;
+  >* `sudo reboot`
+  >* (4)点击右上角输入法小图标,选择config，去掉勾，点击左下角小加号，找到Sogou Pinyin添加即可
+  >* 若在菜单栏的右上角出现两个输入法图标，则：`sudo apt remove fcitx-ui-qimpanel`;再重启
+  >* 搜狗拼音的简体、繁体相互转换：Ctrl+Shift+F
+
+
+## system monitor
+
+  >* `sudo add-apt-repository ppa:fossfreedom/indicator-sysmonitor`
+  >* `sudo apt update`
+  >* `sudo apt install indicator-sysmonitor`
+
+启动，右击设置"Run on startup"
+
+## Shadowsocks(optional)
+
+  >* `sudo add-apt-repository ppa:hzwhuang/ss-qt5`
+  >* `sudo apt update`
+  >* `sudo apt install shadowsocks-qt5`
+  >* 在Startup Application里面设置shadowsocks开机自动启动
+
 
 ## 好看的主题(optional)
 
