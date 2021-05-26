@@ -215,3 +215,6 @@ AttributeError: module 'gym.envs.box2d' has no attribute 'LunarLander'
   pip install Box2D
   ```
 - cannot install Box2D with conda
+## Docker 
+### Tensorflow docker image
+Need to include flag `runtime=nvidia`
