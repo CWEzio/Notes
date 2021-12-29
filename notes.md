@@ -1,4 +1,4 @@
-## Add conda virtual enviornment to jupyter notebook
+## Add conda virtual environment to jupyter notebook
 
 * create a new env
   ```
@@ -19,6 +19,49 @@
 Or simply follow this tutorial
 https://janakiev.com/blog/jupyter-virtual-envs/
 It contains more information.
+
+## Use Python Virtual Environment
+- Install virtualenv with 
+  ```
+  pip3 install virtualenv
+  ```
+- Create a virtualenv with
+  ```
+  python3 -m venv myenv
+  ```
+  This command will create a virtual environment called `myenv` in current directory.
+- Activate the virtualenv with
+  ```
+  source path_to_myenv/myenv/bin/activate
+  ```
+- Deactivate the virtualenv with
+  ```
+  deactivate
+  ```
+- To delete the virtual environment, just remove the folder containing the virtual environment.
+
+## Add python virtualenv to Jupyter notebook 
+- Make sure the virtualenv is activated
+- Install ipykernel with
+  ```
+  pip install ipykernel
+  ```
+- Add virtualenv to Jupyter notebook as a kernel with
+  ```
+  python -m ipykernel install --name=myenv
+  ```
+  where `myenv` is the name of the added kernel.
+
+## Remove Virtual Environment from Jupyter notebook
+- After a virtual environment is deleted, you'll want to remove it from Jupyter.
+- First list all available kernels.
+  ```
+  jupyter kernelspec list
+  ```
+- Uninstall the kernel with
+  ```
+  jupyter kernelspec uninstall myenv
+  ```
 
 ## Write python module
 
