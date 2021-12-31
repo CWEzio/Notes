@@ -42,3 +42,7 @@ The target can be a *rule target* or *file target*. `//` is the workspace root i
 Some special cases
 - If the referencing target is at the workspace root, the package path is empty, just use `//:target-name`.
 - When referencing target in the same `BUILD` file, you can just use `:target-name`, the `//` can be skipped.
+- Use `bazel build //...` to build the entire project and `bazel test //...` to build and test the entire project. The `...` means `everything including the subdirectories`
+- The  `bazel run` command is similar to `bazel build` command, except it is used to build and run a single target.
+
+## Working with external Dependencies

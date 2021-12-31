@@ -218,3 +218,57 @@ AttributeError: module 'gym.envs.box2d' has no attribute 'LunarLander'
 ## Docker 
 ### Tensorflow docker image
 Need to include flag `runtime=nvidia`
+
+
+## Drake
+### Problem description
+When I try to [run jupyter notebook with bazel](https://github.com/RobotLocomotion/drake/blob/master/tools/jupyter/README.md#running-notebooks) using virtual environment, I encounter a problem that it says python-config file is not found. 
+```
+bazel run //tools/jupyter:example
+```
+
+```zsh
+INFO: Repository python instantiated at:
+  /home/chenwang/drake/WORKSPACE:10:22: in <toplevel>
+  /home/chenwang/drake/tools/workspace/default.bzl:317:29: in add_default_workspace
+  /home/chenwang/drake/tools/workspace/default.bzl:234:26: in add_default_repositories
+Repository rule python_repository defined at:
+  /home/chenwang/drake/tools/workspace/python/repository.bzl:283:36: in <toplevel>
+ERROR: An error occurred during the fetch of repository 'python':
+   Traceback (most recent call last):
+	File "/home/chenwang/drake/tools/workspace/python/repository.bzl", line 136, column 37, in _impl
+		py_info = repository_python_info(
+	File "/home/chenwang/drake/tools/workspace/python/repository.bzl", line 111, column 13, in repository_python_info
+		fail((
+Error in fail: Cannot find corresponding config executable: /home/chenwang/manipulation_env/bin/python3-config
+  From interpreter: /home/chenwang/manipulation_env/bin/python3
+ERROR: Error fetching repository: Traceback (most recent call last):
+	File "/home/chenwang/drake/tools/workspace/python/repository.bzl", line 136, column 37, in _impl
+		py_info = repository_python_info(
+	File "/home/chenwang/drake/tools/workspace/python/repository.bzl", line 111, column 13, in repository_python_info
+		fail((
+Error in fail: Cannot find corresponding config executable: /home/chenwang/manipulation_env/bin/python3-config
+  From interpreter: /home/chenwang/manipulation_env/bin/python3
+ERROR: /home/chenwang/drake/tools/jupyter/BUILD.bazel:31:24: //tools/jupyter:example depends on //:module_py in repository @ which failed to fetch. no such package '@python//': Cannot find corresponding config executable: /home/chenwang/manipulation_env/bin/python3-config
+  From interpreter: /home/chenwang/manipulation_env/bin/python3
+ERROR: Analysis of target '//tools/jupyter:example' failed; build aborted: Analysis failed
+INFO: Elapsed time: 0.087s
+INFO: 0 processes.
+FAILED: Build did NOT complete successfully (0 packages loaded, 0 targets conf\
+FAILED: Build did NOT complete successfully (0 packages loaded, 0 targets conf\
+igured)
+    currently loading: 
+```
+### Solution
+It turns out that this problem is due to the *virtualenv* do not create `python-config` file. I have to create a symlink to refer to it explicitly. In this issue, the virtual environment is at 
+`/home/chenwang/manipulation_env`. What I do is 
+```zsh 
+cd /home/chenwang/manipulation_env
+ln -s /usr/bin/python3.6-config python3-config
+```
+Then 
+```
+bazel run //tools/jupyter:example
+```
+works fine.
+> Later I decide not to use virtualenv with bazel becasue it causes bug (`Python.h` not found).
