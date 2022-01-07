@@ -272,3 +272,17 @@ bazel run //tools/jupyter:example
 ```
 works fine.
 > Later I decide not to use virtualenv with bazel becasue it causes bug (`Python.h` not found).
+
+### Problem description
+Encounter "RuntimeError: The operating system's C++ standard library is not installed correctly" when build drake from source using bazel. 
+I ask a [question](https://stackoverflow.com/questions/70604791/encounter-runtimeerror-the-operating-systems-c-standard-library-is-not-inst/70615466#70615466) in stackoverlow, which contains the detail.
+
+### Solution
+I solve this problem follows @jwnimmer-tri's answer in my question. In specific, I run
+```
+sudo apt remove cpp-9 g++-9 gcc-9 libasan6 libgcc-9-dev libstdc++-9-dev
+sudo apt remove cpp-8 g++-8 gcc-8 libasan6 libgcc-8-dev libstdc++-8-dev
+```
+to remove GCC 8 and GCC 9 from my system. I must have accidentally installed GCC 8 and GCC 9, but not the corresponding G++. Drake use GCC 7 in `Ubuntu 18.04` and the `install_prereqs.sh` install GCC 7 fully (with G++). Clang seems to look for GCC standard C++ library and for higher version GCC. Therefore, when Clang looks for GCC standard C++ library in my system, it looks for GCC 9 and GCC 8. However, I do not have the corresponding G++ installed. Therefore, the Clang will fails to find the include file.
+
+Another possible way to solve this problem is to have the higher version GCC fully installed.
