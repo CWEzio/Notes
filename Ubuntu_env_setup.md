@@ -153,6 +153,13 @@ After saving
 chmod 400 config
 ```
 To make this setting persist after restart.
+
+## Install trash
+```
+sudo apt install trash
+```
+`Trash` is a useful commandline tool which is used to move files to trash, empty trash folder and things like that. `Trash` is much safer than `rm`.
+
 ## Mouse and Touchpad
 
 * [x] nautural scrolling
