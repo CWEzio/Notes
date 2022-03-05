@@ -60,3 +60,10 @@ Then `Ctrl+Shift+p`, type `C++` to edit configuration file of VS code C++ plugin
 to the `c_cpp_properties.json` file.
 
 > Additional note for Drake. It should be noted that Drake use `C++17` standard. To avoid intellisense error, need to change the `cppStandard` setting in `c_cpp_properties.json` file to `gnu++17`.
+
+## Build drake-py with cmake will make the computer froze
+This is because that without addtional setting, the bazel will utilize all cpu cores and this will run up all memory. However, since cmake calls bazel indirectly, simply put `-j6` does not help. The solution is to add 
+```
+build --jobs 6 --local_ram_resources=HOST_RAM*0.5
+```
+to `.bashrc` file.
