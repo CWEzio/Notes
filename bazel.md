@@ -53,6 +53,12 @@ I work with Bazel C++ project using VS code. One thing that is useful is to go t
 
 The `compile_commands.json` can be generated using [bazel-compilation-database](https://github.com/grailbio/bazel-compilation-database). 
 
+Run
+```zsh
+bazel-compdb
+```
+at the project root.
+
 Then `Ctrl+Shift+p`, type `C++` to edit configuration file of VS code C++ plugin. Add 
 ```json
 "compileCommands": "${workspaceFolder}/compile_commands.json"
@@ -67,3 +73,4 @@ This is because that without addtional setting, the bazel will utilize all cpu c
 build --jobs 6 --local_ram_resources=HOST_RAM*0.5
 ```
 to `.bashrc` file.
+For more info, refer to this [github issue](https://github.com/tensorflow/models/issues/195)

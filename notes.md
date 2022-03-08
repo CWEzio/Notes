@@ -48,7 +48,7 @@ It contains more information.
   ```
 - Add virtualenv to Jupyter notebook as a kernel with
   ```
-  python -m ipykernel install --name=myenv
+  python -m ipykernel install --name=myenv --user
   ```
   where `myenv` is the name of the added kernel.
 
