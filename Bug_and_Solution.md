@@ -311,3 +311,24 @@ jupyter nbextension install --py widgetsnbextension --user
 jupyter nbextension enable --py widgetsnbextension
 ```
 > The above two commands should be run in the right `virtual environment`, i.e., where the kernel returning the error information is in.
+
+### Problem Description
+Encounter
+```
+Executing: /tmp/apt-key-gpghome.PpjCyyBi8S/gpg.1.sh -q --fetch-keys https://bazel.build/bazel-release.pub.gpg
+gpg: WARNING: unable to fetch URI https://bazel.build/bazel-release.pub.gpg: Connection timed out
+```
+when install the `manipulation` course supplement's prerequiste using the provided shell script `install_prereqs.sh`.
+### Solution
+This is because of the GFW. The apt-key cannot get the key. Need to first manully download the key from https://bazel.build/bazel-release.pub.gpg. Then run 
+```zsh
+sudo apt-key add key.gpg
+```
+suppose the key file is named `key.gpg`.
+
+Or one can use a single command to do the trick:
+```zsh
+curl -sSL \
+'https://bazel.build/bazel-release.pub.gpg' \
+| sudo apt-key add -
+```
