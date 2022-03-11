@@ -286,3 +286,28 @@ sudo apt remove cpp-8 g++-8 gcc-8 libasan6 libgcc-8-dev libstdc++-8-dev
 to remove GCC 8 and GCC 9 from my system. I must have accidentally installed GCC 8 and GCC 9, but not the corresponding G++. Drake use GCC 7 in `Ubuntu 18.04` and the `install_prereqs.sh` install GCC 7 fully (with G++). Clang seems to look for GCC standard C++ library and for higher version GCC. Therefore, when Clang looks for GCC standard C++ library in my system, it looks for GCC 9 and GCC 8. However, I do not have the corresponding G++ installed. Therefore, the Clang will fails to find the include file.
 
 Another possible way to solve this problem is to have the higher version GCC fully installed.
+
+### Problem Description
+When using `pydot`, encounter
+```python
+FileNotFoundError: [Errno 2] "dot" not found in path.
+```
+### Solution
+```zsh
+sudo apt install graphviz
+```
+> It should be noted that, for `pip` installed `pydot`, it is of no use to install `graphviz` via `pip`. I do not know the reason though. I guess this has something to do with the `pydot` search path. Install `graphviz` via `apt` will solve the problem.
+
+### Problem Description
+`jupyter notebook` return error:
+```zsh
+[IPKernelApp] ERROR | No such comm target registered: jupyter.widget.version
+```
+
+### Solution
+(In virtual enviornment)
+```zsh
+jupyter nbextension install --py widgetsnbextension --user
+jupyter nbextension enable --py widgetsnbextension
+```
+> The above two commands should be run in the right `virtual environment`, i.e., where the kernel returning the error information is in.
