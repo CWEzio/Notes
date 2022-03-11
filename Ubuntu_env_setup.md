@@ -42,6 +42,15 @@ Recently, I bought a new computer with RTX 3070, I need to install the driver ma
 
     ``` 
     to file `~/.zshrc`. (Set the port the same as v2ray's port)
+## apt proxy 
+Add the file `proxy.conf` containing
+```
+Acquire {
+  HTTP::proxy "http://127.0.0.1:2340";
+  HTTPS::proxy "http://127.0.0.1:2340";
+}
+```
+in `/etc/apt/apt.conf.d` directory.
 
 ## install vscode
 ```bash
