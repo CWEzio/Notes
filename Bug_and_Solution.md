@@ -332,3 +332,36 @@ curl -sSL \
 'https://bazel.build/bazel-release.pub.gpg' \
 | sudo apt-key add -
 ```
+
+### Problem Description
+When use pydrake, encounter the `AttributeError`:
+```python
+AttributeError: module 'drake' has no attribute 'experimental_lcmt_deformable_tri'
+
+The above exception was the direct cause of the following exception:
+...
+```
+### Solution
+Refer to this [issue](https://github.com/RobotLocomotion/drake/issues/13187), I run 
+```python
+import drake
+print(drake.__file__)
+```
+to see which drake is used. It prints
+```
+/home/chenwang/drake/__init__.py
+```
+Then I run
+```python
+import sys
+print(sys.path)
+```
+and I got 
+```
+['', '/opt/openrobots/lib/python2.7/site-packages', '/home/chenwang/underactuated', '/home/chenwang/manipulation', '/home/chenwang/drake-build/install/lib/python3.6/site-packages', '/opt/ros/melodic/lib/python2.7/dist-packages', '/usr/lib/python36.zip', '/usr/lib/python3.6', '/usr/lib/python3.6/lib-dynload', '/home/chenwang/manipulation_env/lib/python3.6/site-packages', '/home/chenwang/manipulation_env/lib/python3.6/site-packages/IPython/extensions']
+```
+Then I realize I am in home directory, with a directory called `drake`. Then when I import `drake`, this directory is imported. (The reason maybe that the current directory has higher priority in the search sequence.) After `cd` to other directory, I can import successfully.
+
+
+
+
