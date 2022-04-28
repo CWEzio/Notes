@@ -7,7 +7,7 @@ Drake's [spatial velocity](https://drake.mit.edu/doxygen_cxx/classdrake_1_1multi
 - Pydrake's binding is defined in the /bindings/pydrake directory. You can check the source code to see whether the function you need has been binded to python.
 
 ### Pydrake's symbolic comparison operator for Vecotor of `Expression` 
-Related information can be found in [this issue](https://github.com/RobotLocomotion/drake/issues/8315) (most relevant), [this pull](https://github.com/RobotLocomotion/drake/pull/11171) and [this question](https://stackoverflow.com/questions/68615278/runtimeerror-you-should-not-call-bool-nonzero-on-formula).
+Related information can be found in [this issue](https://github.com/RobotLocomotion/drake/issues/8315) (most relevant), [this pull](https://github.com/RobotLocomotion/drake/pull/11171), [this question](https://stackoverflow.com/questions/64736910/using-le-or-ge-with-scalar-left-hand-side-creates-unsized-formula-array) and [this question](https://stackoverflow.com/questions/68615278/runtimeerror-you-should-not-call-bool-nonzero-on-formula).
 
 It should be noted that, in pydrake, the comparison operator like `<=` can not operate on a vector of expressions. Instead, `lt`, `le`, `eq`, `ne`, `ge` and `gt` should be used. These operators are defined in `/binding/pydrake/_math_extra.py`. These operators are defined as a workaround to avoid the undesired behaviors of operator like `<=` for vector of expressions.
 
