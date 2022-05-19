@@ -94,10 +94,12 @@ git config --global user.name "chenwang"
 
   >* 将默认终端由bash换成zsh
 
-  `chsh -s /bin/zsh   #注意：不要使用sudo`
+  `chsh -s /bin/zsh   #注意：不要使用sudo` (This step seems to be redundant, just install oh my zsh and after installation it will let you set zsh as the default terminal)
 
   >* 安装oh-my-zsh 项目来帮我们配置 zsh，采用curl安装：
+
   `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
+
   >* 安装zsh-syntax-highlighting语法高亮插件
 
   ```bash
@@ -110,7 +112,7 @@ git config --global user.name "chenwang"
   >* 安装zsh-autosuggestions语法历史记录插件(自动补全插件)
 
   ```bash
-  git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+  git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
   echo "source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
   source ~/.zshrc
   ```
@@ -165,9 +167,14 @@ To make this setting persist after restart.
 
 ## Install trash
 ```
-sudo apt install trash
+sudo apt install trash-cli
 ```
 `Trash` is a useful commandline tool which is used to move files to trash, empty trash folder and things like that. `Trash` is much safer than `rm`.
+
+## Install TLDR
+```zsh
+sudo apt install tldr
+```
 
 ## Mouse and Touchpad
 
