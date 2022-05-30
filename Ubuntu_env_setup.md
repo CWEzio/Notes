@@ -84,6 +84,8 @@ git config --global user.email "chenwang0234@gmail.com"
 git config --global user.name "chenwang"
 ```
 
+## Change git default editor
+
 ## 更换Terminal
 
 终端采用zsh和oh-my-zsh，既美观又简单易用，主要是能提高你的逼格！！！ZSH, also called the Z shell

@@ -363,5 +363,23 @@ and I got
 Then I realize I am in home directory, with a directory called `drake`. Then when I import `drake`, this directory is imported. (The reason maybe that the current directory has higher priority in the search sequence.) After `cd` to other directory, I can import successfully.
 
 
+## ROS
+### Cannot open a node in a seperate terminal
+I would like to open a node in a seperate terminal and thus I use 
+```xml
+  <node name="teleop" pkg="turtlebot3_teleop" type="turtlebot3_teleop_key" output="screen" launch-prefix="xterm -e" />
+```
+However, I encounter
 
+```
+RLException: Roslaunch got a 'No such file or directory' error while attempting to run:
 
+xterm -e /opt/ros/noetic/lib/turtlebot3_teleop/turtlebot3_teleop_key __name:=teleop __log:=/home/chenwang/.ros/log/75148da4-dfee-11ec-896f-1372cd24759d/evader-teleop-6.log
+
+Please make sure that all the executables in this command exist and have
+executable permission. This is often caused by a bad launch-prefix.
+The traceback for the exception was written to the log file
+```
+
+### Solution
+It turns out that the error message is misleading. I got this error because I haven't have `xterm` installed. After installing `xterm`, everything works fine again.
