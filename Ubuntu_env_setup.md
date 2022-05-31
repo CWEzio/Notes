@@ -42,7 +42,7 @@ Recently, I bought a new computer with RTX 3070, I need to install the driver ma
 
     ``` 
     to file `~/.zshrc`. (Set the port the same as v2ray's port)
-## apt proxy 
+## `apt` proxy 
 Add the file `proxy.conf` containing
 ```
 Acquire {
@@ -51,6 +51,14 @@ Acquire {
 }
 ```
 in `/etc/apt/apt.conf.d` directory.
+
+## `ssh` proxy
+Add 
+```
+ProxyCommand /usr/bin/nc -X 5 -x 127.0.0.1:7777 %h %p
+```
+as the first line to `~/.ssh/config`. If `config` does not exist, create a new one.
+> It should be noted that `ssh` is used by `git`. Without setting `ssh` proxy may cause `git push` fail since GFW has banned `github`.
 
 ## install vscode
 ```bash
