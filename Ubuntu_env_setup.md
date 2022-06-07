@@ -186,6 +186,16 @@ sudo apt install trash-cli
 sudo apt install tldr
 ```
 
+## Install Times New Roman Font
+1. Install the Microsoft TrueType core fonts 
+> ```
+> sudo apt install ttf-mscorefonts-installer
+> ```
+2. Scan the font directories to build fresh font information cache files
+>```
+>sudo fc-cache -vr
+>```
+For more details, refer to this [website](https://linuxconfig.org/install-microsoft-fonts-on-ubuntu-20-04-focal-fossa-desktop)
 ## Mouse and Touchpad
 
 * [x] nautural scrolling

@@ -383,3 +383,4 @@ The traceback for the exception was written to the log file
 
 ### Solution
 It turns out that the error message is misleading. I got this error because I haven't have `xterm` installed. After installing `xterm`, everything works fine again.
+
