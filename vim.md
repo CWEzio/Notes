@@ -50,6 +50,7 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
 - `:q` close a single tab not a whole window like `Ctrl + w`, `c`. (ideaVim)
 - `Ctrl + w`, `=`: Makes all splits equal size
 - `Alt + s`: split and move right (pycharm my own definition)
+> In `vs code`, then use `Ctrl + Tab` to change between tabs in a window.
 ## IdeaVim
 - `gd` to go to the declaration, `Ctrl + o` to go back to where you came from
 - `alt + arrow key` to move across tab (pycharm)
