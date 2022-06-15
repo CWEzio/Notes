@@ -1,6 +1,6 @@
 Original tutorial is from Huangjian. Will modify soon.
 
-# Ubuntu18.04重装系统后的软件环境安装指南
+# Ubuntu20.04重装系统后的软件环境安装指南
 
 ## install graphics driver
 Recently, I bought a new computer with RTX 3070, I need to install the driver manually.
@@ -196,6 +196,15 @@ sudo apt install tldr
 >sudo fc-cache -vr
 >```
 For more details, refer to this [website](https://linuxconfig.org/install-microsoft-fonts-on-ubuntu-20-04-focal-fossa-desktop)
+
+## Tweak the default gnome workspaces behavior
+Check [this article](https://www.thegygers.com/2020/07/30/ubuntu-20-04-workspaces-and-multiple-monitors/) for details.
+In short, first install `gnome-tweaks`
+```
+sudo add-apt-repository universe
+sudo apt install gnome-tweaks
+```
+Then in the left tabs, select `Workspaces` and then on the right click `Workspaces span displays`.
 ## Mouse and Touchpad
 
 * [x] nautural scrolling
