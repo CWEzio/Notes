@@ -1,6 +1,8 @@
 Original tutorial is from Huangjian. Will modify soon.
 
 # Ubuntu20.04重装系统后的软件环境安装指南
+> This guide may also apply to `Ubuntu18.04`
+> Haven't test it on `Ubuntu22.04`
 
 ## install graphics driver
 Recently, I bought a new computer with RTX 3070, I need to install the driver manually.
