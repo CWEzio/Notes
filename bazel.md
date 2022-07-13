@@ -67,6 +67,53 @@ to the `c_cpp_properties.json` file.
 
 > Additional note for Drake. It should be noted that Drake use `C++17` standard. To avoid intellisense error, need to change the `cppStandard` setting in `c_cpp_properties.json` file to `gnu++17`.
 
+*Update*: 2022.07.13, the `bazel-compilation-database` is in maintainance mode now and the author suggest another tool, [`bazel-compile-commands-extractor`](https://github.com/hedronvision/bazel-compile-commands-extractor).
+Follow the official detailed guidance to do the setup. Here I give a short version (the steps that I follow):
+1. Add the following to the Bazel `WORKSPACE` file.
+```python
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+
+# Hedron's Compile Commands Extractor for Bazel
+# https://github.com/hedronvision/bazel-compile-commands-extractor
+http_archive(
+    name = "hedron_compile_commands",
+
+    # Replace the commit hash in both places (below) with the latest, rather than using the stale one here.
+    # Even better, set up Renovate and let it do the work for you (see "Suggestion: Updates" in the README).
+    url = "https://github.com/hedronvision/bazel-compile-commands-extractor/archive/ac78f5f1e2679b9f5b62eeae33055ede355672e6.tar.gz",
+    strip_prefix = "bazel-compile-commands-extractor-ac78f5f1e2679b9f5b62eeae33055ede355672e6",
+    # When you first run this tool, it'll recommend a sha256 hash to put here with a message like: "DEBUG: Rule 'hedron_compile_commands' indicated that a canonical reproducible form can be obtained by modifying arguments sha256 = ..."
+)
+load("@hedron_compile_commands//:workspace_setup.bzl", "hedron_compile_commands_setup")
+hedron_compile_commands_setup()
+```
+
+2. Run 
+```zsh
+bazel run @hedron_compile_commands//:refresh_all
+```
+to update the `compile_commands.json`. Note that they will automatic modify your `.gitignore` to help you avoid mistake add `compile_commands.json` to your git repo.
+
+Editor setup
+
+1. install `clangd`
+```zsh
+code --install-extension llvm-vs-code-extensions.vscode-clangd
+# We also need make sure that Microsoft's C++ extension is not involved and interfering.
+code --uninstall-extension ms-vscode.cpptools
+```
+2. Then, open VSCode user settings, so things will be automatically set up for all projects you open.
+3. Search for "clangd".
+4. Add the following three separate entries to `clangd.arguments`:
+```
+--header-insertion=never
+--compile-commands-dir=${workspaceFolder}/
+--query-driver=/**/*
+```
+
+
+
 ## Build drake-py with cmake will make the computer froze
 This is because that without addtional setting, the bazel will utilize all cpu cores and this will run up all memory. However, since cmake calls bazel indirectly, simply put `-j6` does not help. The solution is to add 
 ```
