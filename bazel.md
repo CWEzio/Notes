@@ -48,7 +48,7 @@ Some special cases
 ## Working with external Dependencies
 > Note that Bazel 5.0 and later introduced a new external dependency system, codenamed "Bzlmod". However, Drake use Bazel 4.2.
 
-## Using Bazel with VS code intellisense
+## Using Bazel with VS code autocomplete 
 I work with Bazel C++ project using VS code. One thing that is useful is to go to declaration position. However, the intellisense do not know the source of the included file. I solve this problem using method suggested https://stackoverflow.com/questions/61015990/how-do-i-enable-c-intellisense-for-a-bazel-project-in-vs-code
 
 The `compile_commands.json` can be generated using [bazel-compilation-database](https://github.com/grailbio/bazel-compilation-database). 
@@ -119,5 +119,5 @@ This is because that without addtional setting, the bazel will utilize all cpu c
 ```
 build --jobs 6 --local_ram_resources=HOST_RAM*0.5
 ```
-to `.bashrc` file.
+to `.bazelrc` file.
 For more info, refer to this [github issue](https://github.com/tensorflow/models/issues/195)

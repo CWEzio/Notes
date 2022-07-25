@@ -169,3 +169,10 @@ set-window-option -g mode-keys vi
 ```
 For more information, refer to this blog https://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/
 
+## ffmpeg
+### cut a video
+Use command 
+```
+ffmpeg -ss 00:01:00 -to 00:02:00  -i input.mp4 -c copy output.mp4
+```
+Check George Chalhoub's [answer](https://stackoverflow.com/a/42827058/12825127) for detail.
