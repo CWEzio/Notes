@@ -121,3 +121,28 @@ build --jobs 6 --local_ram_resources=HOST_RAM*0.5
 ```
 to `.bazelrc` file.
 For more info, refer to this [github issue](https://github.com/tensorflow/models/issues/195)
+
+## Attributes common to all build rules
+For details, check [the official documentation](https://bazel.build/reference/be/common-definitions).
+> 1. `tags`: list of strings; optional <br>
+> `requires-network` keyword allows access to external network. 
+
+## Cleaning built outputs
+For details, check [the official documentation](https://bazel.build/reference/be/common-definitions).
+Run
+```
+bazel clean
+```
+
+## Easier Debugging of Sandbox Failures
+Check [this blog](https://blog.bazel.build/2016/03/18/sandbox-easier-debug.html).
+> I fail to enter the sandbox following the instructions in the blog. However, I decide to leave it for now and check in the future.
+
+## Header Inclusion Rule
+Check [stackoverflow question](https://stackoverflow.com/questions/59932849/bazel-cannot-find-dependent-header-file-for-very-simple-case) for an example.
+
+In short, `deps` in `cc_binary` does not add the `cc_library`'s `hdrs` into its include path. However, you can specify the `includes` attribute in `cc_library`. The `cc_binary` that depends on that `cc_library` will add the directory specified in the `includes` attributes to its include path. See the official documentation on the ['includes' attribute](https://bazel.build/reference/be/c-cpp#cc_library.includes).
+
+
+## vscode
+Use the [`bazel-stack-vscode`](https://marketplace.visualstudio.com/items?itemName=StackBuild.bazel-stack-vscode) extension. It support lint, format and autocomplete.
