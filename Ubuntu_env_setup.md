@@ -1,8 +1,7 @@
 Original tutorial is from Huangjian. Will modify soon.
 
 # Ubuntu20.04重装系统后的软件环境安装指南
-> This guide may also apply to `Ubuntu18.04`
-> Haven't test it on `Ubuntu22.04`
+> This guide should also apply to `Ubuntu18.04` and `Ubuntu 22.04`<br>
 
 ## install graphics driver
 Recently, I bought a new computer with RTX 3070, I need to install the driver manually.
@@ -188,6 +187,7 @@ sudo apt install trash-cli
 sudo apt install tldr
 ```
 
+
 ## Install Times New Roman Font
 1. Install the Microsoft TrueType core fonts 
 > ```
@@ -214,7 +214,17 @@ Then in the left tabs, select `Workspaces` and then on the right click `Workspac
 ## install pycharm 
 
 ## Mendeley    
-
+> *Note on Ubuntu22.04* <br>
+> Since Ubuntu 22.04 does not support `python2`, `mendeley` has denpendency issue in installing. However, we can turn to `flatpak` to install mendely. `flatpak` provides an encapsulation of an app and its dependency and allows for depolyment on different version of Linux system.<br>
+> 1. Follow [this guidance](https://flatpak.org/setup/Ubuntu) to setup flatpak.
+> 2. Install `mendeley` by
+>```
+>flatpak install flathub com.elsevier.MendeleyDesktop>
+>```
+> 3. After installation, run `mendeley` with
+>```
+>flatpak run com.elsevier.MendeleyDesktop
+>```
 ## 搜狗中文输入法
 
   >* download and install;
