@@ -138,10 +138,10 @@ bazel clean
 Check [this blog](https://blog.bazel.build/2016/03/18/sandbox-easier-debug.html).
 > I fail to enter the sandbox following the instructions in the blog. However, I decide to leave it for now and check in the future.
 
-## Header Inclusion Rule
+## Header include path 
 Check [stackoverflow question](https://stackoverflow.com/questions/59932849/bazel-cannot-find-dependent-header-file-for-very-simple-case) for an example.
 
-In short, `deps` in `cc_binary` does not add the `cc_library`'s `hdrs` into its include path. However, you can specify the `includes` attribute in `cc_library`. The `cc_binary` that depends on that `cc_library` will add the directory specified in the `includes` attributes to its include path. See the official documentation on the ['includes' attribute](https://bazel.build/reference/be/c-cpp#cc_library.includes).
+In short, `deps` in `cc_binary` does not add the `cc_library`'s `hdrs` into its include path. However, you can specify the `includes` attribute in `cc_library`. The `cc_binary` that depends on that `cc_library` will add the directory specified in the `includes` attribute to its include path. Or you can use the full include path. See the official documentation on the ['includes' attribute](https://bazel.build/reference/be/c-cpp#cc_library.includes).
 
 
 ## vscode
