@@ -1,4 +1,4 @@
-Original tutorial is from Huangjian. Will modify soon.
+> Original version of this tutorial is from Huangjian. Gradually add modification as I use Ubuntu.
 
 # Ubuntu20.04重装系统后的软件环境安装指南
 > This guide should also apply to `Ubuntu18.04` and `Ubuntu 22.04`<br>
