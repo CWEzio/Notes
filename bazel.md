@@ -146,3 +146,65 @@ In short, `deps` in `cc_binary` does not add the `cc_library`'s `hdrs` into its 
 
 ## vscode
 Use the [`bazel-stack-vscode`](https://marketplace.visualstudio.com/items?itemName=StackBuild.bazel-stack-vscode) extension. It support lint, format and autocomplete.
+
+## `genrule`
+Also see [the official documentation](https://bazel.build/reference/be/general#genrule.outs).
+
+A `genrule` generates one or more files using a user-defined bash command.
+
+See [here](https://shantanugoel.com/2020/05/03/bazel-rule-auto-generate-files-compile-time/) for one tutorial that use `genrule` to build header file which is then used as include file.
+
+### Example 1 
+One example of my usage is 
+```python
+genrule(
+    name = "peg_in_hole_station_diagram",
+    outs = ["peg_in_hole_station.txt"],
+    cmd = "./$(location :simulation_test); mv ./peg_in_hole_station.txt $(location peg_in_hole_station.txt)",
+    tools = [":simulation_test"],
+)
+```
+
+here `:simulation_test` is a `cc_binary` target that will generate the `peg_in_hole_station.txt` file. However, since `bazel run` will run the target in a sandbox,  we need this `genrule` to get the generated file. The `cmd` in this `genrule` basically just run the `cc_binary` target to generate the `peg_in_hole_station.txt` file and then move it to the output location. 
+> Use `$(location)` to get the target/out's location. `cmd` follows ["Make" Variable](https://bazel.build/reference/be/make-variables) substitution.<br>
+> If the output has only one file, you can also use `$@` to refer to the output file.<br>
+> If the input has only one file, you can use `$<` to refer to the input file. <br>
+> `genrule` must have output file.<br>
+
+The `peg_in_hole_station.txt` contains a `graph` string. I also define a `sh_binary` target to display it.
+```python
+sh_binary(
+    name = "show_diagram",
+    srcs = ["xdot.sh"],
+    args = ["$(location :peg_in_hole_station_diagram)"],
+    data = [":peg_in_hole_station_diagram"],
+)
+```
+
+The contents of `xdot.sh` is simply
+```
+#! /bin/bash
+xdot $1
+```
+`xdot.sh` will take the `graph` string text file as argument and use `xdot` to display it.
+
+The `show_diagram` is simply
+```
+xdot.sh \path\to\peg_in_hole_station.txt
+```
+
+An alternative way to get the location of data file (in this case, `peg_in_hoe_station.txt`) is to use `$TEST_SRCDIR/$TEST_WORKSPACE` in the shell script. In this example, an alternative implementation is
+```python
+sh_binary(
+    name = "show_diagram",
+    srcs = ["xdot.sh"],
+    data = [":peg_in_hole_station_diagram"],
+)
+```
+`xdot.sh`:
+```
+#! /bin/bash
+xdot  $TEST_SRCDIR/$TEST_WORKSPACE/kuka/peg_in_hole_station_diagram
+```
+
+However, the later implementation seems to be more error prone.

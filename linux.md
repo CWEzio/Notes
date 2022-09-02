@@ -1,4 +1,5 @@
-## Use `grep` to search for the header file to include
+## `grep`
+### Use `grep` to search for the header file to include
 Suppose that I find `AddContactMaterial` function from the documentation, I can determin which header file to include by using the powerful grep:
 ```
 grep -nr --include \*.h -A2 "AddContactMaterial" ~/drake 
@@ -34,3 +35,22 @@ Then I know that `AddContactMaterial` is defined in `proximity_properties.h`.
 > `-A`: ahead, also show lines after the search pattern (the search pattern is ahead by *N*) <br>
 > `-B`: below, also show lines before the search pattern (the search pattern is below by *N*) <br>
 > `-C`: context, include both lines after and below the search pattern by *N* <br>
+
+## `find`
+Check (`the missing semester`)[https://missing.csail.mit.edu/2020/shell-tools/]
+
+```python
+# Find all directories named src
+find . -name src -type d
+# Find all python files that have a folder named test in their path
+find . -path '*/test/*.py' -type f
+# Find all files modified in the last day
+find . -mtime -1
+# Find all zip files with size in range 500k to 10M
+find . -size +500k -size -10M -name '*.tar.gz'
+```
+
+## input and output stream
+
+1. `< file` and `> file`: rewire the input and output streams of a program to a file respectively
+2. `>>` append to a file
