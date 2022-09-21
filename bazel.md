@@ -208,3 +208,31 @@ xdot  $TEST_SRCDIR/$TEST_WORKSPACE/kuka/peg_in_hole_station_diagram
 ```
 
 However, the later implementation seems to be more error prone.
+
+## Configurable Build Attributes
+Refer to [the official documentation](https://bazel.build/docs/configurable-attributes) and [this tutorial](https://zhuanlan.zhihu.com/p/521591945).
+
+> 
+### Usage example in `drake`<br>
+In `tools/BUILD.bazel`, they define
+```python
+config_setting(
+    name = "with_mosek",
+    values = {"define": "WITH_MOSEK=ON"},
+)
+```
+
+Then in `tools/install/libdrake/BUILD.bazel`, they use this defined flag to determine whether to build against `Mosek`:
+```python
+cc_library(
+    name = "mosek_deps",
+    deps = select({
+        "//tools:with_mosek": ["@mosek"],
+        "//conditions:default": [],
+    }),
+)
+```
+Therefore, if `with_mosek` is defined by passing flag `--define=WITH_MOSEK=ON`, then the mosek dependency will be selected.
+> Note that, however, `bazel` recommands to use the custom flag as in [this example](https://github.com/bazelbuild/examples/tree/HEAD/configurations/select_on_build_setting).
+    
+    

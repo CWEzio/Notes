@@ -56,6 +56,15 @@ Note that alpha will achieve the upper bound.
 
 > It quiet suprise me first that the solver can fail for a feasible problem. But the solver cannot return a solution say that the best solution is $\infty$. Therefore the solver will not only fail at infeasible problem, but for problem that the optimal solution is unatainable.
 
+
+### Use MOSEK in a drake-bazel-external project
+Add 
+```
+# USE MOSEK
+build --define=WITH_MOSEK=ON
+```
+to the project `.bashrc` file.
+
 ## Visualization
 ### To visualzie the pose without doing simulation
 Check the [`geometry_inspector.py`](https://github.com/RobotLocomotion/drake/blob/e59b7fc18dbe80b827d07e4a3283a0c87eda7021/manipulation/util/geometry_inspector.py) file and the `MultibodyPositionToGeometryPose` class.
