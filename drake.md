@@ -102,4 +102,11 @@ It turns out that the issue is from the default language sever `pylance`. Refer 
 ```
 Uninstall `pylance` might also do the trick since vscode will select `jedi` as the default language server if `pylance` is not installed.
 
+## Miscellany
+- `auto` cannot deduce the correct type of `context`. (Or maybe `context` can only be constructed by a system's method?) Use compound type (reference or pointer) for construction. For example
+    ```c++
+    auto& station_context = station->GetMyMutableContextFromRoot(context.get());
+    auto* plant_context = &plant.GetMyMutableContextFromRoot(context.get());
+    ```
+
 # TODO: MOVE Drake related terms into this note.
