@@ -47,6 +47,7 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
 - `Ctrl + w` and then use `hjkl` to move to different window
 - `Ctrl + w` and then press `o` to close other windows, keep the active window only
 - `Ctrl + w` and then press `c` to close current window but keeps the buffer
+- For a `split` window: use `Ctrl + w ` and then `+` or `-` to resize the height; For a `vsplit` window: use `Ctrl + w` and then `>` or `<` to resize the width.
 - `:q` close a single tab not a whole window like `Ctrl + w`, `c`. (ideaVim)
 - `Ctrl + w`, `=`: Makes all splits equal size
 - `Alt + s`: split and move right (pycharm my own definition)
