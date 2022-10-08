@@ -55,3 +55,8 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
 ## IdeaVim
 - `gd` to go to the declaration, `Ctrl + o` to go back to where you came from
 - `alt + arrow key` to move across tab (pycharm)
+
+## vscode
+- use ``Ctrl + ` `` to focus on the terminal
+- use `Ctrl + 1` to focus on the editor  
+    > when there are multiple editor windows, use, for example, `Ctrl + 2` to refer to other windows. In other words, `Ctrl + index` to focus on the editor
