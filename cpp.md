@@ -50,4 +50,7 @@ will solve this problem. Also use $DRAKE_GDB_ROOT is not necessary.
 
 > alternatively, you can also use the [eigengdb](https://github.com/dmillard/eigengdb). Follow its readme for installation details.
 
+## `std::optional`
+Read this excellent [article](https://devblogs.microsoft.com/cppblog/stdoptional-how-when-and-why/).
+
 

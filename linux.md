@@ -54,3 +54,7 @@ find . -size +500k -size -10M -name '*.tar.gz'
 
 1. `< file` and `> file`: rewire the input and output streams of a program to a file respectively
 2. `>>` append to a file
+
+## terminal shortcuts
+1. use `fc` to edit last command in vim
+2. use `ctrl + w` to delete a word (backward)
