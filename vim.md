@@ -42,6 +42,67 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
 - `ci(` change the contents inside the current pair of parentheses
 - `ci[` change the contents inside the current pair of square brackets
 - `da'` delete a single-quoted string, including the surroundign single quotes. 
+
+## Surrounding
+- `S"` to add double quotes (") for visual selections
+- `cs"'` to change double quotes (") to single quote (')
+- `ds"` to delete double quotes (")
+
+## Increase or Decrease keyword
+> This section is adopted from [`zsh-vi-mode`](https://github.com/jeffreytse/zsh-vi-mode/blob/master/README.md)'s readme.
+- In normal mode, use `Ctrl + a` to increase to the next keyword and `Ctrl + x` to decrease to the next keyword <br>
+    For example, use `Ctrl + a` to increase
+    - `9` => `10`
+    - `aa99bb` => `aa100bb`
+    - `aa100bc` => `aa101bc`
+    - `0xDe` => `0xdf`
+    - `0Xdf` => `0Xe0`
+    - `0b101` => `0b110`
+    - `0B11` => `0B101`
+    - `true` => `false`
+    - `yes` => `no`
+    - `on` => `off`
+    - `T` => `F`
+    - `Fri` => `Sat`
+    - `Oct` => `Nov`
+    - `Monday` => `Tuesday`
+    - `January` => `February`
+    - `+` => `-`
+    - `++` => `--`
+    - `==` => `!=`
+    - `!==` => `===`
+    - `&&` => `||`
+    - `and` => `or`
+    - ...
+
+    use `Ctrl + x` to decrease
+    - `100` => `99`
+    - `aa100bb` => `aa99bb`
+    - `0` => `-1`
+    - `0xdE0` => `0xDDF`
+    - `0xffFf0` => `0xfffef`
+    - `0xfffF0` => `0xFFFEF`
+    - `0x0` => `0xffffffffffffffff`
+    - `0Xf` => `0Xe`
+    - `0b100` => `0b010`
+    - `0B100` => `0B011`
+    - `True` => `False`
+    - `On` => `Off`
+    - `Sun` => `Sat`
+    - `Jan` => `Dec`
+    - `Monday` => `Sunday`
+    - `August` => `July`
+    - `/` => `*`
+    - `++` => `--`
+    - `==` => `!=`
+    - `!==` => `===`
+    - `||` => `&&`
+    - `or` => `and`
+    - ...
+
+ 
+
+
 ## window control
 - `Ctrl + w` and then press `v` (vertical split) or `s` (horizontal split) to open a new window
 - `Ctrl + w` and then use `hjkl` to move to different window

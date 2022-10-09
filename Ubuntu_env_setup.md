@@ -99,19 +99,19 @@ git config --global user.name "chenwang"
 
 终端采用zsh和oh-my-zsh，既美观又简单易用，主要是能提高你的逼格！！！ZSH, also called the Z shell
 
-  >* 首先，安装zsh：
+  > 首先，安装zsh：
 
    `sudo apt install zsh`
 
-  >* 将默认终端由bash换成zsh
+  > 将默认终端由bash换成zsh
 
   `chsh -s /bin/zsh   #注意：不要使用sudo` (This step seems to be redundant, just install oh my zsh and after installation it will let you set zsh as the default terminal)
 
-  >* 安装oh-my-zsh 项目来帮我们配置 zsh，采用curl安装：
+  > 安装oh-my-zsh 项目来帮我们配置 zsh，采用curl安装：
 
   `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
 
-  >* 安装zsh-syntax-highlighting语法高亮插件
+  > 安装zsh-syntax-highlighting语法高亮插件
 
   ```bash
   cd /usr/share/
@@ -120,13 +120,25 @@ git config --global user.name "chenwang"
   source ~/.zshrc
   ```
 
-  >* 安装zsh-autosuggestions语法历史记录插件(自动补全插件)
+  > 安装zsh-autosuggestions语法历史记录插件(自动补全插件)
 
   ```bash
   git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
   echo "source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
   source ~/.zshrc
   ```
+  > Install [zsh-vi-mode](https://github.com/jeffreytse/zsh-vi-mode)
+  * Clone the project
+    ```zsh
+    git clone https://github.com/jeffreytse/zsh-vi-mode \
+    $ZSH_CUSTOM/plugins/zsh-vi-mode
+    ```
+  * Add the following to `.zshrc`
+    ```zsh
+    plugins+=(zsh-vi-mode)
+    ```
+    > * Keep in mind that plugins need to be added before `oh-my-zsh.sh` is sourced.
+  
 
   >* 修改透明度为10%
   >* 命令行自动提示：没多大用，用Tab即可
