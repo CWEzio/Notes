@@ -9,3 +9,10 @@ For example:
 - `set(_my_list "A" "B" "C")` with `message("${_my_list}")` would give `A;B;C`
 - `set(_my_list "A" "B" "C")` with `message(${_my_list})` would give `ABC`
 
+## Choose generator
+- Use `cmake --help` to see a list of avaliable generator
+- Use `cmake -G "Ninja" /path/to/source` to choose `Ninja` as the build system
+- Use `cmake -G "Unix Makefiles" /path/to/source` to choose `make` as the build system
+> Usually `Ninja` is faster, especially in incremental build. So why not choose `Ninja`
+- Use `cmake --build /path/to/source` to automatically choose the correct build system and build the program.
+
