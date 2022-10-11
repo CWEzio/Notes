@@ -18,7 +18,16 @@ Eigen::VectorX<double> vec = x;
 ```
 will return error in runtime.
 The reason is that `auto` will make `x` of type `Solve<...>` instead of a vector, storing reference to dead object `tmp_qr`. This object will be solved when the value of `x` is used, i.e. the second line. However, at this time the `qr` object is already dead. Thus leading to error.
-> Be careful using `auto` with Eigen object.
+> Be careful using `auto` with Eigen object.<br>
+> The official documentation suggests that do not use the `auto` keywords with Eigen's expression, unless you are 100% sure what you are doing.<br>
+> This should be related with Eigen's lazy evaluation.
+
+### *Aliasing* problem
+
+Check this [official documentation page](https://eigen.tuxfamily.org/dox/group__TopicAliasing.html) for more details.
+
+- In Eigen, aliasing refers to assignment statement in which the same matrix (or array or vector) appears on the left and on the right of the assignment operators. Statements like `mat = 2 * mat`; or `mat = mat.transpose()`; exhibit aliasing.
+- This also relates to `Eigen`'s lazy evaluation mechanism. One possible solution is to evaluate explicitly, using the `eval()` method. For operations like `transpose`, you can also use the inplace version method `transposeInPlace()`.
 
 
 ## GDB usage
