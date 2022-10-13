@@ -22,6 +22,12 @@ The reason is that `auto` will make `x` of type `Solve<...>` instead of a vector
 > The official documentation suggests that do not use the `auto` keywords with Eigen's expression, unless you are 100% sure what you are doing.<br>
 > This should be related with Eigen's lazy evaluation.
 
+### Correct usage of Ref<T>
+Check the official [documentation](https://eigen.tuxfamily.org/dox/classEigen_1_1Ref.html), [tutorial](https://eigen.tuxfamily.org/dox/classEigen_1_1Ref.html) and this [answer](https://stackoverflow.com/questions/21132538/correct-usage-of-the-eigenref-class). 
+In short,
+- Use `Ref<T>` for a writable reference
+- Use `const Ref<const T>&` for a const reference
+
 ### *Aliasing* problem
 
 Check this [official documentation page](https://eigen.tuxfamily.org/dox/group__TopicAliasing.html) for more details.
