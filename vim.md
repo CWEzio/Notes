@@ -43,8 +43,10 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
 - `ci[` change the contents inside the current pair of square brackets
 - `da'` delete a single-quoted string, including the surroundign single quotes. 
 
-## Surrounding
-- `S"` to add double quotes (") for visual selections
+## Surrounding 
+> Note that this is supported by `vim-surround` plugin, which is also supported by `vscode`'s vim emulator.
+- `y s <motion> <desired>` to add desired surrounding around text defined by `<motion>`
+- `S"` to add double quotes (") for visual selections (in visual mode, i.e., something is visual selected)
 - `cs"'` to change double quotes (") to single quote (')
 - `ds"` to delete double quotes (")
 
