@@ -115,3 +115,9 @@ Then,
 sudo update-grub
 ```
 Then, the choice you choose in the grub menu will become the default. When you manually choose a different entry, that becomes the new default.
+
+## How to run your own process with realtime priority?
+Use 
+```zsh
+sudo chrt 99 myprog
+```
