@@ -119,5 +119,8 @@ Then, the choice you choose in the grub menu will become the default. When you m
 ## How to run your own process with realtime priority?
 Use 
 ```zsh
-sudo chrt 99 myprog
+sudo chrt 90 myprog
 ```
+
+> Notes from kuka_driver:<br>
+> 90 is as high as you generally want to go on PREEMPT_RT machines. Any higher than this and you will have higher priority than the kernel threads that serve interrupts, and the system will stop responding.
