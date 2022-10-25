@@ -94,6 +94,9 @@ git config --global user.name "chenwang"
 ```
 
 ## Change git default editor
+```
+git config --global core.editor "vim"
+```
 
 ## 更换Terminal
 
