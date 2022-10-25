@@ -124,3 +124,5 @@ sudo chrt 90 myprog
 
 > Notes from kuka_driver:<br>
 > 90 is as high as you generally want to go on PREEMPT_RT machines. Any higher than this and you will have higher priority than the kernel threads that serve interrupts, and the system will stop responding.
+
+> `kuka-driver` (the main program that communicate with iiwa) should have the highest real-time priority, or the iiwa robot will have unexpected jerk. 
