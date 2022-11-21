@@ -127,3 +127,4 @@ Nvidia driver does not have official support for real-time kernel. [This guide](
 ```
 sudo IGNORE_PREEMPT_RT_PRESENCE=1 apt install nvidia-dkms-520
 ```
+> Note that although I install the nividia-driver successfully, I cannot enter the real-time kernel. I have to use the X.org driver provided by the Ubuntu official.
