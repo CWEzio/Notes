@@ -52,12 +52,7 @@ cd linux-*/
 patch -p1 < ../patch-*.patch
 ```
 7. Copy your currently booted kernel configuration as the default config for the new real time kernel
-```
-cp -v /boot/config-$(uname -r) .config
-```
-8. Use this config as default with
-```
-make olddefconfig
+```sudo IGNORE_PREEMPT_RT_PRESENCE=1 apt instal
 ```
 9. Make modification with the config
 ```
@@ -124,3 +119,11 @@ sudo chrt 90 myprog
 
 > Notes from kuka_driver:<br>
 > 90 is as high as you generally want to go on PREEMPT_RT machines. Any higher than this and you will have higher priority than the kernel threads that serve interrupts, and the system will stop responding.
+
+> `kuka-driver` (the main program that communicate with iiwa) should have the highest real-time priority, or the iiwa robot will have unexpected jerk. 
+
+## How to install the nvidia-driver
+Nvidia driver does not have official support for real-time kernel. [This guide](https://gist.github.com/pantor/9786c41c03a97bca7a52aa0a72fa9387) provides a hacking way to force install the driver on computer with real-time kernel. In particular, I follow the comment by rezayati. The command that I run is 
+```
+sudo IGNORE_PREEMPT_RT_PRESENCE=1 apt install nvidia-dkms-520
+```
