@@ -120,7 +120,7 @@ Uninstall `pylance` might also do the trick since vscode will select `jedi` as t
     ```
     /opt/drake/lib/python3.8/site-packages/stubs
     ```
-The autocompleting is better with the auto-generated `stub` files, though there would still be some bugs. For better performance, you might need to modify the generated stub files manually. 
+The autocomplete is better with the auto-generated `stub` files, though there would still be some bugs. For better performance, you might need to modify the generated stub files manually. 
 ## Miscellany
 - `auto` cannot deduce the correct type of `context`. (Or maybe `context` can only be constructed by a system's method?) Use compound type (reference or pointer) for construction. For example
     ```c++
