@@ -101,7 +101,26 @@ It turns out that the issue is from the default language sever `pylance`. Refer 
     ]
 ```
 Uninstall `pylance` might also do the trick since vscode will select `jedi` as the default language server if `pylance` is not installed.
-> 2022.11.21 Update: `Pylance` now has autocomplete for `drake` and is better than `jedi`. Choose `Pylance` as the python language server.
+> 2022.11.21 Update: 
+- `Pylance` now has autocomplete for `drake` and is better than `jedi`. Choose `Pylance` as the python language server.
+- To better support `Pylance` autocomplete, you need to generate `stub` files.
+- Follow [this relpy](https://github.com/pybind/pybind11/issues/2350#issuecomment-668879301), I use `stubgen` provided by `mypy` to generate the `stub` files.
+1. install `mypy` by
+    ```
+    pip install mypy
+    ```
+2.  ```
+    cd /opt/drake/lib/python3.8/site-packages
+    ```
+3. generate `stub` files
+    ```
+    stubgen -p pydrake
+    ```
+4. Open vscode setting, search for `stub` and in the `Stub Path` setting, type
+    ```
+    /opt/drake/lib/python3.8/site-packages/stubs
+    ```
+The autocompleting is better with the auto-generated `stub` files, though there would still be some bugs. For better performance, you might need to modify the generated stub files manually. 
 ## Miscellany
 - `auto` cannot deduce the correct type of `context`. (Or maybe `context` can only be constructed by a system's method?) Use compound type (reference or pointer) for construction. For example
     ```c++
