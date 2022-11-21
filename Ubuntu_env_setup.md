@@ -199,6 +199,12 @@ sudo apt install trash-cli
 sudo apt install tldr
 ```
 
+## Install [fd-find](https://github.com/sharkdp/fd)
+`fd` is a simple, fast and user-friendly alternative to `find`.
+Install by
+```
+sudo apt install fd-find
+```
 
 ## Install Times New Roman Font
 1. Install the Microsoft TrueType core fonts 

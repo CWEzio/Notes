@@ -101,7 +101,7 @@ It turns out that the issue is from the default language sever `pylance`. Refer 
     ]
 ```
 Uninstall `pylance` might also do the trick since vscode will select `jedi` as the default language server if `pylance` is not installed.
-
+> 2022.11.21 Update: `Pylance` now has autocomplete for `drake` and is better than `jedi`. Choose `Pylance` as the python language server.
 ## Miscellany
 - `auto` cannot deduce the correct type of `context`. (Or maybe `context` can only be constructed by a system's method?) Use compound type (reference or pointer) for construction. For example
     ```c++
