@@ -121,6 +121,9 @@ Uninstall `pylance` might also do the trick since vscode will select `jedi` as t
     /opt/drake/lib/python3.8/site-packages/stubs
     ```
 The autocomplete is better with the auto-generated `stub` files, though there would still be some bugs. For better performance, you might need to modify the generated stub files manually. 
+
+> 2022.11.30 Updatae:
+Per [this issue](https://github.com/RobotLocomotion/drake/issues/16987), drake now provide the pyi helper files. I do not need to generate by myself.
 ## Miscellany
 - `auto` cannot deduce the correct type of `context`. (Or maybe `context` can only be constructed by a system's method?) Use compound type (reference or pointer) for construction. For example
     ```c++
