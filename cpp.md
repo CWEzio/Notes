@@ -37,11 +37,11 @@ Check this [official documentation page](https://eigen.tuxfamily.org/dox/group__
 
 
 ## GDB usage
-`run`: run until the break point or error
-`bt`/`backtrace`: trace the error's call stack 
-`p`/`print` + `var`: print the value of `var` (`var` is the variable name)
-`b`/`break` + `path/to/file`:`N`: set a break point on the `N`th line of file 
-`b`/`break` + `function name`: set a break point on the beginning of function `function name`
+- `run`: run until the break point or error
+- `bt`/`backtrace`: trace the error's call stack 
+- `p`/`print` + `var`: print the value of `var` (`var` is the variable name)
+- `b`/`break` + `path/to/file:N`: set a break point on the `N`th line of file 
+- `b`/`break` + `function name`: set a break point on the beginning of function `function name`
 
 ### Install drake_gdb (viewing eigen vector)
 Use drake_gdb https://github.com/SeanCurtis-TRI/drake_gdb
