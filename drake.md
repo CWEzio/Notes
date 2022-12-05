@@ -70,6 +70,15 @@ to the project `.bashrc` file.
 Check the [`geometry_inspector.py`](https://github.com/RobotLocomotion/drake/blob/e59b7fc18dbe80b827d07e4a3283a0c87eda7021/manipulation/util/geometry_inspector.py) file and the `MultibodyPositionToGeometryPose` class.
 
 
+## LCM
+Drake uses `LCM` to do basic communications between process.
+
+### `drake-lcm-spy`
+In order to view the lcm messages, you can use the shipped `drake-lcm-spy`. The difference between `drake-lcm-spy` and the original `lcm-spy` is that `drake-lcm-spy` is a thin wrapper around `lcm-spy`. `drake-lcm-spy` adds the lcm types provided by drake in the `CLASSPATH` variables, so that these messages can be successfully decoded and viewed by the `lcm-spy`.
+
+For more information, check `examples/lcm-spy` in `lcm`'s source code.
+
+
 ## Bugs and Solutions
 ### Kernel died after add a handwritten class derived from `LeafSystem` to `DiagramBuilder`
 It turns out that I foget to add 
