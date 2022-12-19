@@ -78,6 +78,25 @@ In order to view the lcm messages, you can use the shipped `drake-lcm-spy`. The 
 
 For more information, check `examples/lcm-spy` in `lcm`'s source code.
 
+### Use `drake-lcm-spy` to visualize custom lcm types
+I have a custom type `lcmt_iiwa_cartesian_command.lcm`. In order to let the drake-lcm-spy be able to decode this type message, the following steps are necessary.
+1. Generate the java type message by
+    ```
+    lcm-gen -j lcmt_iiwa_cartesian_command.lcm
+    ```
+    The generated java lcm type is located in a local drake directory.
+2. Pack the java lcm type into a `jar` file
+    ```
+    javac -cp /opt/drake/share/java/lcm.jar drake/*.java
+    jar cf my_lcmtypes.jar drake/*.class 
+    ```
+    Then you will have a `my_lcmtypes.jar` file in current directory.
+3. Move the `jar` file into the drake's java lcm-types directory
+    ```
+    sudo cp my_types.jar /opt/drake/share/java 
+    ```
+4. Modify the `drake-lcm-spy`, add `"$prefix/share/java/my_lcmtypes.jar"` to the `CLASSPATH`.
+
 
 ## Bugs and Solutions
 ### Kernel died after add a handwritten class derived from `LeafSystem` to `DiagramBuilder`
