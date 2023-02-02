@@ -14,6 +14,12 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
     - find/to forward/backward {character} on the current line
     - `,`/`;` for navigating match
 - Search: `/{regex}`, `n/N` for navigating matches
+
+## Screen Positioning 
+- Press `z` then `enter` will move the current line to the top of the screen
+- `50z` will move the 50th line to the top of the screen. 50 can be other numbers
+- `z.` will move the current line to the middle of the screen
+- `z-` will move the current line to the bottom of the screen
 ## Edit
 - `i` enter insert mode
 - `o`/`O` (small o and captital O) insert line below/above
@@ -32,7 +38,7 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
 - `p` to paste
 - Lots more to learn: e.g. `~` flips the case of a character 
 - `>` to indent (after selection), `<` to shift left
-- ':8,10 s/**search**/**replace**/g' do search and replece from line 8 to line 10, where **search** is the string to be replaced and **replace** is the string to replace
+- `:8,10 s/**search**/**replace**/g` do search and replece from line 8 to line 10, where **search** is the string to be replaced and **replace** is the string to replace
 - ':%s/search/replace' in the whole file 
 ## Counts
 - `3w` moves 3 words forward
