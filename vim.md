@@ -119,8 +119,17 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
 - For a `split` window: use `Ctrl + w ` and then `+` or `-` to resize the height; For a `vsplit` window: use `Ctrl + w` and then `>` or `<` to resize the width.
 - `:q` close a single tab not a whole window like `Ctrl + w`, `c`. (ideaVim)
 - `Ctrl + w`, `=`: Makes all splits equal size
-- `Alt + s`: split and move right (pycharm my own definition)
-> In `vs code`, then use `Ctrl + Tab` to change between tabs in a window.
+- `:tabn` to go for next tab in a group; `:tabp` to go for previous tab in a group 
+- `gt` to go for next tab
+- `1gt` to go for tab 1; `2gt` to go for tab 2; `3gt` to go for tab 3; etc.
+- `gT` to go for previous tab 
+- `1gT` to go for 1 previous tab; `2gT` to go for 2 previous tab; etc.
+
+> In `vs code`
+> - `Ctrl + Tab` to change between tabs in a group.
+> - `Ctrl + (PgUp / PgDn)` to cycle through tabs in a group
+> - `Alt + (1, 2, 3, etc.)` to switch to specific tab
+> - Use the command in the command palette, like `close all other editors in group`
 ## IdeaVim
 - `gd` to go to the declaration, `Ctrl + o` to go back to where you came from
 - `alt + arrow key` to move across tab (pycharm)
