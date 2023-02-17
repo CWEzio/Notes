@@ -1,4 +1,4 @@
-# Let `flake8` ignore rules 
+## Let `flake8` ignore rules 
 Some `flake8` hints are annoying. For example, I want to set the max line length to be longer.
 Check [this answer](https://stackoverflow.com/a/50177174/12825127) for details.
 In short, 
