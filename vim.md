@@ -53,6 +53,7 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
 > Note that this is supported by `vim-surround` plugin, which is also supported by `vscode`'s vim emulator.
 - `y s <motion> <desired>` to add desired surrounding around text defined by `<motion>`
 - `S"` to add double quotes (") for visual selections (in visual mode, i.e., something is visual selected)
+- In visual mode, `S(` to enclose the selected with `( * )` with space, `S)` to enclose the selected with `(*)` without space.
 - `cs"'` to change double quotes (") to single quote (')
 - `ds"` to delete double quotes (")
 
