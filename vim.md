@@ -57,6 +57,14 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
 - `cs"'` to change double quotes (") to single quote (')
 - `ds"` to delete double quotes (")
 
+## Changing case 
+- After visual select the text, 
+    - `U` for upper case
+    - `u` for lower case
+    - `~` for invert case
+- `gU` + \<motion> will make all characters in \<motion> uppercase, similarly for `~` and `u`
+    - `gUe`
+
 ## Increase or Decrease keyword
 > This section is adopted from [`zsh-vi-mode`](https://github.com/jeffreytse/zsh-vi-mode/blob/master/README.md)'s readme.
 - In normal mode, use `Ctrl + a` to increase to the next keyword and `Ctrl + x` to decrease to the next keyword <br>
