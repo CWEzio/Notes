@@ -421,3 +421,4 @@ unset_proxy(){
     unset ftp_proxy
 }
 ```
+> Remember to turn on `allow LAN` in the clash/monocloud client.
