@@ -399,3 +399,26 @@ wget https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -O - | sudo 
   >* 在setting里面点"install/Remove Languages", 点击安装Chinese
   >* 重启
   >* 添加"Chinese(Intelligent Pinyin). win+空格切换输入法
+
+# WSL2 Ubuntu
+
+## Proxy
+
+Add the following to `.zshrc` file
+```zsh
+export hostip=$(cat /etc/resolv.conf | grep "nameserver" | cut -f 2 -d " ")
+
+set_proxy(){
+    export https_proxy=http://$hostip:7078
+    export http_proxy=http://$hostip:7078
+    export telnet_proxy=http://$hostip:7078
+    export ftp_proxy=http://$hostip:7078
+}
+unset_proxy(){
+    unset https_proxy
+    unset http_proxy
+    unset telnet_proxy
+    unset ftp_proxy
+}
+```
+> Remember to turn on `allow LAN` in the clash/monocloud client.
