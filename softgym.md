@@ -6,7 +6,7 @@ I am using Ubuntu 20.04, which is not support by default. Therefore, docker is n
 I follow [this guidance](https://danieltakeshi.github.io/2021/02/20/softgym/) to install softgym.
 
 ### Preparation
-1. Install conda (I use miniconda)
+1. Install conda. Both miniconda or anaconda is fine. 
     ```
     wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
     bash Miniconda3-latest-Linux-x86_64.sh
@@ -44,6 +44,11 @@ I follow [this guidance](https://danieltakeshi.github.io/2021/02/20/softgym/) to
     docker run -v /home/chenwang/softgym:/workspace/softgym -v /home/chenwang/miniconda3:/home/chenwang/miniconda3 -v /tmp/.X11-unix:/tmp/.X11-unix --rm --runtime=nvidia --gpus all -e DISPLAY=$DISPLAY  -e QT_X11_NO_MITSHM=1 -it xingyu/softgym:latest bash
     ```
     > One trap in this step is that you need to make sure that the mounted path of *miniconda3* is the same in the docker container as in the local machine. (Here `/home/chenwang/miniconda3:/home/chenwang/miniconda3`).
+
+    > If anaconda is used, run 
+    > ```
+    >docker run -v /home/chenwang/softgym:/workspace/softgym -v /home/chenwang/anaconda3:/home/chenwang/anaconda3 -v /tmp/.X11-unix:/tmp/.X11-unix --rm --runtime=nvidia --gpus all -e DISPLAY=$DISPLAY  -e QT_X11_NO_MITSHM=1 -it xingyu/softgym:latest bash
+    > ```
 7. Compile PyFlex (in docker container)
     ```
     cd softgym/
@@ -52,12 +57,22 @@ I follow [this guidance](https://danieltakeshi.github.io/2021/02/20/softgym/) to
     . ./compile_1.0.sh
     ```
     > The first dot in last two commands is shorthand of `source`. In other words, you can also use `source ./prepare_1.0.sh`. If you directly run `prepare_1.0.sh`, this script will be run in a new shell and no change will be made in current shell.
+
+    > If anaconda is used, the exported path should be 
+    >```
+    >export PATH="/home/chenwang/anaconda3/bin:$PATH"
+    >```
 8. To use softgym, some path environmental variables need to be set. To ease the usage, I add them in the conda activate scripts. For details, check [this page](https://docs.conda.io/projects/conda/en/latest/dev-guide/deep-dives/activation.html). In short, when activate, scripts in `CONDA_PREFIX/etc/conda/activate.d/` will be run. `CONDA_PREFIX` is the path to the conda environment.
     - create a script file called `set_path.sh`
         ```
         mkdir -p ~/miniconda3/envs/softgym/etc/conda/activate.d/
         vim ~/miniconda3/envs/softgym/etc/conda/activate.d/set_path.sh
         ```
+    > If anaconda is used, run 
+    > ```
+    >  mkdir -p ~/anaconda3/envs/softgym/etc/conda/activate.d/
+    >  vim ~/anaconda3/envs/softgym/etc/conda/activate.d/set_path.sh
+    > ```
     - Then copy the following to the created script file
         ```
         export PYTHONPATH="/home/chenwang/softgym:${PYTHONPATH}"

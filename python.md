@@ -22,3 +22,24 @@ For example,
 import sys  # nopep8
 sys.path.append('/home/chenwang/catkin_ws/src/turtlebot_tmpc/script')  # nopep8
 ```
+
+
+# Conda
+
+## Add conda-forge channel
+Some libraries are not contained in the default conda channels. You may choose to add conda-forge channel.
+```
+conda config --add channels conda-forge
+conda config --set channel_priority strict
+```
+
+## use proxy
+1.  ```
+    vim ~/.condarc
+    ```
+2. Add the following to the file:
+    ```
+    proxy_servers:
+        http: http://127.0.0.1:7890
+        https: http://127.0.0.1:7890
+    ```
