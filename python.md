@@ -28,11 +28,22 @@ sys.path.append('/home/chenwang/catkin_ws/src/turtlebot_tmpc/script')  # nopep8
 
 ## Add conda-forge channel
 Some libraries are not contained in the default conda channels. You may choose to add conda-forge channel.
-```
-conda config --add channels conda-forge
-conda config --set channel_priority strict
-```
+1. ```
+    vim ~/.condarc
+    ```
+2. Add/change the following 
+    ```
+    channels:
+        - defaults
+        - conda-forge
+    ```
 
+> The official documentation recommand use
+> ```
+> conda config --add channels conda-forge
+> conda config --set channel_priority strict
+> ```
+> However, I find that this will cause the solving environment failed with intial frozen solve. The cause might be the strict channel_priority and put conda-forge channel above defaults channel. You can open `.condarc` to check your setting.
 ## use proxy
 1.  ```
     vim ~/.condarc

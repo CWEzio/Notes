@@ -93,3 +93,64 @@ I follow [this guidance](https://danieltakeshi.github.io/2021/02/20/softgym/) to
     python examples/random_env.py --env_name ClothFlatten
     ```
 
+## VCD Installation
+I also want to get [`VCD`](https://github.com/Xingyu-Lin/VCD) run, which also uses `softgym`. However, `VCD` also uses `pytorch`, making things trickier.
+- `pyflex` needs to be compiled with `CUDA 9.2`, which is contained in the provided docker image. However, the python environment might use different `CUDA` version, which might casue `undefined symbol: cudaSetupArgument` problem.
+- What's more, too old `pytorch` is also not compatible.
+- I find that use `CUDA 10.2` in the python environment seems to work.
+- What's more, `python 3.6` is too old (compatibility issue with pytorch). Need to use `python 3.7`. 
+### Installation step
+Most installation steps are the same as the previous softgym installation. Here I just give some key steps.
+1. clone `VCD`. cd to `VCD`. `cp -r [path to softgym] ./`. Then `cd softgym && git checkout vcd`.
+2. Create a custom environment `yml` and use this `yml` to create the `VCD` conda environment.
+    ```yml
+    name: VCD
+    channels:
+    - defaults
+    dependencies:
+    - python=3.7
+    - numpy
+    - imageio
+    - glob2
+    - cmake
+    - pybind11
+    - click
+    - matplotlib
+    - joblib
+    - Pillow
+    - plotly
+    - pip:
+        - gtimer
+        - gym==0.14.0
+        - moviepy
+        - opencv-python==4.1.1.26
+        - Shapely==1.6.4.post2
+        - pyquaternion==0.9.5 
+        - sk-video==1.1.10
+    ```
+3. Compile pyflex. Need to write a custom `prepare.sh`.
+    ```sh
+    . activate VCD 
+    export PYFLEXROOT=${PWD}/PyFlex
+    export PYTHONPATH=${PYFLEXROOT}/bindings/build:$PYTHONPATH
+    export LD_LIBRARY_PATH=${PYFLEXROOT}/external/SDL2-2.0.4/lib/x64:$LD_LIBRARY_PATH
+    ```
+    > Use the softgym under VCD. Remember to change the paths in previous softgym installation section accordingly.
+
+4. Install pytorch with 
+    ```
+    conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=10.2 -c pytorch
+    ```
+5. Replace the `python-pcl` dependency with `open3d`. Modify `VCD/utils/utils.py`.
+
+6. Install other requirements.
+    ```
+    conda install h5py
+    conda install pytorch-scatter -c pyg
+    conda install pyg -c pyg 
+    pip install open3d
+    ```
+
+## Notes
+1. It seems that `pyflex` has to be compiled with the correct python interpreter using `pybind11`. That is, if I use one python environment to compile the `pyflex` and I want to use another python environemnt to use the compiled `pyflex` lib, I will encounter `no module named pyflex` problem. This seems to be a feature of `pybind11`. Currently, I do not know the reason. On the contrary, `pydrake` seems do not care which python interpreter compile it.
+
