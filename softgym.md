@@ -97,7 +97,6 @@ I follow [this guidance](https://danieltakeshi.github.io/2021/02/20/softgym/) to
 I also want to get [`VCD`](https://github.com/Xingyu-Lin/VCD) run, which also uses `softgym`. However, `VCD` also uses `pytorch`, making things trickier.
 - `pyflex` needs to be compiled with `CUDA 9.2`, which is contained in the provided docker image. However, the python environment might use different `CUDA` version, which might casue `undefined symbol: cudaSetupArgument` problem.
 - What's more, too old `pytorch` is also not compatible.
-- I find that use `CUDA 10.2` in the python environment seems to work.
 - What's more, `python 3.6` is too old (compatibility issue with pytorch). Need to use `python 3.7`. 
 ### Installation step
 Most installation steps are the same as the previous softgym installation. Here I just give some key steps.
@@ -141,6 +140,7 @@ Most installation steps are the same as the previous softgym installation. Here 
     ```
     conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=10.2 -c pytorch
     ```
+    > cuda 10.2 is not compatible with nvidia 3090
 5. Replace the `python-pcl` dependency with `open3d`. Modify `VCD/utils/utils.py`.
 
 6. Install other requirements.
