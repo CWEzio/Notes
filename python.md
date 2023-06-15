@@ -1,28 +1,3 @@
-## Let `flake8` ignore rules 
-Some `flake8` hints are annoying. For example, I want to set the max line length to be longer.
-Check [this answer](https://stackoverflow.com/a/50177174/12825127) for details.
-In short, 
-- `ctrl+shift+p`, open user setting, search for flake8
-- add `--max-line-length=120` to Flake8 Args.
-
-
-## `Autopep8` works too aggressivly 
-In `vscode`, I use `autopep8` to format my code. However, it works too aggressively and it change my import order.
-I use 
-```python
-import sys  
-sys.path.append('/home/chenwang/catkin_ws/src/turtlebot_tmpc/script')  
-```
-to add python path. However, `autopep8` move this to the end of the import which breaks everything.
-
-The solution is to add `# nopep8` at the end of the line to told `autopep8` not to format this line.
-
-For example,
-```python
-import sys  # nopep8
-sys.path.append('/home/chenwang/catkin_ws/src/turtlebot_tmpc/script')  # nopep8
-```
-
 
 # Conda
 
@@ -88,3 +63,48 @@ Check [this answer for details](https://stackoverflow.com/questions/53653083/how
 }
 ```
 `args` specifies arguments to pass to the Python program. Each element of the argument string that's separated by a space should be contained within quotes.
+
+## `Autopep8` works too aggressivly 
+In `vscode`, I use `autopep8` to format my code. However, it works too aggressively and it change my import order.
+I use 
+```python
+import sys  
+sys.path.append('/home/chenwang/catkin_ws/src/turtlebot_tmpc/script')  
+```
+to add python path. However, `autopep8` move this to the end of the import which breaks everything.
+
+The solution is to add `# nopep8` at the end of the line to told `autopep8` not to format this line.
+
+For example,
+```python
+import sys  # nopep8
+sys.path.append('/home/chenwang/catkin_ws/src/turtlebot_tmpc/script')  # nopep8
+```
+
+## Let `flake8` ignore rules 
+Some `flake8` hints are annoying. For example, I want to set the max line length to be longer.
+Check [this answer](https://stackoverflow.com/a/50177174/12825127) for details.
+In short, 
+- `ctrl+shift+p`, open user setting, search for flake8
+- add `--max-line-length=120` to Flake8 Args.
+
+# Bugs
+## `Module not found. *Package Name* is not a package`
+Recently I am using the `softagent` library to test the `CEM` method. However, when I ran the `run_cem.py`, I encounter the problem stated in the title. The directory structure is:
+```
+- cem
+    - cem.py
+        .
+        .
+        .
+    - run_cem.py
+```
+when I run
+```
+python cem/run_cem.py
+```
+ It turns out that this is the problem of the path. `python` automatically add the run file's location to the `python`'s path. Therefore, when call
+```python
+from cem.cem import ...
+```
+, there will be errors because python regards `cem.py` as the lib instead of the `cem` directory. Changing `cem.py` to other name resolves this problem.
