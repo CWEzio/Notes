@@ -26,3 +26,36 @@ Refer to [documentation](https://git-scm.com/docs/git-rm) for more information r
 You can also close an issue with commit/(pull request) by containing keywords like `fix #xxx`/`fixes #xxx`/`close #xxx` in the commit/(pull request) message.
     
     For more details, check this [answer](https://www.edureka.co/community/102139/link-to-the-issue-number-on-github-within-a-commit-message#:~:text=You%20just%20need%20to%20include,(in%20your%20commit%20message).) or this [official documentation](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue)
+
+## Move the git repository one level up in the file hierarchy
+Suppose I have a repo
+```
+<project repo>
+    src/
+    CMakeLists.txt
+    third_party/
+    ...
+```
+By mistake, I have made the `src/` directory a git repo. However, I want to change the git repo to the whole project repo. There is no direct way to do this. Here is a workaround way:
+1.  Create a subdirectory `source_files` and move all the files (except the .git) to this subdirectory
+     ```
+    cd src
+    mkdir source_files
+    git mv * source_files
+    git commit -all -m "moved all existing files to new source_files file"
+    ```
+
+2. Move the created subdirectory `source_files` and the `.git` under the `<project repo>`. After that, `src` should contains no file and removing it is safe.
+    ```
+    cd <project repo>
+    mv src/* .
+    mv src/.git .
+    trash src
+    mv source_files src
+    ```
+
+3. commit the change 
+    ```
+    git add .
+    git commit -m "include the whole repo's file"
+    ```

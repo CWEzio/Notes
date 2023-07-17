@@ -26,3 +26,5 @@ add_custom_target(move_and_log ALL COMMAND ${CMAKE_COMMAND} -E copy
 ```
 - This snippet define a target `move_and_log` and its associated command.
 - `ALL`: Indicate taht this target should be added to the default build target so that it will be run every time.
+
+## generate `compile_commands.json`
