@@ -27,4 +27,10 @@ add_custom_target(move_and_log ALL COMMAND ${CMAKE_COMMAND} -E copy
 - This snippet define a target `move_and_log` and its associated command.
 - `ALL`: Indicate taht this target should be added to the default build target so that it will be run every time.
 
+
 ## generate `compile_commands.json`
+`vscode` requires `compile_commands.json` to understand the c++ project and do intellisense. In order to generate the `compile_commands.json` in a `cmake` project, run the following command:
+```
+cmake .. -DCMAKE_EXPORT_COMPILE_COMMANDS=ON && mv compile_commands.json ..
+```
+This command will generate a `compile_commands.json` file which will then be moved to the upper-level folder.
