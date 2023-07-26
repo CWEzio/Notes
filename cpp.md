@@ -8,6 +8,26 @@ Test (int &x) : t(x) {}
 ## C++: “undefined reference to” templated class function
 Check [this answer](https://stackoverflow.com/questions/495021/why-can-templates-only-be-implemented-in-the-header-file), [this FAQ](https://stackoverflow.com/questions/495021/why-can-templates-only-be-implemented-in-the-header-file) or [this blog](https://bytefreaks.net/programming-2/c/c-undefined-reference-to-templated-class-function).
 
+## std::map difference between `[]` and `emplace()`
+Answer by chatgpt
+1. `std::map::operator[]`:
+    - If the key does not exist in the map, this will create a new element with that key and default-construct its value, then it will assign the given value to it.
+    - If the key already exists, it will assign the given value to the existing element.
+    - This method always involves a potentially unnecessary creation of a default-constructed value.
+2. `std::map::emplace`:
+    - This method constructs a new element from the provided key-value pair arguments and attempts to insert this into the map.
+    - If the key already exists in the map, emplace does nothing, and the existing value remains unchanged. It also returns a pair, with an iterator pointing to the existing element and a boolean indicating that the insertion didn't take place.
+    - Emplace has the advantage of "in-place" construction which means it constructs the new element directly in the memory where it will be stored within the map. This can be more efficient as it avoids the need to create a temporary object and then copy/move it into the map, which is what happens with the `operator[]`.
+
+Example:
+```c++
+std::map<string, Binding<Constraint>> map;
+map["c"] = prog.AddConstraint(...); // This will return error when compile, since Binding<> object does nit have a constructor taking no input.
+map.emplace("c", prog.AddConstraint()); // This will works fine.
+```
+
+
+
 ## Eigen
 ### Use `auto` carefully with Eigen
 Check [this answer](https://stackoverflow.com/a/47840292/12825127) and [this documentation page](https://eigen.tuxfamily.org/dox/TopicPitfalls.html) for more details.
@@ -37,6 +57,7 @@ Check this [official documentation page](https://eigen.tuxfamily.org/dox/group__
 
 
 ## GDB usage
+Refer to [this article](https://www.cs.cmu.edu/~gilpin/tutorial/) for basic gdb usage.
 - `run`: run until the break point or error
 - `bt`/`backtrace`: trace the error's call stack 
 - `p`/`print` + `var`: print the value of `var` (`var` is the variable name)

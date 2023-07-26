@@ -1,4 +1,7 @@
 ## `grep`
+
+## Captalization Insensitive
+Use `-i` to make grep insensitive to capitalization
 ### Use `grep` to search for the header file to include
 Suppose that I find `AddContactMaterial` function from the documentation, I can determin which header file to include by using the powerful grep:
 ```
