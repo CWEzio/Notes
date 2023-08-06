@@ -148,3 +148,7 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
 - use `Ctrl + 1` to focus on the editor  
     > when there are multiple editor windows, use, for example, `Ctrl + 2` to refer to other windows. In other words, `Ctrl + index` to focus on the editor
 - Navigate between groups using `Ctrl + PageDown` and `Ctrl + PageUp` (also suitable for terminals)
+
+## Miscellany
+1. Use `:set syntax=python` to force `vim` to syntax-highlight a file as `python`
+

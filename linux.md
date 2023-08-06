@@ -53,6 +53,12 @@ find . -mtime -1
 find . -size +500k -size -10M -name '*.tar.gz'
 ```
 
+## `apt`
+1. Use `apt search *keyword*` to search for available package. This is very useful if you are not sure about the full name of the package.
+
+## `mv`
+`mv` does not show progress. Consider use `rsync`
+
 ## input and output stream
 
 1. `< file` and `> file`: rewire the input and output streams of a program to a file respectively

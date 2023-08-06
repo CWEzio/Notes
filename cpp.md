@@ -26,6 +26,27 @@ map["c"] = prog.AddConstraint(...); // This will return error when compile, sinc
 map.emplace("c", prog.AddConstraint()); // This will works fine.
 ```
 
+## link
+> Use `ldconfig -p | grep *name*` to check the available version of certain library.
+### How to link to `libglapi.so.0`
+To compile `DifferentiableCloth`, I find that I met with the `/usr/bin/ld: cannot find -lglapi` issue. I have `libglapi.so.0` in folder `/lib/x86_64-linux-gnu`. To deal with this problem, I have several choices
+1. `sudo ln -s /lib/x86_64-linux-gnu/libglapi.so.0 /usr/lib/libglapi.so`
+
+2. Explicitly specify the linked library path like
+    ```
+    g++ your_code.cpp -o your_program /lib/x86_64-linux-gnu/libglapi.so.0
+    ```
+    or in a `setup.py` file, using
+    ``` python
+    ext_modules=[
+    CppExtension(
+        name='arcsim',
+        ...
+        extra_link_args=['/lib/x86_64-linux-gnu/libglapi.so.0']  # Directly specify the full path to the library
+    )
+    ]
+    ```
+
 
 
 ## Eigen
