@@ -5,6 +5,10 @@
 - To convert a un-numbered equation into numbered euqation, use `Ctrl+#`. 
 - Use macro `\equation-lab` to add customize equation label.
 
+## Accents over expressions 
+![accents over symbols](./figure/texmacs/accents_over_symbol.png)
+
+The same can be inserted below the expressions with `Esc+Esc+U` prefix. Note that `Esc+Esc` is equivalent to `Alt+`.
 
 ## Useful resources
 - [Notes on TeXmacs](https://texmacs.github.io/notes/docs/main.html)
