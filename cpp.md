@@ -1,14 +1,16 @@
-## Initialize class member which is a reference
+## Miscellany
+
+### Initialize class member which is a reference
 Check [this answer](https://stackoverflow.com/a/15403837/12825127).
 The reference can only be initialized in the *constructor initializer list* (sec7.1, 265) as:
 ```cpp
 Test (int &x) : t(x) {}
 ```
 
-## C++: “undefined reference to” templated class function
+### C++: “undefined reference to” templated class function
 Check [this answer](https://stackoverflow.com/questions/495021/why-can-templates-only-be-implemented-in-the-header-file), [this FAQ](https://stackoverflow.com/questions/495021/why-can-templates-only-be-implemented-in-the-header-file) or [this blog](https://bytefreaks.net/programming-2/c/c-undefined-reference-to-templated-class-function).
 
-## std::map difference between `[]` and `emplace()`
+### std::map difference between `[]` and `emplace()`
 Answer by chatgpt
 1. `std::map::operator[]`:
     - If the key does not exist in the map, this will create a new element with that key and default-construct its value, then it will assign the given value to it.
@@ -25,6 +27,46 @@ std::map<string, Binding<Constraint>> map;
 map["c"] = prog.AddConstraint(...); // This will return error when compile, since Binding<> object does nit have a constructor taking no input.
 map.emplace("c", prog.AddConstraint()); // This will works fine.
 ```
+
+## clang
+### configure `clang-tidy`
+`clang-tidy` can be configured with the `.clang-tidy` file.
+> The `.clang-tidy` file will overwrite settings of vscode.
+Here is an example `.clang-tidy` file used by drake
+```yaml
+---
+# This file is not used by CI and the checks included are not part of the Drake style guide
+Checks: >
+        clang-analyzer-*,
+        clang-diagnostic-*,
+        cppcoreguidelines-*,
+        google-*,
+        performance-*,
+        modernize-*,
+        -modernize-use-trailing-return-type,
+        readability-*,
+        -cppcoreguidelines-pro-bounds-array-to-pointer-decay,
+        -cppcoreguidelines-pro-bounds-pointer-arithmetic,
+        -cppcoreguidelines-pro-type-static-cast-downcast,
+        -modernize-use-bool-literals,
+        -modernize-use-transparent-functors,
+        -modernize-use-using,
+        -readability-else-after-return,
+        -readability-named-parameter,
+
+CheckOptions:
+  - { key: readability-identifier-naming.ClassCase,           value: CamelCase  }
+  - { key: readability-identifier-naming.NamespaceCase,       value: lower_case }
+  - { key: readability-identifier-naming.PrivateMemberSuffix, value: '_'        }
+  - { key: readability-identifier-naming.StructCase,          value: CamelCase  }
+  - { key: readability-identifier-naming.VariableCase,        value: lower_case }
+...
+
+```
+Here are somethings to note:
+1. enable a check by adding the check's name like `google-*`
+2. disable a check by adding `-` + check's name like `-modernize-use-trailing-return-type`
+
 
 ## link
 > Use `ldconfig -p | grep *name*` to check the available version of certain library.

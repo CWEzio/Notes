@@ -93,6 +93,8 @@ If you've made changes to a running container and want to save those changes to 
 
    You should see `my-new-image` (or whatever name you chose) in the list.
 
+> `latest` is just the default tag that docker will use when no tag name is specified.
+
 > **Note**: While the `docker commit` approach is quick and straightforward for capturing changes, for more systematic work or production setups, it's a good practice to capture all the changes you made in a `Dockerfile`. This ensures reproducibility and makes it easier for others (or your future self) to understand how the image is constructed.
 
 ## Reconnect to a stopped container
