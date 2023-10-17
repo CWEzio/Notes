@@ -59,6 +59,13 @@ find . -size +500k -size -10M -name '*.tar.gz'
 ## `mv`
 `mv` does not show progress. Consider use `rsync`
 
+## zsh-vi-mode
+### missing letters after copy-paste
+In Vim and vi-mode, if you paste text while in normal mode, it can interpret the pasted text as a series of commands, which can lead to unexpected behaviors, like missing letters. 
+
+Before pasting, make sure you're in insert mode. Press `i` to enter insert mode, and then paste the text. This way, the pasted content is treated as plain text and not as a series of vi commands.
+
+
 ## input and output stream
 
 1. `< file` and `> file`: rewire the input and output streams of a program to a file respectively
