@@ -17,6 +17,10 @@ I follow [this guidance](https://danieltakeshi.github.io/2021/02/20/softgym/) to
     ```
 2. [Install docker](https://docs.docker.com/engine/install/ubuntu/)
 3. [Install nvidia container toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker)
+4. Install dependencies
+    ```
+    sudo apt-get install build-essential libgl1-mesa-dev freeglut3-dev libglfw3 libgles2-mesa-dev
+    ```
 
 ### Installation steps
 > It should be noted that *docker* is only needed for compiling *Pyflex*. After compiling *Pyflex* library in the docker container, *softgym* can be used directly from the normal terminal.
