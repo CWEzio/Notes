@@ -70,8 +70,9 @@ Open Ubuntu Software, search for vscode and install.
 
 ## install vim
 ```bash
-sudo apt install vim
+sudo apt install vim-gtk
 ```
+> You can also install vim, but the default vim does not support copy to clipboard. Therefore, I install `vim-gtk`.
 
 ## install curl
 ```bash

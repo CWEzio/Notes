@@ -118,8 +118,6 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
     - ...
 
  
-
-
 ## window control
 - `Ctrl + w` and then press `v` (vertical split) or `s` (horizontal split) to open a new window
 - `Ctrl + w` and then use `hjkl` to move to different window
@@ -139,6 +137,27 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
 > - `Ctrl + (PgUp / PgDn)` to cycle through tabs in a group
 > - `Alt + (1, 2, 3, etc.)` to switch to specific tab
 > - Use the command in the command palette, like `close all other editors in group`
+
+## Copy to external 
+- `"+y` yank to the clipboard
+- `"+p` paste from the clipboard
+Similarly, you can use `"*y` and `"*p` to copy and paste from teh primary selection.
+> - `"+` corresponds to the "clipboard" which is what gets used when you Ctrl+C/Ctrl+V in most programs.
+> - `"*` corresponds to the "primary" selection, which is what gets used when you select text and middle-click to paste in many Unix-like systems.
+
+> It should be noted, copy to clipboard might not be supported in some `vim` distribution. Actually, the default `vim` installed in ubuntu does not support copy to clip board.
+>
+> You can find whether your `vim` have clipboard support by 
+> ```
+> vim --version | grep clipboard
+> ```
+> If you see `+clipboard` and `+xterm_clipboard`, it means Vim has clipboard support. If you see `-clipboard` and `-xterm_clipboard`, it means Vim was compiled without clipboard support.
+> If your vim does not have clipboard support, you can install `vim-gtk` with:
+> ```
+> sudo apt install vim-gtk
+> ```
+
+
 ## IdeaVim
 - `gd` to go to the declaration, `Ctrl + o` to go back to where you came from
 - `alt + arrow key` to move across tab (pycharm)
