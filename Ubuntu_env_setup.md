@@ -1,29 +1,29 @@
 > Original version of this tutorial is from Huangjian. Gradually add modification as I use Ubuntu.
 
-# Ubuntu20.04重装系统后的软件环境安装指南
+# Guide to reinstall Ubuntu20.04
 > This guide should also apply to `Ubuntu18.04` and `Ubuntu 22.04`<br>
+
+## Update & Upgrade
+1. `sudo apt update`
+2. `sudo apt upgrade`
 
 ## install graphics driver
 Recently, I bought a new computer with RTX 3070, I need to install the driver manually.
- > First add the ubuntu Graphics Drivers PPA. More information can be found on https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa/+index?batch=75&direction=backwards&memo=75
+ 1. First add the ubuntu Graphics Drivers PPA. More information can be found on https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa/+index?batch=75&direction=backwards&memo=75
 
- > Open Software&Updates, open *other software* tab, check the two graphics drivers ppa. Then update the ppa information.
+ 2. Open Software&Updates, open *other software* tab, check the two graphics drivers ppa. Then update the ppa information.
 
- > sudo apt install nvidia-driver-455 
+ 3. `sudo apt install nvidia-driver-455`
 
-## install expressvpn
-  >* just follow the official guide
+ > Now, since the official source has been updated, you can just install the driver with the *3rd* step.
 
 ## Google Chrome
   >* install Chrome using package;
   >* sign in google account, chrome will automatically restore all the things 
-  >* SwitchyOmega:  
 
-## install Qv2ray
-  >* get latest release from https://github.com/Qv2ray/Qv2ray/releases/tag/v2.6.3
-  >* follow the guide https://qv2ray.net/getting-started/ to configure Qv2ray
-
-## install clashy
+## install clash_for_windows
+1. Download clash_for_windows from the [release page](https://github.com/Fndroid/clash_for_windows_pkg/releases)
+2. Go to [monocloud](https://www.monocloud.me/knowledgebase/16) and follow the knowledge base.
 
 ## terminal proxy
  * add 
@@ -43,6 +43,7 @@ Recently, I bought a new computer with RTX 3070, I need to install the driver ma
 
     ``` 
     to file `~/.zshrc`. (Set the port the same as v2ray's port)
+
 ## `apt` proxy 
 Add the file `proxy.conf` containing
 ```
@@ -72,6 +73,11 @@ Open Ubuntu Software, search for vscode and install.
 sudo apt install vim
 ```
 
+## install curl
+```bash
+sudo apt install curl
+```
+
 ## Install git 
 ```bash
 sudo apt install git 
@@ -98,53 +104,50 @@ git config --global user.name "chenwang"
 git config --global core.editor "vim"
 ```
 
-## 更换Terminal
+## Change Terminal
+Use `zsh` as the terminal and `oh-my-zsh` to manage the extensions.
+1. install `zsh` with
+   ```zsh
+   sudo apt install zsh
+   ```
 
-终端采用zsh和oh-my-zsh，既美观又简单易用，主要是能提高你的逼格！！！ZSH, also called the Z shell
-
-  > 首先，安装zsh：
-
-   `sudo apt install zsh`
-
-  > 将默认终端由bash换成zsh
-
-  `chsh -s /bin/zsh   #注意：不要使用sudo` (This step seems to be redundant, just install oh my zsh and after installation it will let you set zsh as the default terminal)
-
-  > 安装oh-my-zsh 项目来帮我们配置 zsh，采用curl安装：
-
-  `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
-
-  > 安装zsh-syntax-highlighting语法高亮插件
-
-  ```bash
-  cd /usr/share/
-  sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-  echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
-  source ~/.zshrc
-  ```
-
-  > 安装zsh-autosuggestions语法历史记录插件(自动补全插件)
-
-  ```bash
-  git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
-  echo "source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
-  source ~/.zshrc
-  ```
-  > Install [zsh-vi-mode](https://github.com/jeffreytse/zsh-vi-mode)
-  * Clone the project
-    ```zsh
-    git clone https://github.com/jeffreytse/zsh-vi-mode \
-    $ZSH_CUSTOM/plugins/zsh-vi-mode
+2. install `oh-my-zsh`
+    ```bash
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     ```
-  * Add the following to `.zshrc`
-    ```zsh
-    plugins+=(zsh-vi-mode)
-    ```
-    > * Keep in mind that plugins need to be added before `oh-my-zsh.sh` is sourced.
-  
 
-  >* 修改透明度为10%
-  >* 命令行自动提示：没多大用，用Tab即可
+3. Install `zsh-syntax-highlighting`
+    ```bash
+    cd /usr/share/
+    sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+    echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+    source ~/.zshrc
+    ```
+
+4. Install `zsh-autosuggestions`
+    ```bash
+    git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+    echo "source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
+    source ~/.zshrc
+    ```
+
+5. Install [zsh-vi-mode](https://github.com/jeffreytse/zsh-vi-mode)
+    * Clone the project
+      ```zsh
+      git clone https://github.com/jeffreytse/zsh-vi-mode \
+      $ZSH_CUSTOM/plugins/zsh-vi-mode
+      ```
+    * Add the following to `.zshrc`
+      ```zsh
+      plugins+=(zsh-vi-mode)
+      ```
+      > Keep in mind that plugins need to be added before `oh-my-zsh.sh` is sourced.
+
+6. reboot
+
+
+>* 修改透明度为10%
+>* 命令行自动提示：没多大用，用Tab即可
 
 ## Install python virtual environment
 ```bash
@@ -228,6 +231,7 @@ sudo add-apt-repository universe
 sudo apt install gnome-tweaks
 ```
 Then in the left tabs, select `Workspaces` and then on the right click `Workspaces span displays`.
+
 ## Mouse and Touchpad
 
 * [x] nautural scrolling
@@ -246,6 +250,77 @@ Then in the left tabs, select `Workspaces` and then on the right click `Workspac
 >```
 >flatpak run com.elsevier.MendeleyDesktop
 >```
+
+## 清理不必要的软件
+
+```bash
+sudo apt update
+sudo apt upgrade
+sudo apt remove firefox libreoffice-common unity-webapps-common
+sudo apt remove thunderbird totem rhythmbox empathy brasero simple-scan gnome-mahjongg aisleriot
+sudo apt remove gnome-mines cheese transmission-common gnome-orca webbrowser-app gnome-sudoku  landscape-client-ui-install
+sudo apt remove onboard deja-dup
+```
+
+## VScode
+
+* [ ] minimap
+* [x] auto save  # 0.1s
+  
+>* 好的插件:C/C++, C++ Intellisense, CMake, CMake Tools, cmake-format, Code Runner, Markdown All in One, markdownlint, Python, ROS, XML, Remote SSH
+
+## OpenCV
+
+推荐安装opencv3.4.8. 若在ubuntu14.04,则安装opencv2.4.14
+
+>* 安装opencv前的准备
+
+  参考[此教程](https://github.com/HuangJianxjtu/opencv_learning.git)
+
+
+
+## 其他
+
+  >* ubuntu下好用的视频播放器：smplayer
+  >* PDF工具：mendeley, foxit reader(unrecommended)
+  >* VPN工具：easyConnect
+
+
+
+# WSL2 Ubuntu
+
+## Proxy
+
+Add the following to `.zshrc` file
+```zsh
+export hostip=$(cat /etc/resolv.conf | grep "nameserver" | cut -f 2 -d " ")
+
+set_proxy(){
+    export https_proxy=http://$hostip:7078
+    export http_proxy=http://$hostip:7078
+    export telnet_proxy=http://$hostip:7078
+    export ftp_proxy=http://$hostip:7078
+}
+unset_proxy(){
+    unset https_proxy
+    unset http_proxy
+    unset telnet_proxy
+    unset ftp_proxy
+}
+```
+> Remember to turn on `allow LAN` in the clash/monocloud client.
+
+# Obsolete
+
+## install Qv2ray
+  >* get latest release from https://github.com/Qv2ray/Qv2ray/releases/tag/v2.6.3
+  >* follow the guide https://qv2ray.net/getting-started/ to configure Qv2ray
+
+## install expressvpn
+  >* just follow the official guide
+
+> Just do not use Chinese input in Ubuntu
+
 ## 搜狗中文输入法
 
   >* download and install;
@@ -254,6 +329,12 @@ Then in the left tabs, select `Workspaces` and then on the right click `Workspac
   >* (4)点击右上角输入法小图标,选择config，去掉勾，点击左下角小加号，找到Sogou Pinyin添加即可
   >* 若在菜单栏的右上角出现两个输入法图标，则：`sudo apt remove fcitx-ui-qimpanel`;再重启
   >* 搜狗拼音的简体、繁体相互转换：Ctrl+Shift+F
+
+## Chinese input for Ubuntu18.04
+
+  >* 在setting里面点"install/Remove Languages", 点击安装Chinese
+  >* 重启
+  >* 添加"Chinese(Intelligent Pinyin). win+空格切换输入法
 
 
 ## system monitor
@@ -332,32 +413,6 @@ sudo apt install ultra-flat-icons
 
   BUG:WPS中不能正常显示出新增的windows字体名
 
-## 清理不必要的软件
-
-```bash
-sudo apt update
-sudo apt upgrade
-sudo apt remove firefox libreoffice-common unity-webapps-common
-sudo apt remove thunderbird totem rhythmbox empathy brasero simple-scan gnome-mahjongg aisleriot
-sudo apt remove gnome-mines cheese transmission-common gnome-orca webbrowser-app gnome-sudoku  landscape-client-ui-install
-sudo apt remove onboard deja-dup
-```
-
-## VScode
-
-* [ ] minimap
-* [x] auto save  # 0.1s
-  
->* 好的插件:C/C++, C++ Intellisense, CMake, CMake Tools, cmake-format, Code Runner, Markdown All in One, markdownlint, Python, ROS, XML, Remote SSH
-
-## OpenCV
-
-推荐安装opencv3.4.8. 若在ubuntu14.04,则安装opencv2.4.14
-
->* 安装opencv前的准备
-
-  参考[此教程](https://github.com/HuangJianxjtu/opencv_learning.git)
-
 ## ROS-kinetic
 
   >* 先设置国内的镜像源:
@@ -379,46 +434,3 @@ wget https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -O - | sudo 
   wget -i gazebo_models.txt #下载这些模型大概需要1小时！为了节省时间，已经备份模型了
   ls model.tar.g* | xargs -n1 tar xzvf
   ```
-
-
-## 其他
-
-  >* ubuntu下好用的视频播放器：smplayer
-  >* PDF工具：mendeley, foxit reader(unrecommended)
-  >* VPN工具：easyConnect
-
-## how to solve the problem "Error in REST request" in Gazebo in Ubuntu18.04
-
-  Answer: change ~/.ignition/fuel/config.yaml as following.
-      url: <https://api.ignitionfuel.org>
-  to
-      url: <https://api.ignitionrobotics.org>
-
-## Chinese input for Ubuntu18.04
-
-  >* 在setting里面点"install/Remove Languages", 点击安装Chinese
-  >* 重启
-  >* 添加"Chinese(Intelligent Pinyin). win+空格切换输入法
-
-# WSL2 Ubuntu
-
-## Proxy
-
-Add the following to `.zshrc` file
-```zsh
-export hostip=$(cat /etc/resolv.conf | grep "nameserver" | cut -f 2 -d " ")
-
-set_proxy(){
-    export https_proxy=http://$hostip:7078
-    export http_proxy=http://$hostip:7078
-    export telnet_proxy=http://$hostip:7078
-    export ftp_proxy=http://$hostip:7078
-}
-unset_proxy(){
-    unset https_proxy
-    unset http_proxy
-    unset telnet_proxy
-    unset ftp_proxy
-}
-```
-> Remember to turn on `allow LAN` in the clash/monocloud client.
