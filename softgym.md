@@ -15,8 +15,7 @@ I follow [this guidance](https://danieltakeshi.github.io/2021/02/20/softgym/) to
     ```
     conda config --set auto_activate_base false
     ```
-2. [Install docker](https://docs.docker.com/engine/install/ubuntu/)
-3. [Install nvidia container toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker)
+2. [Install docker and nvidia container toolkit](https://github.com/CWEzio/Notes/blob/master/docker.md)
 
 ### Installation steps
 > It should be noted that *docker* is only needed for compiling *Pyflex*. After compiling *Pyflex* library in the docker container, *softgym* can be used directly from the normal terminal.
@@ -154,3 +153,15 @@ Most installation steps are the same as the previous softgym installation. Here 
 ## Notes
 1. It seems that `pyflex` has to be compiled with the correct python interpreter using `pybind11`. That is, if I use one python environment to compile the `pyflex` and I want to use another python environemnt to use the compiled `pyflex` lib, I will encounter `no module named pyflex` problem. This seems to be a feature of `pybind11`. Currently, I do not know the reason. On the contrary, `pydrake` seems do not care which python interpreter compile it.
 
+## Bugs & Solutions
+### Choose Nvidia graphic card as the default device
+In my laptop, I encounter a strange problem. I can successfully compile the pyflex. However, when I try to run the example program, I encounter segmentation errors. The output suggests that some symbols are undefined. This problem is tricky because if you paste the error output and search the internet, you will not get enough useful information. 
+
+The cause of this issue is because that my laptop has two graphic cards, one intel's and another nvidia's. I need to choose the nvidia's graphic card as always use, or runnning softgym will call the intel card and cause errors.
+
+Follow the following steps to choose the nvidia card as the default card:
+1. Open the NVIDIA X Server Settings application. You can find it by searching for "NVIDIA" in the app menu.
+
+2. Under the "PRIME Profiles" section, you will see an option to select between the NVIDIA GPU and the integrated Intel GPU. Choose the one you want to use by default.
+
+3. Log out and log back in for the changes to take effect.
