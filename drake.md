@@ -66,7 +66,7 @@ build --define=WITH_MOSEK=ON
 to the project `.bashrc` file.
 
 ## Visualization
-### To visualzie the pose without doing simulation
+### To visualze the pose without doing simulation
 Check the [`geometry_inspector.py`](https://github.com/RobotLocomotion/drake/blob/e59b7fc18dbe80b827d07e4a3283a0c87eda7021/manipulation/util/geometry_inspector.py) file and the `MultibodyPositionToGeometryPose` class.
 
 
