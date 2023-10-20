@@ -150,6 +150,18 @@ Use `zsh` as the terminal and `oh-my-zsh` to manage the extensions.
 >* 修改透明度为10%
 >* 命令行自动提示：没多大用，用Tab即可
 
+
+## Tmux
+1. Install tmux with:
+    ```
+    sudo apt install tmux
+    ```
+2. Install xclip with (to enable clip to system's clipboard with tmux):
+    ```
+    sudo apt install xclip 
+    ```
+3. Download [config](https://github.com/CWEzio/profile-and-config/blob/main/tmux/.tmux.conf) and place it in the home directory.
+
 ## Install python virtual environment
 ```bash
 sudo apt install python3-venv

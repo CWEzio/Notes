@@ -95,6 +95,12 @@ You can customizing `tmux` by editing the `~/.tmux.conf` file to make tmux more 
 
 You can also find my [config file](https://github.com/CWEzio/profile-and-config/tree/main/tmux)
 
+After making changes to your `.tmux.conf`, you should reload the configuration by executing the command:
+```
+tmux source-file ~/.tmux.conf
+```
+Or you can do it within `tmux` by `C-k :` to bring up the command prompt, and then entering `source-file ~/.tmux.conf`.
+
 ### setting basic options
 You can set basic options like
 ```
