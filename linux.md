@@ -66,6 +66,12 @@ In Vim and vi-mode, if you paste text while in normal mode, it can interpret the
 Before pasting, make sure you're in insert mode. Press `i` to enter insert mode, and then paste the text. This way, the pasted content is treated as plain text and not as a series of vi commands.
 
 
+## clashy
+
+### Edit Profile
+- Note that the profiles are case-sensitive. One example is that you shuold use `DIRECT` consistently. Inconsistent usage like `direct` will cause error.
+
+
 ## input and output stream
 
 1. `< file` and `> file`: rewire the input and output streams of a program to a file respectively
