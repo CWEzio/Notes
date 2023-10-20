@@ -16,8 +16,12 @@ I follow [this guidance](https://danieltakeshi.github.io/2021/02/20/softgym/) to
     conda config --set auto_activate_base false
     ```
 2. [Install docker and nvidia container toolkit](https://github.com/CWEzio/Notes/blob/master/docker.md)
+<<<<<<< HEAD
+3. Install dependencies
+=======
 
 3. Install prerequistes
+>>>>>>> f480b2cd9a08a7645e688f811cdc881f232c0d3e
     ```
     sudo apt-get install build-essential libgl1-mesa-dev freeglut3-dev libglfw3 libgles2-mesa-dev
     ```
