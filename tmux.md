@@ -25,19 +25,56 @@ Commands in tmux are triggered by a `prefix key` followed by a `command key`.
 - resize pane with `C-k H`/`C-k L`/`C-k J`/`C-k K`. You can repeat resize without re-entering the prefix. (my customization, vim style)
   > original `C-k C-<arrow-key>`
 - `exit` or `C-d` to close current pane
-- `C-b z` make a pane to full screen, 
+- `C-b z` make a pane to full screen, hit it again to shrink it back to its previous size
 
 ### window control
 - use `C-k c` to create a new window
 - use `C-k p` to switch to previous window
 - use `C-k n` to switch to next window
 - use `C-k <number>` to go to *i*-th window
+- use `C-k ,` to rename the current window
 
+### copy and paste with keyboard
+> Note that I have configured the tmux to use vim keybinding 
+1. Enter Copy mode with `C-k [`
+2. Navigate with `h`, `j`, `k`, `l`
+3. press `v` to start selection, use `r` for rectangle selection and `V` to select a whole line
+4. yank with `y`, copy's the selection and exit the copy mode
+5. paste with `C-k ]`
+    > Caution when using zsh-vi-mode. You need to enter insert mode to do the paste or the pasted content will be interpreted as command.
+> Can also exit copy mode with `q`.
 
 ### copy and paste with mouse (via tmux)
 1. Click and drag with the left mouse button to select text.
-2. Once the text is selected, release the left mouse button and immediately press the right mouse button.
+2. Once the text is selected, release the left mouse button.
 3. You can then paste this text within any tmux pane using `prefix + ]`. 
+
+### tmux copy to system's clipboard and enable vi copy mode
+1. To enable clip to clipboard. You need to install `xclip`
+    ```
+    sudo apt install xclip
+    ```
+2. You need to add the follwing to the config file
+    ```shell
+    setw -g mode-keys vi
+
+    # For copy and paste in vim style
+    # Bind v to start selection
+    bind-key -T copy-mode-vi 'v' send-keys -X begin-selection
+
+    # Bind y to yank (copy) the selection and enable copy to clipboard
+    bind-key -T copy-mode-vi 'y' send-keys -X copy-pipe-and-cancel 'xclip -in -selection clipboard'
+
+    # also enable mouse to copy to system's clipboard
+    bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel 'xclip -selection clipboard -i'
+
+    # Bind r for rectangle selection
+    bind-key -T copy-mode-vi r send-keys -X rectangle-toggle
+    ```
+> `copy-pipe-and-cancle`:
+> - **copy**: copy the currently selected text to the `tmux` buffer
+> - **pipe**: pipes the copied text to an external command specified by the user
+> - **cancle**: exit the copy mode
 
 ### copy and paste with mouse (via terminal)
 1. copy with mouse: `shift + left-click`
@@ -57,3 +94,30 @@ Commands in tmux are triggered by a `prefix key` followed by a `command key`.
 You can customizing `tmux` by editing the `~/.tmux.conf` file to make tmux more user friendly. More information can be find in [this blog](https://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/). For example customizations, you can find them both in the above blog and [tmux-sensible](https://github.com/tmux-plugins/tmux-sensible).
 
 You can also find my [config file](https://github.com/CWEzio/profile-and-config/tree/main/tmux)
+
+### setting basic options
+You can set basic options like
+```
+set -g default-terminal "tmux-256color"
+set -g mouse on
+set -s escape-time 0
+```
+
+### Rebind prefix key
+```
+set -g prefix C-k
+unbind C-b
+bind C-k send-prefix
+```
+
+### customize keybinding
+1. ```
+    bind -n M-h select-pane -L
+    ```
+    - `-n` stands to *no prefix*
+    - `M` stands for the `Meta` key, which is the `Alt` key
+    > This setting binds `Alt+h` with select the left pane. `bind` is the same as `bind-key`
+2. ```
+    bind -r H resize-pane -L 2
+    ```
+    - `-r` stands for *repeatable*. When a key is bound with -r, after pressing the prefix and the key once, you can keep pressing the key without the prefix, and the bound command will repeat. 
