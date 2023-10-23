@@ -236,7 +236,11 @@ sudo apt install fd-find
 >```
 For more details, refer to this [website](https://linuxconfig.org/install-microsoft-fonts-on-ubuntu-20-04-focal-fossa-desktop)
 
-## Tweak the default gnome workspaces behavior
+## Make workspace span displays
+> A workspace in Ubuntu is a virtual desktop, allowing users to organize and separate open applications. Think of it as having multiple computer desktops on a single monitor. Users can swiftly switch between these workspaces to access different sets of open windows, reducing clutter and improving task organization.
+
+By default, the workspace does not span multiple displays and navigating between workspaces only switch the workspace in the main display.
+
 Check [this article](https://www.thegygers.com/2020/07/30/ubuntu-20-04-workspaces-and-multiple-monitors/) for details.
 In short, first install `gnome-tweaks`
 ```
@@ -245,6 +249,7 @@ sudo apt install gnome-tweaks
 ```
 Then in the left tabs, select `Workspaces` and then on the right click `Workspaces span displays`.
 
+> Note that this is the default behavior in Ubuntu 22.04. 
 ## Mouse and Touchpad
 
 * [x] nautural scrolling
