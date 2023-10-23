@@ -13,7 +13,6 @@
 - Use the command in the command palette, like `close all other editors in group`
 
 # python
-
 ## Select notebook kernel
 To select a kernel,  click the `select kernel` button or type `select kernel` in the search palette. 
 
