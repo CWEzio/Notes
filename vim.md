@@ -15,6 +15,12 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
     - `,`/`;` for navigating match
 - Search: `/{regex}`, `n/N` for navigating matches
 
+## View
+- Folding/collapsing a function
+    1. Fold a function with `zc`
+    2. Unfold a function with `zo`
+    > In VS code, navigate `j` and `k` will make folded code unfold. The solution is to use `gj` and `gk` instead, following [this answer](https://stackoverflow.com/a/74936010).
+
 ## Screen Positioning 
 - Press `z` then `enter` will move the current line to the top of the screen
 - `50z` will move the 50th line to the top of the screen. 50 can be other numbers
@@ -33,7 +39,10 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
 - `v` visual mode and select current character, `V` visual mode and select whole line 
 - Visual mode + manipulation
     - select text, `d` to delete it or `c` to change it
-- `u` to undo, `<C-r>` to redo    
+- Undo and redo
+    1. `u` to undo, `<C-r>` to redo    
+    2. `U` (capital u): return the last line which was modified to its original state (reverse all changes in last modified line)
+    > `U` is not actually a true "undo" command as it does not actually navigate undo history like `u` and `Ctrl-r`. This means that (somewhat confusingly) `U` is itself undo-able with `u`; it creates a new change to reverse previous changes.
 - `y` to copy ("yank", some other command like `d` also copy)
 - `p` to paste
 - Lots more to learn: e.g. `~` flips the case of a character 
@@ -62,7 +71,8 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
     - `U` for upper case
     - `u` for lower case
     - `~` for invert case
-- `gU` + \<motion> will make all characters in \<motion> uppercase, similarly for `~` and `u`
+> Remember that the text should be visual selected first.
+- `gU` + \<motion> will make all characters in \<motion> uppercase, similarly for `~` and `u`. For example:
     - `gUe`
 
 ## Increase or Decrease keyword

@@ -1,3 +1,8 @@
+# Windows
+## Onedrive cannot sync
+Onedrive does not support proxy because of authentication issue. Please turn off the system proxy.
+
+
 ## Add conda virtual environment to jupyter notebook
 
 * create a new env

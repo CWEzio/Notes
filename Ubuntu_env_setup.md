@@ -262,7 +262,7 @@ Then in the left tabs, select `Workspaces` and then on the right click `Workspac
 > 1. Follow [this guidance](https://flatpak.org/setup/Ubuntu) to setup flatpak.
 > 2. Install `mendeley` by
 >```
->flatpak install flathub com.elsevier.MendeleyDesktop>
+>flatpak install flathub com.elsevier.MendeleyDesktop
 >```
 > 3. After installation, run `mendeley` with
 >```

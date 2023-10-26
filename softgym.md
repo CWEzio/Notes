@@ -16,12 +16,8 @@ I follow [this guidance](https://danieltakeshi.github.io/2021/02/20/softgym/) to
     conda config --set auto_activate_base false
     ```
 2. [Install docker and nvidia container toolkit](https://github.com/CWEzio/Notes/blob/master/docker.md)
-<<<<<<< HEAD
-3. Install dependencies
-=======
 
 3. Install prerequistes
->>>>>>> f480b2cd9a08a7645e688f811cdc881f232c0d3e
     ```
     sudo apt-get install build-essential libgl1-mesa-dev freeglut3-dev libglfw3 libgles2-mesa-dev
     ```
@@ -174,3 +170,11 @@ Follow the following steps to choose the nvidia card as the default card:
 2. Under the "PRIME Profiles" section, you will see an option to select between the NVIDIA GPU and the integrated Intel GPU. Choose the one you want to use by default.
 
 3. Log out and log back in for the changes to take effect.
+
+# Code structure
+- Current scenes and their index can be found at the `pyflex_init` function. 
+- There are three different render modes for `cloth_env`
+    - particle: 1
+    - cloth: 2
+    - both: 3
+- per timestep length is `1 / 240 s`, which is defined as `g_dt` in `main.cpp`

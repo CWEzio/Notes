@@ -14,6 +14,9 @@ Commands in tmux are triggered by a `prefix key` followed by a `command key`.
 - within tmux `C-k d`  to detach the current session
 - `tmux a` to attach to the last session. `tmux a -t <name> ` to attach to a specific session
 - rename the existing session `tmux rename-session -t <current-name> <new-name>`
+- If you are inside the session that you want to rename:
+  1. `C-k :` to bring up the command prompt
+  2. `rename-session new_session_name`
 
 ### pane control
 - split windows horizontally `C-k s` (my customization, vim style)

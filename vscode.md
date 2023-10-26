@@ -12,6 +12,23 @@
 - use `alt + number` to navigate between different tabs
 - Use the command in the command palette, like `close all other editors in group`
 
+## Customize keybindings
+1. Open keyboard shortcuts editor:
+    - `Ctrl+Shift+P` to open the command palette
+    - In the command palette, select command `Preferences: Open Keyboard Shortcuts`
+2. Modify keybindings:
+    - Search for a command, right-click and choose `Change Keybinding`
+
+You can also modify the keybindings in the `keybindings.json` file. You can open this file by command `Preferences: Open Keyboard Shortcuts (JSON)`. You can see all the commands that you have customized in this json file.
+> The `-` symbol in front of a command means that you've disabled this command. For example: 
+> ```json
+>    {
+>    "key": "ctrl+p",
+>    "command": "-extension.vim_ctrl+p",
+>    }
+> ```
+> The command `extension.vim_ctrl+p` is disabled.
+
 # python
 ## Select notebook kernel
 To select a kernel,  click the `select kernel` button or type `select kernel` in the search palette. 
@@ -55,3 +72,21 @@ Check [this answer for details](https://stackoverflow.com/questions/53653083/how
 }
 ```
 `args` specifies arguments to pass to the Python program. Each element of the argument string that's separated by a space should be contained within quotes.
+
+## Compare different files with vscode
+You can compare/diff two files with vscode. 
+1. Open the first file and focus on its window.
+2. Open command palette, use command `File: Compare Active File With`
+3. Select the second file to compare.
+- You can change between inline view and side-to-side view by use command `Compare: Toggle Inline View`.
+- The inline view shows the changes made in the second file from the first view.
+- Note that in the side-to-side view, two sides are in the same window. Therefore, switch between two sides can not be done with keyboard shortcuts like `C-w h`. Instead, you can use the following commands:
+    1. `workbench.action.compareEditor.focusPrimarySide`
+    2. `workbench.action.compareEditor.focusSecondarySide`
+    3. `workbench.action.compareEditor.focusOtherSide`
+
+    I bind `ctrl+alt+n` with `workbench.action.compareEditor.focusOtherSide` to switch between different sides.
+    
+You can also compare two files with mouse:
+1. Right-click the first file to be compared in the file explorer and select `Select for Compare`
+2. Right-click the second file to be compared in the file explorer and select `Compare with Selected`
