@@ -172,11 +172,15 @@ Similarly, you can use `"*y` and `"*p` to copy and paste from teh primary select
 - `gd` to go to the declaration, `Ctrl + o` to go back to where you came from
 - `alt + arrow key` to move across tab (pycharm)
 
-## vscode
+## VSCode
+Some VSCode's native commands are useful to use together with vim commands:
 - use ``Ctrl + ` `` to focus on the terminal
 - use `Ctrl + 1` to focus on the editor  
     > when there are multiple editor windows, use, for example, `Ctrl + 2` to refer to other windows. In other words, `Ctrl + index` to focus on the editor
 - Navigate between groups using `Ctrl + PageDown` and `Ctrl + PageUp` (also suitable for terminals)
+
+More about VSCodeVim extension:
+- You can find all supported vim commands of VSCodeVim in [roadmap](https://github.com/VSCodeVim/Vim/blob/master/ROADMAP.md).
 
 ## Miscellany
 1. Use `:set syntax=python` to force `vim` to syntax-highlight a file as `python`
