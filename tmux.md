@@ -130,3 +130,16 @@ bind C-k send-prefix
     bind -r H resize-pane -L 2
     ```
     - `-r` stands for *repeatable*. When a key is bound with -r, after pressing the prefix and the key once, you can keep pressing the key without the prefix, and the bound command will repeat. 
+
+## Bugs and issues
+
+### L-shaped portion of the window filled with dots
+When you connect to a `tmux` session from terminals of different sizes, `tmux` will use the size of the smallest terminal. This ensures content is visible in all connected terminals. If there's a larger terminal, `tmux` won't fill it entirely, leading to dots on the side, which indicate unused space. 
+
+Disconnecting the smaller terminal to solve this problem.
+
+You can attach to the session while forcing all other sessions to detach by
+```
+tmux attach-session -d -t my-session
+```
+The `-d` flag tells tmux to detach any other clients that are currently attached to the target session.

@@ -19,7 +19,13 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
 - Folding/collapsing a function
     1. Fold a function with `zc`
     2. Unfold a function with `zo`
-    > In VS code, navigate `j` and `k` will make folded code unfold. The solution is to use `gj` and `gk` instead, following [this answer](https://stackoverflow.com/a/74936010).
+    3. Close all folds with `zM`
+    4. Open all folds with `zR`
+    > In VS code, navigate `j` and `k` will make folded code unfold.
+    > [This issue](https://github.com/VSCodeVim/Vim/issues/1004) hasn't been fixed.
+    > Currently, one workaround is to enable `foldfix` in user setting. See [this question](https://stackoverflow.com/questions/50888475/code-folds-are-automatically-opened-when-cursor-moves-over-them-in-vs-code-vim/74936010#74936010) for reference.
+
+
 
 ## Screen Positioning 
 - Press `z` then `enter` will move the current line to the top of the screen
