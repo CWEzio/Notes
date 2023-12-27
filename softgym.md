@@ -118,12 +118,12 @@ Most installation steps are the same as the previous softgym installation. Here 
     - cmake
     - pybind11
     - click
-    - matplotlib
     - joblib
     - Pillow
     - plotly
     - pip:
         - gtimer
+        - matplotlib
         - gym==0.14.0
         - moviepy
         - opencv-python==4.1.1.26
@@ -171,10 +171,18 @@ Follow the following steps to choose the nvidia card as the default card:
 
 3. Log out and log back in for the changes to take effect.
 
-# Code structure
+# memo
 - Current scenes and their index can be found at the `pyflex_init` function. 
 - There are three different render modes for `cloth_env`
     - particle: 1
     - cloth: 2
     - both: 3
-- per timestep length is `1 / 240 s`, which is defined as `g_dt` in `main.cpp`
+- per timestep length is `1 / 100 s`, which is defined as `g_dt` in `main.cpp`
+- The inverse mass is stored alongside the position, in the format `[x, y, z, 1/m]`.
+- camera_angle_x represents rotation along world axis y; camera_angle_y represents rotation along world axis x. (not very intuitive really)
+- The world axis is as in the figure
+
+    ![world frame](figure/softgym/W.png)
+  - y axis vertical to the ground, pointing upward
+- Different groups are shown in different colors. Therefore, can set particle colors with `pyflex.set_group`
+    - `set_group` takes in an array of group indices for each particle.

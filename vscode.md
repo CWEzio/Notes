@@ -90,3 +90,6 @@ You can compare/diff two files with vscode.
 You can also compare two files with mouse:
 1. Right-click the first file to be compared in the file explorer and select `Select for Compare`
 2. Right-click the second file to be compared in the file explorer and select `Compare with Selected`
+
+# Markdown
+- [Official documentation](https://code.visualstudio.com/docs/languages/markdown) of supported markdown features.

@@ -143,8 +143,16 @@ Use `zsh` as the terminal and `oh-my-zsh` to manage the extensions.
       plugins+=(zsh-vi-mode)
       ```
       > Keep in mind that plugins need to be added before `oh-my-zsh.sh` is sourced.
+6. Increase the history size
+  Add the following
+  ```zsh
+  # Better history
+  export SAVEHIST=1000000000
+  export HISTSIZE=1000000000
+  ```
+  to `.zshrc`
 
-6. reboot
+7. reboot
 
 
 >* 修改透明度为10%
