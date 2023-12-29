@@ -390,3 +390,19 @@ It turns out that the error message is misleading. I got this error because I ha
       url: <https://api.ignitionfuel.org>
   to
       url: <https://api.ignitionrobotics.org>
+
+## NewsFlash Cannot show browse content
+Run newsflash with 
+```
+flatpak run io.gitlab.news_flash.NewsFlash
+```
+The opened flatpak does not show the browse content. And there are error:
+```
+KMS: DRM_IOCTL_MODE_CREATE_DUMB failed: Permission denied
+Failed to create GBM buffer of size 714x807: Permission denied
+```
+I find solution from [this github issue](https://github.com/johnfactotum/foliate/issues/1093?ref=news.itsfoss.com). Setting `WEBKIT_DISABLE_COMPOSITING_MODE=1` or `WEBKIT_DISABLE_DMABUF_RENDERER=1` fixes the problem.
+Just run newsflash with 
+```
+WEBKIT_DISABLE_DMABUF_RENDERER=1 flatpak run io.gitlab.news_flash.NewsFlash
+```
