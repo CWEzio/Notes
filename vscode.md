@@ -93,3 +93,4 @@ You can also compare two files with mouse:
 
 # Markdown
 - [Official documentation](https://code.visualstudio.com/docs/languages/markdown) of supported markdown features.
+- [KaTex support table](https://katex.org/docs/support_table)
