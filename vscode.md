@@ -94,3 +94,10 @@ You can also compare two files with mouse:
 # Markdown
 - [Official documentation](https://code.visualstudio.com/docs/languages/markdown) of supported markdown features.
 - [KaTex support table](https://katex.org/docs/support_table)
+- [Katex support function](https://katex.org/docs/supported)
+## Katex
+Math
+- Different style
+    - $\sum_{i=1}^n$
+    - $\sum\limits_{i=1}^n$
+    - $\displaystyle\sum_{i=1}^n$
