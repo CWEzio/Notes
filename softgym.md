@@ -155,6 +155,76 @@ Most installation steps are the same as the previous softgym installation. Here 
     pip install open3d
     ```
 
+## Install pyflex on a python virtual environment
+Recently, I want to use pyflex together with pydrake. However, pydrake has a poor support for conda. Therefore, I try to compile pyflex with a python virtual environment.
+> One difference between conda and python virtual environment is that conda has its own python interpreter, while python virtual environment create a soft link to system's python interpreter and use it. Therefore, python's virtual environment is more like a thin seperation between different library packs.
+1. Create python virtual environment. My python version is `3.8.10`.
+    ```
+    python3 -m venv vcd_env
+    ```
+2. Activate the virual environment
+    ```
+    source /home/chenwang/vcd_env/bin/activate 
+    ```
+3. Install pybind11
+    ```
+    pip install pybind11 
+    ```
+4. Enter the container
+    ```
+    docker run -v /home/chenwang/VCD/softgym:/workspace/softgym -v /home/chenwang/vcd_env:/home/chenwang/vcd_env -v /tmp/.X11-unix:/tmp/.X11-unix --rm --runtime=nvidia --gpus all -e DISPLAY=$DISPLAY  -e QT_X11_NO_MITSHM=1 -it xingyu/softgym:latest bash
+    ```
+5. In the docker environment, install the python with correct python version. In my case, I need to install `python3.8.10`. I need to compile this version python from source.
+    1. `apt update`
+    2. `apt install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev`
+    3. `mkdir tmp && cd tmp`
+    4. download python source code
+        ```
+        wget https://www.python.org/ftp/python/3.8.10/Python-3.8.10.tgz
+        ```
+    5. `tar -xf Python-3.8.10.tgz `
+    6. prepare for the build
+        ```
+        cd Python-3.8.10
+        ./configure --enable-optimizations
+        ```
+    7. Build and install
+        ```
+        make -j `nproc`
+        sudo make altinstall 
+        ```
+    8. Now `python3.8` is installed.
+6. You can use `ls -l  vcd_env/bin/` to check which file `python3` in the virtual_env is linked to. I find it is linked to `/usr/bin/python3`.
+7. Create a `/usr/bin/python3` softlink in the docker container.
+    ```
+    ln -s /usr/local/bin/python3.8 /usr/bin/python3
+    ```
+    Now the `python3` in `vcd_env/bin` can find the python interpreter in the docker container.
+    > Above is all the changes that we make to the docker container. You can commit changes to the docker container to create a new image.
+8. Modify `prepare.sh` to 
+    ```
+    source /home/chenwang/vcd_env/bin/activate
+    export PYFLEXROOT=${PWD}/PyFlex
+    export PYTHONPATH=${PYFLEXROOT}/bindings/build:$PYTHONPATH
+    export LD_LIBRARY_PATH=${PYFLEXROOT}/external/SDL2-2.0.4/lib/x64:$LD_LIBRARY_PATH
+    ```
+    No need to modify `compile.sh`.
+9.  Compile `pyflex` 
+    ```
+    cd /workspace/softgym 
+    . ./prepare.sh
+    . ./compile.sh
+    ```
+    You should be able to compile pyflex successfully.
+10. Add the following to `vcd_env`'s `activate` to set paths:
+    ```
+    export PYTHONPATH="/home/chenwang/VCD:${PYTHONPATH}"
+    export PYTHONPATH="/home/chenwang/VCD/softgym:${PYTHONPATH}" export PYFLEXROOT="/home/chenwang/VCD/softgym/PyFlex"  
+    export PYTHONPATH="${PYFLEXROOT}/bindings/build:${PYTHONPATH}"
+    export LD_LIBRARY_PATH="${PYFLEXROOT}/external/SDL2-2.0.4/lib/x64:$LD_LIBRARY_PATH"
+    ```
+> The python interpreters that the virtual enviornment linked to in host system and docker container should be identical. I have encountered library import error if their version does not match.
+
 ## Notes
 1. It seems that `pyflex` has to be compiled with the correct python interpreter using `pybind11`. That is, if I use one python environment to compile the `pyflex` and I want to use another python environemnt to use the compiled `pyflex` lib, I will encounter `no module named pyflex` problem. This seems to be a feature of `pybind11`. Currently, I do not know the reason. On the contrary, `pydrake` seems do not care which python interpreter compile it.
 

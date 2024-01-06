@@ -63,7 +63,7 @@ If you've made changes to a running container and want to save those changes to 
 
 1. **Start and modify your container**: You've already done this part by running your container and then installing or configuring the necessary components inside it.
 
-2. **Get the Container ID**: Get the ID or name of the container:
+2. **Get the Container ID**: Get the ID or name of the container (in your host system):
 
    ```bash
    docker ps -a
