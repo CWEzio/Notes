@@ -56,6 +56,21 @@ In short,
 - `ctrl+shift+p`, open user setting, search for flake8
 - add `--max-line-length=120` to Flake8 Args.
 
+# Python virtual environment
+## Setup cuda
+Add the following to your `activate` file:
+```
+CUDAVER=cuda-11.2
+export PATH=/usr/local/$CUDAVER/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/$CUDAVER/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=/usr/local/$CUDAVER/lib64:$LD_LIBRARY_PATH
+export CUDA_PATH=/usr/local/$CUDAVER
+export CUDA_ROOT=/usr/local/$CUDAVER
+export CUDA_HOME=/usr/local/$CUDAVER
+export CUDA_HOST_COMPILER=/usr/bin/gcc-10
+```
+Where `CUDAVER` specifies the cuda version, modify it according to which cuda you use.
+
 # Bugs
 ## `Module not found. *Package Name* is not a package`
 Recently I am using the `softagent` library to test the `CEM` method. However, when I ran the `run_cem.py`, I encounter the problem stated in the title. The directory structure is:

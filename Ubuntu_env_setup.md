@@ -312,6 +312,17 @@ sudo apt remove onboard deja-dup
   >* VPN工具：easyConnect
 
 
+# After Installation
+## Purge Nvidia Driver
+Find [this answer](https://askubuntu.com/a/206289/1004561) quiet useful. In short,
+```
+sudo apt-get remove --purge '^nvidia-.*'
+sudo apt-get install ubuntu-desktop
+sudo rm /etc/X11/xorg.conf
+echo 'nouveau' | sudo tee -a /etc/modules
+```
+Not all above commands are needed, but it does not hurt to run them all.
+
 
 # WSL2 Ubuntu
 
