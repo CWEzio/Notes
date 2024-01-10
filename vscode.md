@@ -1,5 +1,3 @@
-## Markdown math
-`vscode` use `KaTeX` to render math. Here is a list of [supported functions](https://katex.org/docs/supported.html)
 
 # keybinding
 ## Window control
@@ -28,6 +26,22 @@ You can also modify the keybindings in the `keybindings.json` file. You can open
 >    }
 > ```
 > The command `extension.vim_ctrl+p` is disabled.
+
+## Show hover information
+Sometimes you want to show hover information, to remind you the function definition etc., as:
+<img src="./asset/vscode/hover_information.png">
+In vim mode, simple put the cursor on top of the function does not show the hover information, you need to:
+1. `ctrl + shift + p` to open control palette
+2. search for `show or focus hover`
+> note that the hot key for `show or focus hover` is `ctrl + K ctrl + I`. However, I am using `vscode-vim` and `ctrl + K` does not work.
+
+## Trigger parameter hint
+<img src="./asset/vscode/parameter_hint.png">
+
+- `ctrl + shift + space`
+
+## Trigger autocomplete
+- `ctrl + space`
 
 # python
 ## Select notebook kernel
@@ -93,9 +107,12 @@ You can also compare two files with mouse:
 
 # Markdown
 - [Official documentation](https://code.visualstudio.com/docs/languages/markdown) of supported markdown features.
+
+## Markdown math
+`vscode` use `KaTeX` to render math. Here is a list of [supported functions](https://katex.org/docs/supported.html).
 - [KaTex support table](https://katex.org/docs/support_table)
 - [Katex support function](https://katex.org/docs/supported)
-## Katex
+### Katex
 Math
 - Different style
     - $\sum_{i=1}^n$
