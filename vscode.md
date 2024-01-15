@@ -1,3 +1,6 @@
+# Settings
+## Relative line number
+`vscode-vim` provided a quiet handy feature, `smart relative line`, that use absolute line number in insert mode and relative line number otherwise.
 
 # keybinding
 ## Window control
