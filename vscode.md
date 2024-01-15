@@ -118,3 +118,13 @@ Math
     - $\sum_{i=1}^n$
     - $\sum\limits_{i=1}^n$
     - $\displaystyle\sum_{i=1}^n$
+
+# Copilot
+[Official guide for vscode](https://docs.github.com/en/copilot/using-github-copilot/getting-started-with-github-copilot?tool=vscode#prerequisites-2)
+## Keybindings
+- Start inline chat `Ctrl + K N` (customized)
+- Accept suggestion `Tab`
+- See alternative suggestions `Alt + ]` for next suggestion, `Alt + [` for previous suggestion.
+- `Ctrl + →` accept next word.
+- `Ctrl + Enter` to see multiple suggestions in a new tab.
+
