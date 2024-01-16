@@ -46,6 +46,9 @@ In vim mode, simple put the cursor on top of the function does not show the hove
 ## Trigger autocomplete
 - `ctrl + space`
 
+## Reject autocomplete suggestion
+- `Escape`
+
 # python
 ## Select notebook kernel
 To select a kernel,  click the `select kernel` button or type `select kernel` in the search palette. 
