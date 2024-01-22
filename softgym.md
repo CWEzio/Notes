@@ -256,3 +256,44 @@ Follow the following steps to choose the nvidia card as the default card:
   - y axis vertical to the ground, pointing upward
 - Different groups are shown in different colors. Therefore, can set particle colors with `pyflex.set_group`
     - `set_group` takes in an array of group indices for each particle.
+
+# Flex
+## Compile flex demo
+Flex contains many useful demos, showcasing what flex can do and how to use flex. In order to have a deeper understanding about how to use `flex`, I try to compile its demo.
+1. Clone the repo with 
+   ```
+   git clone git@github.com:YunzhuLi/PyFleX.git
+   ```
+    > I am using the `Pyflex` fork. But it should also work using the original `flex`. `Pyflex` retains the original demo files.
+2. Enter the docker container with:
+   ```
+    docker run -v /home/chenwang/PyFleX:/workspace/PyFleX -v /tmp/.X11-unix:/tmp/.X11-unix --rm --runtime=nvidia --gpus all -e DISPLAY=$DISPLAY  -e QT_X11_NO_MITSHM=1 -it xingyu/softgym:latest bash
+   ```
+   Note that you only need to mount the `PyFleX` directory to the docker container.
+3. The original SDL library has some problems. You need to recompile the SDL library. The source code can be found in [its github repo](https://github.com/libsdl-org/SDL). Download the source code to the `external` directory. You need to compile it following [this guidance](https://wiki.libsdl.org/SDL2/Installation) as:
+    ```
+    cd SDL
+    mkdir build
+    cd build
+    ../configure
+    make
+    sudo make install
+    ```
+4. Modify the makefile `Makefile.flexDemoCUDA.mk` in `demo/compiler/makelinux64`. Modify the `flexDemoCUDA_release_lflags` and `flexDemoCUDA_debug_lflags` accordingly. Make sure that `libSDL2.a` and `libSDL2main.a` can be linked. For example, 
+   ```make
+   flexDemoCUDA_release_lflags += -g -L/usr/lib -L"../../../lib/linux64" -L../../../external/SDL-release-2.0.4/build/build/ -L../../../external/SDL-release-2.0.4/build/build/.libs/ -L/usr/local/cuda/lib64 -lGL -lglut -lGLU -lcudart_static -ldl -lrt -pthread
+   ```
+5. Then
+   ```
+   cd demo/compiler/makelinux64/
+   make -j
+   ```
+6. Then go to the target folder and start the demo!
+    ```
+    cd ../../../bin/linux64
+    ./NvFlexDemoReleaseCUDA_x64
+    ```
+    > Since the data are specified in relative path in the code, you need to cd to `../../../bin/linux` and run the demo. Or you will encounter strange issue, like the text is not rendered.
+7. The demo looks like:
+    <img src="./asset/softgym/flex_demo.png">
+    Quiet amazing!
