@@ -201,3 +201,11 @@ More about VSCodeVim extension:
 ## Miscellany
 1. Use `:set syntax=python` to force `vim` to syntax-highlight a file as `python`
 
+# Settings
+## Caps Lock as an additional Esc
+You may want to change the behavior of `Caps Lock` to `Esc` if you are using `Vim`.
+1. Open Gnome-tweaks by `windows` + searching with name
+2. In `Keyboard & Mouse` tab, click `Additional Layout Options`
+3. In `Caps Lock behavior`, select `Make Caps Lock an additional Esc`
+4. In vscode, `ctrl + shift + p`, search and open `user settings`
+5. Search for `keyboard dispatch` and set it as `keyCode`.
