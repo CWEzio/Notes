@@ -80,3 +80,9 @@ Before pasting, make sure you're in insert mode. Press `i` to enter insert mode,
 ## terminal shortcuts
 1. use `fc` to edit last command in vim
 2. use `ctrl + w` to delete a word (backward)
+
+## Enable and disable `wifi` through command line
+```
+sudo nmcli radio wifi off
+sudo nmcli radio wifi on
+```

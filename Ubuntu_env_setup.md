@@ -158,12 +158,6 @@ Use `zsh` as the terminal and `oh-my-zsh` to manage the extensions.
 >* 修改透明度为10%
 >* 命令行自动提示：没多大用，用Tab即可
 
-## Caps Lock as an additional Esc
-1. Open Gnome-tweaks by `windows` + searching with name
-2. In `Keyboard & Mouse` tab, click `Additional Layout Options`
-3. In `Caps Lock behavior`, select `Make Caps Lock an additional Esc`
-4. In vscode, `ctrl + shift + p`, search and open `user settings`
-5. Search for `keyboard dispatch` and set it as `keyCode`.
 
 ## Tmux
 1. Install tmux with:
