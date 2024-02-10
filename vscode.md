@@ -134,3 +134,7 @@ Math
 - `Ctrl + →` accept next word.
 - `Ctrl + Enter` to see multiple suggestions in a new tab.
 
+# SSH
+## Drag and drop file
+You can drag a file from your local machine to the explorer to copy the file to the remote machine. You can also do the reverse things. For more information, refer to [this release note](https://github.com/microsoft/vscode-docs/blob/main/remote-release-notes/v1_36.md).
+
