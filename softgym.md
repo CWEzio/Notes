@@ -225,6 +225,21 @@ Recently, I want to use pyflex together with pydrake. However, pydrake has a poo
     ```
 > The python interpreters that the virtual enviornment linked to in host system and docker container should be identical. I have encountered library import error if their version does not match.
 
+### VCD
+In order to use `VCD`, I need to install `pytorch` and other related module. Here is the steps:
+1. Install `torch`
+    ```
+    pip install torch==2.1.2 torchvision==0.16.2 torchaudio==2.1.2 --index-url https://download.pytorch.org/whl/cu121\n
+    ```
+2. Install `pytorch geometric` 
+    ```
+    pip install torch_geometric
+    pip install pyg_lib torch_scatter torch_sparse torch_cluster torch_spline_conv -f https://data.pyg.org/whl/torch-2.1.0+cu121.html
+    ```
+    > Note that the `pyg` version should be compatible with your torch and cuda version. 
+3. `pip install h5py wandb open3d`
+
+
 ## Notes
 1. It seems that `pyflex` has to be compiled with the correct python interpreter using `pybind11`. That is, if I use one python environment to compile the `pyflex` and I want to use another python environemnt to use the compiled `pyflex` lib, I will encounter `no module named pyflex` problem. This seems to be a feature of `pybind11`. Currently, I do not know the reason. On the contrary, `pydrake` seems do not care which python interpreter compile it.
 

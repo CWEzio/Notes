@@ -71,6 +71,9 @@ export CUDA_HOST_COMPILER=/usr/bin/gcc-10
 ```
 Where `CUDAVER` specifies the cuda version, modify it according to which cuda you use.
 
+# PIP
+- Use `pip --force-reinstall --no-cache-dir <package-name>` to install a package and not using previously cached downloads. This is useful when you try different versions of package to figure out which version can work.
+
 # Bugs
 ## `Module not found. *Package Name* is not a package`
 Recently I am using the `softagent` library to test the `CEM` method. However, when I ran the `run_cem.py`, I encounter the problem stated in the title. The directory structure is:
