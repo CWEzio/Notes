@@ -207,7 +207,13 @@ Recently, I want to use pyflex together with pydrake. However, pydrake has a poo
     export PYFLEXROOT=${PWD}/PyFlex
     export PYTHONPATH=${PYFLEXROOT}/bindings/build:$PYTHONPATH
     export LD_LIBRARY_PATH=${PYFLEXROOT}/external/SDL2-2.0.4/lib/x64:$LD_LIBRARY_PATH
+    export pybind11_DIR="/home/chenwang/vcd_env/lib/python3.8/site-packages/pybind11/share/cmake/pybind11"
     ```
+    Modify the cmake term in `compile.sh` to
+    ```
+    cmake -DPYBIND11_PYTHON_VERSION=3.8 -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
+    ```
+
     No need to modify `compile.sh`.
 9.  Compile `pyflex` 
     ```
@@ -225,7 +231,12 @@ Recently, I want to use pyflex together with pydrake. However, pydrake has a poo
     ```
 > The python interpreters that the virtual enviornment linked to in host system and docker container should be identical. I have encountered library import error if their version does not match.
 
-### VCD
+### Enable `clangd` language server
+The `compile_commands.json` generated in the `docker` container needs to be modified to be used for auto-completion, due to the path discrepancy between the local machine and the container.
+1. Modify all `/workspace/softgym/` to `/home/chenwang/VCD/softgym/`.
+2. Modify all `/usr/local/include/python3.8` to `/usr/include/python3.8`.
+
+### Install VCD in the python virtual environment
 In order to use `VCD`, I need to install `pytorch` and other related module. Here is the steps:
 1. Install `torch`
     ```

@@ -86,3 +86,14 @@ Before pasting, make sure you're in insert mode. Press `i` to enter insert mode,
 sudo nmcli radio wifi off
 sudo nmcli radio wifi on
 ```
+Alternative choice is to use
+```
+sudo nmtui
+```
+which offers a gui in the terminal. More intuitive.
+
+Other related things:
+- Show wifi list
+    ```
+    nmcli d wifi list
+    ```

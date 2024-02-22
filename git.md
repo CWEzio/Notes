@@ -1,29 +1,41 @@
 # My note of git usage
 
-## Commit management
+# Commit management
 - `git commit --amend` amend last commit with new change
-### Squash last `n` commits
+## Squash last `n` commits
 1. `git rebase -i HEAD~n`, where `n` is the number of last commits that you want to include in the rebase. This will start an interactive rebase.
 2. In the text editor opened, you'll see a list of commits. To squash commits, leave the first commit as `pick` and change the word `pick` to `squash` (or just `s` for short) for the commits that you want to squash into the first commit. Save and close the editor. 
 3. Git will then prompt you to merge the commit messages. Edit the messages. Save and close the editor.
 4. If needed, use `git push origin your-branch-name --force` to also update the origin.
 
-## Branch management
+# Branch management
 - `git branch` list branches.
 - `git branch <name>` create a banch with name `<name>`.
 - `git branch -m <newname>` rename the current branch.
 - `git branch -M <newname>` rename the current branch but in a more forceful way. The brancch will be renamed, even if a branch with name `<newname>` already exists.
+## Merge branches
+Suppose you are merging `feature` branch into the `main` branch
+1. Check out to the branch you want to merge into
+    ```
+    git checkout main
+    ```
+2. Merge the target branch into the current branch
+    ```
+    get merge feature
+    ```
 
-## Submodule management
+
+
+# Submodule management
 - `git add <submodule-name>` to stage changes in the submodule.
 
-## Remote management
+# Remote management
 - View current origin `git remote -v`, where `-v` stands for verbose.
 - Remove current origin `git remote remove origin`
 - Add origin `git remote add origin git@github.com:some_repo.git`
 
-## Miscellany
-### Remove file/folder from the git index but keep those files, in other words, want to untrack file or folder
+# Miscellany
+## Remove file/folder from the git index but keep those files, in other words, want to untrack file or folder
 This can be done with 
 ```
 git rm -r --cached <folder>
@@ -33,7 +45,7 @@ git rm -r --cached <folder>
 
 Refer to [documentation](https://git-scm.com/docs/git-rm) for more information regarding `rm`.
 
-### Use github issues to manage task lists
+## Use github issues to manage task lists
 1. In github issues, you can have a tasks list. The markdown syntax is simple.
     ```markdown
     - [ ] Mercury 
@@ -50,7 +62,7 @@ You can also close an issue with commit/(pull request) by containing keywords li
     
     For more details, check this [answer](https://www.edureka.co/community/102139/link-to-the-issue-number-on-github-within-a-commit-message#:~:text=You%20just%20need%20to%20include,(in%20your%20commit%20message).) or this [official documentation](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue)
 
-### Move the git repository one level up in the file hierarchy
+## Move the git repository one level up in the file hierarchy
 Suppose I have a repo
 ```
 <project repo>
