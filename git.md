@@ -1,5 +1,15 @@
 # My note of git usage
 
+#  View
+## view commit
+- `git show` to show the most recent commit
+- `git show [commit-hash]` to view a specific commit 
+- Additional options for `git show`
+    - `--stat`: show the number of changes.
+    - `--name-only`: only show the name of the changed files.
+    - `--oneline`: show the commit in one line.
+    - `--name-status`: show the name of files changed along with the status (added, modified, deleted).
+
 # Commit management
 - `git commit --amend` amend last commit with new change
 ## Squash last `n` commits

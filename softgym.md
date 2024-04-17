@@ -3,7 +3,10 @@
 ## Installation
 I am using Ubuntu 20.04, which is not support by default. Therefore, docker is needed.
 
-I follow [this guidance](https://danieltakeshi.github.io/2021/02/20/softgym/) to install softgym.
+I refer to [this guidance](https://danieltakeshi.github.io/2021/02/20/softgym/) for installation of softgym.
+
+> My `docker` version: Docker version 25.0.2
+> My `nvidia-container_toolkit` version: NVIDIA Container Runtime Hook version 1.14.4
 
 ### Preparation
 1. Install conda. Both miniconda or anaconda is fine. 
@@ -250,6 +253,20 @@ In order to use `VCD`, I need to install `pytorch` and other related module. Her
     > Note that the `pyg` version should be compatible with your torch and cuda version. 
 3. `pip install h5py wandb open3d`
 
+### Package version
+Some key pakages and their version in my python virtual environment
+```yml
+numpy==1.24.4
+open3d==0.18.0
+opencv-python==4.9.0.80
+scipy==1.10.1
+gym==0.26.2
+pybind11==2.11.1
+pyaml==23.12.0
+matplotlib==3.7.4
+```
+The full list can be found in the `vcd_py38_requirement.txt` file under the `VCD` project's root directory.
+
 
 ## Notes
 1. It seems that `pyflex` has to be compiled with the correct python interpreter using `pybind11`. That is, if I use one python environment to compile the `pyflex` and I want to use another python environemnt to use the compiled `pyflex` lib, I will encounter `no module named pyflex` problem. This seems to be a feature of `pybind11`. Currently, I do not know the reason. On the contrary, `pydrake` seems do not care which python interpreter compile it.
@@ -267,21 +284,6 @@ Follow the following steps to choose the nvidia card as the default card:
 
 3. Log out and log back in for the changes to take effect.
 
-# memo
-- Current scenes and their index can be found at the `pyflex_init` function. 
-- There are three different render modes for `cloth_env`
-    - particle: 1
-    - cloth: 2
-    - both: 3
-- per timestep length is `1 / 100 s`, which is defined as `g_dt` in `main.cpp`
-- The inverse mass is stored alongside the position, in the format `[x, y, z, 1/m]`.
-- camera_angle_x represents rotation along world axis y; camera_angle_y represents rotation along world axis x. (not very intuitive really)
-- The world axis is as in the figure
-
-    ![world frame](figure/softgym/W.png)
-  - y axis vertical to the ground, pointing upward
-- Different groups are shown in different colors. Therefore, can set particle colors with `pyflex.set_group`
-    - `set_group` takes in an array of group indices for each particle.
 
 # Flex
 ## Compile flex demo
@@ -323,3 +325,23 @@ Flex contains many useful demos, showcasing what flex can do and how to use flex
 7. The demo looks like:
     <img src="./asset/softgym/flex_demo.png">
     Quiet amazing!
+
+# memo
+- Current scenes and their index can be found at the `pyflex_init` function. 
+- There are three different render modes for `cloth_env`
+    - particle: 1
+    - cloth: 2
+    - both: 3
+- per timestep length is `1 / 100 s`, which is defined as `g_dt` in `main.cpp`
+- The inverse mass is stored alongside the position, in the format `[x, y, z, 1/m]`.
+- camera_angle_x represents rotation along world axis y; camera_angle_y represents rotation along world axis x. (not very intuitive really)
+- The world axis is as in the figure
+
+    ![world frame](figure/softgym/W.png)
+  - y axis vertical to the ground, pointing upward
+- Different groups are shown in different colors. Therefore, can set particle colors with `pyflex.set_group`
+    - `set_group` takes in an array of group indices for each particle.
+- State of shape (return of `pyflex.get_shape_states`):
+    $$(x^c, y^c, z^c, x^p, y^p, z^p, q^c_x, q^c_y, q^c_z,q^c_w, q^p_x, q^p_y, q^p_z,q^p_w),$$
+    where $x^c$ represents the current $x$, $x^p$ represents previous $x$. The length of each shape's state is 14.
+
