@@ -9,6 +9,14 @@
     - `--name-only`: only show the name of the changed files.
     - `--oneline`: show the commit in one line.
     - `--name-status`: show the name of files changed along with the status (added, modified, deleted).
+## View the change history of a specific file
+- `git log [path-to-file]`
+- Specific options:
+  - `-p` or `--patch`: show the difference introduced in each commit
+  - `--stat`: display the number of changes made to the file along with each commit
+  - `--oneline`
+  - `--graph`
+  - `-n <limit>`: limits the number of commits shown.
 
 # Commit management
 - `git commit --amend` amend last commit with new change
