@@ -124,9 +124,9 @@ Most installation steps are the same as the previous softgym installation. Here 
     - joblib
     - Pillow
     - plotly
+    - matplotlib
     - pip:
         - gtimer
-        - matplotlib
         - gym==0.14.0
         - moviepy
         - opencv-python==4.1.1.26
@@ -136,6 +136,7 @@ Most installation steps are the same as the previous softgym installation. Here 
     ```
 3. Compile pyflex. Need to write a custom `prepare.sh`.
     ```sh
+    export PATH=/home/chenwang/miniconda3/bin:$PATH
     . activate VCD 
     export PYFLEXROOT=${PWD}/PyFlex
     export PYTHONPATH=${PYFLEXROOT}/bindings/build:$PYTHONPATH
@@ -143,14 +144,16 @@ Most installation steps are the same as the previous softgym installation. Here 
     ```
     > Use the softgym under VCD. Remember to change the paths in previous softgym installation section accordingly.
 
-4. Install pytorch with 
+4. Install pytorch with
     ```
-    conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=10.2 -c pytorch
+    conda install pytorch==1.12.0 torchvision==0.13.0 torchaudio==0.12.0 cudatoolkit=11.3 -c pytorch 
     ```
-    > cuda 10.2 is not compatible with nvidia 3090
-5. Replace the `python-pcl` dependency with `open3d`. Modify `VCD/utils/utils.py`.
+    > Above is tested on my `4090` computer.
 
-6. Install other requirements.
+    > cuda 10.2 is not compatible with nvidia 3090
+7. Replace the `python-pcl` dependency with `open3d`. Modify `VCD/utils/utils.py`.
+
+8. Install other requirements.
     ```
     conda install h5py
     conda install pytorch-scatter -c pyg
@@ -203,7 +206,7 @@ Recently, I want to use pyflex together with pydrake. However, pydrake has a poo
     ln -s /usr/local/bin/python3.8 /usr/bin/python3
     ```
     Now the `python3` in `vcd_env/bin` can find the python interpreter in the docker container.
-    > Above is all the changes that we make to the docker container. You can commit changes to the docker container to create a new image.
+    > Above is all the changes that we make to the docker container. You can commit changes to the docker container to create a new image. Remember to install `pybind11` on your python environment if you use a new `python3.8` virtual environment.
 8. Modify `prepare.sh` to 
     ```
     source /home/chenwang/vcd_env/bin/activate
