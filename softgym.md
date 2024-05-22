@@ -207,6 +207,11 @@ Recently, I want to use pyflex together with pydrake. However, pydrake has a poo
     ```
     Now the `python3` in `vcd_env/bin` can find the python interpreter in the docker container.
     > Above is all the changes that we make to the docker container. You can commit changes to the docker container to create a new image. Remember to install `pybind11` on your python environment if you use a new `python3.8` virtual environment.
+
+    > ```
+    > docker run -v /home/chenwang/VCD/softgym:/workspace/softgym -v /home/chenwang/vcd_env:/home/chenwang/vcd_env -v /tmp/.X11-unix:/tmp/.X11-unix --rm --runtime=nvidia --gpus all -e DISPLAY=$DISPLAY  -e QT_X11_NO_MITSHM=1 -it chenwang/vcd:latest bash
+    > ```
+
 8. Modify `prepare.sh` to 
     ```
     source /home/chenwang/vcd_env/bin/activate
@@ -237,6 +242,12 @@ Recently, I want to use pyflex together with pydrake. However, pydrake has a poo
     ```
 > The python interpreters that the virtual enviornment linked to in host system and docker container should be identical. I have encountered library import error if their version does not match.
 
+> When installing other dependencies in this virtual environment, do not install the default `numpy` with `pip` which uses `OpenBLAS`. Install the `MKL` version.
+>```
+>pip install intel-numpy
+>pip install intel-scipy
+>```
+
 ### Enable `clangd` language server
 The `compile_commands.json` generated in the `docker` container needs to be modified to be used for auto-completion, due to the path discrepancy between the local machine and the container.
 1. Modify all `/workspace/softgym/` to `/home/chenwang/VCD/softgym/`.
@@ -255,6 +266,8 @@ In order to use `VCD`, I need to install `pytorch` and other related module. Her
     ```
     > Note that the `pyg` version should be compatible with your torch and cuda version. 
 3. `pip install h5py wandb open3d`
+
+If I encounter compatibility issue, I can go to the [wheel website](https://pytorch-geometric.com/whl) of pyg to install the library directly.
 
 ### Package version
 Some key pakages and their version in my python virtual environment
@@ -286,6 +299,22 @@ Follow the following steps to choose the nvidia card as the default card:
 2. Under the "PRIME Profiles" section, you will see an option to select between the NVIDIA GPU and the integrated Intel GPU. Choose the one you want to use by default.
 
 3. Log out and log back in for the changes to take effect.
+
+### Strange freeze and segmentation fault issue with my python3.8 virtual environment.
+I have encountered a strange issue with my python3.8 environment. When I want to run the original VCD code to generate data, I find that the program would stuck or crash. However, this code runs perfectly fine in the Conda python 3.7 environment. What makes this issue more strange is that my own customed environment can generate data for a while, instead of directly crashing within 1 rollout. However, after around 200 rollouts, my customed envrionment would stuck too. At first, I suspect this issue is caused by the different `CUDA` version used in my `python3.8` and `python3.7` environment. However, using a different `CUDA` version does not help.
+
+After digging this issue for a while, I find that the problem is with the `numpy` used. The default installed numpy with `pip` use `OpenBLAS` as the backend, while the default installed numpy with `conda`use `MKL` as the backend. `MKL` has much better optimization and more robust threading support. The `OpenBLAS` version of `numpy` causes threading issues, which make my program freezes or crashes. After remove the original `numpy` and installed the `MKL` version numpy in the python virtual environment, the program can generate data perfectly fine (and the speed seems to be quicker).
+
+Use the following command to install `MKL` version `numpy` and `scipy` in python virtual environment:
+```
+pip install intel-numpy
+pip install intel-scipy
+```
+
+This story tells me that I should always use the `MKL` as the backend for libs like `numpy`, `scipy`, etc.
+
+> [This website](https://www.intel.com/content/www/us/en/developer/articles/tool/whats-included-distribution-for-python.html#packageEnvironmentManagers) contains a full list of intel version python libs.
+
 
 
 # Flex

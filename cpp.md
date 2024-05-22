@@ -127,6 +127,13 @@ Refer to [this article](https://www.cs.cmu.edu/~gilpin/tutorial/) for basic gdb 
 - `b`/`break` + `path/to/file:N`: set a break point on the `N`th line of file 
 - `b`/`break` + `function name`: set a break point on the beginning of function `function name`
 
+### Debug C++ module in python
+GDB can also used to debug the C++ module used by the python program. Example usage is
+```
+gdb --args python VCD/main.py --gen_data=1 --dataf=./data/vcd --num_variations=1
+```
+The usage is the same as debugging the pure `C++` program.
+
 ### Install drake_gdb (viewing eigen vector)
 Use drake_gdb https://github.com/SeanCurtis-TRI/drake_gdb
 
