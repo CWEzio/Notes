@@ -209,7 +209,7 @@ Recently, I want to use pyflex together with pydrake. However, pydrake has a poo
     > Above is all the changes that we make to the docker container. You can commit changes to the docker container to create a new image. Remember to install `pybind11` on your python environment if you use a new `python3.8` virtual environment.
 
     > ```
-    > docker run -v /home/chenwang/VCD/softgym:/workspace/softgym -v /home/chenwang/vcd_env:/home/chenwang/vcd_env -v /tmp/.X11-unix:/tmp/.X11-unix --rm --runtime=nvidia --gpus all -e DISPLAY=$DISPLAY  -e QT_X11_NO_MITSHM=1 -it chenwang/vcd:latest bash
+    > docker run -v /home/chenwang/VCD/softgym:/workspace/softgym -v /home/chenwang/vcd_env:/home/chenwang/vcd_env -v /tmp/.X11-unix:/tmp/.X11-unix --rm --runtime=nvidia --gpus all -e DISPLAY=$DISPLAY  -e QT_X11_NO_MITSHM=1 -it fantasypia/vcd_py38:latest bash
     > ```
 
 8. Modify `prepare.sh` to 
@@ -269,19 +269,24 @@ In order to use `VCD`, I need to install `pytorch` and other related module. Her
 
 If I encounter compatibility issue, I can go to the [wheel website](https://pytorch-geometric.com/whl) of pyg to install the library directly.
 
-### Package version
-Some key pakages and their version in my python virtual environment
+### Required Packages
+Some key pakages: 
 ```yml
-numpy==1.24.4
-open3d==0.18.0
-opencv-python==4.9.0.80
-scipy==1.10.1
-gym==0.26.2
-pybind11==2.11.1
-pyaml==23.12.0
-matplotlib==3.7.4
+intel-numpy
+open3d
+opencv-python
+intel-scipy
+gym
+pybind11
+pyaml
+matplotlib
+imageio
+moviepy
+wandb
+h5py
+wandb
 ```
-The full list can be found in the `vcd_py38_requirement.txt` file under the `VCD` project's root directory.
+The full list of required packages can be found in the `vcd_py38_requirement.txt` file under the `VCD` project's root directory.
 
 
 ## Notes

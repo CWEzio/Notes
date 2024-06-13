@@ -1,9 +1,11 @@
+# Terminal 
+
 ## `grep`
 
-## Captalization Insensitive
-Use `-i` to make grep insensitive to capitalization
+### Case (whether capital or not) Insensitive
+Use `-i` to make grep case insensitive.
 ### Use `grep` to search for the header file to include
-Suppose that I find `AddContactMaterial` function from the documentation, I can determin which header file to include by using the powerful grep:
+Suppose that I find `AddContactMaterial` function from the documentation, I can determine which header file to include by using the powerful grep:
 ```
 grep -nr --include \*.h -A2 "AddContactMaterial" ~/drake 
 ```
@@ -54,34 +56,21 @@ find . -size +500k -size -10M -name '*.tar.gz'
 ```
 
 ## `apt`
-1. Use `apt search *keyword*` to search for available package. This is very useful if you are not sure about the full name of the package.
+1. Use `apt search *keyword*` to search for available packages. This is very useful if you are not sure about the full name of the package.
 
 ## `mv`
 `mv` does not show progress. Consider use `rsync`
 
-## zsh-vi-mode
-### missing letters after copy-paste
-In Vim and vi-mode, if you paste text while in normal mode, it can interpret the pasted text as a series of commands, which can lead to unexpected behaviors, like missing letters. 
-
-Before pasting, make sure you're in insert mode. Press `i` to enter insert mode, and then paste the text. This way, the pasted content is treated as plain text and not as a series of vi commands.
-
-
-## clashy
-
-### Edit Profile
-- Note that the profiles are case-sensitive. One example is that you shuold use `DIRECT` consistently. Inconsistent usage like `direct` will cause error.
-
-
 ## input and output stream
 
 1. `< file` and `> file`: rewire the input and output streams of a program to a file respectively
-2. `>>` append to a file
+2. `>>` appends to a file
 
 ## terminal shortcuts
-1. use `fc` to edit last command in vim
+1. use `fc` to edit the last command in vim.
 2. use `ctrl + w` to delete a word (backward)
 
-## Enable and disable `wifi` through command line
+## Enable and disable `wifi` through the command line
 ```
 sudo nmcli radio wifi off
 sudo nmcli radio wifi on
@@ -90,10 +79,96 @@ Alternative choice is to use
 ```
 sudo nmtui
 ```
-which offers a gui in the terminal. More intuitive.
+which offers a GUI in the terminal. More intuitive.
 
 Other related things:
 - Show wifi list
     ```
     nmcli d wifi list
     ```
+
+
+# zsh-vi-mode
+## missing letters after copy-paste
+In Vim and vi-mode, if you paste text while in normal mode, it can interpret the pasted text as a series of commands, which can lead to unexpected behaviors, like missing letters. 
+
+Before pasting, make sure you're in insert mode. Press `i` to enter insert mode, and then paste the text. This way, the pasted content is treated as plain text and not as a series of vi commands.
+
+
+# clashy
+
+## Edit Profile
+- Note that the profiles are case-sensitive. One example is that you should use `DIRECT` consistently. Inconsistent usage like `direct` will cause errors.
+
+# Problems
+## Cannot open terminal with ctrl+alt+t
+At first, I think the problem is that the locale configuration is wrong. However, after reconfiguring the locale with every method I have found on the internet, this problem persists.
+
+I note https://askubuntu.com/questions/1040566/cant-open-terminal-in-ubuntu-18-04-after-upgrade-from-17-10.
+
+It turns out that the issue is because I have set the default python3 to python3.7. 
+
+The solution is
+```console
+code /usr/bin/gnome-terminal
+```
+ The first line is 
+ ```
+#! /usr/bin/python3
+ ```
+ Change it to 
+ ```
+ #! /usr/bin/python3.6 
+ ```
+Works like magic!
+
+
+## NewsFlash Cannot show browse content
+Run newsflash with 
+```
+flatpak run io.gitlab.news_flash.NewsFlash
+```
+The opened flatpak does not show the browse content. And there are error:
+```
+KMS: DRM_IOCTL_MODE_CREATE_DUMB failed: Permission denied
+Failed to create GBM buffer of size 714x807: Permission denied
+```
+I find solution from [this github issue](https://github.com/johnfactotum/foliate/issues/1093?ref=news.itsfoss.com). Setting `WEBKIT_DISABLE_COMPOSITING_MODE=1` or `WEBKIT_DISABLE_DMABUF_RENDERER=1` fixes the problem.
+Just run newsflash with 
+```
+WEBKIT_DISABLE_DMABUF_RENDERER=1 flatpak run io.gitlab.news_flash.NewsFlash
+```
+
+## Missing dependencies for SOCKS support
+Currently, I am using electron-ssr. However, this gives me an exception 
+```
+requests.exceptions.InvalidSchema: Missing dependencies for SOCKS support.      
+
+```
+I solve this by 
+```console
+export all_proxy="http://127.0.0.1:12333"
+```
+Here http://127.0.0.1:12333 is my ssr port address.
+
+## Unable to fetch gpg key
+Encounter
+```
+Executing: /tmp/apt-key-gpghome.PpjCyyBi8S/gpg.1.sh -q --fetch-keys https://bazel.build/bazel-release.pub.gpg
+gpg: WARNING: unable to fetch URI https://bazel.build/bazel-release.pub.gpg: Connection timed out
+```
+when install the `manipulation` course supplement's prerequiste using the provided shell script `install_prereqs.sh`.
+
+Solution:
+This is because of the GFW. The apt-key cannot get the key. Need to first manully download the key from https://bazel.build/bazel-release.pub.gpg. Then run 
+```zsh
+sudo apt-key add key.gpg
+```
+suppose the key file is named `key.gpg`.
+
+Or one can use a single command to do the trick:
+```zsh
+curl -sSL \
+'https://bazel.build/bazel-release.pub.gpg' \
+| sudo apt-key add -
+```

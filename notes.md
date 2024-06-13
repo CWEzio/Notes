@@ -1,3 +1,5 @@
+TODO: Move the content of this note into the corresponding-topic notes.
+
 # Windows
 ## Onedrive cannot sync
 Onedrive does not support proxy because of authentication issue. Please turn off the system proxy.
