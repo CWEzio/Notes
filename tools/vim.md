@@ -73,13 +73,25 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
 - `ds"` to delete double quotes (")
 
 ## Changing case 
-- After visual select the text, 
+- After visual selecting the text, 
     - `U` for upper case
     - `u` for lower case
-    - `~` for invert case
+    - `~` for inverting case
 > Remember that the text should be visual selected first.
 - `gU` + \<motion> will make all characters in \<motion> uppercase, similarly for `~` and `u`. For example:
     - `gUe`
+- Capitalize the first letter of each work in a line
+    - ```
+      :%s/\<./\u&/g
+      ```
+    - `s` stands for substitute
+    - `\<` matching the beginning of a word
+    - `.` matches any character
+    - `\u` converts the matched character to uppercase
+    - `&` represents the matched character
+    - `g` makes the command global (apply to all matches in this line)
+
+
 
 ## Increase or Decrease keyword
 > This section is adopted from [`zsh-vi-mode`](https://github.com/jeffreytse/zsh-vi-mode/blob/master/README.md)'s readme.
