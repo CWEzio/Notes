@@ -1,3 +1,6 @@
+# The sharp bits
+- In fact, Python formally acknowledges that the names defined as for loop targets (a more formally rigorous name for "index variables") leak into the enclosing function scope. Check [this article](https://eli.thegreenplace.net/2015/the-scope-of-index-variables-in-pythons-for-loops/) for more information. 
+
 
 # Conda
 
@@ -29,6 +32,103 @@ Some libraries are not contained in the default conda channels. You may choose t
         http: http://127.0.0.1:7890
         https: http://127.0.0.1:7890
     ```
+
+## Add conda virtual environment to Jupyter notebook
+
+* create a new env
+  ```
+  conda create -n mr_env python=3.7    
+  ```
+* install Ipykernel to this env
+  ```
+  conda install -c anaconda ipykernel
+  ```
+* add this env to Jupyter notebook
+  ```
+  python -m ipykernel install --user --name=firstEnv
+  ```
+* deactivate the env
+  ```
+  conda deactivate
+  ```
+Refer to [this tutorial](https://janakiev.com/blog/jupyter-virtual-envs/) for more information.
+> Note that when using `vscode` for Jupyter notebook, above steps are not needed. Just select the correct python interpreter and then select the Jupyter environment in the opened Jupyter notebook.
+
+# Python virtual environment
+
+## Use Python Virtual Environment
+- Install virtualenv with 
+  ```
+  pip3 install virtualenv
+  ```
+- Create a virtualenv with
+  ```
+  python3 -m venv myenv
+  ```
+  This command will create a virtual environment called `myenv` in current directory.
+- Activate the virtualenv with
+  ```
+  source path_to_myenv/myenv/bin/activate
+  ```
+- Deactivate the virtualenv with
+  ```
+  deactivate
+  ```
+- To delete the virtual environment, just remove the folder containing the virtual environment.
+
+## Add python virtualenv to Jupyter notebook 
+- Make sure the virtualenv is activated
+- Install ipykernel with
+  ```
+  pip install ipykernel
+  ```
+- Add virtualenv to Jupyter notebook as a kernel with
+  ```
+  python -m ipykernel install --name=myenv --user
+  ```
+  where `myenv` is the name of the added kernel.
+
+> Similar as the `conda` case, above steps are not needed when use `VSCode`.
+
+# Jupyter
+
+## Installing Vim-key bindings for Jupyter notebook
+* ```bash
+  pip install jupyter_contrib_nbextensions
+
+  ```
+* ```bash
+  jupyter nbextensions_configurator enable --user
+  ```
+* ```bash
+  # You may need the following to create the directoy
+  mkdir -p $(jupyter --data-dir)/nbextensions
+  # Now clone the repository
+  cd $(jupyter --data-dir)/nbextensions
+  git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding
+  chmod -R go-w vim_binding
+  ```
+* Launch a Jupyter notebook session. Then, in a browser, go to <root>/nbextensions/; for example, if the notebook is hosted under localhost:8888, go to http://localhost:8888/nbextensions/. Activate VIM binding from the list of extensions. Check documentation for more details.
+
+## Remove Virtual Environment from Jupyter notebook
+- After a virtual environment is deleted, you'll want to remove it from Jupyter.
+- First list all available kernels.
+  ```
+  jupyter kernelspec list
+  ```
+- Uninstall the kernel with
+  ```
+  jupyter kernelspec uninstall myenv
+  ```
+
+# Package and path management
+
+## Write Python module
+Refer to np8's answer
+https://stackoverflow.com/questions/714063/importing-modules-from-parent-folder
+> One thing to note is that setup.py need to be above the main folder.
+
+
 
 # VSCode
 

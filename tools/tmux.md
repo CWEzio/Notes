@@ -1,13 +1,11 @@
-# Tmux
-
-## Basic Usage
+# Usages
 Here is two quick reference for tmux: [the missing semester](https://missing.csail.mit.edu/2020/command-line/#Terminal%20Multiplexers) and [this blog](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/).
 
 Commands in tmux are triggered by a `prefix key` followed by a `command key`.
 - prefix `C-k` (my customization, `C-k` is the prefix key in vscode)
   > original `C-b`
 
-### session control
+## session control
 - `tmux` to start a new session
 - `tmux new -s <name>` to start a session with that name
 - `tmux ls` lists the current sessions
@@ -18,7 +16,7 @@ Commands in tmux are triggered by a `prefix key` followed by a `command key`.
   1. `C-k :` to bring up the command prompt
   2. `rename-session new_session_name`
 
-### pane control
+## pane control
 - split windows horizontally `C-k s` (my customization, vim style)
   > original `C-k "`
 - split windows vertically `C-k v` (my customization, vim style)
@@ -30,14 +28,14 @@ Commands in tmux are triggered by a `prefix key` followed by a `command key`.
 - `exit` or `C-d` to close current pane
 - `C-b z` make a pane to full screen, hit it again to shrink it back to its previous size
 
-### window control
+## window control
 - use `C-k c` to create a new window
 - use `C-k p` to switch to previous window
 - use `C-k n` to switch to next window
 - use `C-k <number>` to go to *i*-th window
 - use `C-k ,` to rename the current window
 
-### copy and paste with keyboard
+## copy and paste with keyboard
 > Note that I have configured the tmux to use vim keybinding 
 1. Enter Copy mode with `C-k [`
 2. Navigate with `h`, `j`, `k`, `l`
@@ -47,17 +45,17 @@ Commands in tmux are triggered by a `prefix key` followed by a `command key`.
     > Caution when using zsh-vi-mode. You need to enter insert mode to do the paste or the pasted content will be interpreted as command.
 > Can also exit copy mode with `q`.
 
-### copy and paste with mouse (via tmux)
+## copy and paste with mouse (via tmux)
 1. Click and drag with the left mouse button to select text.
 2. Once the text is selected, release the left mouse button.
 3. You can then paste this text within any tmux pane using `prefix + ]`. 
 
-### tmux copy to system's clipboard and enable vi copy mode
+## tmux copy to system's clipboard and enable vi copy mode
 1. To enable clip to clipboard. You need to install `xclip`
     ```
     sudo apt install xclip
     ```
-2. You need to add the follwing to the config file
+2. You need to add the following to the config file
     ```shell
     setw -g mode-keys vi
 
@@ -79,7 +77,7 @@ Commands in tmux are triggered by a `prefix key` followed by a `command key`.
 > - **pipe**: pipes the copied text to an external command specified by the user
 > - **cancle**: exit the copy mode
 
-### copy and paste with mouse (via terminal)
+## copy and paste with mouse (via terminal)
 1. copy with mouse: `shift + left-click`
 2. paste with mouse: `shift + middle-click`
 > It should be noted that copy and paste with mouse is the behavior by terminal, not tmux. Therefore, the selected text may span multiple panes.
@@ -104,6 +102,9 @@ tmux source-file ~/.tmux.conf
 ```
 Or you can do it within `tmux` by `C-k :` to bring up the command prompt, and then entering `source-file ~/.tmux.conf`.
 
+- Useful materials on configuring `tmux`
+  - [Ham Vocke's blog article](https://hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/)
+
 ### setting basic options
 You can set basic options like
 ```
@@ -125,10 +126,11 @@ bind C-k send-prefix
     ```
     - `-n` stands to *no prefix*
     - `M` stands for the `Meta` key, which is the `Alt` key
-    > This setting binds `Alt+h` with select the left pane. `bind` is the same as `bind-key`
+    - This setting binds `Alt+h` with select the left pane. `bind` is the same as `bind-key`
 2. ```
     bind -r H resize-pane -L 2
     ```
+    - This setting binds `<Prefix> + H` to resize the pane leftward.
     - `-r` stands for *repeatable*. When a key is bound with -r, after pressing the prefix and the key once, you can keep pressing the key without the prefix, and the bound command will repeat. 
 
 ## Bugs and issues

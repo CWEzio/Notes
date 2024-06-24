@@ -32,14 +32,14 @@ You can also modify the keybindings in the `keybindings.json` file. You can open
 
 ## Show hover information
 Sometimes you want to show hover information, to remind you the function definition etc., as:
-<img src="./asset/vscode/hover_information.png">
+<img src="../asset/vscode/hover_information.png">
 In vim mode, simple put the cursor on top of the function does not show the hover information, you need to:
 1. `ctrl + shift + p` to open control palette
 2. search for `show or focus hover`
 > note that the hot key for `show or focus hover` is `ctrl + K ctrl + I`. However, I am using `vscode-vim` and `ctrl + K` does not work.
 
 ## Trigger parameter hint
-<img src="./asset/vscode/parameter_hint.png">
+<img src="../asset/vscode/parameter_hint.png">
 
 - `ctrl + shift + space`
 
@@ -93,34 +93,16 @@ Check [this answer for details](https://stackoverflow.com/questions/53653083/how
 ```
 `args` specifies arguments to pass to the Python program. Each element of the argument string that's separated by a space should be contained within quotes.
 
-## Compare different files with vscode
-You can compare/diff two files with vscode. 
-1. Open the first file and focus on its window.
-2. Open command palette, use command `File: Compare Active File With`
-3. Select the second file to compare.
-- You can change between inline view and side-to-side view by use command `Compare: Toggle Inline View`.
-- The inline view shows the changes made in the second file from the first view.
-- Note that in the side-to-side view, two sides are in the same window. Therefore, switch between two sides can not be done with keyboard shortcuts like `C-w h`. Instead, you can use the following commands:
-    1. `workbench.action.compareEditor.focusPrimarySide`
-    2. `workbench.action.compareEditor.focusSecondarySide`
-    3. `workbench.action.compareEditor.focusOtherSide`
-
-    I bind `ctrl+alt+n` with `workbench.action.compareEditor.focusOtherSide` to switch between different sides.
-    
-You can also compare two files with mouse:
-1. Right-click the first file to be compared in the file explorer and select `Select for Compare`
-2. Right-click the second file to be compared in the file explorer and select `Compare with Selected`
 
 # Markdown
 - [Official documentation](https://code.visualstudio.com/docs/languages/markdown) of supported markdown features.
 
 ## Markdown math
-`vscode` use `KaTeX` to render math. Here is a list of [supported functions](https://katex.org/docs/supported.html).
-- [KaTex support table](https://katex.org/docs/support_table)
-- [Katex support function](https://katex.org/docs/supported)
-### Katex
-Math
-- Different style
+- `vscode` use `KaTeX` to render math. 
+- References
+    - [KaTex support table](https://katex.org/docs/support_table)
+    - [Katex support function](https://katex.org/docs/supported)
+- Different summation symbol rendering style
     - $\sum_{i=1}^n$
     - $\sum\limits_{i=1}^n$
     - $\displaystyle\sum_{i=1}^n$
@@ -130,11 +112,31 @@ Math
 ## Keybindings
 - Start inline chat `Ctrl + K N` (customized)
 - Accept suggestion `Tab`
-- See alternative suggestions `Alt + ]` for next suggestion, `Alt + [` for previous suggestion.
-- `Ctrl + →` accept next word.
+- See alternative suggestions `Alt + ]` for the next suggestion, `Alt + [` for  the previous suggestion.
+- `Ctrl + →` accept the next word.
 - `Ctrl + Enter` to see multiple suggestions in a new tab.
 
-# SSH
-## Drag and drop file
+# Remote  
+## Drag and drop files
 You can drag a file from your local machine to the explorer to copy the file to the remote machine. You can also do the reverse things. For more information, refer to [this release note](https://github.com/microsoft/vscode-docs/blob/main/remote-release-notes/v1_36.md).
 > Make sure you have permission to these files.
+
+
+# Other things
+## Compare different files with VSCode
+You can compare/diff two files with vscode. 
+1. Open the first file and focus on its window.
+Open the command palette, and use the command `File:` Compare Active File With`
+3. Select the second file to compare.
+- You can change between inline view and side-to-side view by using the command `Compare: Toggle Inline View`.
+- The inline view shows the changes made in the second file from the first view.
+- Note that in the side-to-side view, two sides are in the same window. Therefore, switching between two sides can not be done with keyboard shortcuts like `C-w h`. Instead, you can use the following commands:
+    1. `workbench.action.compareEditor.focusPrimarySide`
+    2. `workbench.action.compareEditor.focusSecondarySide`
+    3. `workbench.action.compareEditor.focusOtherSide`
+
+    I bind `ctrl+alt+n` with `workbench.action.compareEditor.focusOtherSide` to switch between different sides.
+    
+You can also compare two files with the mouse:
+1. Right-click the first file to be compared in the file explorer and select `Select for Compare`
+2. Right-click the second file to be compared in the file explorer and select `Compare with Selected`

@@ -1,5 +1,4 @@
-# Terminal 
-
+# Commandline Tools
 ## `grep`
 
 ### Case (whether capital or not) Insensitive
@@ -59,17 +58,29 @@ find . -size +500k -size -10M -name '*.tar.gz'
 1. Use `apt search *keyword*` to search for available packages. This is very useful if you are not sure about the full name of the package.
 
 ## `mv`
-`mv` does not show progress. Consider use `rsync`
+- `mv` does not show progress. Consider use `rsync`
+
+## `rsync`
+TODO: Add notes
+
+## `ffmpeg`
+### cut a video
+Use command 
+```
+ffmpeg -ss 00:01:00 -to 00:02:00  -i input.mp4 -c copy output.mp4
+```
+Check George Chalhoub's [answer](https://stackoverflow.com/a/42827058/12825127) for detail.
+
+
+
+# Shell script syntax
 
 ## input and output stream
 
 1. `< file` and `> file`: rewire the input and output streams of a program to a file respectively
 2. `>>` appends to a file
 
-## terminal shortcuts
-1. use `fc` to edit the last command in vim.
-2. use `ctrl + w` to delete a word (backward)
-
+# Special usages
 ## Enable and disable `wifi` through the command line
 ```
 sudo nmcli radio wifi off
@@ -88,16 +99,9 @@ Other related things:
     ```
 
 
-# zsh-vi-mode
-## missing letters after copy-paste
-In Vim and vi-mode, if you paste text while in normal mode, it can interpret the pasted text as a series of commands, which can lead to unexpected behaviors, like missing letters. 
-
-Before pasting, make sure you're in insert mode. Press `i` to enter insert mode, and then paste the text. This way, the pasted content is treated as plain text and not as a series of vi commands.
-
-
-# clashy
-
-## Edit Profile
+# Apps
+## clashy
+### Edit Profile
 - Note that the profiles are case-sensitive. One example is that you should use `DIRECT` consistently. Inconsistent usage like `direct` will cause errors.
 
 # Problems
@@ -172,3 +176,10 @@ curl -sSL \
 'https://bazel.build/bazel-release.pub.gpg' \
 | sudo apt-key add -
 ```
+
+## `zsh-vi-mode`: Missing letters after copy-paste in normal mode 
+Pasting in normal mode can cause missing letters, like miss the *g* letter. The reason behind this is complex, and I am not very clear. However, I suspect the reason is that the `zsh-vi-mode` does not handle the [bracketed-paste](https://en.wikipedia.org/wiki/Bracketed-paste) well.
+
+Before pasting, make sure you're in insert mode. Press `i` to enter insert mode, and then paste the text. The paste works well in the insert mode.
+
+
