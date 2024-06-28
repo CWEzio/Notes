@@ -31,6 +31,7 @@
 - `git branch <name>` create a banch with name `<name>`.
 - `git branch -m <newname>` rename the current branch.
 - `git branch -M <newname>` rename the current branch but in a more forceful way. The brancch will be renamed, even if a branch with name `<newname>` already exists.
+- `git fetch origin <branch-name>` fetch the branch `<branch-name>` from the origin.
 ## Merge branches
 Suppose you are merging `feature` branch into the `main` branch
 1. Check out to the branch you want to merge into

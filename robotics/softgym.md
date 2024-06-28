@@ -234,11 +234,22 @@ Recently, I want to use pyflex together with pydrake. However, pydrake has a poo
     ```
     You should be able to compile pyflex successfully.
 10. Add the following to `vcd_env`'s `activate` to set paths:
-    ```
+    ```sh
+    # set path for pyflex and vcd
     export PYTHONPATH="/home/chenwang/VCD:${PYTHONPATH}"
     export PYTHONPATH="/home/chenwang/VCD/softgym:${PYTHONPATH}" export PYFLEXROOT="/home/chenwang/VCD/softgym/PyFlex"  
     export PYTHONPATH="${PYFLEXROOT}/bindings/build:${PYTHONPATH}"
     export LD_LIBRARY_PATH="${PYFLEXROOT}/external/SDL2-2.0.4/lib/x64:$LD_LIBRARY_PATH"
+
+    # setup cuda-toolkit path
+    CUDAVER=cuda-12.1
+    export PATH=/usr/local/$CUDAVER/bin:$PATH
+    export LD_LIBRARY_PATH=/usr/local/$CUDAVER/lib:$LD_LIBRARY_PATH
+    export LD_LIBRARY_PATH=/usr/local/$CUDAVER/lib64:$LD_LIBRARY_PATH
+    export CUDA_PATH=/usr/local/$CUDAVER
+    export CUDA_ROOT=/usr/local/$CUDAVER
+    export CUDA_HOME=/usr/local/$CUDAVER
+    export CUDA_HOST_COMPILER=/usr/bin/gcc-10
     ```
 > The python interpreters that the virtual enviornment linked to in host system and docker container should be identical. I have encountered library import error if their version does not match.
 

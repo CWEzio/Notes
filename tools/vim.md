@@ -146,19 +146,24 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
     - ...
 
  
-## window control
+## window and tab control
+**Window**
 - `Ctrl + w` and then press `v` (vertical split) or `s` (horizontal split) to open a new window
 - `Ctrl + w` and then use `hjkl` to move to different window
 - `Ctrl + w` and then press `o` to close other windows, keep the active window only
 - `Ctrl + w` and then press `c` to close current window but keeps the buffer
 - For a `split` window: use `Ctrl + w ` and then `+` or `-` to resize the height; For a `vsplit` window: use `Ctrl + w` and then `>` or `<` to resize the width.
-- `:q` close a single tab not a whole window like `Ctrl + w`, `c`. (ideaVim)
 - `Ctrl + w`, `=`: Makes all splits equal size
+
+**Tab**
+- `:q` close a single tab not a whole window like `Ctrl + w`, `c`. 
+    > Note that `Ctrl + w, c` also only close the current tab in `VSCode`.
 - `:tabn` to go for next tab in a group; `:tabp` to go for previous tab in a group 
 - `gt` to go for next tab
 - `1gt` to go for tab 1; `2gt` to go for tab 2; `3gt` to go for tab 3; etc.
 - `gT` to go for previous tab 
 - `1gT` to go for 1 previous tab; `2gT` to go for 2 previous tab; etc.
+- `:tabm -1` moves the current tab 1 position to the left. Adjust the number accordingly for different usage cases.
 
 > In `vs code`
 > - `Ctrl + Tab` to change between tabs in a group.
