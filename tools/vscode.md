@@ -140,3 +140,8 @@ Open the command palette, and use the command `File:` Compare Active File With`
 You can also compare two files with the mouse:
 1. Right-click the first file to be compared in the file explorer and select `Select for Compare`
 2. Right-click the second file to be compared in the file explorer and select `Compare with Selected`
+
+## Send `ctrl + K` directly to the integrated terminal
+This behavior is controlled by "terminal.integrated.allowChords" you can set it to false to send `ctrl + K` directly to the integrated terminal. If it is set to true, then `ctrl + K` would be intercepted by VSCode.
+
+
