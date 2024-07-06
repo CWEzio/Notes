@@ -1,5 +1,24 @@
 # The sharp bits
-- In fact, Python formally acknowledges that the names defined as for loop targets (a more formally rigorous name for "index variables") leak into the enclosing function scope. Check [this article](https://eli.thegreenplace.net/2015/the-scope-of-index-variables-in-pythons-for-loops/) for more information. 
+## Leaking variables in loop
+In fact, Python formally acknowledges that the names defined as for loop targets (a more formally rigorous name for "index variables") leak into the enclosing function scope. Check [this article](https://eli.thegreenplace.net/2015/the-scope-of-index-variables-in-pythons-for-loops/) for more information. 
+
+## Parsing boolean value with `argparse`
+Suppose that I have an argument called `--my_bollean_flag` defined with 
+```python
+parser.add_argument("--my_boolean_flag", type=bool)
+```
+Then, I ran this file with
+```
+python main.py --my_boolean_flag=False
+```
+However, the parsed `arg.my_boolean_flag` would be True.
+This is because
+```python
+arg.my_boolean_flag = bool('False')
+```
+and non-empty string would be converted to `True`.
+
+
 
 
 # Conda
