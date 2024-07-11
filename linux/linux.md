@@ -182,4 +182,17 @@ Pasting in normal mode can cause missing letters, like miss the *g* letter. The 
 
 Before pasting, make sure you're in insert mode. Press `i` to enter insert mode, and then paste the text. The paste works well in the insert mode.
 
+## Bluetooth headphone no voice 
+In `Ubuntu 20.04` (also earlier version), I often encounter this issue. The headphone will have no voice after a while of unattendence, or reconnection. To deal with this problem, I can restart the computer, but this method is not convenient.
+
+Though not tidy, but the following command works:
+```
+sudo /etc/init.d/bluetooth restart
+```
+
+Some also suggest to use the following command 
+```
+pulseaudio -k
+```
+In my experience, this command works, but it makes the sound not clear.
 
