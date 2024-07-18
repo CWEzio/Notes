@@ -109,6 +109,19 @@ Refer to [this tutorial](https://janakiev.com/blog/jupyter-virtual-envs/) for mo
 
 > Similar as the `conda` case, above steps are not needed when use `VSCode`.
 
+## Clone python virtual environment
+- Recently, I have the need to clone an existing python virtual environment. This can be easily done with `virtualenv-clone`
+1. Install `virtualenv-clone` with:
+    ```zsh
+    pip install virtualenv-clone
+    ```
+> Note that the `virtualenv-clone` script is installed in the `~/.local/bin` directory. Need to add this directory to `PATH`.
+
+2. Do the clone
+   ```zsh
+   virtualenv-clone source/venv target/venv
+   ```
+
 # Jupyter
 
 ## Installing Vim-key bindings for Jupyter notebook
