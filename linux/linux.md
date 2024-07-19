@@ -71,17 +71,29 @@ ffmpeg -ss 00:01:00 -to 00:02:00  -i input.mp4 -c copy output.mp4
 ```
 Check George Chalhoub's [answer](https://stackoverflow.com/a/42827058/12825127) for detail.
 
+## `sed`
+`sed` is a powerful tool for text manipulation.
+
+- Substitute the first occurence of `old_text` with `new_text` in each line.
+    ```
+    sed 's/old_text/new_text/' <filename>
+    ```
+    - `s/old_text/new_text/g` for global sustitution.
+    - `-i` flag for modification in place. Or the original file won't be modified. Instead, the result of substitution will be directed to the standard output.
+
+- Delete lines matching a pattern
+    ```
+    sed '/pattern/d' filename
+    ```
+
+# Apps
+## clashy
+### Edit Profile
+- Note that the profiles are case-sensitive. One example is that you should use `DIRECT` consistently. Inconsistent usage like `direct` will cause errors.
 
 
-# Shell script syntax
-
-## input and output stream
-
-1. `< file` and `> file`: rewire the input and output streams of a program to a file respectively
-2. `>>` appends to a file
-
-# Special usages
-## Enable and disable `wifi` through the command line
+# Problems
+## How to enable and disable `wifi` through the command line
 ```
 sudo nmcli radio wifi off
 sudo nmcli radio wifi on
@@ -98,13 +110,7 @@ Other related things:
     nmcli d wifi list
     ```
 
-
-# Apps
-## clashy
-### Edit Profile
-- Note that the profiles are case-sensitive. One example is that you should use `DIRECT` consistently. Inconsistent usage like `direct` will cause errors.
-
-# Problems
+# Bugs 
 ## Cannot open terminal with ctrl+alt+t
 At first, I think the problem is that the locale configuration is wrong. However, after reconfiguring the locale with every method I have found on the internet, this problem persists.
 
