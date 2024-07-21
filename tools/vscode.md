@@ -121,6 +121,17 @@ Check [this answer for details](https://stackoverflow.com/questions/53653083/how
 You can drag a file from your local machine to the explorer to copy the file to the remote machine. You can also do the reverse things. For more information, refer to [this release note](https://github.com/microsoft/vscode-docs/blob/main/remote-release-notes/v1_36.md).
 > Make sure you have permission to these files.
 
+# Extensions
+## `clangd`
+### `clangd` formatting cause the change the include order  
+Recently, I am working with `Pyflex`. I find that the automatic formatting will change the include order, which will introduce bugs. To close this feature, I can create the `.clang-format` and include the following lines in it:
+```yaml
+BasedOnStyle: Google
+IndentWidth: 4
+SortIncludes: false  # Disables sorting includes
+IncludeBlocks: Preserve  # Prevents reordering of include blocks
+```
+
 
 # Other things
 ## Compare different files with VSCode

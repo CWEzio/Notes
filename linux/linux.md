@@ -202,3 +202,25 @@ pulseaudio -k
 ```
 In my experience, this command works, but it makes the sound not clear.
 
+## F1 to F12 does not work
+I have bought a new wireless keyboard and I find that the `F1` to `F12` keys do not work normally in Ubuntu. It turns out that the problem is that this keyboard use the `hid_apple` driver, and in the default mode the `Fn` key is always on. 
+
+To change this behavior, 
+
+1. Append the configuration line
+    ```
+    echo options hid_apple fnmode=2 | sudo tee -a /etc/modprobe.d/hid_apple.conf
+    ```
+
+2. 
+    ```
+    sudo update-initramfs -u -k all
+    ```
+
+3. Optionally, reboot.
+
+Regarding the option:
+- `0`: Fn key disabled
+- `1`: Fn key pressed by default
+- `2`: Fn key released by default
+
