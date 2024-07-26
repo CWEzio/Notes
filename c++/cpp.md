@@ -171,4 +171,11 @@ will solve this problem. Use $DRAKE_GDB_ROOT is not necessary.
 ## `std::optional`
 Read this excellent [article](https://devblogs.microsoft.com/cppblog/stdoptional-how-when-and-why/).
 
+# Other tools
+## `objdump`
+`objdump` can be used to list symbols from the compiled binary file. One usage example is to check the debug symbols:
+```
+objdump --syms /path/to/file | grep debug
+```
+
 

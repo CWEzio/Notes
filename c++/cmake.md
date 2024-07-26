@@ -1,3 +1,7 @@
+# Flags
+- `-DCMAKE_BUILD_TYPE=Debug` sets the build to debug mode.
+
+
 # Usage
 ## cmake double quoted variables or no quote
 Check [this answer](https://stackoverflow.com/questions/35847655/when-should-i-quote-cmake-variables) for more details. In short:
@@ -59,3 +63,6 @@ I have already install ros. It turns out the problem is caused by not sourcing s
 ```console
 source /opt/ros/melodic/setup.zsh 
 ```
+
+## The compiled code does not have debug symbols
+It seems that just setting the `CMAKE_CXX_FLAGS` to have ` -g -Og` flags is not enough. The build type can overide those settings. I need to use `-DCMAKE_BUILD_TYPE=Debug`. 

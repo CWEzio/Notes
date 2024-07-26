@@ -86,6 +86,7 @@ Check George Chalhoub's [answer](https://stackoverflow.com/a/42827058/12825127) 
     sed '/pattern/d' filename
     ```
 
+
 # Apps
 ## clashy
 ### Edit Profile
