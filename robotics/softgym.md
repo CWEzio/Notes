@@ -393,3 +393,26 @@ Flex contains many useful demos, showcasing what flex can do and how to use flex
     $$(x^c, y^c, z^c, x^p, y^p, z^p, q^c_x, q^c_y, q^c_z,q^c_w, q^p_x, q^p_y, q^p_z,q^p_w),$$
     where $x^c$ represents the current $x$, $x^p$ represents previous $x$. The length of each shape's state is 14.
 
+# Other things
+## How `softgym` renders the environment
+- `pyflex.step` method steps the simulation. It has several arguments: `ukpdate_params`, `capture`, `path`, and `render`. The default value of `render` is `0`. Therefore, `pytorch.step()` only will not render the scene. 
+- `pyflex.render` method renders the scene. It does not step the simulation (`NvFlexUpdateSolver` method is commented).
+
+Just for my curiosity, I dig into how the `softgym`'s environment is rendered. 
+
+> TLDR: `pyflex.step()` does not render the scene. If the scene image is rendered, it means that `pyflex.render()` is called (Or `pyflex.step(render=True)` is called, however I haven't seen this case in all `softgym` code).
+
+I study the `random_env.py` code for an example. The default run use `ClothFold` environment. I find that the image is rendered after each action step:
+```python
+_, _, _, info = env.step(action, record_continuous_video=False, img_size=args.img_size)
+```
+It turns out that the reason is that the returned observation is a camera image. Therefore, `pyflex.render()` is called inside each `env.step` once (inside the `_get_obs` method). This caused the rendered image to be updated once every `env.step`.
+
+After change the observation type, the image is not rendered after each `env.step`. However, a strange thing happens that the image gets rendered in the beginning. Then I find that the reason is because of this line,
+```python
+frames = [env.get_image(args.img_size, args.img_size)]
+```
+which renders one image before the `env.step` loop.
+After commenting this line out, no image will get rendered at all. The window stays black during the whole process.
+
+

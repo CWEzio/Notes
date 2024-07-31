@@ -1,9 +1,22 @@
 # Commandline Tools
 ## `grep`
+### Search file content:
+Sample:
+```
+grep -nr --include="\*.h" -A2 "AddContactMaterial" ~/drake 
+```
+- flags:
+    - `-n`: Show relative line number in the file.
+    - `-r`: Recursively search subdirectories listed.
+    - `--include="\*.h"`: all `.h` files (escape with \ to avoid terminal autocompletion).
+    - `--exclude`: exclude files
+    - `--exclude-dir=build,node_modules`: exclude the `build` and `node_modules` directories. Use `,` to seperate two directories.
+    - `-A`: ahead, also show lines after the search pattern (the search pattern is ahead by *N*).
+    - `-B`: below, also show lines before the search pattern (the search pattern is below by *N*).
+    - `-C`: context, include both lines after and below the search pattern by *N*.
+    - Use `-i` to make `grep` case insensitive.
 
-### Case (whether capital or not) Insensitive
-Use `-i` to make grep case insensitive.
-### Use `grep` to search for the header file to include
+**Usage case**: Use `grep` to search for the header file to include
 Suppose that I find `AddContactMaterial` function from the documentation, I can determine which header file to include by using the powerful grep:
 ```
 grep -nr --include \*.h -A2 "AddContactMaterial" ~/drake 
@@ -31,14 +44,6 @@ The output would be like:
 /home/chenwang/drake/multibody/plant/multibody_plant.h-1454-  ///   @ref tag_drake_hunt_crossley_dissipation.
 ```
 Then I know that `AddContactMaterial` is defined in `proximity_properties.h`.
-> Explanation to command <br>
-> `grep -nr --include \*.h -A2 "AddContactMaterial" ~/drake ` <br>
-> `-n`: Show relative line number in the file <br>
-> `-r`: Recursively search subdirectories listed <br>
-> `--include`: all `.h` files (escape with \ to avoid terminal autocompletion) <br>
-> `-A`: ahead, also show lines after the search pattern (the search pattern is ahead by *N*) <br>
-> `-B`: below, also show lines before the search pattern (the search pattern is below by *N*) <br>
-> `-C`: context, include both lines after and below the search pattern by *N* <br>
 
 ## `find`
 Check (`the missing semester`)[https://missing.csail.mit.edu/2020/shell-tools/]
