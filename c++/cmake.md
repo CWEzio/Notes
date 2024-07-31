@@ -1,8 +1,7 @@
 # Flags
 - `-DCMAKE_BUILD_TYPE=Debug` sets the build to debug mode.
 
-
-# Usage
+# Grammar
 ## cmake double quoted variables or no quote
 Check [this answer](https://stackoverflow.com/questions/35847655/when-should-i-quote-cmake-variables) for more details. In short:
 - CMake is a script language and arguments are evaluated after the variables are expanded
@@ -12,14 +11,6 @@ For example:
 - `set(_my_list A B C)` with `message("${_my_list}")` would give `A;B;C`
 - `set(_my_list "A" "B" "C")` with `message("${_my_list}")` would give `A;B;C`
 - `set(_my_list "A" "B" "C")` with `message(${_my_list})` would give `ABC`
-
-## Choose generator
-- Use `cmake --help` to see a list of avaliable generator
-- Use `cmake -G "Ninja" /path/to/source` to choose `Ninja` as the build system
-- Use `cmake -G "Unix Makefiles" /path/to/source` to choose `make` as the build system
-> Usually `Ninja` is faster, especially in incremental build. So why not choose `Ninja`
-- Use `cmake --build /path/to/source` to automatically choose the correct build system and build the program.
-
 
 ## custom target that copy certain files in src to build
 ```c
@@ -31,6 +22,19 @@ add_custom_target(move_and_log ALL COMMAND ${CMAKE_COMMAND} -E copy
 - This snippet define a target `move_and_log` and its associated command.
 - `ALL`: Indicate taht this target should be added to the default build target so that it will be run every time.
 
+# Build 
+# Basic steps 
+```
+cmake -DCMAKE_BUILD_TYPE=Release -S /path/to/source-dir -B /path/to/build-dir
+cmake --build /path/to/build-dir
+```
+
+## Choose generator
+- Use `cmake --help` to see a list of avaliable generator
+- Use `cmake -G "Ninja" /path/to/source` to choose `Ninja` as the build system
+- Use `cmake -G "Unix Makefiles" /path/to/source` to choose `make` as the build system
+> Usually `Ninja` is faster, especially in incremental build. So why not choose `Ninja`
+- Use `cmake --build /path/to/source` to automatically choose the correct build system and build the program.
 
 ## generate `compile_commands.json`
 `vscode` requires `compile_commands.json` to understand the c++ project and do intellisense. In order to generate the `compile_commands.json` in a `cmake` project, run the following command:
