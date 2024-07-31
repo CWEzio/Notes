@@ -178,4 +178,6 @@ Read this excellent [article](https://devblogs.microsoft.com/cppblog/stdoptional
 objdump --syms /path/to/file | grep debug
 ```
 
+# Catch you
+1. The `~` is not automatically expanded in path as in shell and python.
 
