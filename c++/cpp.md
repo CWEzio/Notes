@@ -33,6 +33,38 @@ map.emplace("c", prog.AddConstraint()); // This will works fine.
 ```
 
 # clang
+## `clang-format`
+`clang-format` can be configured with `.clang-format` file.
+Here is an example `.clang-format`
+```yaml
+BasedOnStyle: Google
+IndentWidth: 4
+SortIncludes: false  # Disables sorting includes
+IncludeBlocks: Preserve  # Prevents reordering of include blocks
+
+# AlignArrayOfStructures:
+#   Align: 'Left'
+#   IndentAfterOpenBracket: true
+
+AlignConsecutiveAssignments:
+  Enabled: true
+  AcrossEmptyLines: true
+  AcrossComments: false
+
+AlignConsecutiveMacros: true
+AlignConsecutiveDeclarations: true
+```
+The last `AlignConseccutive<name>`  can make code looks like
+```cpp
+int a            = 1;
+int somelongname = 2;
+double c         = 3;
+```
+i.e., format code in column (column alignment).
+
+
+
+
 ## configure `clang-tidy`
 `clang-tidy` can be configured with the `.clang-tidy` file.
 > The `.clang-tidy` file will overwrite settings of vscode.
