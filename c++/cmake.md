@@ -23,10 +23,17 @@ add_custom_target(move_and_log ALL COMMAND ${CMAKE_COMMAND} -E copy
 - `ALL`: Indicate taht this target should be added to the default build target so that it will be run every time.
 
 # Build 
-# Basic steps 
+## Basic steps 
 ```
 cmake -DCMAKE_BUILD_TYPE=Release -S /path/to/source-dir -B /path/to/build-dir
 cmake --build /path/to/build-dir
+```
+- `-S`: specifies the directory of the source file.
+- `-B`: specifies the directory of the build system file.
+
+## Clean
+```
+cmake --build . --target clean
 ```
 
 ## Choose generator

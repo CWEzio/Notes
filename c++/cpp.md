@@ -1,5 +1,9 @@
 # Miscellany
 
+## Difference between `#include <header>` and `#include "header"`
+- `#include <filename>`: This syntax is typically used for including system or standard library headers. When you use angle brackets, the preprocessor searches for the file in an implementation-defined list of standard system directories and the `-I` directories.
+- `#include "filename"`: This syntax is generally used for including non-standard or user-defined headers. When you use double quotes, the preprocessor searches for the file first in the same directory as the file containing the `#include` statement. If it doesn’t find the file there, it then searches the directories that you’ve specified with -I compiler flags, and in the standard system directories where system headers reside. 
+
 ## Initialize class member which is a reference
 Check [this answer](https://stackoverflow.com/a/15403837/12825127).
 The reference can only be initialized in the *constructor initializer list* (sec7.1, 265) as:

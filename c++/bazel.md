@@ -140,6 +140,7 @@ Some special cases
 > Note that Bazel 5.0 and later introduced a new external dependency system, codenamed "Bzlmod". However, Drake use Bazel 4.2.
 
 ## Using Bazel with VS code autocomplete 
+TODO: update this note to delete the outdated part
 I work with Bazel C++ project using VS code. One thing that is useful is to go to declaration position. However, the intellisense do not know the source of the included file. I solve this problem using method suggested https://stackoverflow.com/questions/61015990/how-do-i-enable-c-intellisense-for-a-bazel-project-in-vs-code
 
 The `compile_commands.json` can be generated using [bazel-compilation-database](https://github.com/grailbio/bazel-compilation-database). 

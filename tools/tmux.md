@@ -34,6 +34,21 @@ Commands in tmux are triggered by a `prefix key` followed by a `command key`.
 - use `C-k n` to switch to next window
 - use `C-k <number>` to go to *i*-th window
 - use `C-k ,` to rename the current window
+### Swap window
+Run
+```
+tmux swap-window -s 3 -t 5
+```
+in one terminal of the tmux session.  This command will swap the `3` and `5` window.
+
+Alternatively, you can use
+```
+tmux swap-window -t +1
+```
+This swap the current window with the window.
+
+Alternatively, you can use `C-k :` to enter the command.
+
 
 ## copy and paste with keyboard
 > Note that I have configured the tmux to use vim keybinding 
