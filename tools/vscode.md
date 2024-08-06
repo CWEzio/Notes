@@ -51,9 +51,9 @@ In vim mode, simple put the cursor on top of the function does not show the hove
 
 # python
 ## Select notebook kernel
-To select a kernel,  click the `select kernel` button or type `select kernel` in the search palette. 
+To select a kernel, click the `select kernel` button or type `select kernel` in the search palette. 
 
-If you want to select an existing python enviornment, but cannot see it in the list:
+If you want to select an existing python environment, but cannot see it in the list:
 1. `ctrl + shift + p`, type `select python interpreter`
 2. choose that python environment as the interpreter
 3. then you should be able to see that environment in the selection list.
@@ -132,6 +132,12 @@ SortIncludes: false  # Disables sorting includes
 IncludeBlocks: Preserve  # Prevents reordering of include blocks
 ```
 
+## `path-intellisense`:
+`path-intellisense` can autocomplete the file path. In order for it to work for absolute path, include the following in the setting json:
+```json
+"path-intellisense.absolutePathToWorkspace": false
+```
+
 
 # Other things
 ## Compare different files with VSCode
@@ -153,6 +159,6 @@ You can also compare two files with the mouse:
 2. Right-click the second file to be compared in the file explorer and select `Compare with Selected`
 
 ## Send `ctrl + K` directly to the integrated terminal
-This behavior is controlled by "terminal.integrated.allowChords" you can set it to false to send `ctrl + K` directly to the integrated terminal. If it is set to true, then `ctrl + K` would be intercepted by VSCode.
+This behavior is controlled by "terminal.integrated.allowChords". You can set it to false to send `ctrl + K` directly to the integrated terminal. If it is set to true, then `ctrl + K` would be intercepted by VSCode.
 
 
