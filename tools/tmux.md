@@ -106,7 +106,7 @@ Alternatively, you can use `C-k :` to enter the command.
 >So yes, if you're in a `tmux` session with mouse support turned on and you want to use your terminal's default copy/paste behavior, holding `Shift` while selecting text and pasting with the middle button is the correct approach in many terminal emulators.
 
 
-## Config
+# Config
 You can customizing `tmux` by editing the `~/.tmux.conf` file to make tmux more user friendly. More information can be find in [this blog](https://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/). For example customizations, you can find them both in the above blog and [tmux-sensible](https://github.com/tmux-plugins/tmux-sensible).
 
 You can also find my [config file](https://github.com/CWEzio/profile-and-config/tree/main/tmux)
@@ -120,7 +120,7 @@ Or you can do it within `tmux` by `C-k :` to bring up the command prompt, and th
 - Useful materials on configuring `tmux`
   - [Ham Vocke's blog article](https://hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/)
 
-### setting basic options
+## setting basic options
 You can set basic options like
 ```
 set -g default-terminal "tmux-256color"
@@ -128,14 +128,14 @@ set -g mouse on
 set -s escape-time 0
 ```
 
-### Rebind prefix key
+## Rebind prefix key
 ```
 set -g prefix C-k
 unbind C-b
 bind C-k send-prefix
 ```
 
-### customize keybinding
+## customize keybinding
 1. ```
     bind -n M-h select-pane -L
     ```
@@ -148,9 +148,9 @@ bind C-k send-prefix
     - This setting binds `<Prefix> + H` to resize the pane leftward.
     - `-r` stands for *repeatable*. When a key is bound with -r, after pressing the prefix and the key once, you can keep pressing the key without the prefix, and the bound command will repeat. 
 
-## Bugs and issues
+# Bugs and issues
 
-### L-shaped portion of the window filled with dots
+## L-shaped portion of the window filled with dots
 When you connect to a `tmux` session from terminals of different sizes, `tmux` will use the size of the smallest terminal. This ensures content is visible in all connected terminals. If there's a larger terminal, `tmux` won't fill it entirely, leading to dots on the side, which indicate unused space. 
 
 Disconnecting the smaller terminal to solve this problem.
@@ -160,3 +160,19 @@ You can attach to the session while forcing all other sessions to detach by
 tmux attach-session -d -t my-session
 ```
 The `-d` flag tells tmux to detach any other clients that are currently attached to the target session.
+
+# Plugins
+[`TPM`](https://github.com/tmux-plugins/tpm) (Tmux Plugin Manager
+) can be used to manage `tmux` plugins.
+
+Install `TPM` in the following steps:
+1. Clone the repo.
+```
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+2. Get my `.tmux.conf` file, which already setted `TPM`.
+
+Installing plugins:
+1. Add new plugin to `~/.tmux.conf` with `set -g @plugin '...'`.
+2. Press `C-k I` (captial I), to install the plugin
+

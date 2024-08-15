@@ -116,6 +116,16 @@ Other related things:
     nmcli d wifi list
     ```
 
+## Purge Nvidia Driver
+Find [this answer](https://askubuntu.com/a/206289/1004561) quiet useful. In short,
+```
+sudo apt-get remove --purge '^nvidia-.*'
+sudo apt-get install ubuntu-desktop
+sudo rm /etc/X11/xorg.conf
+echo 'nouveau' | sudo tee -a /etc/modules
+```
+Not all above commands are needed, but it does not hurt to run them all.
+
 # Bugs 
 ## Cannot open terminal with ctrl+alt+t
 At first, I think the problem is that the locale configuration is wrong. However, after reconfiguring the locale with every method I have found on the internet, this problem persists.

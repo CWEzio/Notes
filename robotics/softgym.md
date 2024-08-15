@@ -371,7 +371,7 @@ Flex contains many useful demos, showcasing what flex can do and how to use flex
     ```
     > Since the data are specified in relative path in the code, you need to cd to `../../../bin/linux` and run the demo. Or you will encounter strange issue, like the text is not rendered.
 7. The demo looks like:
-    <img src="./asset/softgym/flex_demo.png">
+    <img src="../asset/softgym/flex_demo.png">
     Quiet amazing!
 
 # memo
@@ -385,7 +385,7 @@ Flex contains many useful demos, showcasing what flex can do and how to use flex
 - camera_angle_x represents rotation along world axis y; camera_angle_y represents rotation along world axis x. (not very intuitive really)
 - The world axis is as in the figure
 
-    ![world frame](figure/softgym/W.png)
+    ![world frame](../asset/softgym/W.png)
   - y axis vertical to the ground, pointing upward
 - Different groups are shown in different colors. Therefore, can set particle colors with `pyflex.set_group`
     - `set_group` takes in an array of group indices for each particle.

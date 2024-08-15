@@ -174,7 +174,7 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
 ## Copy to external 
 - `"+y` yank to the clipboard
 - `"+p` paste from the clipboard
-Similarly, you can use `"*y` and `"*p` to copy and paste from teh primary selection.
+Similarly, you can use `"*y` and `"*p` to copy and paste from teh primary selection (middle-click copy).
 > - `"+` corresponds to the "clipboard" which is what gets used when you Ctrl+C/Ctrl+V in most programs.
 > - `"*` corresponds to the "primary" selection, which is what gets used when you select text and middle-click to paste in many Unix-like systems.
 

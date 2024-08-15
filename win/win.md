@@ -18,6 +18,27 @@ autoProxy=true
 
 The above solution is from [this issue](https://github.com/microsoft/WSL/issues/10753).
 
+## Proxy
+
+Add the following to `.zshrc` file
+```zsh
+export hostip=$(cat /etc/resolv.conf | grep "nameserver" | cut -f 2 -d " ")
+
+set_proxy(){
+    export https_proxy=http://$hostip:7078
+    export http_proxy=http://$hostip:7078
+    export telnet_proxy=http://$hostip:7078
+    export ftp_proxy=http://$hostip:7078
+}
+unset_proxy(){
+    unset https_proxy
+    unset http_proxy
+    unset telnet_proxy
+    unset ftp_proxy
+}
+```
+> Remember to turn on `allow LAN` in the clash/monocloud client.
+
 
 # Problems
 ## Onedrive cannot sync
