@@ -161,4 +161,17 @@ You can also compare two files with the mouse:
 ## Send `ctrl + K` directly to the integrated terminal
 This behavior is controlled by "terminal.integrated.allowChords". You can set it to false to send `ctrl + K` directly to the integrated terminal. If it is set to true, then `ctrl + K` would be intercepted by VSCode.
 
-
+# Problems 
+## `ctrl + alt + [key]` of `fzf` does not work in VSCode terminal in windows.
+In windows, I find a strange problem with the VSCode's integrated terminal. The key `ctrl + alt + [key]` just does not work. I suspected the problem is caused by some applications that intercepted those keys. Since I need to use `ctrl + alt + [key]` for `fzf`. I add the following in `keybindings.json` to define shortcuts
+```json
+    {
+        "key": "ctrl+alt+p",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+            "text": "\u001b\u0010"
+        }, 
+        "when": "terminalFocus"
+    },
+```
+With above definition, VSCode will intercept `ctrl + alt + p` and send the defined text to the terminal . `\u001b` is the unicode for `esc` and `\u0010` is the unicode for `ctrl + p`. `\u001b\u0010` is exactly the text that normally would be sent by pressing `ctrl + alt + p`. I find the text to send by using `showkey`. Run it with `showkey -a` command in terminal and it will echo the code entered in `decimal octal hexadecimal`. (`\u001b` is in hexadecimal.) 
