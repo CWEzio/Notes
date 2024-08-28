@@ -65,12 +65,17 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
 - `da'` delete a single-quoted string, including the surroundign single quotes. 
 
 ## Surrounding 
-> Note that this is supported by `vim-surround` plugin, which is also supported by `vscode`'s vim emulator.
+> Note that this is supported by `vim-surround` plugin, which is also supported by `vscode-vim`. Check the [vscode-vim's doc on vim-surround](https://github.com/VSCodeVim/Vim/tree/master?tab=readme-ov-file#vim-surround) for more details.
 - `y s <motion> <desired>` to add desired surrounding around text defined by `<motion>`
-- `S"` to add double quotes (") for visual selections (in visual mode, i.e., something is visually selected)
-- In visual mode, `S(` to enclose the selected with `( * )` with space, `S)` to enclose the selected with `(*)` without space.
+- `y s <text object> <desired>`
 - `cs"'` to change double quotes (") to single quote (')
 - `ds"` to delete double quotes (")
+- `S"` to add double quotes (") for visual selections (in visual mode, i.e., something is visually selected)
+> `(` to enclose the selected like `( * )` with space, `)` to enclose the selected like `(*)` without space.
+
+## Text object
+Text objects include things like `iw`, `aw`, `a"`, which can be used to refer to text being operated. Check [this tutorial](https://blog.carbonfive.com/vim-text-objects-the-definitive-guide/) for more detail.
+
 
 ## Changing case 
 - After visual selecting the text, 
