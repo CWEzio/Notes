@@ -26,7 +26,6 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
     > Currently, one workaround is to enable `foldfix` in user setting. See [this question](https://stackoverflow.com/questions/50888475/code-folds-are-automatically-opened-when-cursor-moves-over-them-in-vs-code-vim/74936010#74936010) for reference.
 
 
-
 ## Screen Positioning 
 - Press `z` then `enter` will move the current line to the top of the screen
 - `50z` will move the 50th line to the top of the screen. 50 can be other numbers
@@ -65,7 +64,7 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
 - `da'` delete a single-quoted string, including the surroundign single quotes. 
 
 ## Surrounding 
-> Note that this is supported by `vim-surround` plugin, which is also supported by `vscode-vim`. Check the [vscode-vim's doc on vim-surround](https://github.com/VSCodeVim/Vim/tree/master?tab=readme-ov-file#vim-surround) for more details.
+> Note that this is supported by `vim-surround` plugin. The `vim-surround` is also emulated by `vscode-vim`. Check the [vscode-vim's doc on vim-surround](https://github.com/VSCodeVim/Vim/tree/master?tab=readme-ov-file#vim-surround) for more details.
 - `y s <motion> <desired>` to add desired surrounding around text defined by `<motion>`
 - `y s <text object> <desired>`
 - `cs"'` to change double quotes (") to single quote (')

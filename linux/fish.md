@@ -4,6 +4,9 @@
 # Basic
 [Official Tutorial](https://fishshell.com/docs/current/tutorial.html)
 
+# Keybinding
+- `alt + ←/→` when command line is empty: move backward and forward in the directory history
+
 # fzf-find
 Key bindings:
 - `ctrl + alt + f` to search for file.
