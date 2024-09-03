@@ -14,6 +14,7 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
     - find/to forward/backward {character} on the current line
     - `,`/`;` for navigating match
 - Search: `/{regex}`, `n/N` for navigating matches
+- `gd` to go to the declaration, `Ctrl + o` to go back to where you came from
 
 ## View
 - Folding/collapsing a function
@@ -75,6 +76,8 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
 ## Text object
 Text objects include things like `iw`, `aw`, `a"`, which can be used to refer to text being operated. Check [this tutorial](https://blog.carbonfive.com/vim-text-objects-the-definitive-guide/) for more detail.
 
+- `a"`: a quoted string. Selects the text from the previous quote until the next quote. Any trailing white space is included, unless there is none, then leading white space is included.
+- `2i"`: as `a"`, but with no extra white space.
 
 ## Changing case 
 - After visual selecting the text, 
@@ -159,6 +162,11 @@ Text objects include things like `iw`, `aw`, `a"`, which can be used to refer to
 - For a `split` window: use `Ctrl + w ` and then `+` or `-` to resize the height; For a `vsplit` window: use `Ctrl + w` and then `>` or `<` to resize the width.
 - `Ctrl + w`, `=`: Makes all splits equal size
 
+> Additionally, in `VSCode`: 
+> - use ``Ctrl + ` `` to focus on the terminal
+> - use `Ctrl + 0` to focus on the file explorer window (or extention, etc., depend on which you open).
+> - use `Ctrl + <1-9>` to focus on different editor windows.
+
 **Tab**
 - `:q` close a single tab not a whole window like `Ctrl + w`, `c`. 
     > Note that `Ctrl + w, c` also only close the current tab in `VSCode`.
@@ -169,7 +177,7 @@ Text objects include things like `iw`, `aw`, `a"`, which can be used to refer to
 - `1gT` to go for 1 previous tab; `2gT` to go for 2 previous tab; etc.
 - `:tabm -1` moves the current tab 1 position to the left. Adjust the number accordingly for different usage cases.
 
-> In `vs code`
+> Additionally, in `VSCode`:
 > - `Ctrl + Tab` to change between tabs in a group.
 > - `Ctrl + (PgUp / PgDn)` to cycle through tabs in a group
 > - `Alt + (1, 2, 3, etc.)` to switch to specific tab
@@ -195,11 +203,10 @@ Similarly, you can use `"*y` and `"*p` to copy and paste from teh primary select
 > ```
 
 
-## IdeaVim
-- `gd` to go to the declaration, `Ctrl + o` to go back to where you came from
+# IdeaVim
 - `alt + arrow key` to move across tab (pycharm)
 
-## VSCode
+# VSCode
 Some VSCode's native commands are useful to use together with vim commands:
 - use ``Ctrl + ` `` to focus on the terminal
 - use `Ctrl + 1` to focus on the editor  
@@ -212,7 +219,7 @@ More about VSCodeVim extension:
 ### Multiple cursor mode
 - `alt + left click` to add a cursor.
 - `gb` to add cursor at next word occurance place. 
-  - Use `I` to enter insert mode at the beginning of the word, or `A` for the end.
+  <!-- - Use `I` to enter insert mode at the beginning of the word, or `A` for the end. -->
   - `s` to modify, `d` to delete
 - `ctrl + c` or `esc` to exit the multicursor mode. 
   >Note that in jupyter notebook, you should use `ctrl + c` as `esc` exits to cell-level selection.
@@ -230,3 +237,6 @@ You may want to change the behavior of `Caps Lock` to `Esc` if you are using `Vi
 3. In `Caps Lock behavior`, select `Make Caps Lock an additional Esc`
 4. In vscode, `ctrl + shift + p`, search and open `user settings`
 5. Search for `keyboard dispatch` and set it as `keyCode`.
+
+# Seeking help
+- Use `:help <command>` in vim to search for help message for `<command>`. For example, `:help a"` tells the usage of `a"`.
