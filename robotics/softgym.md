@@ -321,14 +321,14 @@ I have encountered a strange issue with my python3.8 environment. When I want to
 
 After digging this issue for a while, I find that the problem is with the `numpy` used. The default installed numpy with `pip` use `OpenBLAS` as the backend, while the default installed numpy with `conda`use `MKL` as the backend. `MKL` has much better optimization and more robust threading support. The `OpenBLAS` version of `numpy` causes threading issues, which make my program freezes or crashes. After remove the original `numpy` and installed the `MKL` version numpy in the python virtual environment, the program can generate data perfectly fine (and the speed seems to be quicker).
 
-Use the following command to install `MKL` version `numpy` and `scipy` in python virtual environment:
-```
-pip install intel-numpy
-pip install intel-scipy
-```
+To install `MKL` version `numpy` and `scipy` in python virtual environment:
+1. Go to [intel's channel on conda](https://pypi.anaconda.org/intel/simple)
+2. Download the appropriate version package. For example, I am using python 3.8 in ubuntu. Therefore, I download `numpy-1.24.3-1-cp38-cp38-manylinux2014_x86_64.whl`.
+3. Install this package with `pip install <path-to-package>`.
 
 This story tells me that I should always use the `MKL` as the backend for libs like `numpy`, `scipy`, etc.
 
+> Use `numpy.show_config()` to check which `BLAS` library is used.
 > [This website](https://www.intel.com/content/www/us/en/developer/articles/tool/whats-included-distribution-for-python.html#packageEnvironmentManagers) contains a full list of intel version python libs.
 
 

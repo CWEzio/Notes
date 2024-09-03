@@ -1,4 +1,4 @@
-# Usages
+# Basics 
 Here is two quick reference for tmux: [the missing semester](https://missing.csail.mit.edu/2020/command-line/#Terminal%20Multiplexers) and [this blog](https://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/).
 
 Commands in tmux are triggered by a `prefix key` followed by a `command key`.
@@ -175,4 +175,34 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 Installing plugins:
 1. Add new plugin to `~/.tmux.conf` with `set -g @plugin '...'`.
 2. Press `C-k I` (captial I), to install the plugin
+
+# Usages
+## Script to automatically launch Tmux
+You can write a script to automatically launch tmux, split it into several panes, and launch program inside each pane.
+An example is
+```sh
+#!/bin/bash
+
+# Start a new tmux session and detach from it
+tmux new-session -d -s mySession
+
+# Split the window into two panes horizontally
+tmux split-window -h
+
+# Split the right pane vertically
+tmux select-pane -t 1
+tmux split-window -v
+
+# Run commands in each pane
+tmux send-keys -t 0 'htop' C-m    # Run htop in the first pane
+tmux send-keys -t 1 'vim' C-m     # Run vim in the second pane
+tmux send-keys -t 2 'tail -f /var/log/syslog' C-m  # Tail syslog in the third pane
+
+# Attach to the session
+tmux attach-session -t mySession
+```
+Explanation to above script:
+- `tmux new-session -d -s mySession`: Starts a new Tmux session named mySession in detached mode.
+- `tmux send-keys -t 0 'command' C-m`: Sends the specified 'command' to the target pane -t 0 and simulates pressing Enter (C-m).
+
 
