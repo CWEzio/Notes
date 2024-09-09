@@ -14,6 +14,12 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
     - find/to forward/backward {character} on the current line
     - `,`/`;` for navigating match
 - Search: `/{regex}`, `n/N` for navigating matches
+
+## Screen Positioning 
+- Press `z` then `enter` will move the current line to the top of the screen
+- `50z` will move the 50th line to the top of the screen. 50 can be other numbers
+- `z.` will move the current line to the middle of the screen
+- `z-` will move the current line to the bottom of the screen
 ## Edit
 - `i` enter insert mode
 - `o`/`O` (small o and captital O) insert line below/above
@@ -32,7 +38,7 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
 - `p` to paste
 - Lots more to learn: e.g. `~` flips the case of a character 
 - `>` to indent (after selection), `<` to shift left
-- ':8,10 s/**search**/**replace**/g' do search and replece from line 8 to line 10, where **search** is the string to be replaced and **replace** is the string to replace
+- `:8,10 s/**search**/**replace**/g` do search and replece from line 8 to line 10, where **search** is the string to be replaced and **replace** is the string to replace
 - ':%s/search/replace' in the whole file 
 ## Counts
 - `3w` moves 3 words forward
@@ -47,8 +53,17 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
 > Note that this is supported by `vim-surround` plugin, which is also supported by `vscode`'s vim emulator.
 - `y s <motion> <desired>` to add desired surrounding around text defined by `<motion>`
 - `S"` to add double quotes (") for visual selections (in visual mode, i.e., something is visual selected)
+- In visual mode, `S(` to enclose the selected with `( * )` with space, `S)` to enclose the selected with `(*)` without space.
 - `cs"'` to change double quotes (") to single quote (')
 - `ds"` to delete double quotes (")
+
+## Changing case 
+- After visual select the text, 
+    - `U` for upper case
+    - `u` for lower case
+    - `~` for invert case
+- `gU` + \<motion> will make all characters in \<motion> uppercase, similarly for `~` and `u`
+    - `gUe`
 
 ## Increase or Decrease keyword
 > This section is adopted from [`zsh-vi-mode`](https://github.com/jeffreytse/zsh-vi-mode/blob/master/README.md)'s readme.
@@ -113,8 +128,17 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
 - For a `split` window: use `Ctrl + w ` and then `+` or `-` to resize the height; For a `vsplit` window: use `Ctrl + w` and then `>` or `<` to resize the width.
 - `:q` close a single tab not a whole window like `Ctrl + w`, `c`. (ideaVim)
 - `Ctrl + w`, `=`: Makes all splits equal size
-- `Alt + s`: split and move right (pycharm my own definition)
-> In `vs code`, then use `Ctrl + Tab` to change between tabs in a window.
+- `:tabn` to go for next tab in a group; `:tabp` to go for previous tab in a group 
+- `gt` to go for next tab
+- `1gt` to go for tab 1; `2gt` to go for tab 2; `3gt` to go for tab 3; etc.
+- `gT` to go for previous tab 
+- `1gT` to go for 1 previous tab; `2gT` to go for 2 previous tab; etc.
+
+> In `vs code`
+> - `Ctrl + Tab` to change between tabs in a group.
+> - `Ctrl + (PgUp / PgDn)` to cycle through tabs in a group
+> - `Alt + (1, 2, 3, etc.)` to switch to specific tab
+> - Use the command in the command palette, like `close all other editors in group`
 ## IdeaVim
 - `gd` to go to the declaration, `Ctrl + o` to go back to where you came from
 - `alt + arrow key` to move across tab (pycharm)
@@ -123,3 +147,8 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
 - use ``Ctrl + ` `` to focus on the terminal
 - use `Ctrl + 1` to focus on the editor  
     > when there are multiple editor windows, use, for example, `Ctrl + 2` to refer to other windows. In other words, `Ctrl + index` to focus on the editor
+- Navigate between groups using `Ctrl + PageDown` and `Ctrl + PageUp` (also suitable for terminals)
+
+## Miscellany
+1. Use `:set syntax=python` to force `vim` to syntax-highlight a file as `python`
+

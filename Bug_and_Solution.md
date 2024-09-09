@@ -384,3 +384,9 @@ The traceback for the exception was written to the log file
 ### Solution
 It turns out that the error message is misleading. I got this error because I haven't have `xterm` installed. After installing `xterm`, everything works fine again.
 
+
+## how to solve the problem "Error in REST request" in Gazebo in Ubuntu18.04
+  Answer: change ~/.ignition/fuel/config.yaml as following.
+      url: <https://api.ignitionfuel.org>
+  to
+      url: <https://api.ignitionrobotics.org>

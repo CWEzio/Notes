@@ -1,4 +1,7 @@
 ## `grep`
+
+## Captalization Insensitive
+Use `-i` to make grep insensitive to capitalization
 ### Use `grep` to search for the header file to include
 Suppose that I find `AddContactMaterial` function from the documentation, I can determin which header file to include by using the powerful grep:
 ```
@@ -49,6 +52,12 @@ find . -mtime -1
 # Find all zip files with size in range 500k to 10M
 find . -size +500k -size -10M -name '*.tar.gz'
 ```
+
+## `apt`
+1. Use `apt search *keyword*` to search for available package. This is very useful if you are not sure about the full name of the package.
+
+## `mv`
+`mv` does not show progress. Consider use `rsync`
 
 ## input and output stream
 
