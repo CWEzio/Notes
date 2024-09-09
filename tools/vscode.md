@@ -175,3 +175,13 @@ In windows, I find a strange problem with the VSCode's integrated terminal. The 
     },
 ```
 With above definition, VSCode will intercept `ctrl + alt + p` and send the defined text to the terminal . `\u001b` is the unicode for `esc` and `\u0010` is the unicode for `ctrl + p`. `\u001b\u0010` is exactly the text that normally would be sent by pressing `ctrl + alt + p`. I find the text to send by using `showkey`. Run it with `showkey -a` command in terminal and it will echo the code entered in `decimal octal hexadecimal`. (`\u001b` is in hexadecimal.) 
+
+## Cannot `ssh` to a host
+Use the setting below fix the problem:
+```
+"remote.SSH.useLocalServer": false
+```
+
+Above solution is from [this answer](https://stackoverflow.com/questions/59978826/why-ssh-connection-timed-out-in-vscode).
+> One comment on this answer says that after the connection issue is fixed, it continues to work even this option is setted back to false. I haven't try it.
+

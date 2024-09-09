@@ -61,29 +61,33 @@ ProxyCommand /usr/bin/nc -X 5 -x 127.0.0.1:7777 %h %p
 as the first line to `~/.ssh/config`. If `config` does not exist, create a new one.
 > It should be noted that `ssh` is used by `git`. Without setting `ssh` proxy may cause `git push` fail since GFW has banned `github`.
 
-## install vscode
+## Install Applications
+
+### install vscode
 ```bash
 sudo apt install snap
 ```
 Open Ubuntu Software, search for vscode and install.
 
-## install vim
+### install vim
 ```bash
 sudo apt install vim-gtk
 ```
 > You can also install vim, but the default vim does not support copy to clipboard. Therefore, I install `vim-gtk`.
 
-## install curl
+### install curl
 ```bash
 sudo apt install curl
 ```
 
-## Install git 
+## Install and configure `git` 
+
+### Install `git`
 ```bash
 sudo apt install git 
 ```
 
-## Setup github SSH key
+### Setup github SSH key
 ```bash
 ssh-keygen -t rsa -C "chenwang0234@gmail.com"
 ```
@@ -93,13 +97,13 @@ vim ~/.ssh/id_rsa.pub
 ```
 Copy the content of `id_rsa.pub` to add SSH key.
 
-## Setup git user email and name
+### Setup git user email and name
 ```bash
 git config --global user.email "chenwang0234@gmail.com"
 git config --global user.name "chenwang"
 ```
 
-## Change git default editor
+### Change git default editor
 ```
 git config --global core.editor "vim"
 ```
@@ -120,6 +124,8 @@ git config --global core.editor "vim"
 > "keyboard.dispatch": "keyCode"
 > ```
 
+## Install fzf
+
 
 ## Change shell(fish)
 I now prefer to use the `fish` terminal.
@@ -129,11 +135,36 @@ I now prefer to use the `fish` terminal.
   sudo apt update
   sudo apt install fish
   ```
-2. Use [`fisher`](https://github.com/jorgebucaran/fisher) to manage fish's plugins.
+
+2. Set fish as the default terminal.
+    ```
+    sudo chsh -s /usr/bin/fish $USER
+    ```
+
+3. Install `fzf`
+    ```
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
+    ```
+
+4. Download my fish config files and create a softlink to it.
+   ```
+   cd ~
+   git clone git@github.com:CWEzio/dotfiles.git  
+   ln -s ~/dotfiles/fish ~/.config/fish
+   ```
+
+Optionally,
+- Bring `zsh` history to `fish` with [`zsh-history-to-fish`](https://github.com/rsalmei/zsh-history-to-fish).
+
+### Install plugins
+Note that the following steps can be omitted because my config files already contain the plugins.
+1. Use [`fisher`](https://github.com/jorgebucaran/fisher) to manage fish's plugins.
   ```
   curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
   ```
-3. Install [`pure`](https://github.com/pure-fish/pure) theme
+
+2. Install [`pure`](https://github.com/pure-fish/pure) theme
   ```
   fisher install pure-fish/pure
   ```
@@ -142,14 +173,15 @@ I now prefer to use the `fish` terminal.
 > ```json
 > "terminal.integrated.shellIntegration.enabled": false,
 > ```
-4. Install other plugins
+
+
+3. Install other fish plugins
   ```
   fisher install patrickf1/fzf.fish
   fisher install decors/fish-colored-man
   ```
-> In order for the preview  `fzf-fish`'s search directory works well, `eza` and `bat` are required.
-6. Download configs from my config repo  
-
+- `fzf-fish` requires `fzf` installed. 
+- `fzf-fish`'s previewing search directory requires `eza` and `bat`.
 
 ## Change to zsh shell (old)
 Use `zsh` as the terminal and `oh-my-zsh` to manage the extensions.
@@ -206,6 +238,8 @@ Use `zsh` as the terminal and `oh-my-zsh` to manage the extensions.
     ```
     sudo apt install tmux
     ```
+> Ubuntu 20.04 does not provide the latest version `Tmux`. Build it from source follow [the official guide](https://github.com/tmux/tmux/wiki/Installing).
+
 2. Install xclip with (to enable clip to system's clipboard with tmux):
     ```
     sudo apt install xclip 
