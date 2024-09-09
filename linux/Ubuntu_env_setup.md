@@ -104,6 +104,23 @@ git config --global user.name "chenwang"
 git config --global core.editor "vim"
 ```
 
+## Modify `CapsLock` behavior 
+1. Install `gnome-tweak-tool`:
+  ```
+  sudo apt-get install gnome-tweak-tool
+  ```
+2. Start `gnome-tweak-tool`:
+  ```
+  gnome-tweaks
+  ```
+3. Change `CapsLock`'s in `Keyboard & Mouse` > `Additional Layout Options` > `Caps Lock Behavior`.
+
+> In order for the change to work in `VSCode`, modify vscode setting:
+> ```json
+> "keyboard.dispatch": "keyCode"
+> ```
+
+
 ## Change shell(fish)
 I now prefer to use the `fish` terminal.
 1. Install fish
