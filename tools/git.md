@@ -1,5 +1,59 @@
 # My note of git usage
 
+#  View
+## view commit
+- `git show` to show the most recent commit
+- `git show [commit-hash]` to view a specific commit 
+- Additional options for `git show`
+    - `--stat`: show the number of changes.
+    - `--name-only`: only show the name of the changed files.
+    - `--oneline`: show the commit in one line.
+    - `--name-status`: show the name of files changed along with the status (added, modified, deleted).
+## View the change history of a specific file
+- `git log [path-to-file]`
+- Specific options:
+  - `-p` or `--patch`: show the difference introduced in each commit
+  - `--stat`: display the number of changes made to the file along with each commit
+  - `--oneline`
+  - `--graph`
+  - `-n <limit>`: limits the number of commits shown.
+
+# Commit management
+- `git commit --amend` amend last commit with new change
+## Squash last `n` commits
+1. `git rebase -i HEAD~n`, where `n` is the number of last commits that you want to include in the rebase. This will start an interactive rebase.
+2. In the text editor opened, you'll see a list of commits. To squash commits, leave the first commit as `pick` and change the word `pick` to `squash` (or just `s` for short) for the commits that you want to squash into the first commit. Save and close the editor. 
+3. Git will then prompt you to merge the commit messages. Edit the messages. Save and close the editor.
+4. If needed, use `git push origin your-branch-name --force` to also update the origin.
+
+# Branch management
+- `git branch` list branches.
+- `git branch <name>` create a banch with name `<name>`.
+- `git branch -m <newname>` rename the current branch.
+- `git branch -M <newname>` rename the current branch but in a more forceful way. The brancch will be renamed, even if a branch with name `<newname>` already exists.
+- `git fetch origin <branch-name>` fetch the branch `<branch-name>` from the origin.
+## Merge branches
+Suppose you are merging `feature` branch into the `main` branch
+1. Check out to the branch you want to merge into
+    ```
+    git checkout main
+    ```
+2. Merge the target branch into the current branch
+    ```
+    get merge feature
+    ```
+
+
+
+# Submodule management
+- `git add <submodule-name>` to stage changes in the submodule.
+
+# Remote management
+- View current origin `git remote -v`, where `-v` stands for verbose.
+- Remove current origin `git remote remove origin`
+- Add origin `git remote add origin git@github.com:some_repo.git`
+
+# Miscellany
 ## Remove file/folder from the git index but keep those files, in other words, want to untrack file or folder
 This can be done with 
 ```

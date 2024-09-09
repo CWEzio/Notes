@@ -1,3 +1,9 @@
+# Shell script syntax
+## input and output stream
+1. `< file` and `> file`: rewire the input and output streams of a program to a file respectively
+2. `>>` appends to a file
+
+
 ## How to properly export a path
 An example is
 ```zsh

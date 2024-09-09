@@ -63,7 +63,7 @@ If you've made changes to a running container and want to save those changes to 
 
 1. **Start and modify your container**: You've already done this part by running your container and then installing or configuring the necessary components inside it.
 
-2. **Get the Container ID**: Get the ID or name of the container:
+2. **Get the Container ID**: Get the ID or name of the container (in your host system):
 
    ```bash
    docker ps -a
@@ -130,3 +130,16 @@ Add the following content
 ```
 In this way, `build` and `run` will automatically set `http_proxy` and `https_proxy` to the corresponding value. 
 > It should be noted that instead of `127.0.0.1`, `172.17.0.1` is used. This is because the docker container and the host does not share the same network environment. `172.17.0.1` is docker's bridge network address. If you use `--network=host`, then you can use `127.0.0.1`. 
+
+# Run program with gui
+First you need to allow `X11` connection with:
+```
+xhost +
+```
+
+Then, you should be able to run program with gui after using 
+```
+-e DISPLAY=$DISPLAY \
+-v /tmp/.X11-unix:/tmp/.X11-unix \
+```
+

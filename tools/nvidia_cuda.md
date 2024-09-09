@@ -1,0 +1,2 @@
+# The CUDA runtime version can be different from the driver's CUDA version
+Refer to [this answer](https://stackoverflow.com/questions/53422407/different-cuda-versions-shown-by-nvcc-and-nvidia-smi) for more detail. In general, it is fine to have the driver's CUDA version larger than the CUDA runtime version.

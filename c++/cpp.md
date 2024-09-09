@@ -1,16 +1,20 @@
-## Miscellany
+# Miscellany
 
-### Initialize class member which is a reference
+## Difference between `#include <header>` and `#include "header"`
+- `#include <filename>`: This syntax is typically used for including system or standard library headers. When you use angle brackets, the preprocessor searches for the file in an implementation-defined list of standard system directories and the `-I` directories.
+- `#include "filename"`: This syntax is generally used for including non-standard or user-defined headers. When you use double quotes, the preprocessor searches for the file first in the same directory as the file containing the `#include` statement. If it doesn’t find the file there, it then searches the directories that you’ve specified with -I compiler flags, and in the standard system directories where system headers reside. 
+
+## Initialize class member which is a reference
 Check [this answer](https://stackoverflow.com/a/15403837/12825127).
 The reference can only be initialized in the *constructor initializer list* (sec7.1, 265) as:
 ```cpp
 Test (int &x) : t(x) {}
 ```
 
-### C++: “undefined reference to” templated class function
+## C++: “undefined reference to” templated class function
 Check [this answer](https://stackoverflow.com/questions/495021/why-can-templates-only-be-implemented-in-the-header-file), [this FAQ](https://stackoverflow.com/questions/495021/why-can-templates-only-be-implemented-in-the-header-file) or [this blog](https://bytefreaks.net/programming-2/c/c-undefined-reference-to-templated-class-function).
 
-### std::map difference between `[]` and `emplace()`
+## std::map difference between `[]` and `emplace()`
 Answer by chatgpt
 1. `std::map::operator[]`:
     - If the key does not exist in the map, this will create a new element with that key and default-construct its value, then it will assign the given value to it.
@@ -28,8 +32,40 @@ map["c"] = prog.AddConstraint(...); // This will return error when compile, sinc
 map.emplace("c", prog.AddConstraint()); // This will works fine.
 ```
 
-## clang
-### configure `clang-tidy`
+# clang
+## `clang-format`
+`clang-format` can be configured with `.clang-format` file.
+Here is an example `.clang-format`
+```yaml
+BasedOnStyle: Google
+IndentWidth: 4
+SortIncludes: false  # Disables sorting includes
+IncludeBlocks: Preserve  # Prevents reordering of include blocks
+
+# AlignArrayOfStructures:
+#   Align: 'Left'
+#   IndentAfterOpenBracket: true
+
+AlignConsecutiveAssignments:
+  Enabled: true
+  AcrossEmptyLines: true
+  AcrossComments: false
+
+AlignConsecutiveMacros: true
+AlignConsecutiveDeclarations: true
+```
+The last `AlignConseccutive<name>`  can make code looks like
+```cpp
+int a            = 1;
+int somelongname = 2;
+double c         = 3;
+```
+i.e., format code in column (column alignment).
+
+
+
+
+## configure `clang-tidy`
 `clang-tidy` can be configured with the `.clang-tidy` file.
 > The `.clang-tidy` file will overwrite settings of vscode.
 Here is an example `.clang-tidy` file used by drake
@@ -68,9 +104,9 @@ Here are somethings to note:
 2. disable a check by adding `-` + check's name like `-modernize-use-trailing-return-type`
 
 
-## link
+# link
 > Use `ldconfig -p | grep *name*` to check the available version of certain library.
-### How to link to `libglapi.so.0`
+## How to link to `libglapi.so.0`
 To compile `DifferentiableCloth`, I find that I met with the `/usr/bin/ld: cannot find -lglapi` issue. I have `libglapi.so.0` in folder `/lib/x86_64-linux-gnu`. To deal with this problem, I have several choices
 1. `sudo ln -s /lib/x86_64-linux-gnu/libglapi.so.0 /usr/lib/libglapi.so`
 
@@ -90,9 +126,8 @@ To compile `DifferentiableCloth`, I find that I met with the `/usr/bin/ld: canno
     ```
 
 
-
-## Eigen
-### Use `auto` carefully with Eigen
+# Eigen
+## Use `auto` carefully with Eigen
 Check [this answer](https://stackoverflow.com/a/47840292/12825127) and [this documentation page](https://eigen.tuxfamily.org/dox/TopicPitfalls.html) for more details.
 In short,
 ```cpp
@@ -105,13 +140,13 @@ The reason is that `auto` will make `x` of type `Solve<...>` instead of a vector
 > The official documentation suggests that do not use the `auto` keywords with Eigen's expression, unless you are 100% sure what you are doing.<br>
 > This should be related with Eigen's lazy evaluation.
 
-### Correct usage of Ref<T>
+## Correct usage of Ref<T>
 Check the official [documentation](https://eigen.tuxfamily.org/dox/classEigen_1_1Ref.html), [tutorial](https://eigen.tuxfamily.org/dox/classEigen_1_1Ref.html) and this [answer](https://stackoverflow.com/questions/21132538/correct-usage-of-the-eigenref-class). 
 In short,
 - Use `Ref<T>` for a writable reference
 - Use `const Ref<const T>&` for a const reference
 
-### *Aliasing* problem
+## *Aliasing* problem
 
 Check this [official documentation page](https://eigen.tuxfamily.org/dox/group__TopicAliasing.html) for more details.
 
@@ -119,7 +154,7 @@ Check this [official documentation page](https://eigen.tuxfamily.org/dox/group__
 - This also relates to `Eigen`'s lazy evaluation mechanism. One possible solution is to evaluate explicitly, using the `eval()` method. For operations like `transpose`, you can also use the inplace version method `transposeInPlace()`.
 
 
-## GDB usage
+# GDB usage
 Refer to [this article](https://www.cs.cmu.edu/~gilpin/tutorial/) for basic gdb usage.
 - `run`: run until the break point or error
 - `bt`/`backtrace`: trace the error's call stack 
@@ -127,7 +162,14 @@ Refer to [this article](https://www.cs.cmu.edu/~gilpin/tutorial/) for basic gdb 
 - `b`/`break` + `path/to/file:N`: set a break point on the `N`th line of file 
 - `b`/`break` + `function name`: set a break point on the beginning of function `function name`
 
-### Install drake_gdb (viewing eigen vector)
+## Debug C++ module in python
+GDB can also used to debug the C++ module used by the python program. Example usage is
+```
+gdb --args python VCD/main.py --gen_data=1 --dataf=./data/vcd --num_variations=1
+```
+The usage is the same as debugging the pure `C++` program.
+
+## Install drake_gdb (viewing eigen vector)
 Use drake_gdb https://github.com/SeanCurtis-TRI/drake_gdb
 
 * git clone https://github.com/SeanCurtis-TRI/drake_gdb
@@ -158,11 +200,20 @@ Change this line to
 ```
 sys.path.append("path of your drake_gdb")
 ```
-will solve this problem. Also use $DRAKE_GDB_ROOT is not necessary.
+will solve this problem. Use $DRAKE_GDB_ROOT is not necessary.
 
-> alternatively, you can also use the [eigengdb](https://github.com/dmillard/eigengdb). Follow its readme for installation details.
+> Alternatively, you can also use the [eigengdb](https://github.com/dmillard/eigengdb). Follow its readme for installation details.
 
 ## `std::optional`
 Read this excellent [article](https://devblogs.microsoft.com/cppblog/stdoptional-how-when-and-why/).
 
+# Other tools
+## `objdump`
+`objdump` can be used to list symbols from the compiled binary file. One usage example is to check the debug symbols:
+```
+objdump --syms /path/to/file | grep debug
+```
+
+# Catch you
+1. The `~` is not automatically expanded in path as in shell and python.
 
