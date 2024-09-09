@@ -80,7 +80,6 @@ build --define=WITH_MOSEK=ON
 ```
 to the project `.bashrc` file.
 
-<<<<<<< HEAD:drake.md
 ## Visualization
 ### To visualze the pose without doing simulation
 Check the [`geometry_inspector.py`](https://github.com/RobotLocomotion/drake/blob/e59b7fc18dbe80b827d07e4a3283a0c87eda7021/manipulation/util/geometry_inspector.py) file and the `MultibodyPositionToGeometryPose` class.
@@ -88,8 +87,6 @@ Check the [`geometry_inspector.py`](https://github.com/RobotLocomotion/drake/blo
 ### set `Meshcat` reconnection time
 `http://localhost:7000/?reconnect_ms=100` sets reconnection time to 100ms
 
-=======
->>>>>>> a4549d72d7236b25d93f7e559fe9582db000c5b8:robotics/drake.md
 
 ## LCM
 Drake uses `LCM` to do basic communications between process.
@@ -178,7 +175,6 @@ Uninstall `pylance` might also do the trick since vscode will select `jedi` as t
     ```
 The autocomplete is better with the auto-generated `stub` files, though there would still be some bugs. For better performance, you might need to modify the generated stub files manually. 
 
-<<<<<<< HEAD:drake.md
 > 2022.11.30 Updatae:
 Per [this issue](https://github.com/RobotLocomotion/drake/issues/16987), drake now provide the pyi helper files. I do not need to generate by myself.
 ## Miscellany
@@ -187,7 +183,6 @@ Per [this issue](https://github.com/RobotLocomotion/drake/issues/16987), drake n
     auto& station_context = station->GetMyMutableContextFromRoot(context.get());
     auto* plant_context = &plant.GetMyMutableContextFromRoot(context.get());
     ```
-=======
 
 ## Cannot build drake from source
 Encounter "RuntimeError: The operating system's C++ standard library is not installed correctly" when trying to build Drake from source using bazel. 
@@ -202,6 +197,5 @@ sudo apt remove cpp-8 g++-8 gcc-8 libasan6 libgcc-8-dev libstdc++-8-dev
 to remove GCC 8 and GCC 9 from my system. I must have accidentally installed GCC 8 and GCC 9, but not the corresponding G++. Drake use GCC 7 in `Ubuntu 18.04` and the `install_prereqs.sh` install GCC 7 fully (with G++). Clang seems to look for GCC standard C++ library and for higher version GCC. Therefore, when Clang looks for GCC standard C++ library in my system, it looks for GCC 9 and GCC 8. However, I do not have the corresponding G++ installed. Therefore, the Clang will fails to find the include file.
 
 Another possible way to solve this problem is to have the higher version GCC fully installed.
->>>>>>> a4549d72d7236b25d93f7e559fe9582db000c5b8:robotics/drake.md
 
 # TODO: MOVE Drake related terms into this note.
