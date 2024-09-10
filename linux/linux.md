@@ -1,7 +1,7 @@
 # Commandline Tools
 ## `grep`
-### Search file content:
-Sample:
+### Search file content
+Example:
 ```
 grep -nr --include="\*.h" -A2 "AddContactMaterial" ~/drake 
 ```
@@ -16,7 +16,8 @@ grep -nr --include="\*.h" -A2 "AddContactMaterial" ~/drake
     - `-C`: context, include both lines after and below the search pattern by *N*.
     - Use `-i` to make `grep` case insensitive.
 
-**Usage case**: Use `grep` to search for the header file to include
+One useful usage case for above is to use `grep` to search for the header file to include.
+
 Suppose that I find `AddContactMaterial` function from the documentation, I can determine which header file to include by using the powerful grep:
 ```
 grep -nr --include \*.h -A2 "AddContactMaterial" ~/drake 
@@ -90,6 +91,8 @@ Check George Chalhoub's [answer](https://stackoverflow.com/a/42827058/12825127) 
     ```
     sed '/pattern/d' filename
     ```
+
+## `tar`
 
 
 # Apps

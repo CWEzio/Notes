@@ -32,7 +32,7 @@ You can also modify the keybindings in the `keybindings.json` file. You can open
 
 ## Show hover information
 Sometimes you want to show hover information, to remind you the function definition etc., as:
-<img src="../asset/vscode/hover_information.png">
+<img src="../asset/vscode/hover_information.png"><br/>
 In vim mode, simple put the cursor on top of the function does not show the hover information, you need to:
 1. `ctrl + shift + p` to open control palette
 2. search for `show or focus hover`

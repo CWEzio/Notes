@@ -181,57 +181,17 @@ Note that the following steps can be omitted because my config files already con
   fisher install decors/fish-colored-man
   ```
 - `fzf-fish` requires `fzf` installed. 
-- `fzf-fish`'s previewing search directory requires `eza` and `bat`.
+- `fzf-fish`'s previewing search directory requires `eza` and `bat`. Check the following sections on how to install them.
 
-## Change to zsh shell (old)
-Use `zsh` as the terminal and `oh-my-zsh` to manage the extensions.
-1. install `zsh` with
-   ```zsh
-   sudo apt install zsh
-   ```
+## eza
+[`eza`](https://github.com/eza-community/eza) is a modern alternative to `ls` that looks nice.
+Follow [this instruction](https://github.com/eza-community/eza/blob/main/INSTALL.md) to install eza.
 
-2. install `oh-my-zsh`
-    ```bash
-    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    ```
-
-3. Install `zsh-syntax-highlighting`
-    ```bash
-    cd /usr/share/
-    sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-    echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
-    source ~/.zshrc
-    ```
-
-4. Install `zsh-autosuggestions`
-    ```bash
-    git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
-    echo "source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
-    source ~/.zshrc
-    ```
-
-5. Install [zsh-vi-mode](https://github.com/jeffreytse/zsh-vi-mode)
-    * Clone the project
-      ```zsh
-      git clone https://github.com/jeffreytse/zsh-vi-mode \
-      $ZSH_CUSTOM/plugins/zsh-vi-mode
-      ```
-    * Add the following to `.zshrc`
-      ```zsh
-      plugins+=(zsh-vi-mode)
-      ```
-      > Keep in mind that plugins need to be added before `oh-my-zsh.sh` is sourced.
-6. Increase the history size
-  Add the following
-  ```zsh
-  # Better history
-  export SAVEHIST=1000000000
-  export HISTSIZE=1000000000
-  ```
-  to `.zshrc`
-
-7. reboot
-
+## bat
+[`bat`](https://github.com/sharkdp/bat) is a modern alternative to `cat` that looks nice. Install it by:
+```
+sudo apt install bat
+```
 
 ## Tmux
 1. Install tmux with:
@@ -246,17 +206,13 @@ Use `zsh` as the terminal and `oh-my-zsh` to manage the extensions.
     ```
 3. Download [config](https://github.com/CWEzio/profile-and-config/blob/main/tmux/.tmux.conf) and place it in the home directory.
 
-## eza
-[`eza`](https://github.com/eza-community/eza) is a modern alternative to `ls` that looks nice.
-Follow [this instruction](https://github.com/eza-community/eza/blob/main/INSTALL.md) to install eza.
+4. Use my config. 
+  ```
+  ln -s <path-to-dotfile-repo>/tmux/.tmux ~/.tmux
+  ln -s <path-to-dotfile-repo>/tmux/.tmux.conf ~/.tmux.conf
+  ```
 
-## bat
-[`bat`](https://github.com/sharkdp/bat) is a modern alternative to `cat` that looks nice. Install it by:
-```
-sudo apt install bat
-```
-
-## Fonts
+## Install additional Fonts
 ### `MesloLGS Nerd`
 From [Nerd Font](https://www.nerdfonts.com/).
 - Download the font files
@@ -286,23 +242,6 @@ For more details, refer to this [website](https://linuxconfig.org/install-micros
 sudo apt install python3-venv
 ```
 
-## Installing Vim-key bindings for jupyter notebook
-* ```bash
-  pip install jupyter_contrib_nbextensions
-
-  ```
-* ```bash
-  jupyter nbextensions_configurator enable --user
-  ```
-* ```bash
-  # You may need the following to create the directoy
-  mkdir -p $(jupyter --data-dir)/nbextensions
-  # Now clone the repository
-  cd $(jupyter --data-dir)/nbextensions
-  git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding
-  chmod -R go-w vim_binding
-  ```
-* Launch a Jupyter notebook session. Then, in a browser, go to <root>/nbextensions/; for example, if the notebook is hosted under localhost:8888, go to http://localhost:8888/nbextensions/. Activate VIM binding from the list of extensions. Check documentation for more details.
 
 ## Solving ubuntu windows time conflict
 Check time date setting
@@ -315,16 +254,6 @@ timedatectl set-local-rtc 1 --adjust-system-clock
 ```
 You may see warning, this is fine.
 
-## Fcitx disable extra trigger key (shift)
-```
-code ~/.config/fcitx/config
-```
-change SwitchKey=SHIFT Both to SwitchKey=Disable
-After saving
-```
-chmod 400 config
-```
-To make this setting persist after restart.
 
 ## Install trash
 ```
@@ -337,14 +266,8 @@ sudo apt install trash-cli
 sudo apt install tldr
 ```
 
-## Install [fd-find](https://github.com/sharkdp/fd)
-`fd` is a simple, fast and user-friendly alternative to `find`.
-Install by
-```
-sudo apt install fd-find
-```
-
 ## Install VSCode
+
 
 ## Install Mendeley    
 > *Note on Ubuntu22.04* <br>
@@ -426,6 +349,92 @@ Follow the steps in `readme` to install it.
 
 
 # Obsolete
+
+## Installing Vim-key bindings for jupyter notebook (web browser)
+> Currently, I mainly use `VSCode` to edit jupyter notebook. Therefore, this section is no longer needed.
+* ```bash
+  pip install jupyter_contrib_nbextensions
+
+  ```
+* ```bash
+  jupyter nbextensions_configurator enable --user
+  ```
+* ```bash
+  # You may need the following to create the directoy
+  mkdir -p $(jupyter --data-dir)/nbextensions
+  # Now clone the repository
+  cd $(jupyter --data-dir)/nbextensions
+  git clone https://github.com/lambdalisue/jupyter-vim-binding vim_binding
+  chmod -R go-w vim_binding
+  ```
+* Launch a Jupyter notebook session. Then, in a browser, go to <root>/nbextensions/; for example, if the notebook is hosted under localhost:8888, go to http://localhost:8888/nbextensions/. Activate VIM binding from the list of extensions. Check documentation for more details.
+
+## Install [fd-find](https://github.com/sharkdp/fd)
+`fd` is a simple, fast and user-friendly alternative to `find`.
+Install by
+```
+sudo apt install fd-find
+```
+
+## Fcitx disable extra trigger key (shift)
+```
+code ~/.config/fcitx/config
+```
+change SwitchKey=SHIFT Both to SwitchKey=Disable
+After saving
+```
+chmod 400 config
+```
+To make this setting persist after restart.
+
+## Change to zsh shell 
+Use `zsh` as the terminal and `oh-my-zsh` to manage the extensions.
+1. install `zsh` with
+   ```zsh
+   sudo apt install zsh
+   ```
+
+2. install `oh-my-zsh`
+    ```bash
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    ```
+
+3. Install `zsh-syntax-highlighting`
+    ```bash
+    cd /usr/share/
+    sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
+    echo "source ${(q-)PWD}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ${ZDOTDIR:-$HOME}/.zshrc
+    source ~/.zshrc
+    ```
+
+4. Install `zsh-autosuggestions`
+    ```bash
+    git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+    echo "source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
+    source ~/.zshrc
+    ```
+
+5. Install [zsh-vi-mode](https://github.com/jeffreytse/zsh-vi-mode)
+    * Clone the project
+      ```zsh
+      git clone https://github.com/jeffreytse/zsh-vi-mode \
+      $ZSH_CUSTOM/plugins/zsh-vi-mode
+      ```
+    * Add the following to `.zshrc`
+      ```zsh
+      plugins+=(zsh-vi-mode)
+      ```
+      > Keep in mind that plugins need to be added before `oh-my-zsh.sh` is sourced.
+6. Increase the history size
+  Add the following
+  ```zsh
+  # Better history
+  export SAVEHIST=1000000000
+  export HISTSIZE=1000000000
+  ```
+  to `.zshrc`
+
+7. reboot
 
 ## system monitor
 
