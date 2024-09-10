@@ -2,6 +2,19 @@
 My learning notes on ROS.
 
 # Problems 
+## Use `ros` with `fish` 
+[This article](https://yodahuang.github.io/articles/How-to-let-ROS-play-happily-with-fish/) is a good source.
+
+In short,
+1. To bring up functionalities like `roscd` and `rosed`,
+  ```
+  source /opt/ros/kinetic/share/rosbash/rosfish
+  ```
+2. To source catkin workspace,
+   ```
+  bass source devel/setup.bash
+   ```
+
 ## `rosrun` cannot find my python script
 It turns out that rosrun can automatic detect executable files. However, at first I need to make the script executable by `chmod +x` and add 
 ```python
@@ -29,7 +42,6 @@ The traceback for the exception was written to the log file
 
 ### Solution
 It turns out that the error message is misleading. I got this error because I haven't have `xterm` installed. After installing `xterm`, everything works fine again.
-
 
 
 ## Missing Ros Packages
@@ -117,7 +129,7 @@ Check this https://answers.ros.org/question/331455/xacro-substitution-args-not-s
 
 ## Gazebo
 ## how to solve the problem "Error in REST request" in Gazebo in Ubuntu18.04
-  Answer: change ~/.ignition/fuel/config.yaml as following.
+change ~/.ignition/fuel/config.yaml from
       url: <https://api.ignitionfuel.org>
   to
       url: <https://api.ignitionrobotics.org>

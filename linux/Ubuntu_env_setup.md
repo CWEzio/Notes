@@ -236,6 +236,28 @@ curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Meslo.
 >```
 For more details, refer to this [website](https://linuxconfig.org/install-microsoft-fonts-on-ubuntu-20-04-focal-fossa-desktop)
 
+## Install `neovim`
+- Install neovim
+```
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+sudo rm -rf /opt/nvim
+sudo tar -C /opt -xzf nvim-linux64.tar.gz
+```
+
+- Then add the path to `neovim`
+  > This step can be omitted because I already add it in my fish's config.
+  ```
+  export PATH="$PATH:/opt/nvim-linux64/bin"
+  ```
+
+- Use my config
+  ```
+  ln -s <path-to-my-dotfiles>/nvim/ ~/.config/nvim
+  ```
+
+- Then start nvim and wait for installation of all plugins.
+
+
 
 ## Install python virtual environment
 ```bash
@@ -346,6 +368,12 @@ Add the following lines to the user `settings.json`:
 Catppuccin also has a theme for `bat`, [`catppuccin/bat`](https://github.com/catppuccin/bat).
 
 Follow the steps in `readme` to install it.
+
+# Follow up setups
+## Add printer with ip
+`settings` → `printers` → `Additional Printer Settings` → `Add`
+
+Then follow the guidance.
 
 
 # Obsolete
