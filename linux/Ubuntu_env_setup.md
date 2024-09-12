@@ -12,9 +12,11 @@ Recently, I bought a new computer with RTX 3070, I need to install the driver ma
 
  2. Open Software&Updates, open *other software* tab, check the two graphics drivers ppa. Then update the ppa information.
 
- 3. `sudo apt install nvidia-driver-455`
+ 3. `sudo apt install nvidia-driver-<id>`
 
  > Now, since the official source has been updated, you can just install the driver with the *3rd* step.
+
+ > My laptop has enabled safe boot, this cause issue when installing the nvidia driver. After install the driver, I need to enter a password in the pop up interface. Then, after reboot, I will see a menu with four options: 1) Continue boot, 2) Enroll key, 3) Enroll key from Disk, 4) Enroll key from hash. Select 2) and enter the password that I have set.
 
 ## Google Chrome
   >* install Chrome using package;
