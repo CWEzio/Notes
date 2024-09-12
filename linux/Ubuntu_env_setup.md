@@ -371,7 +371,7 @@ Catppuccin also has a theme for `bat`, [`catppuccin/bat`](https://github.com/cat
 
 Follow the steps in `readme` to install it.
 
-# Follow up setups
+# After fresh setup
 ## Add printer with ip
 `settings` → `printers` → `Additional Printer Settings` → `Add`
 
