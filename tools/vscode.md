@@ -145,6 +145,16 @@ You can compare/diff two files with vscode.
 1. Open the first file and focus on its window.
 Open the command palette, and use the command `File:` Compare Active File With`
 3. Select the second file to compare.
+    
+You can also compare two files with the mouse:
+1. Right-click the first file to be compared in the file explorer and select `Select for Compare`
+2. Right-click the second file to be compared in the file explorer and select `Compare with Selected`
+
+Alternatively, you can use commandline:
+```
+code --diff <file1> <file2>
+```
+
 - You can change between inline view and side-to-side view by using the command `Compare: Toggle Inline View`.
 - The inline view shows the changes made in the second file from the first view.
 - Note that in the side-to-side view, two sides are in the same window. Therefore, switching between two sides can not be done with keyboard shortcuts like `C-w h`. Instead, you can use the following commands:
@@ -153,10 +163,7 @@ Open the command palette, and use the command `File:` Compare Active File With`
     3. `workbench.action.compareEditor.focusOtherSide`
 
     I bind `ctrl+alt+n` with `workbench.action.compareEditor.focusOtherSide` to switch between different sides.
-    
-You can also compare two files with the mouse:
-1. Right-click the first file to be compared in the file explorer and select `Select for Compare`
-2. Right-click the second file to be compared in the file explorer and select `Compare with Selected`
+
 
 ## Send `ctrl + K` directly to the integrated terminal
 This behavior is controlled by "terminal.integrated.allowChords". You can set it to false to send `ctrl + K` directly to the integrated terminal. If it is set to true, then `ctrl + K` would be intercepted by VSCode.
