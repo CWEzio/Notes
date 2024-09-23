@@ -19,3 +19,16 @@ Above program will raise error, complaining that `max_in_mat` is not hashable. T
 max_in_mat = int(jnp.max(mat))
 ```
 
+# Bugs
+## Could not create cudnn handle: CUDNN_STATUS_INTERNAL_ERROR
+When I run `jnp.zeros(3)`, I encounter the above error.
+
+This error is caused by that `jax` cannot find `libcudnn.so`. This can be solved by:
+```
+sudo apt install libcudnn8
+```
+where *8* is the cudnn version. Replace it as needed.
+
+In solving this issue, I find that `jnp.zeros(3)` works fine in the Jupyter notebook, but not in python script. After digging a while, I find that Jupyter notebook can lazy load libraries, and in this case, it loads `torch`. `torch` configures the `libcudnn` correctly, and by loads `torch`, `cudnn` is also loaded. Therefore, in Jupyter notebook, the code works without error. If I also `import torch`, in the python script, it can also run without error. Quiet interesting.
+
+

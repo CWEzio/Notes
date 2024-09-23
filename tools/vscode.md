@@ -72,12 +72,12 @@ Check [this answer for details](https://stackoverflow.com/questions/53653083/how
     > If you only cares about whether the editor can correctly find the package path, only setting `python.envFile` is enough.
 2. create `.env` file and put the pythonpath in this file. For example:
     ```
-    PYTHONPATH=/home/chenwang/VCD/softgym:${PYTHONPATH}
     PYFLEXROOT="/home/chenwang/VCD/softgym/PyFlex"
-    PYTHONPATH="${PYFLEXROOT}/bindings/build:${PYTHONPATH}"
-    LD_LIBRARY_PATH=${PYFLEXROOT}/external/SDL2-2.0.4/lib/x64:$LD_LIBRARY_PATH
+    PYTHONPATH=/home/chenwang/VCD/softgym:${PYFLEXROOT}/bindings/build
+    LD_LIBRARY_PATH=${PYFLEXROOT}/external/SDL2-2.0.4/lib/x64
     ```
     > You can also put other path to this file.
+    > Note that `VSCode` will automatically append the setted value with the environment variable. That is, there is no need to write like `PYTHONPATH="/some/path:${PYTHONPATH}"`. 
 
 ## Debug. Add command line argument
 ```json
