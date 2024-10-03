@@ -13,6 +13,12 @@
 - use `alt + number` to navigate between different tabs
 - Use the command in the command palette, like `close all other editors in group`
 
+**Personal Keybindings**
+- `ctrl + shift + =` to increase the viewer height
+- `ctrl + shift + -` to decrease the viewer height
+- `ctrl + shift + .` to increase the viewer width
+- `ctrl + shift + ,` to decrease the viewer width
+
 ## Customize keybindings
 1. Open keyboard shortcuts editor:
     - `Ctrl+Shift+P` to open the command palette

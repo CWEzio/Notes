@@ -2,6 +2,17 @@
 My learning notes on ROS.
 
 # Problems 
+## No module named `python3-empy`
+It turns out that the problem is not that I do not have installed `python3-empy`, it is that I mistakenly run `catkin-make` with my python virtual environment. I need to remove the previous build cache first:
+```
+cd ~/catkin_ws  
+unlink src/CMakeLists.txt
+trash build
+trash devel
+trash .catkin_workspace
+```
+and then run `catkin_make`.
+
 ## Use `ros` with `fish` 
 [This article](https://yodahuang.github.io/articles/How-to-let-ROS-play-happily-with-fish/) is a good source.
 

@@ -8,3 +8,14 @@ RTDE (Real-Time Data Exchange) would be the interface that I use most of the tim
 - [Universal_Robots_ROS_Driver](https://github.com/UniversalRobots/Universal_Robots_ROS_Driver)
 - [Universal_Robots_ROS2_Driver](https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver)
 - [ur_rtde](https://gitlab.com/sdurobotics/ur_rtde) (provided by sdu robotics)
+
+# Problems
+## Remote control
+- For e-series, remote control is needed for many aspects. Check [this note](https://github.com/UniversalRobots/Universal_Robots_ROS_Driver/tree/master/ur_robot_driver) for details. 
+- `ur_rtde` requires *remote control* to be enabled.
+- [How to enable remote control](https://robodk.com/doc/en/Robots-Universal-Robots-How-enable-Remote-Control-URe.html) 
+    1. Select the Settings menu from the top right button
+    2. Select System → Remote Control
+    3. Select Enable
+    4. Then you can change between local control and remote control 
+    <img src="../asset/ur/img10.png" width=500><br/>
