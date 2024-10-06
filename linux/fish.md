@@ -20,3 +20,6 @@ List default keybinding with:
 ```fish
 fzf_configure_bindings --help
 ```
+
+# Sharpbits
+- `fish` does not use backtick \`\` for command substitution, unlike `zsh` and `bash`. Instead, it use () with or without $ for command substitution.

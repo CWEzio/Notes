@@ -26,7 +26,8 @@ Commands in tmux are triggered by a `prefix key` followed by a `command key`.
 - resize pane with `C-k H`/`C-k L`/`C-k J`/`C-k K`. You can repeat resize without re-entering the prefix. (my customization, vim style)
   > original `C-k C-<arrow-key>`
 - `exit` or `C-d` to close current pane
-- `C-b z` make a pane to full screen, hit it again to shrink it back to its previous size
+- `C-k z` make a pane to full screen, hit it again to shrink it back to its previous size
+- `C-k >` to open the pane selection mode, which allows you to interact with the pane, like zoom, kill, respawn. It comes handy because I might forget keyboard shortcuts for those operations.
 
 ## window control
 - use `C-k c` to create a new window
