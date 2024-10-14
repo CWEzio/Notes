@@ -56,7 +56,15 @@ Suppose you are merging `feature` branch into the `main` branch
     ```
 
 # Submodule management
-- `git add <submodule-name>` to stage changes in the submodule.
+- Clone and initialize all the submodules of a repo:
+  ```
+    git clone --recurse-submodules <repository-url>
+  ```
+- Initialize all the submodules after clone:
+    ```
+    git submodule update --init --recursive
+    ```
+- `git add <path-to-submodule>` to stage changes in the submodule.
 
 # Remote management
 - View current origin `git remote -v`, where `-v` stands for verbose.
