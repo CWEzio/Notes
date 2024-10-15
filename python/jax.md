@@ -1,3 +1,9 @@
+# Installation
+For `python3.8`, install `jax` with
+```
+pip install -U "jax[cuda12_pip]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
+```
+
 # [shape bits]
 Shape bits that I encounted when using `jax`. [This official doc](https://jax.readthedocs.io/en/latest/notebooks/Common_Gotchas_in_JAX.html) also gives common pitfalls of `jax`.
 ## Dynamic shapes

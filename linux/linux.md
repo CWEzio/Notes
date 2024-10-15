@@ -236,9 +236,9 @@ To change this behavior,
     sudo update-initramfs -u -k all
     ```
 
-3. Optionally, reboot.
+3. Reboot the computer
 
-Regarding the option:
+Regarding the `fnmode` option:
 - `0`: Fn key disabled
 - `1`: Fn key pressed by default
 - `2`: Fn key released by default
