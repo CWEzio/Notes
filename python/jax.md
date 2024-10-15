@@ -2,9 +2,14 @@
 For `python3.8`, install `jax` with
 ```
 pip install -U "jax[cuda12_pip]" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
+
+pip install -U "jaxlib" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
 ```
 
-# [shape bits]
+For newer version python, I can follow the official guidance.
+
+> Need to have cuda-toolkit installed. Follow the steps in [nvidia.md](../deep_learning/nvidia.md#installation).
+# Shape Bits
 Shape bits that I encounted when using `jax`. [This official doc](https://jax.readthedocs.io/en/latest/notebooks/Common_Gotchas_in_JAX.html) also gives common pitfalls of `jax`.
 ## Dynamic shapes
 In general, avoid dynamic shapes for code within `jax.jit`, `jax.vmap`, etc.,  as they require tracing the code with some abstraction class, like `ShapedArray`. Dynamic shape can cause error in the tracing process.
