@@ -1,3 +1,9 @@
+# Keyboard shortcuts
+*Window Control*
+- `Super + ↑` to maximize the window
+- `Super + ↓` to restore the window size
+- `Super + ←/→` to align the window to left side or to right side.
+
 
 # Usages
 ## Use file explorer to check the files on ssh server

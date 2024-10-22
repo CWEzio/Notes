@@ -19,12 +19,40 @@ and then run `catkin_make`.
 In short,
 1. To bring up functionalities like `roscd` and `rosed`,
   ```
-  source /opt/ros/kinetic/share/rosbash/rosfish
+    source /opt/ros/kinetic/share/rosbash/rosfish
   ```
-2. To source catkin workspace,
+2. Setup ros env
    ```
-  bass source devel/setup.bash
+    bass source /opt/ros/noetic/setup.bash
    ```
+3. Setup catkin workspace env,
+   ```
+    bass source devel/setup.bash
+   ```
+### Autocomplete error in fish
+When autocomplete the ros command in `fish`, I encountered this problem:
+```
+string split: -type f -perm /111: unknown option
+
+/opt/ros/noetic/share/rosbash/rosfish (line 1):
+string split --max 1 --right / $argv[1]
+^
+in command substitution
+        called on line 578 of file /opt/ros/noetic/share/rosbash/rosfish
+in function '_roscomplete_search_dir' with arguments '-type\ f\ -perm\ /111'
+        called on line 648 of file /opt/ros/noetic/share/rosbash/rosfish
+in function '_roscomplete_rosrun'
+in command substitution
+```
+
+It turns out that the issue is caused by a bug in the `rosfish` file. To fix it, modify:
+```fish
+set path (string split --max 1 --right / $argv[1])[1]
+```
+in line 578 to
+```
+set path (string split --max 1 --right / $arg)[1]
+```
 
 ## `rosrun` cannot find my python script
 It turns out that rosrun can automatic detect executable files. However, at first I need to make the script executable by `chmod +x` and add 

@@ -255,6 +255,7 @@ sudo tar -C /opt -xzf nvim-linux64.tar.gz
 - Use my config
   ```
   ln -s <path-to-my-dotfiles>/nvim/ ~/.config/nvim
+  sudo ln -s <path-to-my-dotfiles>/nvim/ /root/.config/nvim  # also setup nvim config for super user
   ```
 
 - Then start nvim and wait for installation of all plugins.
