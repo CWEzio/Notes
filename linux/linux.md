@@ -101,7 +101,7 @@ Check George Chalhoub's [answer](https://stackoverflow.com/a/42827058/12825127) 
 - Note that the profiles are case-sensitive. One example is that you should use `DIRECT` consistently. Inconsistent usage like `direct` will cause errors.
 
 
-# Problems
+# How-to-do
 ## How to enable and disable `wifi` through the command line
 ```
 sudo nmcli radio wifi off
@@ -128,6 +128,11 @@ sudo rm /etc/X11/xorg.conf
 echo 'nouveau' | sudo tee -a /etc/modules
 ```
 Not all above commands are needed, but it does not hurt to run them all.
+
+## How to mount a disk partition into a folder
+TODO: complete this
+
+Use `fstab`. Check [this conversation](https://chatgpt.com/share/671b9c9a-adf8-8004-9d34-f56df6d31401) with ChatGPT for detail.
 
 # Bugs 
 ## Cannot open terminal with ctrl+alt+t
