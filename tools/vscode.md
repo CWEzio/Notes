@@ -99,6 +99,17 @@ Check [this answer for details](https://stackoverflow.com/questions/53653083/how
 ```
 `args` specifies arguments to pass to the Python program. Each element of the argument string that's separated by a space should be contained within quotes.
 
+# C++
+## Set cmake source directory
+The default would be the working directory. Set the cmake source directory by adding the following to the setting json:
+```json
+    "cmake.sourceDirectory": [
+        <path1-to-source-dir>,
+        <path2-to-source-dir>,
+    ],
+```
+This could be useful when the C++ project is a subproject inside a large project.
+
 
 # Markdown
 - [Official documentation](https://code.visualstudio.com/docs/languages/markdown) of supported markdown features.

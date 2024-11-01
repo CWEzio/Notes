@@ -1,30 +1,49 @@
 # Personal Experience
 - `conda` is convenient for managing python interpreters. I can easily have multiple interpreters with different version. It also install `mkl` version `numpy` and other libs by default. However, its *intelligent* package management usually does a lot of dumb things and I really don't like. Therefore, I like to use `conda` only for managing the interpreters and a limited set of libs like `numpy` and use `pip` to manage all the rest libs.
+- In case I use `conda` to install libs, I use
+  ```
+  conda install --no-update-deps <lib>
+  ``` 
+  to avoid it ruins my other libs.
 
 
 # How to do
-## Set path (environment variable)
-For details, check [this page](https://docs.conda.io/projects/conda/en/latest/dev-guide/deep-dives/activation.html). In short, when activate, scripts in `CONDA_PREFIX/etc/conda/activate.d/` will be run. `CONDA_PREFIX` is the path to the conda environment.
+## Automatically set environment variables when activate the env
 
-- create a script file called `set_path.sh`
+ In short, when activate env, scripts in `CONDA_PREFIX/etc/conda/activate.d/` will be run. `CONDA_PREFIX` is the path to the conda environment. For details, check [this page](https://docs.conda.io/projects/conda/en/latest/dev-guide/deep-dives/activation.html).
+
+Example:
+- Create a script file called `set_path.sh`
     ```
     mkdir -p ~/miniconda3/envs/softgym/etc/conda/activate.d/
-    vim ~/miniconda3/envs/softgym/etc/conda/activate.d/set_path.sh
+    nvim ~/miniconda3/envs/softgym/etc/conda/activate.d/set_path.sh
     ```
     > If anaconda is used, run 
     > ```
     >  mkdir -p ~/anaconda3/envs/softgym/etc/conda/activate.d/
-    >  vim ~/anaconda3/envs/softgym/etc/conda/activate.d/set_path.sh
+    >  nvim ~/anaconda3/envs/softgym/etc/conda/activate.d/set_path.sh
     > ```
 
-    > It should be noted that in `fish`, `*.sh` won't run. `*.fish` should be created instead. 
-- Then copy the following to the created script file
+- Add the following to the created `sh` file
     ```
     export PYTHONPATH="/home/chenwang/softgym:${PYTHONPATH}"
     export PYFLEXROOT="/home/chenwang/softgym/PyFlex"
     export PYTHONPATH="${PYFLEXROOT}/bindings/build:${PYTHONPATH}"
     export LD_LIBRARY_PATH=${PYFLEXROOT}/external/SDL2-2.0.4/lib/x64:$LD_LIBRARY_PATH
+
     ```
+- It should be noted that in `fish`, `*.sh` won't run. `*.fish` should be created instead: 
+  ```
+  nvim ~/miniconda3/envs/softgym/etc/conda/activate.d/set_path.sh
+  ```
+- Add the following to the created `fish` file:
+  ```
+  bass source  "$(dirname (status --current-filename))/set_path.sh"
+  ```
+  > In this way, I need only modify the `sh` file in the future.
+
+- `VSCode` `Jupyter notebook` extension uses `*.sh`.
+
 
 ## Add conda-forge channel
 Some libraries are not contained in the default conda channels. You may choose to add `conda-forge` channel.

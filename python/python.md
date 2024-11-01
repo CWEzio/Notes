@@ -23,55 +23,6 @@ and non-empty string would be converted to `True`.
 
 # Conda
 
-## Add conda-forge channel
-Some libraries are not contained in the default conda channels. You may choose to add `conda-forge` channel.
-1. ```
-    vim ~/.condarc
-    ```
-2. Add/change the following 
-    ```
-    channels:
-        - defaults
-        - conda-forge
-    ```
-
-> The official documentation recommand use
-> ```
-> conda config --add channels conda-forge
-> conda config --set channel_priority strict
-> ```
-> However, I find that this will cause the solving environment failed with intial frozen solve. The cause might be the strict channel_priority and put conda-forge channel above defaults channel. You can open `.condarc` to check your setting.
-## use proxy
-1.  ```
-    vim ~/.condarc
-    ```
-2. Add the following to the file:
-    ```
-    proxy_servers:
-        http: http://127.0.0.1:7890
-        https: http://127.0.0.1:7890
-    ```
-
-## Add conda virtual environment to Jupyter notebook
-
-* create a new env
-  ```
-  conda create -n mr_env python=3.7    
-  ```
-* install Ipykernel to this env
-  ```
-  conda install -c anaconda ipykernel
-  ```
-* add this env to Jupyter notebook
-  ```
-  python -m ipykernel install --user --name=firstEnv
-  ```
-* deactivate the env
-  ```
-  conda deactivate
-  ```
-Refer to [this tutorial](https://janakiev.com/blog/jupyter-virtual-envs/) for more information.
-> Note that when using `vscode` for Jupyter notebook, above steps are not needed. Just select the correct python interpreter and then select the Jupyter environment in the opened Jupyter notebook.
 
 # Python virtual environment
 
