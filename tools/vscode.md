@@ -185,6 +185,7 @@ code --diff <file1> <file2>
 ## Send `ctrl + K` directly to the integrated terminal
 This behavior is controlled by "terminal.integrated.allowChords". You can set it to false to send `ctrl + K` directly to the integrated terminal. If it is set to true, then `ctrl + K` would be intercepted by VSCode.
 
+
 # Problems 
 ## `ctrl + alt + [key]` of `fzf` does not work in VSCode terminal in windows.
 In windows, I find a strange problem with the VSCode's integrated terminal. The key `ctrl + alt + [key]` just does not work. I suspected the problem is caused by some applications that intercepted those keys. Since I need to use `ctrl + alt + [key]` for `fzf`. I add the following in `keybindings.json` to define shortcuts
@@ -208,4 +209,7 @@ Use the setting below fix the problem:
 
 Above solution is from [this answer](https://stackoverflow.com/questions/59978826/why-ssh-connection-timed-out-in-vscode).
 > One comment on this answer says that after the connection issue is fixed, it continues to work even this option is setted back to false. I haven't try it.
+
+## The installed font is not being used
+`VSCode` does not recognize fonts installed in `~/.local/share/fonts`. Move those fonts to `/usr/share/fonts` and run `fc-cache -f -v`.
 

@@ -1,5 +1,6 @@
-# clangd
+# `clangd`
 ## Use different `compile_commands.json` files for different subprojects.
+There are two different ways, both requires the `--compile-commands-dir` arg of `clangd` not set. 
 ### Specify the `compile_commands.json`
 - Create the `.clangd` file at the project's root directory.
 - Inside the `.clangd` file, include:
