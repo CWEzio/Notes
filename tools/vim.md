@@ -207,26 +207,9 @@ Similarly, you can use `"*y` and `"*p` to copy and paste from teh primary select
 - `alt + arrow key` to move across tab (pycharm)
 
 # VSCode
-Some VSCode's native commands are useful to use together with vim commands:
-- use ``Ctrl + ` `` to focus on the terminal
-- use `Ctrl + 1` to focus on the editor  
-    > when there are multiple editor windows, use, for example, `Ctrl + 2` to refer to other windows. In other words, `Ctrl + index` to focus on the editor
-- Navigate between groups using `Ctrl + PageDown` and `Ctrl + PageUp` (also suitable for terminals)
-
-More about VSCodeVim extension:
 - You can find all supported vim commands of VSCodeVim in [roadmap](https://github.com/VSCodeVim/Vim/blob/master/ROADMAP.md).
 
-### Multiple cursor mode
-- `alt + left click` to add a cursor.
-- `gb` to add cursor at next word occurance place. 
-  <!-- - Use `I` to enter insert mode at the beginning of the word, or `A` for the end. -->
-  - `s` to modify, `d` to delete
-- `ctrl + c` or `esc` to exit the multicursor mode. 
-  >Note that in jupyter notebook, you should use `ctrl + c` as `esc` exits to cell-level selection.
-- `shift + ctrl + ⬆️`️ to add cursor above 
-- `shift + ctrl + ↓` to add arrow above
-️
-## Miscellany
+# Miscellany
 1. Use `:set syntax=python` to force `vim` to syntax-highlight a file as `python`
 
 # Settings

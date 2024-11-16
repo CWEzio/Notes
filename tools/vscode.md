@@ -7,23 +7,36 @@
 - use ``Ctrl + ` `` to focus on the terminal
 - use `Ctrl + 1` to focus on the editor  
     > when there are multiple editor windows, use, for example, `Ctrl + 2` to refer to other windows. In other words, `Ctrl + index` to focus on the editor
-- Navigate between groups using `Ctrl + PageDown` and `Ctrl + PageUp` (also suitable for terminals)
 - `Ctrl + Tab` to change between tabs in a group.
-- `Ctrl + (PgUp / PgDn)` to cycle through tabs in a group
+- `Ctrl + (PgUp / PgDn)` to cycle through tabs in a group (also suitable for integrated terminal tabs).
 - use `alt + number` to navigate between different tabs
 - Use the command in the command palette, like `close all other editors in group`
+
+- `ctrl + shift + =` to increase the viewer height. *(Personal Keybinding)*
+- `ctrl + shift + -` to decrease the viewer height. *(Personal Keybinding)* 
+- `ctrl + shift + .` to increase the viewer width. *(Personal Keybinding)*
+- `ctrl + shift + ,` to decrease the viewer width. *(Personal Keybinding)*
 
 **Panel**
 - The *panel* is the window where the integrated terminal lies. 
 - Search for commands like `hide panel`, `toggle maximized panel` to toggle it.
 - `toggle maximized panel` command can set the panel maximized or restore its size.
 
-**Personal Keybindings**
-- `ctrl + shift + =` to increase the viewer height
-- `ctrl + shift + -` to decrease the viewer height
-- `ctrl + shift + .` to increase the viewer width
-- `ctrl + shift + ,` to decrease the viewer width
-- `ctrl + k, b` to toggle the primary side bar (where the file tree shows)
+**Primary Side Bar**
+- The *primary side bar* is where the file exploer resides.
+- `ctrl + k, b` to toggle the primary side bar. *(Personal Keybinding)*
+
+## Multiple cursor mode
+- `alt + left click` to add a cursor.
+- `gb` to add cursor at next word occurance place. 
+  - Enter the visual mode.
+  - On the first press, the cursor moves to the end of the current word. On the second press, it adds another cursor at the end of the next word, continuing with each subsequent press.
+  - Use `I` to insert or `A` to append (both capital).
+  - `s` to modify, `d` to delete. 
+- `ctrl + c` or `esc` to exit the multicursor mode. 
+  >Note that in jupyter notebook, you should use `ctrl + c` as `esc` exits to cell-level selection.
+- `shift + ctrl + ↑`️ to add cursor above 
+- `shift + ctrl + ↓` to add arrow above
 
 ## Customize keybindings
 1. Open keyboard shortcuts editor:
