@@ -18,6 +18,7 @@
 - `ctrl + shift + -` to decrease the viewer height
 - `ctrl + shift + .` to increase the viewer width
 - `ctrl + shift + ,` to decrease the viewer width
+- `ctrl + k, b` to toggle the primary side bar (where the file tree shows)
 
 ## Customize keybindings
 1. Open keyboard shortcuts editor:
