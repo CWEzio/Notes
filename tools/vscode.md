@@ -13,6 +13,11 @@
 - use `alt + number` to navigate between different tabs
 - Use the command in the command palette, like `close all other editors in group`
 
+**Panel**
+- The *panel* is the window where the integrated terminal lies. 
+- Search for commands like `hide panel`, `toggle maximized panel` to toggle it.
+- `toggle maximized panel` command can set the panel maximized or restore its size.
+
 **Personal Keybindings**
 - `ctrl + shift + =` to increase the viewer height
 - `ctrl + shift + -` to decrease the viewer height
