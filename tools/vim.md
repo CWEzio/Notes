@@ -78,6 +78,7 @@ Text objects include things like `iw`, `aw`, `a"`, which can be used to refer to
 
 - `a"`: a quoted string. Selects the text from the previous quote until the next quote. Any trailing white space is included, unless there is none, then leading white space is included.
 - `2i"`: as `a"`, but with no extra white space.
+- `at`: text include the surrounding tag like `<span>`. 
 
 ## Changing case 
 - After visual selecting the text, 
