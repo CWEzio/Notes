@@ -9,7 +9,11 @@ RTDE (Real-Time Data Exchange) would be the interface that I use most of the tim
 - [Universal_Robots_ROS2_Driver](https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver)
 - [ur_rtde](https://gitlab.com/sdurobotics/ur_rtde) (provided by sdu robotics)
 
-# Problems
+# `ur_rtde`
+## Catch you
+- The pose returned by `ur_rtde` use angle-axis to represent the rotation.
+
+# Miscellany
 ## Remote control
 - For e-series, remote control is needed for many aspects. Check [this note](https://github.com/UniversalRobots/Universal_Robots_ROS_Driver/tree/master/ur_robot_driver) for details. 
 - `ur_rtde` requires *remote control* to be enabled.

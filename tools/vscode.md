@@ -7,22 +7,36 @@
 - use ``Ctrl + ` `` to focus on the terminal
 - use `Ctrl + 1` to focus on the editor  
     > when there are multiple editor windows, use, for example, `Ctrl + 2` to refer to other windows. In other words, `Ctrl + index` to focus on the editor
-- Navigate between groups using `Ctrl + PageDown` and `Ctrl + PageUp` (also suitable for terminals)
 - `Ctrl + Tab` to change between tabs in a group.
-- `Ctrl + (PgUp / PgDn)` to cycle through tabs in a group
+- `Ctrl + (PgUp / PgDn)` to cycle through tabs in a group (also suitable for integrated terminal tabs).
 - use `alt + number` to navigate between different tabs
 - Use the command in the command palette, like `close all other editors in group`
+
+- `ctrl + shift + =` to increase the viewer height. *(Personal Keybinding)*
+- `ctrl + shift + -` to decrease the viewer height. *(Personal Keybinding)* 
+- `ctrl + shift + .` to increase the viewer width. *(Personal Keybinding)*
+- `ctrl + shift + ,` to decrease the viewer width. *(Personal Keybinding)*
 
 **Panel**
 - The *panel* is the window where the integrated terminal lies. 
 - Search for commands like `hide panel`, `toggle maximized panel` to toggle it.
 - `toggle maximized panel` command can set the panel maximized or restore its size.
 
-**Personal Keybindings**
-- `ctrl + shift + =` to increase the viewer height
-- `ctrl + shift + -` to decrease the viewer height
-- `ctrl + shift + .` to increase the viewer width
-- `ctrl + shift + ,` to decrease the viewer width
+**Primary Side Bar**
+- The *primary side bar* is where the file exploer resides.
+- `ctrl + k, b` to toggle the primary side bar. *(Personal Keybinding)*
+
+## Multiple cursor mode
+- `alt + left click` to add a cursor.
+- `gb` to add cursor at next word occurance place. 
+  - Enter the visual mode.
+  - On the first press, the cursor moves to the end of the current word. On the second press, it adds another cursor at the end of the next word, continuing with each subsequent press.
+  - Use `I` to insert or `A` to append (both capital).
+  - `s` to modify, `d` to delete. 
+- `ctrl + c` or `esc` to exit the multicursor mode. 
+  >Note that in jupyter notebook, you should use `ctrl + c` as `esc` exits to cell-level selection.
+- `shift + ctrl + ↑`️ to add cursor above 
+- `shift + ctrl + ↓` to add arrow above
 
 ## Customize keybindings
 1. Open keyboard shortcuts editor:
@@ -190,6 +204,7 @@ code --diff <file1> <file2>
 ## Send `ctrl + K` directly to the integrated terminal
 This behavior is controlled by "terminal.integrated.allowChords". You can set it to false to send `ctrl + K` directly to the integrated terminal. If it is set to true, then `ctrl + K` would be intercepted by VSCode.
 
+
 # Problems 
 ## `ctrl + alt + [key]` of `fzf` does not work in VSCode terminal in windows.
 In windows, I find a strange problem with the VSCode's integrated terminal. The key `ctrl + alt + [key]` just does not work. I suspected the problem is caused by some applications that intercepted those keys. Since I need to use `ctrl + alt + [key]` for `fzf`. I add the following in `keybindings.json` to define shortcuts
@@ -213,4 +228,7 @@ Use the setting below fix the problem:
 
 Above solution is from [this answer](https://stackoverflow.com/questions/59978826/why-ssh-connection-timed-out-in-vscode).
 > One comment on this answer says that after the connection issue is fixed, it continues to work even this option is setted back to false. I haven't try it.
+
+## The installed font is not being used
+`VSCode` does not recognize fonts installed in `~/.local/share/fonts`. Move those fonts to `/usr/share/fonts` and run `fc-cache -f -v`.
 
