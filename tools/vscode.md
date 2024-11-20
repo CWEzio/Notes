@@ -1,3 +1,43 @@
+# Table of content
+- [Table of content](#table-of-content)
+- [Settings](#settings)
+  - [Relative line number](#relative-line-number)
+- [keybinding](#keybinding)
+  - [Window control](#window-control)
+  - [Multiple cursor mode](#multiple-cursor-mode)
+  - [Customize keybindings](#customize-keybindings)
+  - [Show hover information](#show-hover-information)
+  - [Trigger parameter hint](#trigger-parameter-hint)
+  - [Trigger autocomplete](#trigger-autocomplete)
+  - [Reject autocomplete suggestion](#reject-autocomplete-suggestion)
+- [python](#python)
+  - [Select notebook kernel](#select-notebook-kernel)
+  - [Set PythonPath](#set-pythonpath)
+  - [Debug. Add command line argument](#debug-add-command-line-argument)
+- [C++](#c)
+  - [Set cmake source directory](#set-cmake-source-directory)
+- [Markdown](#markdown)
+  - [Markdown math](#markdown-math)
+  - [Markdown-All-In-One](#markdown-all-in-one)
+    - [Table of contents (TOC)](#table-of-contents-toc)
+- [Copilot](#copilot)
+  - [Keybindings](#keybindings)
+- [GitLens](#gitlens)
+- [Remote](#remote)
+  - [Drag and drop files](#drag-and-drop-files)
+- [Extensions](#extensions)
+  - [`clangd`](#clangd)
+    - [`clangd` formatting cause the change the include order](#clangd-formatting-cause-the-change-the-include-order)
+  - [`path-intellisense`:](#path-intellisense)
+- [Other things](#other-things)
+  - [Compare different files with VSCode](#compare-different-files-with-vscode)
+  - [Send `ctrl + K` directly to the integrated terminal](#send-ctrl--k-directly-to-the-integrated-terminal)
+- [Problems](#problems)
+  - [`ctrl + alt + [key]` of `fzf` does not work in VSCode terminal in windows.](#ctrl--alt--key-of-fzf-does-not-work-in-vscode-terminal-in-windows)
+  - [Cannot `ssh` to a host](#cannot-ssh-to-a-host)
+  - [The installed font is not being used](#the-installed-font-is-not-being-used)
+
+
 # Settings
 ## Relative line number
 `vscode-vim` provided a quiet handy feature, `smart relative line`, that use absolute line number in insert mode and relative line number otherwise.
@@ -56,7 +96,7 @@ You can also modify the keybindings in the `keybindings.json` file. You can open
 > The command `extension.vim_ctrl+p` is disabled.
 
 ## Show hover information
-Sometimes you want to show hover information, to remind you the function definition etc., as:
+Sometime you would want to show hover information, to remind you the function definition etc., as shown below:
 <img src="../asset/vscode/hover_information.png"><br/>
 In vim mode, simple put the cursor on top of the function does not show the hover information, you need to:
 1. `ctrl + shift + p` to open control palette
@@ -143,6 +183,13 @@ This could be useful when the C++ project is a subproject inside a large project
     - $\sum\limits_{i=1}^n$
     - $\displaystyle\sum_{i=1}^n$
 
+## Markdown-All-In-One
+- [Official documentation](https://markdown-all-in-one.github.io/docs/)
+### Table of contents (TOC)
+- Use `create table of contents` command to create TOC.
+- Save the doc to update the TOC.
+- Add `<!-- no toc -->` comment above the list to avoid being auto-detected as TOC.
+
 # Copilot
 [Official guide for vscode](https://docs.github.com/en/copilot/using-github-copilot/getting-started-with-github-copilot?tool=vscode#prerequisites-2)
 ## Keybindings
@@ -151,6 +198,10 @@ This could be useful when the C++ project is a subproject inside a large project
 - See alternative suggestions `Alt + ]` for the next suggestion, `Alt + [` for  the previous suggestion.
 - `Ctrl + →` accept the next word.
 - `Ctrl + Enter` to see multiple suggestions in a new tab.
+
+# GitLens
+- `view staged changes`
+- `show commit graph`
 
 # Remote  
 ## Drag and drop files
