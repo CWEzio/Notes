@@ -5,6 +5,10 @@ Commands in tmux are triggered by a `prefix key` followed by a `command key`.
 - prefix `C-k` (my customization, `C-k` is the prefix key in vscode)
   > original `C-b`
 
+Key Notation Convention
+- `C-` stands for holding `ctrl` and press another key.
+- `M-` (M for Meta) stands for holding `alt` and press another key.
+
 ## session control
 - `tmux` to start a new session
 - `tmux new -s <name>` to start a session with that name
@@ -28,6 +32,14 @@ Commands in tmux are triggered by a `prefix key` followed by a `command key`.
 - `exit` or `C-d` to close current pane
 - `C-k z` make a pane to full screen, hit it again to shrink it back to its previous size
 - `C-k >` to open the pane selection mode, which allows you to interact with the pane, like zoom, kill, respawn. It comes handy because I might forget keyboard shortcuts for those operations.
+- `C-k q` to show the pane number
+- command `swap-pane` can be used swap the panes' locations.
+  - `-s` source, `-t` target. `swap-pane -s 0 -t 3`  swaps pane 0 and 3.
+  - If there is no marked pane (set by `select-pane`), then the default value of `-s` is the current active pane.
+  - `-U` swap with the previous (number -1) pane.
+  - `-D` swap with the next (number +1) pane.
+- `C-k C-o` to rotate the pane location counter-clockwise.
+- `C-k M-o` to rotate the pane location clockwise.
 
 ## window control
 - use `C-k c` to create a new window
