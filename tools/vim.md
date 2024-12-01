@@ -63,6 +63,7 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
 - `ci(` change the contents inside the current pair of parentheses
 - `ci[` change the contents inside the current pair of square brackets
 - `da'` delete a single-quoted string, including the surroundign single quotes. 
+- `yat` yank text include the surrounding tags.
 
 ## Surrounding 
 > Note that this is supported by `vim-surround` plugin. The `vim-surround` is also emulated by `vscode-vim`. Check the [vscode-vim's doc on vim-surround](https://github.com/VSCodeVim/Vim/tree/master?tab=readme-ov-file#vim-surround) for more details.
@@ -78,7 +79,7 @@ Text objects include things like `iw`, `aw`, `a"`, which can be used to refer to
 
 - `a"`: a quoted string. Selects the text from the previous quote until the next quote. Any trailing white space is included, unless there is none, then leading white space is included.
 - `2i"`: as `a"`, but with no extra white space.
-- `at`: text include the surrounding tag like `<span>`. 
+- `at`: text include the surrounding tags like `<span>`. 
 
 ## Changing case 
 - After visual selecting the text, 
