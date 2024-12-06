@@ -57,6 +57,9 @@
 - `ctrl + shift + .` to increase the viewer width. *(Personal Keybinding)*
 - `ctrl + shift + ,` to decrease the viewer width. *(Personal Keybinding)*
 
+- `ctrl + k s` to split editor down. *(Personal Keybinding)*
+- `ctrl + k v` to split editor right. *(Personal Keybinding)*
+
 **Panel**
 - The *panel* is the window where the integrated terminal lies. 
 - Search for commands like `hide panel`, `toggle maximized panel` to toggle it.

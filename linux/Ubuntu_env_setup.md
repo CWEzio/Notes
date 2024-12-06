@@ -119,14 +119,19 @@ git config --global core.editor "vim"
   ```
   gnome-tweaks
   ```
-3. Change `CapsLock`'s in `Keyboard & Mouse` > `Additional Layout Options` > `Caps Lock Behavior`.
+3. Go to `Keyboard & Mouse` > `Additional Layout Options` > `Caps Lock Behavior`.
 
+4. Select the behavior you want. I choose `Make Caps an additional Esc`.
 > In order for the change to work in `VSCode`, modify vscode setting:
 > ```json
 > "keyboard.dispatch": "keyCode"
 > ```
 
-## Install fzf
+## Download my dotfiles repo
+```
+cd ~
+git clone --recurse-submodules git@github.com:CWEzio/dotfiles.git  
+```
 
 
 ## Change shell(fish)
@@ -143,18 +148,19 @@ I now prefer to use the `fish` terminal.
     sudo chsh -s /usr/bin/fish $USER
     ```
 
-3. Install `fzf`
+3. Use my fish config ([Download my dotfiles repo](#download-my-dotfiles-repo) section is the prerequisite):
+   ```
+   mv ~/.config/fish ~/.config/fish_backup
+   ln -s ~/dotfiles/fish ~/.config/fish
+   ```
+
+4. Install `fzf`
     ```
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     ~/.fzf/install
     ```
+    `y` for all options
 
-4. Download my fish config files and create a softlink to it.
-   ```
-   cd ~
-   git clone git@github.com:CWEzio/dotfiles.git  
-   ln -s ~/dotfiles/fish ~/.config/fish
-   ```
 
 Optionally,
 - Bring `zsh` history to `fish` with [`zsh-history-to-fish`](https://github.com/rsalmei/zsh-history-to-fish).
@@ -186,29 +192,55 @@ Note that the following steps can be omitted because my config files already con
 - `fzf-fish`'s previewing search directory requires `eza` and `bat`. Check the following sections on how to install them.
 
 ## eza
+- Required by my `fish` configuration
 [`eza`](https://github.com/eza-community/eza) is a modern alternative to `ls` that looks nice.
 Follow [this instruction](https://github.com/eza-community/eza/blob/main/INSTALL.md) to install eza.
 
 ## bat
+- Required by my `fish` configuration
 [`bat`](https://github.com/sharkdp/bat) is a modern alternative to `cat` that looks nice. Install it by:
 ```
 sudo apt install bat
 ```
 
+## [fd-find](https://github.com/sharkdp/fd)
+- Required by my `fish` configuration
+`fd` is a simple, fast and user-friendly alternative to `find`.
+Install by
+```
+sudo apt install fd-find
+```
+
 ## Tmux
-1. Install tmux with:
+1. Install tmux:
     ```
     sudo apt install tmux
     ```
-> Ubuntu 20.04 does not provide the latest version `Tmux`. Build it from source follow [the official guide](https://github.com/tmux/tmux/wiki/Installing).
+    > Ubuntu 20.04 does not provide the latest version `Tmux`. Build it from source.
+    > - [the official guide](https://github.com/tmux/tmux/wiki/Installing). 
+    > 1. Download the source code (tar.gz) from [the release page](https://github.com/tmux/tmux/releases)
+    >  2. Install prerequisites:
+    >      ```
+    >        sudo apt install libevent-dev ncurses-dev build-essential bison pkg-config
+    >      ```
+    >  3. Build and install:
+    >      ```
+    >        tar -zxf tmux-*.tar.gz
+    >        cd tmux-*/
+    >        ./autogen.sh
+    >        ./configure
+    >        make && sudo make install
+    >      ```
+   
 
-2. Install xclip with (to enable clip to system's clipboard with tmux):
+
+
+4. Install xclip with (to enable clip to system's clipboard with tmux):
     ```
     sudo apt install xclip 
     ```
-3. Download [config](https://github.com/CWEzio/profile-and-config/blob/main/tmux/.tmux.conf) and place it in the home directory.
 
-4. Use my config. 
+5. Use my config ([Download my dotfiles repo](#download-my-dotfiles-repo) section is the prerequisite):
   ```
   ln -s <path-to-dotfile-repo>/tmux/.tmux ~/.tmux
   ln -s <path-to-dotfile-repo>/tmux/.tmux.conf ~/.tmux.conf
@@ -226,6 +258,7 @@ curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Meslo.
   - `MesloLGSNerdFont-Italic.tff`
   - `MesloLGSNerdFont-Bold.tff`
   - `MesloLGSNerdFont-BoldItalic.tff`
+
 
 ### Install Times New Roman Font
 1. Install the Microsoft TrueType core fonts 
@@ -400,12 +433,6 @@ Then follow the guidance.
   ```
 * Launch a Jupyter notebook session. Then, in a browser, go to <root>/nbextensions/; for example, if the notebook is hosted under localhost:8888, go to http://localhost:8888/nbextensions/. Activate VIM binding from the list of extensions. Check documentation for more details.
 
-## Install [fd-find](https://github.com/sharkdp/fd)
-`fd` is a simple, fast and user-friendly alternative to `find`.
-Install by
-```
-sudo apt install fd-find
-```
 
 ## Fcitx disable extra trigger key (shift)
 ```
