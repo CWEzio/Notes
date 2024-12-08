@@ -14,7 +14,7 @@ The same can be inserted below the expressions with `Esc+Esc+U` prefix. Note tha
 Texmacs provide a useful tool to draw image, suitable for math usage.
 - `Insert` → `Image` → `Draw image` to create the image to draw
 - Alternatively, <img src="../asset/texmacs/picture_icon.png"> → `draw image`
-- Set properies:
+- Set properties:
   - Modify the properties
   - Move cursor near the object
   - Press `Enter`

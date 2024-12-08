@@ -1,27 +1,64 @@
 # Table of content
 - [Table of content](#table-of-content)
-- [Introduction](#introduction)
+- [Environment setup](#environment-setup)
+  - [setup `ros` environment in `fish`](#setup-ros-environment-in-fish)
+  - [Install dependencies with `rosdep`](#install-dependencies-with-rosdep)
 - [Problems](#problems)
-  - [Uncategorized](#uncategorized)
+  - [Unsorted](#unsorted)
     - [No module named `python3-empy`](#no-module-named-python3-empy)
     - [`rosrun` cannot find my python script](#rosrun-cannot-find-my-python-script)
     - [Cannot open a node in a seperate terminal](#cannot-open-a-node-in-a-seperate-terminal)
     - [Missing Ros Packages](#missing-ros-packages)
     - [No module named 'rospkg'](#no-module-named-rospkg)
+  - [`fish`](#fish)
+    - [Autocomplete error in fish](#autocomplete-error-in-fish)
   - [Gazebo](#gazebo)
     - [how to solve the problem "Error in REST request" in Gazebo in Ubuntu18.04](#how-to-solve-the-problem-error-in-rest-request-in-gazebo-in-ubuntu1804)
     - [Symbolic lookup error](#symbolic-lookup-error)
-  - [Use `ros` with `fish`](#use-ros-with-fish)
-    - [Autocomplete error in fish](#autocomplete-error-in-fish)
   - [using python virtual environment](#using-python-virtual-environment)
     - [`symbol not found` issue](#symbol-not-found-issue)
 
+# Environment setup
 
-# Introduction 
-My learning notes on ROS.
+## setup `ros` environment in `fish` 
+[This article](https://yodahuang.github.io/articles/How-to-let-ROS-play-happily-with-fish/) is a good source.
+
+In short,
+1. To bring up functionalities like `roscd` and `rosed`,
+  ```
+    source /opt/ros/noetic/share/rosbash/rosfish
+  ```
+2. Setup ros env
+   ```
+    bass source /opt/ros/noetic/setup.bash
+   ```
+3. Setup catkin workspace env, source its `setup.bash` 
+   ```
+    bass source devel/setup.bash
+   ```
+
+## Install dependencies with `rosdep`
+1. Initialize `rosdep` if you haven't done so:
+    ```
+    sudo rosdep init
+    rosdep update
+    ```
+2. Navigate to your ros workspace:
+   ```
+   cd <path-to-your-workspace>
+   ``` 
+3. Install dependencies
+    ```
+    rosdep install --from-paths src --ignore-src -r -y
+    ```
+    - `--from-paths src`: specifies the `src` directory of your workspace, where the packages are located. 
+    - `--ignore-src`: prevent reinstalling dependencies that has been already installed.
+    - `-r`: recursively resolve dependencies
+    - `-y`: confirm installation
+
 
 # Problems 
-## Uncategorized
+## Unsorted
 ### No module named `python3-empy`
 It turns out that the problem is not that I do not have installed `python3-empy`, it is that I mistakenly run `catkin-make` with my python virtual environment. I need to remove the previous build cache first:
 ```
@@ -146,39 +183,7 @@ conda install -c conda-forge rospkg
 ```
 Check this https://answers.ros.org/question/331455/xacro-substitution-args-not-supported-no-module-named-rospkg/ for more information.
 
-## Gazebo
-### how to solve the problem "Error in REST request" in Gazebo in Ubuntu18.04
-change ~/.ignition/fuel/config.yaml from
-      url: <https://api.ignitionfuel.org>
-  to
-      url: <https://api.ignitionrobotics.org>
-
-### Symbolic lookup error
-Detail:
-```
-gazebo: symbol lookup error: /usr/lib/x86_64-linux-gnu/libsdformat.so.6: undefined symbol: _ZTIN8ignition4math2v45ColorE
-```
-Solution:
-```Bash
-sudo apt upgrade
-```
-
-## Use `ros` with `fish` 
-[This article](https://yodahuang.github.io/articles/How-to-let-ROS-play-happily-with-fish/) is a good source.
-
-In short,
-1. To bring up functionalities like `roscd` and `rosed`,
-  ```
-    source /opt/ros/kinetic/share/rosbash/rosfish
-  ```
-2. Setup ros env
-   ```
-    bass source /opt/ros/noetic/setup.bash
-   ```
-3. Setup catkin workspace env,
-   ```
-    bass source devel/setup.bash
-   ```
+## `fish`
 ### Autocomplete error in fish
 When autocomplete the ros command in `fish`, I encountered this problem:
 ```
@@ -203,6 +208,24 @@ in line 578 to
 ```
 set path (string split --max 1 --right / $arg)[1]
 ```
+
+## Gazebo
+### how to solve the problem "Error in REST request" in Gazebo in Ubuntu18.04
+change ~/.ignition/fuel/config.yaml from
+      url: <https://api.ignitionfuel.org>
+  to
+      url: <https://api.ignitionrobotics.org>
+
+### Symbolic lookup error
+Detail:
+```
+gazebo: symbol lookup error: /usr/lib/x86_64-linux-gnu/libsdformat.so.6: undefined symbol: _ZTIN8ignition4math2v45ColorE
+```
+Solution:
+```Bash
+sudo apt upgrade
+```
+
 
 ## using python virtual environment
 
