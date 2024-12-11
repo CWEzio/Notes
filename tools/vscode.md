@@ -17,6 +17,7 @@
 - [C++](#c)
   - [Set cmake source directory](#set-cmake-source-directory)
 - [Markdown](#markdown)
+  - [commands](#commands)
   - [Markdown math](#markdown-math)
   - [Markdown-All-In-One](#markdown-all-in-one)
     - [Table of contents (TOC)](#table-of-contents-toc)
@@ -61,9 +62,14 @@
 - `ctrl + k v` to split editor right. *(Personal Keybinding)*
 
 **Panel**
-- The *panel* is the window where the integrated terminal lies. 
-- Search for commands like `hide panel`, `toggle maximized panel` to toggle it.
-- `toggle maximized panel` command can set the panel maximized or restore its size.
+
+The *panel* is the window where the integrated terminal lies. 
+
+*command*
+- `hide panel`
+- `toggle panel visibility`
+- `toggle maximized panel` 
+> toggle means switch between enable and disable.
 
 **Primary Side Bar**
 - The *primary side bar* is where the file exploer resides.
@@ -175,6 +181,10 @@ This could be useful when the C++ project is a subproject inside a large project
 
 # Markdown
 - [Official documentation](https://code.visualstudio.com/docs/languages/markdown) of supported markdown features.
+
+## commands
+- `open locked preview to the side`: open a locked preview of current markdown file. The preview remains fixed and does not change when you switch to a different markdown file.
+  
 
 ## Markdown math
 - `vscode` use `KaTeX` to render math. 

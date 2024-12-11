@@ -1,3 +1,41 @@
+# Table of contents
+- [Table of contents](#table-of-contents)
+- [The sharp bits](#the-sharp-bits)
+  - [Leaking variables in loop](#leaking-variables-in-loop)
+  - [Parsing boolean value with `argparse`](#parsing-boolean-value-with-argparse)
+- [`Pybind11`](#pybind11)
+  - [Make the compiled lib support `pylance`](#make-the-compiled-lib-support-pylance)
+- [Python virtual environment](#python-virtual-environment)
+  - [Use Python Virtual Environment](#use-python-virtual-environment)
+  - [Add python virtualenv to Jupyter notebook](#add-python-virtualenv-to-jupyter-notebook)
+  - [Clone python virtual environment](#clone-python-virtual-environment)
+- [Jupyter](#jupyter)
+  - [Installing Vim-key bindings for Jupyter notebook](#installing-vim-key-bindings-for-jupyter-notebook)
+  - [Remove Virtual Environment from Jupyter notebook](#remove-virtual-environment-from-jupyter-notebook)
+- [Package and path management](#package-and-path-management)
+  - [Write Python module](#write-python-module)
+- [VSCode](#vscode)
+  - [`Autopep8` works too aggressively](#autopep8-works-too-aggressively)
+  - [Let `flake8` ignore the rules](#let-flake8-ignore-the-rules)
+- [Python virtual environment](#python-virtual-environment-1)
+  - [Setup cuda](#setup-cuda)
+- [PIP](#pip)
+- [Problems](#problems)
+  - [General python problem](#general-python-problem)
+    - [Import problem 1: `Module not found. *Package Name* is not a package`](#import-problem-1-module-not-found-package-name-is-not-a-package)
+    - [Import problem 2: module *module name* has no attribute `attribute name`](#import-problem-2-module-module-name-has-no-attribute-attribute-name)
+  - [Pybind11](#pybind11-1)
+    - [Undefined Symbol when using pybind11](#undefined-symbol-when-using-pybind11)
+  - [Mujoco\_py](#mujoco_py)
+    - [Error: GLEW initialization error: Missing GL version](#error-glew-initialization-error-missing-gl-version)
+    - [Box2D env cannot be used](#box2d-env-cannot-be-used)
+  - [Jupyter notebook](#jupyter-notebook)
+    - [No such comm target registered: jupyter.widget.version](#no-such-comm-target-registered-jupyterwidgetversion)
+  - [Other](#other)
+    - [`pydot` does not find `dot` in path](#pydot-does-not-find-dot-in-path)
+
+
+
 # The sharp bits
 ## Leaking variables in loop
 In fact, Python formally acknowledges that the names defined as for loop targets (a more formally rigorous name for "index variables") leak into the enclosing function scope. Check [this article](https://eli.thegreenplace.net/2015/the-scope-of-index-variables-in-pythons-for-loops/) for more information. 
@@ -21,8 +59,35 @@ and non-empty string would be converted to `True`.
 
 
 
-# Conda
+# `Pybind11`
+## Make the compiled lib support `pylance`
+- Reference
+  - Issue [creating stub pyi files automatically from pybind projects #2350](https://github.com/pybind/pybind11/issues/2350#issuecomment-668879301) of pybind.
+  - [This reply](https://github.com/pybind/pybind11/issues/2350#issuecomment-668879301) of above issue.
+- What is a `stub` file
+  - In Python, a stub file is a file with the .pyi extension used to provide type hints for Python code.
 
+`pylance` uses `stub` file for static analysis (in short, for autocomplete to work). `pybind11` does not natively ship `stub` files. We need to generate them manually.
+
+Follow steps below to generate the `stub` file:
+1. Install `mypy`
+    ```
+    pip install mypy
+    ```
+2.
+    ```
+    cd <where-you-want-to-generate-the-stub-file>
+    ```
+3. generate the `stub` file 
+    ```
+    stubgen -p <lib-name> -o .
+    ```
+    - `-p`: python package
+    - `-o`: path to output the stub file
+
+As long as the generated `stub` file is in `PYTHONPATH`, vscode can recognize it. (Check [here](../tools/vscode.md#set-pythonpath) for how to set vscode's python path.)
+
+There are also another tool [pybind11-stubgen](https://github.com/sizmailov/pybind11-stubgen) for `stub` file generation.
 
 # Python virtual environment
 
@@ -83,7 +148,8 @@ and non-empty string would be converted to `True`.
 * ```bash
   jupyter nbextensions_configurator enable --user
   ```
-* ```bash
+* 
+  ```bash
   # You may need the following to create the directoy
   mkdir -p $(jupyter --data-dir)/nbextensions
   # Now clone the repository
