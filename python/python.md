@@ -3,6 +3,7 @@
 - [The sharp bits](#the-sharp-bits)
   - [Leaking variables in loop](#leaking-variables-in-loop)
   - [Parsing boolean value with `argparse`](#parsing-boolean-value-with-argparse)
+  - [Difference between `is` and `==`](#difference-between-is-and-)
 - [`Pybind11`](#pybind11)
   - [Make the compiled lib support `pylance`](#make-the-compiled-lib-support-pylance)
 - [Python virtual environment](#python-virtual-environment)
@@ -41,7 +42,7 @@
 In fact, Python formally acknowledges that the names defined as for loop targets (a more formally rigorous name for "index variables") leak into the enclosing function scope. Check [this article](https://eli.thegreenplace.net/2015/the-scope-of-index-variables-in-pythons-for-loops/) for more information. 
 
 ## Parsing boolean value with `argparse`
-Suppose that I have an argument called `--my_bollean_flag` defined with 
+Suppose that I have an argument called `--my_boolean_flag` defined with 
 ```python
 parser.add_argument("--my_boolean_flag", type=bool)
 ```
@@ -55,6 +56,21 @@ This is because
 arg.my_boolean_flag = bool('False')
 ```
 and non-empty string would be converted to `True`.
+
+## Difference between `is` and `==`
+- `is` is the identity operator, which checks whether two objects are the same (at the same memory location)
+- `==` is the equality operator, which compares the *value* of two objects.
+
+Example:
+  ```python
+  x = 256
+  y = 256
+  print(x is y) # True (small integers are cached in python)
+
+  x = 300
+  y = 300
+  print(x is y) # False (no guarantee for integers outside the cached range)
+  ```
 
 
 

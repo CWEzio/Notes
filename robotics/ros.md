@@ -5,6 +5,7 @@
   - [Install dependencies with `rosdep`](#install-dependencies-with-rosdep)
 - [Problems](#problems)
   - [Unsorted](#unsorted)
+    - [`rospy.init_node` will disrupt python logging](#rospyinit_node-will-disrupt-python-logging)
     - [No module named `python3-empy`](#no-module-named-python3-empy)
     - [`rosrun` cannot find my python script](#rosrun-cannot-find-my-python-script)
     - [Cannot open a node in a seperate terminal](#cannot-open-a-node-in-a-seperate-terminal)
@@ -59,6 +60,26 @@ In short,
 
 # Problems 
 ## Unsorted
+### `rospy.init_node` will disrupt python logging
+This is an old bug (check [this issue](https://github.com/ros/ros_comm/issues/1384)) that hasn't been fixed yet. `rospy` disrupts python's logging, making all other modules' loggers and the root logger unable to work. 
+
+To solve this problem, initialize node with the function below 
+```python
+def init_ros_node(node_name):
+    """
+    helper function to initialize the node without disrupting logging
+    """
+    existing_handlers = logging.root.handlers[:]
+    rospy.init_node(node_name, anonymous=True)  # this will override current logging handlers
+    logging.root.handlers = existing_handlers
+    # Suppress unnecessary rospy logs by setting their log level to WARNING
+    rospy_logger = logging.getLogger('rospy')
+    rospy_logger.setLevel(logging.WARNING)
+    # Disable propagation to prevent duplicate log messages
+    rosout_logger = logging.getLogger('rosout')
+    rosout_logger.propagate = False
+```
+
 ### No module named `python3-empy`
 It turns out that the problem is not that I do not have installed `python3-empy`, it is that I mistakenly run `catkin-make` with my python virtual environment. I need to remove the previous build cache first:
 ```

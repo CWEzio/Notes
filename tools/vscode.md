@@ -6,7 +6,7 @@
   - [Window control](#window-control)
   - [Multiple cursor mode](#multiple-cursor-mode)
   - [Customize keybindings](#customize-keybindings)
-  - [Show hover information](#show-hover-information)
+  - [Show hover information with keyboard](#show-hover-information-with-keyboard)
   - [Trigger parameter hint](#trigger-parameter-hint)
   - [Trigger autocomplete](#trigger-autocomplete)
   - [Reject autocomplete suggestion](#reject-autocomplete-suggestion)
@@ -104,13 +104,21 @@ You can also modify the keybindings in the `keybindings.json` file. You can open
 > ```
 > The command `extension.vim_ctrl+p` is disabled.
 
-## Show hover information
+## Show hover information with keyboard
 Sometime you would want to show hover information, to remind you the function definition etc., as shown below:
 <img src="../asset/vscode/hover_information.png"><br/>
-In vim mode, simple put the cursor on top of the function does not show the hover information, you need to:
-1. `ctrl + shift + p` to open control palette
-2. search for `show or focus hover`
-> note that the hot key for `show or focus hover` is `ctrl + K ctrl + I`. However, I am using `vscode-vim` and `ctrl + K` does not work.
+
+With keyboard, simply put the cursor on top of the target does not show the hover information. You need to:
+1. `gh` to open the hover with pinning. 
+    > - In default `vscode-vim`, this command opens a hover window without pinning on it. I have modified this behavior.
+2. `ctrl + d/u` and `j/k` to scroll the hover.
+3. `gh` again to un-focus the hover without exit the hover (*Personal Customization*).
+    > This can be useful when you want to show the autofix with `ctrl + .` after showing the hover information. Because when the hover is focused, the problem is un-focused and `ctrl + .` does not work. You need to 
+
+
+Alternatively, you can press `ctrl + K, ctrl + I` once to open the hover and press it again to pin the hover.
+
+
 
 ## Trigger parameter hint
 <img src="../asset/vscode/parameter_hint.png">
