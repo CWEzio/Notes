@@ -14,6 +14,7 @@
   - [Select notebook kernel](#select-notebook-kernel)
   - [Set PythonPath](#set-pythonpath)
   - [Debug. Add command line argument](#debug-add-command-line-argument)
+  - [Import Sort](#import-sort)
 - [C++](#c)
   - [Set cmake source directory](#set-cmake-source-directory)
 - [Markdown](#markdown)
@@ -72,17 +73,17 @@ The *panel* is the window where the integrated terminal lies.
 > toggle means switch between enable and disable.
 
 **Primary Side Bar**
-- The *primary side bar* is where the file exploer resides.
+- The *primary side bar* is where the file explore resides.
 - `ctrl + k, b` to toggle the primary side bar. *(Personal Keybinding)*
 
 ## Multiple cursor mode
 - `alt + left click` to add a cursor.
-- `gb` to add cursor at next word occurance place. 
+- `gb` to add cursor at next word occurrence place. 
   - Enter the visual mode.
   - On the first press, the cursor moves to the end of the current word. On the second press, it adds another cursor at the end of the next word, continuing with each subsequent press.
   - Use `I` to insert or `A` to append (both capital).
   - `s` to modify, `d` to delete. 
-- `ctrl + c` or `esc` to exit the multicursor mode. 
+- `ctrl + c` or `esc` to exit the multi-cursor mode. 
   >Note that in jupyter notebook, you should use `ctrl + c` as `esc` exits to cell-level selection.
 - `shift + ctrl + ↑`️ to add cursor above 
 - `shift + ctrl + ↓` to add arrow above
@@ -174,6 +175,29 @@ Check [this answer for details](https://stackoverflow.com/questions/53653083/how
 }
 ```
 `args` specifies arguments to pass to the Python program. Each element of the argument string that's separated by a space should be contained within quotes.
+
+## Import Sort
+1. Install `isort` in python
+    ```
+    pip install isort
+    ```
+2. Install `python-isort` extension in vscode
+3. The `python-isort` extension does not recognize the `pyproject.toml` configuration file in workspace root by default. Add the following to vscode setting to make it do so:
+   ```json
+    "isort.args": ["--settings-path", "${workspaceFolder}/pyproject.toml"],
+   ```
+4. Create `pyproject.toml` under workspace folder root and  add the following to it to configure the format:
+   ```toml
+    [tool.isort]
+    profile = "black"
+    sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FIRSTPARTY"]
+    import_heading_stdlib = "Standard library"
+    import_heading_thirdparty = "Third party"
+    import_heading_firstparty = "First party"
+    multi_line_output = 3
+    lines_between_sections = 1
+    combine_as_imports = true
+   ```
 
 # C++
 ## Set cmake source directory
