@@ -13,10 +13,12 @@
 - [python](#python)
   - [Select notebook kernel](#select-notebook-kernel)
   - [Set PythonPath](#set-pythonpath)
+    - [obsolete method](#obsolete-method)
   - [Debug. Add command line argument](#debug-add-command-line-argument)
   - [Import Sort](#import-sort)
 - [C++](#c)
   - [Set cmake source directory](#set-cmake-source-directory)
+- [Git](#git)
 - [Markdown](#markdown)
   - [commands](#commands)
   - [Markdown math](#markdown-math)
@@ -153,7 +155,18 @@ Check [this answer for details](https://stackoverflow.com/questions/53653083/how
     "python.envFile": "${workspaceFolder}/.env",
     ```
     > If you only cares about whether the editor can correctly find the package path, only setting `python.envFile` is enough.
-2. create `.env` file and put the pythonpath in this file. For example:
+2. Add to `setting.json` to set `python.analysis.extraPaths` like the following to configure path for `pylance`
+    ```json
+        "python.analysis.extraPaths": [
+            "${workspaceFolder}/cgal_mesh/build_py38",
+            "/home/chenwang/workspace/sam2",
+            "${workspaceFolder}/softgym/PyFlex/bindings/build"
+        ],
+    ```
+
+### obsolete method
+> I no longer like this method because `.env` file will override the system/terminal environment and it has no access to the current system environment. If I set `PYTHONPATH="${PYTHONPATH}"`, it make the `PYTHONPATH` variable empty. This forces me to have two separate running environment setting for system and `vscode`, and is prone to error.
+- create `.env` file and put the pythonpath in this file. For example:
     ```
     PYFLEXROOT="/home/chenwang/VCD/softgym/PyFlex"
     PYTHONPATH=/home/chenwang/VCD/softgym:${PYFLEXROOT}/bindings/build
@@ -209,6 +222,11 @@ The default would be the working directory. Set the cmake source directory by ad
     ],
 ```
 This could be useful when the C++ project is a subproject inside a large project.
+
+# Git
+- `view staged changes`  
+- `open changes with previous revision`: diff current file with last commit, open diff in a preview window
+  - This command seems to have bug for notebook. The command from the command platte does not work. To use it, right click the tab and select it from `open changes`.
 
 
 # Markdown

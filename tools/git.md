@@ -122,3 +122,13 @@ By mistake, I have made the `src/` directory a git repo. However, I want to chan
     git add .
     git commit -m "include the whole repo's file"
     ```
+
+# Problems
+## `git` overwrites my local file
+My project contains a folder called `exp_data`, which is not tracked by git (adding `exp_data/` in `.gitignore`). A colleague collaborating on this project create a symbolic link `exp_data` that refers to another directory. Because the symbolic link is a file not a directory, it is not ignored. The `exp_data` symbolic link is accidentally staged and pushed to the remote. And after I merged this change, I find that my local `exp_data` folder was overwrote and cannot be restored. I do not use force pull, but there is no warning or error information when I do the merge.
+
+I believe this is a bug of git, because git shouldn't delete untracked files without warning, but there are also some good practices from our side that can prevent this from happening:
+1. Do not use symbolic link under a git repo.
+2. Use `name` instead of `name/` when adding a folder to `.gitignore`.
+
+

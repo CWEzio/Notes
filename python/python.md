@@ -4,6 +4,7 @@
   - [Leaking variables in loop](#leaking-variables-in-loop)
   - [Parsing boolean value with `argparse`](#parsing-boolean-value-with-argparse)
   - [Difference between `is` and `==`](#difference-between-is-and-)
+- [Style guide](#style-guide)
 - [`Pybind11`](#pybind11)
   - [Make the compiled lib support `pylance`](#make-the-compiled-lib-support-pylance)
 - [Python virtual environment](#python-virtual-environment)
@@ -72,7 +73,8 @@ Example:
   print(x is y) # False (no guarantee for integers outside the cached range)
   ```
 
-
+# Style guide
+- [Google style guide](https://google.github.io/styleguide/pyguide.html)
 
 
 # `Pybind11`

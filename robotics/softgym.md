@@ -1,3 +1,29 @@
+# Table of Content
+- [Table of Content](#table-of-content)
+- [Softgym](#softgym)
+  - [Installation](#installation)
+    - [Preparation](#preparation)
+    - [Installation steps](#installation-steps)
+  - [Usage](#usage)
+    - [Run examples](#run-examples)
+  - [VCD Installation](#vcd-installation)
+    - [Installation step](#installation-step)
+  - [Install pyflex on a python virtual environment](#install-pyflex-on-a-python-virtual-environment)
+    - [Enable `clangd` language server](#enable-clangd-language-server)
+    - [Install VCD in the python virtual environment](#install-vcd-in-the-python-virtual-environment)
+    - [Required Packages](#required-packages)
+  - [Notes](#notes)
+  - [Bugs \& Solutions](#bugs--solutions)
+    - [Choose Nvidia graphic card as the default device](#choose-nvidia-graphic-card-as-the-default-device)
+    - [Strange freeze and segmentation fault issue with my python3.8 virtual environment.](#strange-freeze-and-segmentation-fault-issue-with-my-python38-virtual-environment)
+- [Flex](#flex)
+  - [Compile flex demo](#compile-flex-demo)
+- [memo](#memo)
+- [Other things](#other-things)
+  - [How `softgym` renders the environment](#how-softgym-renders-the-environment)
+
+
+
 # Softgym
 
 ## Installation
@@ -162,6 +188,8 @@ Most installation steps are the same as the previous softgym installation. Here 
     ```
 
 ## Install pyflex on a python virtual environment
+TODO: update this section to make it more readable
+
 Recently, I want to use pyflex together with pydrake. However, pydrake has a poor support for conda. Therefore, I try to compile pyflex with a python virtual environment.
 > One difference between conda and python virtual environment is that conda has its own python interpreter, while python virtual environment create a soft link to system's python interpreter and use it. Therefore, python's virtual environment is more like a thin seperation between different library packs.
 1. Create python virtual environment. My python version is `3.8.10`.
@@ -224,8 +252,6 @@ Recently, I want to use pyflex together with pydrake. However, pydrake has a poo
     ```
     cmake -DPYBIND11_PYTHON_VERSION=3.8 -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
     ```
-
-    No need to modify `compile.sh`.
 9.  Compile `pyflex` 
     ```
     cd /workspace/softgym 

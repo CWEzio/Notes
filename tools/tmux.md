@@ -38,6 +38,7 @@ Key Notation Convention
   - If there is no marked pane (set by `select-pane`), then the default value of `-s` is the current active pane.
   - `-U` swap with the previous (number -1) pane.
   - `-D` swap with the next (number +1) pane.
+- command `join-pane` to join panes.
 - `C-k C-o` to rotate the pane location counter-clockwise.
 - `C-k M-o` to rotate the pane location clockwise.
 

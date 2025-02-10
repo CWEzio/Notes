@@ -15,3 +15,8 @@ I can drag a folder/file to the left column to add it into the bookmark.
 ## Move window to other workspace
 - `win + shift + pageup/pagedown` 
 - My notebook keyboard does not have `pageup/pagedown` key. I need to press `win`, `shift`, `fn` `up/down` in sequence (with previous key holded).
+
+
+# Visualization
+## Different wallpaper for different screens 
+Use [`HydraPaper`](https://hydrapaper.gabmus.org/).
