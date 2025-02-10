@@ -63,6 +63,7 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
 - `ci(` change the contents inside the current pair of parentheses
 - `ci[` change the contents inside the current pair of square brackets
 - `da'` delete a single-quoted string, including the surroundign single quotes. 
+- `yat` yank text include the surrounding tags.
 
 ## Surrounding 
 > Note that this is supported by `vim-surround` plugin. The `vim-surround` is also emulated by `vscode-vim`. Check the [vscode-vim's doc on vim-surround](https://github.com/VSCodeVim/Vim/tree/master?tab=readme-ov-file#vim-surround) for more details.
@@ -78,6 +79,7 @@ Text objects include things like `iw`, `aw`, `a"`, which can be used to refer to
 
 - `a"`: a quoted string. Selects the text from the previous quote until the next quote. Any trailing white space is included, unless there is none, then leading white space is included.
 - `2i"`: as `a"`, but with no extra white space.
+- `at`: text include the surrounding tags like `<span>`. 
 
 ## Changing case 
 - After visual selecting the text, 
@@ -207,26 +209,9 @@ Similarly, you can use `"*y` and `"*p` to copy and paste from teh primary select
 - `alt + arrow key` to move across tab (pycharm)
 
 # VSCode
-Some VSCode's native commands are useful to use together with vim commands:
-- use ``Ctrl + ` `` to focus on the terminal
-- use `Ctrl + 1` to focus on the editor  
-    > when there are multiple editor windows, use, for example, `Ctrl + 2` to refer to other windows. In other words, `Ctrl + index` to focus on the editor
-- Navigate between groups using `Ctrl + PageDown` and `Ctrl + PageUp` (also suitable for terminals)
-
-More about VSCodeVim extension:
 - You can find all supported vim commands of VSCodeVim in [roadmap](https://github.com/VSCodeVim/Vim/blob/master/ROADMAP.md).
 
-### Multiple cursor mode
-- `alt + left click` to add a cursor.
-- `gb` to add cursor at next word occurance place. 
-  <!-- - Use `I` to enter insert mode at the beginning of the word, or `A` for the end. -->
-  - `s` to modify, `d` to delete
-- `ctrl + c` or `esc` to exit the multicursor mode. 
-  >Note that in jupyter notebook, you should use `ctrl + c` as `esc` exits to cell-level selection.
-- `shift + ctrl + ⬆️`️ to add cursor above 
-- `shift + ctrl + ↓` to add arrow above
-️
-## Miscellany
+# Miscellany
 1. Use `:set syntax=python` to force `vim` to syntax-highlight a file as `python`
 
 # Settings

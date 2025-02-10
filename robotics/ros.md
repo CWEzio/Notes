@@ -1,21 +1,98 @@
-# Introduction 
-My learning notes on ROS.
+# Table of content
+- [Table of content](#table-of-content)
+- [Environment setup](#environment-setup)
+  - [setup `ros` environment in `fish`](#setup-ros-environment-in-fish)
+  - [Install dependencies with `rosdep`](#install-dependencies-with-rosdep)
+- [Problems](#problems)
+  - [Unsorted](#unsorted)
+    - [`rospy.init_node` will disrupt python logging](#rospyinit_node-will-disrupt-python-logging)
+    - [No module named `python3-empy`](#no-module-named-python3-empy)
+    - [`rosrun` cannot find my python script](#rosrun-cannot-find-my-python-script)
+    - [Cannot open a node in a seperate terminal](#cannot-open-a-node-in-a-seperate-terminal)
+    - [Missing Ros Packages](#missing-ros-packages)
+    - [No module named 'rospkg'](#no-module-named-rospkg)
+  - [`fish`](#fish)
+    - [Autocomplete error in fish](#autocomplete-error-in-fish)
+  - [Gazebo](#gazebo)
+    - [how to solve the problem "Error in REST request" in Gazebo in Ubuntu18.04](#how-to-solve-the-problem-error-in-rest-request-in-gazebo-in-ubuntu1804)
+    - [Symbolic lookup error](#symbolic-lookup-error)
+  - [using python virtual environment](#using-python-virtual-environment)
+    - [`symbol not found` issue](#symbol-not-found-issue)
 
-# Problems 
-## Use `ros` with `fish` 
+# Environment setup
+
+## setup `ros` environment in `fish` 
 [This article](https://yodahuang.github.io/articles/How-to-let-ROS-play-happily-with-fish/) is a good source.
 
 In short,
 1. To bring up functionalities like `roscd` and `rosed`,
   ```
-  source /opt/ros/kinetic/share/rosbash/rosfish
+    source /opt/ros/noetic/share/rosbash/rosfish
   ```
-2. To source catkin workspace,
+2. Setup ros env
    ```
-  bass source devel/setup.bash
+    bass source /opt/ros/noetic/setup.bash
+   ```
+3. Setup catkin workspace env, source its `setup.bash` 
+   ```
+    bass source devel/setup.bash
    ```
 
-## `rosrun` cannot find my python script
+## Install dependencies with `rosdep`
+1. Initialize `rosdep` if you haven't done so:
+    ```
+    sudo rosdep init
+    rosdep update
+    ```
+2. Navigate to your ros workspace:
+   ```
+   cd <path-to-your-workspace>
+   ``` 
+3. Install dependencies
+    ```
+    rosdep install --from-paths src --ignore-src -r -y
+    ```
+    - `--from-paths src`: specifies the `src` directory of your workspace, where the packages are located. 
+    - `--ignore-src`: prevent reinstalling dependencies that has been already installed.
+    - `-r`: recursively resolve dependencies
+    - `-y`: confirm installation
+
+
+# Problems 
+## Unsorted
+### `rospy.init_node` will disrupt python logging
+This is an old bug (check [this issue](https://github.com/ros/ros_comm/issues/1384)) that hasn't been fixed yet. `rospy` disrupts python's logging, making all other modules' loggers and the root logger unable to work. 
+
+To solve this problem, initialize node with the function below 
+```python
+def init_ros_node(node_name):
+    """
+    helper function to initialize the node without disrupting logging
+    """
+    existing_handlers = logging.root.handlers[:]
+    rospy.init_node(node_name, anonymous=True)  # this will override current logging handlers
+    logging.root.handlers = existing_handlers
+    # Suppress unnecessary rospy logs by setting their log level to WARNING
+    rospy_logger = logging.getLogger('rospy')
+    rospy_logger.setLevel(logging.WARNING)
+    # Disable propagation to prevent duplicate log messages
+    rosout_logger = logging.getLogger('rosout')
+    rosout_logger.propagate = False
+```
+
+### No module named `python3-empy`
+It turns out that the problem is not that I do not have installed `python3-empy`, it is that I mistakenly run `catkin-make` with my python virtual environment. I need to remove the previous build cache first:
+```
+cd ~/catkin_ws  
+unlink src/CMakeLists.txt
+trash build
+trash devel
+trash .catkin_workspace
+```
+and then run `catkin_make`.
+
+
+### `rosrun` cannot find my python script
 It turns out that rosrun can automatic detect executable files. However, at first I need to make the script executable by `chmod +x` and add 
 ```python
 #!/usr/bin/env python3
@@ -23,7 +100,7 @@ It turns out that rosrun can automatic detect executable files. However, at firs
 on the first line of the python script.
 
 
-## Cannot open a node in a seperate terminal
+### Cannot open a node in a seperate terminal
 I would like to open a node in a seperate terminal and thus I use 
 ```xml
   <node name="teleop" pkg="turtlebot3_teleop" type="turtlebot3_teleop_key" output="screen" launch-prefix="xterm -e" />
@@ -40,12 +117,12 @@ executable permission. This is often caused by a bad launch-prefix.
 The traceback for the exception was written to the log file
 ```
 
-### Solution
+**Solution**
 It turns out that the error message is misleading. I got this error because I haven't have `xterm` installed. After installing `xterm`, everything works fine again.
 
 
-## Missing Ros Packages
-Problem description
+### Missing Ros Packages
+**Problem description**
 ```
 -- Using CATKIN_DEVEL_PREFIX: /home/chenwang/Documents/towr_icra17/build/devel
 -- Using CMAKE_PREFIX_PATH: /opt/ros/melodic
@@ -94,13 +171,13 @@ Call Stack (most recent call first):
 See also "/home/chenwang/Documents/towr_icra17/build/CMakeFiles/CMakeOutput.log".
 See also "/home/chenwang/Documents/towr_icra17/build/CMakeFiles/CMakeError.log".
 ```
-Solution
+**Solution**
 ```
 sudo apt-get install ros-melodic-rviz-visual-tools
 ```
 Check this https://answers.ros.org/question/335514/ros-graph-messages-build/ for more information.
 
-## No module named 'rospkg'
+### No module named 'rospkg'
 Problem description
 ```
 ... logging to /home/chenwang/.ros/log/e247848c-94f8-11ea-8e01-04d4c448372e/roslaunch-chenwang-System-Product-Name-12456.log
@@ -127,8 +204,34 @@ conda install -c conda-forge rospkg
 ```
 Check this https://answers.ros.org/question/331455/xacro-substitution-args-not-supported-no-module-named-rospkg/ for more information.
 
+## `fish`
+### Autocomplete error in fish
+When autocomplete the ros command in `fish`, I encountered this problem:
+```
+string split: -type f -perm /111: unknown option
+
+/opt/ros/noetic/share/rosbash/rosfish (line 1):
+string split --max 1 --right / $argv[1]
+^
+in command substitution
+        called on line 578 of file /opt/ros/noetic/share/rosbash/rosfish
+in function '_roscomplete_search_dir' with arguments '-type\ f\ -perm\ /111'
+        called on line 648 of file /opt/ros/noetic/share/rosbash/rosfish
+in function '_roscomplete_rosrun'
+in command substitution
+```
+
+It turns out that the issue is caused by a bug in the `rosfish` file. To fix it, modify:
+```fish
+set path (string split --max 1 --right / $argv[1])[1]
+```
+in line 578 to
+```
+set path (string split --max 1 --right / $arg)[1]
+```
+
 ## Gazebo
-## how to solve the problem "Error in REST request" in Gazebo in Ubuntu18.04
+### how to solve the problem "Error in REST request" in Gazebo in Ubuntu18.04
 change ~/.ignition/fuel/config.yaml from
       url: <https://api.ignitionfuel.org>
   to
@@ -143,3 +246,40 @@ Solution:
 ```Bash
 sudo apt upgrade
 ```
+
+
+## using python virtual environment
+
+### `symbol not found` issue
+- Ref: [this csdn notes](https://blog.csdn.net/qq_38606680/article/details/129118491)
+
+I encounter the following issue when using `cv_bridge` in a `python3.10` conda environment.
+```
+ImportError: /lib/x86_64-linux-gnu/libp11-kit.so.0: undefined symbol: ffi_type_pointer, version LIBFFI_BASE_7.0
+```
+
+The cause of this issue is that I am using a new python version and it installs new packages. However, the ros package is old, which cause version conflicts.
+
+In this case, it is caused by the `libffi` python package, which create a `libffi.7.so` to `libffi.8.so`.
+
+The solution is:
+
+1. 
+    ```
+    cd ~/miniconda3/envs/<env-name>/lib
+    ```
+2. Check the lib with error
+    ```
+    ls -l | grep ffi
+    ```
+    You would see `libffi.7.so` is linked to version 8 (or alike).
+
+3. Delete `libffi.7.so libffi.so.7`  
+
+4. Create new link
+    ```
+    sudo ln -s /lib/x86_64-linux-gnu/libffi.so.7 libffi.7.so
+    sudo ln -s /lib/x86_64-linux-gnu/libffi.so.7 libffi.so.7
+    ```
+
+
