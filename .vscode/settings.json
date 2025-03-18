@@ -1,9 +1,17 @@
 {
     "cSpell.words": [
+        "bfzero",
         "funced",
         "isort",
+        "newcommand",
         "pyproject",
         "rosdep",
-        "rtde"
+        "rtde",
+        "tikz",
+        "tikzmark",
+        "tikzmarknode",
+        "tikzpicture",
+        "usepackage",
+        "usetikzlibrary"
     ]
 }
