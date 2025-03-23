@@ -46,8 +46,11 @@
     - `\sout{}` can only be used to strike out text. To strike out math equations, we need to manually draw the strike out line.
     - One example is given below:
         ```latex
+        % import package
         \usepackage{tikz}
         \usetikzlibrary{shapes,arrows,positioning,calc, tikzmark}
+
+        % ---------------------------------------- 
         \begin{align*}
         \tikzmarknode{A}{\dot{\bfx}_s^i}  &= f_\text{SI} (\bfx_s^i , \bfu^i_s) =  \dot{\bfp}^i  = \tikzmarknode{B}{\bfu^i_s}  \\ 
         \tikzmarknode{C}{\dot{\bfx}_d^i}  &= f_\text{DI}(\bfx_d^i,\bfu^i_d) = \bmat{\dot{\bfp}^i  \\ \dot{\bfv}^i } =
