@@ -4,6 +4,33 @@
 ## Homebrew
 
 ## Git
+## Install and configure `git` 
+
+### Install `git`
+```bash
+brew install git
+```
+
+### Setup github SSH key
+```bash
+ssh-keygen -t rsa -C "chenwang0234@gmail.com"
+```
+Open github, account setting. Choose SSH and GPG keys.
+```bash
+vim ~/.ssh/id_rsa.pub
+```
+Copy the content of `id_rsa.pub` to add SSH key.
+
+### Setup git user email and name
+```bash
+git config --global user.email "chenwang0234@gmail.com"
+git config --global user.name "chenwang"
+```
+
+### Change git default editor
+```bash
+git config --global core.editor "nvim"
+```
 
 ## Install `fish`
 1. `brew install fish`
@@ -27,6 +54,13 @@
     ```
     defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
     ```
+
+## Neovim
+- Install with `brew install neovim`
+- Use my config
+  ```
+  ln -s <path-to-my-dotfiles>/nvim/ ~/.config/nvim
+  ```
 
 ## Clash for Windows
 - Download clash for windows from [this page](https://github.com/lantongxue/clash_for_windows_pkg/releases).

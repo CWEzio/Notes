@@ -107,7 +107,7 @@ git config --global user.name "chenwang"
 
 ### Change git default editor
 ```
-git config --global core.editor "vim"
+git config --global core.editor "nvim"
 ```
 
 ## Modify `CapsLock` behavior 
@@ -288,7 +288,10 @@ sudo tar -C /opt -xzf nvim-linux64.tar.gz
 - Use my config
   ```
   ln -s <path-to-my-dotfiles>/nvim/ ~/.config/nvim
-  sudo ln -s <path-to-my-dotfiles>/nvim/ /root/.config/nvim  # also setup nvim config for super user
+
+  # also setup nvim config for super user
+  # might be unnecessary because you can use sudoedit
+  sudo ln -s <path-to-my-dotfiles>/nvim/ /root/.config/nvim  
   ```
 
 - Then start nvim and wait for installation of all plugins.
