@@ -21,6 +21,13 @@
     ```
     `y` for all options
 
+## VSCode
+- Install VSCode
+- Disable the hold key behavior by 
+    ```
+    defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
+    ```
+
 
 ## Clash for Windows
 - Download clash for windows from [this page](https://github.com/lantongxue/clash_for_windows_pkg/releases).

@@ -42,8 +42,8 @@
     \newcommand{\commandname}[num_args][default]{definition}
     ```
     - `default` provides default value for the first argument. `\newcommand` only allows providing default value for the first argument.
-- Strike out math.
-    - `\sout{}` can only be used to strike out text. To strike out math equations, we need to manually draw the strike out line.
+- Strike out.
+    - `\sout{}` can only be used to strike out text (inline math is OK). To strike out math equations, we need to manually draw the strike out line.
     - One example is given below:
         ```latex
         % import package
@@ -63,3 +63,4 @@
         \end{tikzpicture}
         ```
     - The key is to use `\tikzmarknode` to add anchor points and then draw the line using `tikzpicture`. Details can be found in the example above.
+    - When strike out text include `\cite{}`, enclose it with `\mbox` like `\mbox{\cite{}}` to avoid error.
