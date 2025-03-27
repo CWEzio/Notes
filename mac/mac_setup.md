@@ -28,7 +28,6 @@
     defaults write com.microsoft.VSCode ApplePressAndHoldEnabled -bool false
     ```
 
-
 ## Clash for Windows
 - Download clash for windows from [this page](https://github.com/lantongxue/clash_for_windows_pkg/releases).
 - `sudo xattr -r -d com.apple.quarantine path-to-clash-for-windows-file` 
@@ -43,3 +42,18 @@
 ### `ITerm2`
 - Use `mocha` profile in [this comment](https://github.com/catppuccin/iterm/issues/27#issuecomment-2513558106). 
 - Disable `Use different colors for light and dark mode`.
+
+## Font
+### `Monaspace`
+- Install it with `brew install --cask font-monaspace`
+*VSCode*
+- Add the following in `settings.json` 
+    ```json
+    "editor.fontFamily": "'Monaspace Neon Light', monospace",// add Ani (one distinguishable font) to check whether your selected font is at work
+    "editor.fontLigatures": "'calt', 'liga', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08', 'ss09'", // to enable ligature and text healing
+    ```
+
+*iTerm2*
+- `cmd + ,` to open setting
+- Go to profile, select text, select `Monaspace Neon` and `Light` under `Font`
+- Enable `use ligatures`, click the three dot icon in the right most and enable at least one feature (this will enable text healing).
