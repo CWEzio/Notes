@@ -16,6 +16,71 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
 - Search: `/{regex}`, `n/N` for navigating matches
 - `gd` to go to the declaration, `Ctrl + o` to go back to where you came from
 
+## Mark
+- Reference
+    - [Vim Tips Wiki: Using marks](https://vim.fandom.com/wiki/Using_marks)
+- ``` ` ``` (backtick) jumps to the line and the column of the mark.
+- `'` (apostrophe) jumps to the first non-blank character of the line holding the mark.
+- local mark (lowercase letter): each buffer has its own set of local marks 
+- global mark (uppercase letter): works across buffers
+
+### Automatic Marks
+- *Previous Context Mark*
+    - The previous context mark only works within the same buffer.
+    - Previous context mark is updated when:
+        - Using line jumps (`G`, `gg`, `123G`)
+        - Executing search commands (`/pattern`, `?pattern`)
+        - Jumping to marks (`` `a ``)
+        - Making paragraph/section jumps (`{`, `}`)
+
+    - ``` `` ``` (backtick backtick) command toggles between current position and previous context mark, preserving both line and column position. 
+    - `''` (apostrophe) jumps to the previous context mark but places the cursor at the first non-blank character in the line.
+
+    - Manually set with:
+    - `m'`: Sets the previous context mark at current position (line only)
+    - ``m` ``: Sets the previous context mark at current position (line and column)
+
+- *Special Automatic Marks*
+    - `` `. ``: Position of last change
+    - `` `" ``: Position where you last exited the current buffer
+    - `` `[ ``: Start of last change or yank
+    - `` `] ``: End of last change or yank
+    - `` `< ``: Start of last visual selection
+    - `` `> ``: End of last visual selection
+    - `` `0 ``: Position in last file edited (when exited VIM)
+    - `` `1 ``: Like `` `0 ``, but the previous file (`` `2 `` etc.)
+
+### Manual Marks
+- *Set a mark*
+    - `m{letter}`: Set a mark at current cursor position
+        - Example: `ma` sets mark 'a'
+        - Lowercase marks (a-z): File-local marks
+        - Uppercase marks (A-Z): File-global marks (work across buffers)
+- *Use mark*
+    - `` `{letter} ``: Jump to exact position (line and column) of mark
+    - Example: `` `a `` jumps to mark 'a'
+    - `'{letter}`: Jump to the line of mark (first non-blank character)
+    - Example: `'a` jumps to the line containing mark 'a'
+    - `` d'a ``: delete from current line to line of mark a
+    - `` d`a ``: delete from current cursor position to position of mark a
+    - `` c'a ``: change text from current line to line of mark a
+    - `` y`a ``: yank text to unnamed buffer from cursor to position of mark a
+    - `:marks`: list all the current marks
+    - `:marks aB`: list marks a, B
+    - *Navigate between marks*
+        - `]'`: next line with a lowercase mark
+        - `['`: previous line with a lower case mark
+        - `` ]` ``: next lowercase mark
+        - `` [` ``: previous lowercase mark
+        - Above commands take a counts, like `` 5]` `` 
+- *Delete Marks*
+    - If you delete a line containing a mark, the mark is also deleted.
+    - `:delmarks a `: delete mark a
+    - `:delmarks a-d`: delete marks a, b, c, d
+    - `:delmarks abxy`: delete marks a, b, x, y 
+    - `:delmarks aA`: delete marks a, A
+    - `:delmarks!`: delete all lowercase marks for the current buffer
+
 ## View
 - Folding/collapsing a function
     1. Fold a function with `zc`
