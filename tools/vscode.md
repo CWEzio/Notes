@@ -14,6 +14,8 @@
   - [Select notebook kernel](#select-notebook-kernel)
   - [Set PythonPath](#set-pythonpath)
     - [obsolete method](#obsolete-method)
+  - [Black Formatter](#black-formatter)
+    - [Choose which black formatter to use](#choose-which-black-formatter-to-use)
   - [Debug. Add command line argument](#debug-add-command-line-argument)
   - [Import Sort](#import-sort)
 - [C++](#c)
@@ -174,6 +176,13 @@ Check [this answer for details](https://stackoverflow.com/questions/53653083/how
     ```
     > You can also put other path to this file.
     > Note that `VSCode` will automatically append the setted value with the environment variable. That is, there is no need to write like `PYTHONPATH="/some/path:${PYTHONPATH}"`. 
+## Black Formatter
+### Choose which black formatter to use
+- By default, the selected python interpreter's black module is used but you can choose another one.
+- By setting the following:
+  ```json
+  "black-formatter.path": ["/home/chenwang/miniconda3/bin/black"], 
+  ```
 
 ## Debug. Add command line argument
 ```json
