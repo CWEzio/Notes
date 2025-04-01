@@ -1,10 +1,10 @@
 # Vim cheet list
-Many contents of this note comes from https://missing.csail.mit.edu/2020/editors/
+Many contents of this note comes from [The missing semester](https://missing.csail.mit.edu/2020/editors/)
 ## Movement
 - `CR` in `vim` mappings is the carriage return usually the `enter` on the keyboard. 
 - Basic movement `hjkl`
 - Words: `w` (next word), `b` (beginning of word), `e` (end of word) 
-- Lines: `0` (beginning of line), `^` (first non-blank character), `$` (end of line) 
+- Lines: `0` (beginning of line), `^` (first non-blank character), `$` (end of line), `g_` (last non-blank character of the line) 
 - Screen: `H` (top of screen), `M` (middle of screen), `L` (bottom of screen)
 - Scroll: `Ctrl-u` (up), `Ctrl-d` (down)
 - File: `gg` (beginning of file), `G` (end of file)
@@ -14,7 +14,7 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
     - find/to forward/backward {character} on the current line
     - `,`/`;` for navigating match
 - Search: `/{regex}`, `n/N` for navigating matches
-- `gd` to go to the declaration, `Ctrl + o` to go back to where you came from
+- Declaration: `gd` to go to the declaration, `Ctrl + o` to go back to where you came from
 
 ## Mark
 - Reference
@@ -102,6 +102,7 @@ Many contents of this note comes from https://missing.csail.mit.edu/2020/editors
 - `o`/`O` (small o and captital O) insert line below/above
 - `d{motion}` delete {motion}
     - e.g. `dw` is delete word, `d$` is delete to end of line, `d0` is delete to beginning of line
+    - `dt{char}`, `df{char}`
 - `c{motion}` change {motion}
     - e.g. `cw` is change word
     - like `d{motion}` followed by `i`
