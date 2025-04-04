@@ -8,8 +8,9 @@
   - [Customize keybindings](#customize-keybindings)
   - [Show hover information with keyboard](#show-hover-information-with-keyboard)
   - [Trigger parameter hint](#trigger-parameter-hint)
-  - [Trigger autocomplete](#trigger-autocomplete)
+  - [Trigger Suggest](#trigger-suggest)
   - [Reject autocomplete suggestion](#reject-autocomplete-suggestion)
+- [Coding](#coding)
 - [python](#python)
   - [Select notebook kernel](#select-notebook-kernel)
   - [Set PythonPath](#set-pythonpath)
@@ -78,7 +79,9 @@ The *panel* is the window where the integrated terminal lies.
 
 **Primary Side Bar**
 - The *primary side bar* is where the file explore resides.
-- `ctrl + k, b` to toggle the primary side bar. *(Personal Keybinding)*
+- `ctrl + k, b` to toggle the primary side bar. *(Personal Keybinding in Linux)*
+- `cmd + b` to toggle the primary side bar. *Mac*
+- `cmd + 0` to focus on the primary side bar. *Mac*
 
 ## Multiple cursor mode
 - `alt + left click` to add a cursor.
@@ -121,20 +124,28 @@ With keyboard, simply put the cursor on top of the target does not show the hove
     > This can be useful when you want to show the autofix with `ctrl + .` after showing the hover information. Because when the hover is focused, the problem is un-focused and `ctrl + .` does not work. You need to 
 
 
-Alternatively, you can press `ctrl + K, ctrl + I` once to open the hover and press it again to pin the hover.
+Alternatively, you can press `ctrl + K, ctrl + I` once to open the hover and press it again to pin the hover. In mac, use `cmd + K, cmd + I`.
+
 
 
 
 ## Trigger parameter hint
 <img src="../asset/vscode/parameter_hint.png">
 
-- `ctrl + shift + space`
+- `ctrl + shift + space` (Linux)
+- `cmd + shift + space` (Mac)
 
-## Trigger autocomplete
-- `ctrl + space`
+## Trigger Suggest
+- `ctrl + space` (linux)
+- `option + escape` (Mac)
+
 
 ## Reject autocomplete suggestion
 - `Escape`
+
+# Coding
+- `Go to declaration`: `gd` (vim keybinding)
+- `Find all references`
 
 # python
 ## Select notebook kernel

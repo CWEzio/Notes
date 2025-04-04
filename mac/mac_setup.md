@@ -68,7 +68,10 @@ git config --global core.editor "nvim"
     - To remove the quarantine label auto added by Apple.
 - Install the app.
 
-## Remap `caps lock` to `esc`
+## Keyboard setting 
+### Remember the last used input source for an APP
+- `System Settings` > `Keyboard` > `Edit` in `Input sources` > `Automatically switch to a document's input source`
+### Remap `caps lock` to `esc`
 - Apple > System Settings > Keyboard > Keyboard Shortcuts > Modifier
 
 # Configure appearance
