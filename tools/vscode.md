@@ -7,10 +7,11 @@
   - [Multiple cursor mode](#multiple-cursor-mode)
   - [Customize keybindings](#customize-keybindings)
   - [Show hover information with keyboard](#show-hover-information-with-keyboard)
+  - [Show autofix](#show-autofix)
   - [Trigger parameter hint](#trigger-parameter-hint)
   - [Trigger Suggest](#trigger-suggest)
   - [Reject autocomplete suggestion](#reject-autocomplete-suggestion)
-- [Coding](#coding)
+  - [Jump to](#jump-to)
 - [python](#python)
   - [Select notebook kernel](#select-notebook-kernel)
   - [Set PythonPath](#set-pythonpath)
@@ -19,6 +20,7 @@
     - [Choose which black formatter to use](#choose-which-black-formatter-to-use)
   - [Debug. Add command line argument](#debug-add-command-line-argument)
   - [Import Sort](#import-sort)
+  - [Remove unused imports](#remove-unused-imports)
 - [C++](#c)
   - [Set cmake source directory](#set-cmake-source-directory)
 - [Git](#git)
@@ -121,13 +123,15 @@ With keyboard, simply put the cursor on top of the target does not show the hove
     > - In default `vscode-vim`, this command opens a hover window without pinning on it. I have modified this behavior.
 2. `ctrl + d/u` and `j/k` to scroll the hover.
 3. `gh` again to un-focus the hover without exit the hover (*Personal Customization*).
-    > This can be useful when you want to show the autofix with `ctrl + .` after showing the hover information. Because when the hover is focused, the problem is un-focused and `ctrl + .` does not work. You need to 
+    > This can be useful when you want to show the autofix with `ctrl + .` after showing the hover information. Because when the hover is focused, the problem is un-focused and `ctrl + .` does not work. You need to un-focus it first.
 
 
 Alternatively, you can press `ctrl + K, ctrl + I` once to open the hover and press it again to pin the hover. In mac, use `cmd + K, cmd + I`.
 
 
-
+## Show autofix
+- `ctrl + .` (Linux)
+- `cmd + .` (Mac)
 
 ## Trigger parameter hint
 <img src="../asset/vscode/parameter_hint.png">
@@ -143,9 +147,10 @@ Alternatively, you can press `ctrl + K, ctrl + I` once to open the hover and pre
 ## Reject autocomplete suggestion
 - `Escape`
 
-# Coding
+## Jump to
 - `Go to declaration`: `gd` (vim keybinding)
 - `Find all references`
+- `Go to Symbol in Editor`: `cmd + shift + O` (Mac) 
 
 # python
 ## Select notebook kernel
@@ -178,7 +183,7 @@ Check [this answer for details](https://stackoverflow.com/questions/53653083/how
     ```
 
 ### obsolete method
-> I no longer like this method because `.env` file will override the system/terminal environment and it has no access to the current system environment. If I set `PYTHONPATH="${PYTHONPATH}"`, it make the `PYTHONPATH` variable empty. This forces me to have two separate running environment setting for system and `vscode`, and is prone to error.
+> I no longer like this method because `.env` file has no access to the current system environment and overrides it (in the integrated terminal). As a consequence, if I set `PYTHONPATH="${PYTHONPATH}"`, `PYTHONPATH` variable would be empty. This forces me to have two separate running environment setting for system and `vscode`, and is prone to error.
 - create `.env` file and put the pythonpath in this file. For example:
     ```
     PYFLEXROOT="/home/chenwang/VCD/softgym/PyFlex"
@@ -231,6 +236,11 @@ Check [this answer for details](https://stackoverflow.com/questions/53653083/how
     lines_between_sections = 1
     combine_as_imports = true
    ```
+
+## Remove unused imports
+1. Move the cursor to the unused imports
+2. Press `cmd + .` to call autofix
+3. Select remove all unused imports
 
 # C++
 ## Set cmake source directory
