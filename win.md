@@ -39,7 +39,8 @@ unset_proxy(){
 ```
 > Remember to turn on `allow LAN` in the clash/monocloud client.
 
-# PowerToys
+# Useful tools
+## PowerToys
 PowerToys comes with a lot of useful tools.
 - `Keyboard Manager`
     - Remap keys.
@@ -47,6 +48,10 @@ PowerToys comes with a lot of useful tools.
     - `alt + space` to call it.
     - Search and open applications; Search web; Calculator ...
 
+## MobaXterm
+
 # Problems
 ## OneDrive cannot sync
 Onedrive does not support proxy because of the authentication issue. Please turn off the system proxy.
+
+

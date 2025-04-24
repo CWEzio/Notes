@@ -291,3 +291,9 @@ You may want to change the behavior of `Caps Lock` to `Esc` if you are using `Vi
 
 # Seeking help
 - Use `:help <command>` in vim to search for help message for `<command>`. For example, `:help a"` tells the usage of `a"`.
+
+# Problems
+## When I copy something to Vim, its indentation changed
+This problem is caused by that `Vim` tries to automatically indent the copied content. To solve this.
+- `:set paste` to enter paste mode disable auto indentation 
+- `:set nopaste` to leave the paste mode after pasting
