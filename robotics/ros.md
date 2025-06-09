@@ -5,6 +5,7 @@
   - [Install dependencies with `rosdep`](#install-dependencies-with-rosdep)
 - [Problems](#problems)
   - [Unsorted](#unsorted)
+    - [program stuck at waiting for message](#program-stuck-at-waiting-for-message)
     - [`rospy.init_node` will disrupt python logging](#rospyinit_node-will-disrupt-python-logging)
     - [No module named `python3-empy`](#no-module-named-python3-empy)
     - [`rosrun` cannot find my python script](#rosrun-cannot-find-my-python-script)
@@ -57,9 +58,12 @@ In short,
     - `-r`: recursively resolve dependencies
     - `-y`: confirm installation
 
-
 # Problems 
 ## Unsorted
+
+### program stuck at waiting for message
+The cause of this problem is that I forget to initialize the node before communication.
+
 ### `rospy.init_node` will disrupt python logging
 This is an old bug (check [this issue](https://github.com/ros/ros_comm/issues/1384)) that hasn't been fixed yet. `rospy` disrupts python's logging, making all other modules' loggers and the root logger unable to work. 
 

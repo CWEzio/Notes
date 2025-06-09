@@ -1,4 +1,23 @@
-# My note of git usage
+# Table of content
+- [Table of content](#table-of-content)
+- [View](#view)
+  - [view commit](#view-commit)
+  - [View the change history of a specific file](#view-the-change-history-of-a-specific-file)
+- [Commit](#commit)
+  - [Squash last `n` commits](#squash-last-n-commits)
+  - [Untrack files](#untrack-files)
+- [Branch](#branch)
+  - [Merge branches](#merge-branches)
+  - [Delete a remote branch](#delete-a-remote-branch)
+- [Submodule management](#submodule-management)
+- [Remote management](#remote-management)
+- [Git message](#git-message)
+- [Other things](#other-things)
+  - [Use github issues to manage task lists](#use-github-issues-to-manage-task-lists)
+  - [Move the git repository one level up in the file hierarchy](#move-the-git-repository-one-level-up-in-the-file-hierarchy)
+- [Problems](#problems)
+  - [`git` overwrites my local file](#git-overwrites-my-local-file)
+
 
 #  View
 ## view commit
@@ -18,7 +37,7 @@
   - `--graph`
   - `-n <limit>`: limits the number of commits shown.
 
-# Commit management
+# Commit 
 - `git commit --amend` amend last commit with new change
 ## Squash last `n` commits
 1. `git rebase -i HEAD~n`, where `n` is the number of last commits that you want to include in the rebase. This will start an interactive rebase.
@@ -38,12 +57,13 @@ git rm -r --cached <folder>
 
 Refer to [documentation](https://git-scm.com/docs/git-rm) for more information regarding `rm`.
 
-# Branch management
+# Branch 
 - `git branch` list branches.
 - `git branch <name>` create a banch with name `<name>`.
 - `git branch -m <newname>` rename the current branch.
 - `git branch -M <newname>` rename the current branch but in a more forceful way. The brancch will be renamed, even if a branch with name `<newname>` already exists.
 - `git fetch origin <branch-name>` fetch the branch `<branch-name>` from the origin.
+- Add proper protection rule in github to protect the branches, especially in project with collaboration.
 ## Merge branches
 Suppose you are merging `feature` branch into the `main` branch
 1. Check out to the branch you want to merge into
@@ -54,6 +74,28 @@ Suppose you are merging `feature` branch into the `main` branch
     ```
     get merge feature
     ```
+
+## Delete a remote branch
+1. Check whether this branch contains a commit that is not in any other branches
+    ```
+    git log origin/old-branch-name --not --remotes --exclude=origin/old-branch-name
+    ```
+2. Back up the branch to be deleted with a tag
+    ```
+    git tag backup/old-branch-name origin/old-branch-name
+    ```
+3. Push this tag into remote
+    ```
+    git push origin backup/old-branch-name
+    ```
+4. Delete the remote branch
+    ```
+    git push origin --delete old-branch-name
+    ```
+> Find which branch contains a certain commit with
+> ```
+> git branch --contains commit-id
+> ```
 
 # Submodule management
 - Clone and initialize all the submodules of a repo:
@@ -70,6 +112,9 @@ Suppose you are merging `feature` branch into the `main` branch
 - View current origin `git remote -v`, where `-v` stands for verbose.
 - Remove current origin `git remote remove origin`
 - Add origin `git remote add origin git@github.com:some_repo.git`
+
+# Git message
+TODO: finish this section when I have time 
 
 
 # Other things

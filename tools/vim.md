@@ -15,6 +15,7 @@ Many contents of this note comes from [The missing semester](https://missing.csa
     - `,`/`;` for navigating match
 - Search: `/{regex}`, `n/N` for navigating matches
 - Declaration: `gd` to go to the declaration, `Ctrl + o` to go back to where you came from
+- Reference: `gr` to go to references. (*My own setting*).
 
 ## Mark
 - Reference

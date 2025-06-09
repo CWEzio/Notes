@@ -29,4 +29,3 @@ This tutorial uses a *UR10* robot.
 > The measured marker size if the length of one printed marker. The measured separation is the distance between two marker. You need to adjust them according to your real marker board size.
 - Set the object frame in `Context` of `HandEye Calibration` to `handeye_target` if it is not set so.
 - Start doing the calibration. You can manually move the robot and take samples or load saved joint states and move the robot with moveit.
-

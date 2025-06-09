@@ -30,6 +30,20 @@ Above program will raise error, complaining that `max_in_mat` is not hashable. T
 max_in_mat = int(jnp.max(mat))
 ```
 
+## Avoid using `jnp.array` as the default value
+```python
+# Don't do this
+def process_data(data, weights=jnp.ones(1000)):
+    return data * weights
+
+# Do this instead
+def process_data(data, weights=None):
+    if weights is None:
+        weights = jnp.ones(1000)
+    return data * weights
+```
+When use the `jnp.array` as the default value of a function, even if this function is not called, the `jax` will still reserve a lot of GPU memory. This can influence other program. Therefore, generally avoid using `jnp.array` as the default value.
+
 # Bugs
 ## Could not create cudnn handle: CUDNN_STATUS_INTERNAL_ERROR
 When I run `jnp.zeros(3)`, I encounter the above error.

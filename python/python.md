@@ -4,6 +4,8 @@
   - [Leaking variables in loop](#leaking-variables-in-loop)
   - [Parsing boolean value with `argparse`](#parsing-boolean-value-with-argparse)
   - [Difference between `is` and `==`](#difference-between-is-and-)
+- [quirks](#quirks)
+  - [`:=`](#)
 - [Style guide](#style-guide)
 - [`Pybind11`](#pybind11)
   - [Make the compiled lib support `pylance`](#make-the-compiled-lib-support-pylance)
@@ -71,6 +73,16 @@ Example:
   x = 300
   y = 300
   print(x is y) # False (no guarantee for integers outside the cached range)
+  ```
+
+# quirks
+## `:=`
+- `:=` the walrus operator, introduced in Python3.8
+- It assigns a value to a variable as part of an expression, instead of separately.
+- `if edge1.crosses(edge2 := edges[j]):` is equivalent with (the performance might be better): 
+  ```
+  edge2 = edges[j]
+  if edge1.crosses(edge2):
   ```
 
 # Style guide
