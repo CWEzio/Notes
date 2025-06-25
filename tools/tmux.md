@@ -175,6 +175,17 @@ tmux attach-session -d -t my-session
 ```
 The `-d` flag tells tmux to detach any other clients that are currently attached to the target session.
 
+## Clipboard behavior
+### Cannot copy to remote clipboard
+- In short, in the remote computer use a terminal simulator that supports `OSC52` (like `iTerm2`) and in the tmux setting set [`set-clipboard`](https://github.com/tmux/tmux/wiki/Clipboard) to external.
+
+### Cannot copy to local clipboard when there is a ssh client
+- In short, in the local computer (where the tmux session lives), start a new terminal and in this terminal `tmux attach` to the tmux session that copy to local clipboard does not work. Then in all tmux clients of the local computer, copy to local clipboard works.
+- Why `tmux attach` in the local computer solves the problem? Because it resets the tmux server's environment variables (which can be checked with `tmux show-environment`) for usage in local computer. Variables like `DISPLAY` and `XAUTHORITY` needs to be set properly for `xclip` (which I use to copy to the clipboard in the local computer) to work. 
+  - tmux server's environment variable is different from the terminal's variable.
+- If then, in the remote computer (which connects with the local computer via ssh), I `tmux attach` to the tmux session. Then the tmux's environment variables are set for the remote access and `copy to local clipboard` does not work again.
+
+
 # Plugins
 [`TPM`](https://github.com/tmux-plugins/tpm) (Tmux Plugin Manager
 ) can be used to manage `tmux` plugins.
