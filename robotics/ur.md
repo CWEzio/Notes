@@ -9,6 +9,22 @@ RTDE (Real-Time Data Exchange) would be the interface that I use most of the tim
 - [Universal_Robots_ROS2_Driver](https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver)
 - [ur_rtde](https://gitlab.com/sdurobotics/ur_rtde) (provided by sdu robotics)
 
+# Extract calibration and build urdf
+## Extract calibration
+- Each UR robot is calibrated inside the factory giving exact forward and inverse kinematics. 
+- To extract this calibration, run
+  ```
+    roslaunch ur_calibration calibration_correction.launch \
+        robot_ip:=<robot_ip> target_filename:="${HOME}/my_robot_calibration.yaml"
+  ```
+## Build calibrated URDF
+- Take ur10e as an example. Run
+  ```
+    rosrun xacro xacro --inorder -o calibrated_ur10e.urdf \
+                       $(rospack find ur_description)/urdf/ur10e.xacro \
+                       kinematics_params:="$(rospack find robot_control)/config/ur10e_calibration.yaml"
+  ```
+
 # `ur_rtde`
 ## Catch you
 - The pose returned by `ur_rtde` use angle-axis to represent the rotation.
