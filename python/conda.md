@@ -34,7 +34,7 @@ Example:
     ```
 - It should be noted that in `fish`, `*.sh` won't run. `*.fish` should be created instead: 
   ```
-  nvim ~/miniconda3/envs/softgym/etc/conda/activate.d/set_path.sh
+  nvim ~/miniconda3/envs/softgym/etc/conda/activate.d/set_path.fish
   ```
 - Add the following to the created `fish` file:
   ```

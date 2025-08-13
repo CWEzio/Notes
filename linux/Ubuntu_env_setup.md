@@ -153,6 +153,7 @@ I now prefer to use the `fish` terminal.
    mv ~/.config/fish ~/.config/fish_backup
    ln -s ~/dotfiles/fish ~/.config/fish
    ```
+   > Remember to recursively clone the dotfile repo.
 
 4. Install `fzf`
     ```
@@ -245,6 +246,12 @@ sudo apt install fd-find
   ln -s <path-to-dotfile-repo>/tmux/.tmux ~/.tmux
   ln -s <path-to-dotfile-repo>/tmux/.tmux.conf ~/.tmux.conf
   ```
+  > Remember to recursively clone the dotfile repo.
+6. Source conf
+  ```
+  tmux source-file ~/.tmux.conf
+  ```
+7. Install plugins with `prefix + I (capital I)` 
 
 ## Install additional Fonts
 ### `MesloLGS Nerd`

@@ -11,10 +11,10 @@ Follow the following steps to install `CGAL` from source
     ```
     tar xf CGAL-5.6.2.tar.xz --directory="<target-directory>"
     ```
-- cd to <target-directory>
+- cd to `target-directory`
 - install 
     ```
-    mkdir build
+    mkdir build && cd build
     cmake ..
     sudo make install
     ```

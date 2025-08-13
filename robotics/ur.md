@@ -9,6 +9,9 @@ RTDE (Real-Time Data Exchange) would be the interface that I use most of the tim
 - [Universal_Robots_ROS2_Driver](https://github.com/UniversalRobots/Universal_Robots_ROS2_Driver)
 - [ur_rtde](https://gitlab.com/sdurobotics/ur_rtde) (provided by sdu robotics)
 
+# UR ROS driver
+- The `custom port` in external control corresponds to `script_sender_port` in the robot roslaunch file.
+
 # Extract calibration and build urdf
 ## Extract calibration
 - Each UR robot is calibrated inside the factory giving exact forward and inverse kinematics. 

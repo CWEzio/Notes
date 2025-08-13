@@ -1,3 +1,67 @@
+# VSCode environment
+## Setup
+- (MacOS) Install [`MacTex`](https://www.tug.org/mactex/).
+- Install `Latex Workshop` extension on VSCode.
+- Add the following config to VSCode setting
+    ```json
+    "latex-workshop.intellisense.package.enabled": true,
+    "latex-workshop.latex.outDir": "./build",
+    "latex-workshop.latex.recipe.default": "lastUsed",
+
+    "latex-workshop.latex.recipes": [
+    {
+        "name": "XeLaTeX",
+        "tools": [
+            "xelatexmk"
+        ]
+    },
+    {
+        "name": "PdfLaTeX",
+        "tools": [
+            "pdflatexmk"
+        ]
+    }
+    ],
+
+    "latex-workshop.latex.tools": [
+        {
+            "name": "xelatexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-pdfxe",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {},
+        },
+        {
+
+            "name": "pdflatexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-pdf",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {},
+        }
+    ],
+    ```
+- Above setting use `latexmk` as the default compiler and put the auxiliary files and output pdf into the `build` folder.
+- References
+    - [latex-vscode-config](https://github.com/shinyypig/latex-vscode-config) by [shinyypig](https://github.com/shinyypig)
+
+## Usage
+- (Mac) `cmd + option + J` to jump from current cursor position to pdf location.
+- (Mac) `cmd + left click` to jump from pdf location (preview window) to source code.  
+- Use command `Latex Workshop: Build with recipe` to build the project. The file to be compiled need to be focused for `Latex Workshop` knowing which file to compile
+
 # Sharp-bits
 - New line `\\` shouldn't be used inside `$$`.
 - `\\` should be used for newline instead of `\newline` in algorithm or tabular environment.

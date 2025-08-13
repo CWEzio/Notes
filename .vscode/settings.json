@@ -5,6 +5,7 @@
         "funced",
         "isort",
         "Karabiner",
+        "latexmk",
         "MCHOSE",
         "newcommand",
         "pyproject",
