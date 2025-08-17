@@ -4,6 +4,8 @@
   - [Relative line number](#relative-line-number)
 - [keybinding](#keybinding)
   - [Window control](#window-control)
+    - [Panel](#panel)
+  - [Primary Side Bar](#primary-side-bar)
   - [Multiple cursor mode](#multiple-cursor-mode)
   - [Customize keybindings](#customize-keybindings)
   - [Show hover information with keyboard](#show-hover-information-with-keyboard)
@@ -69,17 +71,17 @@
 - `ctrl + k s` to split editor down. *(Personal Keybinding)*
 - `ctrl + k v` to split editor right. *(Personal Keybinding)*
 
-**Panel**
+### Panel
 
 The *panel* is the window where the integrated terminal lies. 
 
 *command*
 - `hide panel`
-- `toggle panel visibility`
+- `toggle panel visibility` (`cmd + j`)
 - `toggle maximized panel` 
 > toggle means switch between enable and disable.
 
-**Primary Side Bar**
+## Primary Side Bar
 - The *primary side bar* is where the file explore resides.
 - `ctrl + k, b` to toggle the primary side bar. *(Personal Keybinding in Linux)*
 - `cmd + b` to toggle the primary side bar. *Mac*
