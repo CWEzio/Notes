@@ -1,7 +1,9 @@
+
+# Set up a self-host server
 Reference:
 - [this article](https://developer.aliyun.com/article/1299504).
 
-# Set up aliyun
+## Set up aliyun
 1. Create ECS
 2. Reset ECS password
 3. 在安全组中，允许端口访问(all IP)
@@ -9,7 +11,7 @@ Reference:
     - 自定义UDP 21116
 > After setting 端口访问, restart the ECS.
 
-# Set up rustdesk server on ECS/VPS
+## Set up rustdesk server on ECS/VPS
 1. `mkdir -p /root/rustdesk`
 2. `touch /root/rustdesk/docker-compose.yml`
 3. Add the following to the config file
@@ -62,3 +64,7 @@ Notes
 - The key is stored in `/root/rustdesk/data/id_ed25519.pub`.
 - Check logs with `docker compose logs hbbr` and `docker compose logs hbbs`.
 
+# Problem Shooting
+## Cannot connect to other computer, even when both computers are ready
+With my new home WiFi, I cannot connect to the remote computer. Both two computers are ready. With investigation, I found that the cause might be that the WiFi network blocking the ports rustdesk uses. Setting the proxy for the rustdesk solves the problem.
+<img src="./asset/rustdesk/2025-08-18-15-34-31.png" width=300 />
