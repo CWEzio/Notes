@@ -31,4 +31,14 @@
 
 ## Mouse use natural scroll (reverse scroll)
 - Use `Karabiner` to reverse the mouse wheel vertical direction.
-    - MacOS's setting will change the behavior for both the mouse and the trackpad.
+    - MacOS's setting will change the behavior for both the mouse and the trackpad, which is not desired.
+
+## Apple could not verify “xxx” is free of malware that may harm your Mac or compromise your privacy.
+- Make sure this APP is safe.
+- Go to `System Setting` > `Privacy & Security`
+- Scroll down and find the message
+    ```
+    xxx was blocked because it is not from an identified developer.
+    ```
+- Click `Open Anyway`.
+
