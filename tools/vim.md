@@ -133,7 +133,7 @@ Many contents of this note comes from [The missing semester](https://missing.csa
 - `yat` yank text include the surrounding tags.
 
 ## Surrounding 
-> Note that this is supported by `vim-surround` plugin. The `vim-surround` is also emulated by `vscode-vim`. Check the [vscode-vim's doc on vim-surround](https://github.com/VSCodeVim/Vim/tree/master?tab=readme-ov-file#vim-surround) for more details.
+> The following is supported by `vim-surround` plugin. The `vim-surround` is also emulated by `vscode-vim`. Check the [vscode-vim's doc on vim-surround](https://github.com/VSCodeVim/Vim/tree/master?tab=readme-ov-file#vim-surround) for more details.
 - `y s <motion> <desired>` to add desired surrounding around text defined by `<motion>`
 - `y s <text object> <desired>`
 - `cs"'` to change double quotes (") to single quote (')

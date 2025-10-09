@@ -114,7 +114,7 @@ Suppose you are merging `feature` branch into the `main` branch
 - Add origin `git remote add origin git@github.com:some_repo.git`
 
 # Git message
-TODO: finish this section when I have time 
+TODO: finish this section when I have time  (how to write a git message)
 
 
 # Other things

@@ -36,6 +36,7 @@
 - [GitLens](#gitlens)
 - [Remote](#remote)
   - [Drag and drop files](#drag-and-drop-files)
+  - [Make ssh connection using the proxy](#make-ssh-connection-using-the-proxy)
 - [Extensions](#extensions)
   - [`clangd`](#clangd)
     - [`clangd` formatting cause the change the include order](#clangd-formatting-cause-the-change-the-include-order)
@@ -302,6 +303,10 @@ This could be useful when the C++ project is a subproject inside a large project
 ## Drag and drop files
 You can drag a file from your local machine to the explorer to copy the file to the remote machine. You can also do the reverse things. For more information, refer to [this release note](https://github.com/microsoft/vscode-docs/blob/main/remote-release-notes/v1_36.md).
 > Make sure you have permission to these files.
+
+## Make ssh connection using the proxy
+- This is actually not set in VSCode. It is set for each remote connection.
+- Check my [`ssh.md` note] on how to set it in `~/.ssh/config`.
 
 # Extensions
 ## `clangd`

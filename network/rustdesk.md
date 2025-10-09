@@ -64,6 +64,10 @@ Notes
 - The key is stored in `/root/rustdesk/data/id_ed25519.pub`.
 - Check logs with `docker compose logs hbbr` and `docker compose logs hbbs`.
 
+## Set on client
+- Got to `Setting` → `Network`. Set the `ID/Relay server` accordingly.
+- Optionally, also set the `Socks5/Http(s) Proxy`. This can be useful when the private server is outside of mainland China and your client is inside mainland.
+
 # Problem Shooting
 ## Cannot connect to other computer, even when both computers are ready
 With my new home WiFi, I cannot connect to the remote computer. Both two computers are ready. With investigation, I found that the cause might be that the WiFi network blocking the ports rustdesk uses. Setting the proxy for the rustdesk solves the problem.
