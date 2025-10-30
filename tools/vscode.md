@@ -31,9 +31,6 @@
   - [Markdown math](#markdown-math)
   - [Markdown-All-In-One](#markdown-all-in-one)
     - [Table of contents (TOC)](#table-of-contents-toc)
-- [Copilot](#copilot)
-  - [Keybindings](#keybindings)
-- [GitLens](#gitlens)
 - [Remote](#remote)
   - [Drag and drop files](#drag-and-drop-files)
   - [Make ssh connection using the proxy](#make-ssh-connection-using-the-proxy)
@@ -41,13 +38,17 @@
   - [`clangd`](#clangd)
     - [`clangd` formatting cause the change the include order](#clangd-formatting-cause-the-change-the-include-order)
   - [`path-intellisense`:](#path-intellisense)
-- [Other things](#other-things)
-  - [Compare different files with VSCode](#compare-different-files-with-vscode)
-  - [Send `ctrl + K` directly to the integrated terminal](#send-ctrl--k-directly-to-the-integrated-terminal)
-- [Problems](#problems)
+  - [Copilot](#copilot)
+    - [Keybindings](#keybindings)
+  - [Codex](#codex)
+    - [Activate on remote computer](#activate-on-remote-computer)
+  - [GitLens](#gitlens)
+- [Problem and Solution](#problem-and-solution)
   - [`ctrl + alt + [key]` of `fzf` does not work in VSCode terminal in windows.](#ctrl--alt--key-of-fzf-does-not-work-in-vscode-terminal-in-windows)
   - [Cannot `ssh` to a host](#cannot-ssh-to-a-host)
   - [The installed font is not being used](#the-installed-font-is-not-being-used)
+  - [Compare different files with VSCode](#compare-different-files-with-vscode)
+  - [Send `ctrl + K` directly to the integrated terminal](#send-ctrl--k-directly-to-the-integrated-terminal)
 
 
 # Settings
@@ -286,18 +287,6 @@ This could be useful when the C++ project is a subproject inside a large project
 - Save the doc to update the TOC.
 - Add `<!-- no toc -->` comment above the list to avoid being auto-detected as TOC.
 
-# Copilot
-[Official guide for vscode](https://docs.github.com/en/copilot/using-github-copilot/getting-started-with-github-copilot?tool=vscode#prerequisites-2)
-## Keybindings
-- Start inline chat `Ctrl + K N` (customized)
-- Accept suggestion `Tab`
-- See alternative suggestions `Alt + ]` for the next suggestion, `Alt + [` for  the previous suggestion.
-- `Ctrl + →` accept the next word.
-- `Ctrl + Enter` to see multiple suggestions in a new tab.
-
-# GitLens
-- `view staged changes`
-- `show commit graph`
 
 # Remote  
 ## Drag and drop files
@@ -325,8 +314,68 @@ IncludeBlocks: Preserve  # Prevents reordering of include blocks
 "path-intellisense.absolutePathToWorkspace": false
 ```
 
+## Copilot
+[Official guide for vscode](https://docs.github.com/en/copilot/using-github-copilot/getting-started-with-github-copilot?tool=vscode#prerequisites-2)
+### Keybindings
+- Start inline chat `Ctrl + K N` (customized)
+- Accept suggestion `Tab`
+- See alternative suggestions `Alt + ]` for the next suggestion, `Alt + [` for  the previous suggestion.
+- `Ctrl + →` accept the next word.
+- `Ctrl + Enter` to see multiple suggestions in a new tab.
 
-# Other things
+## Codex
+### Activate on remote computer
+- In remote session, `codex` runs on the remote computer. When I try to activate it on the remote session, I encounter the following problem:
+  ```
+  Token exchange failed: token endpoint returned status 403 Forbidden #2414
+  ``` 
+- To solve this problem, activate codex on the local computer first and then copy the auth file into the remote computer.
+  ```bash
+  # Prepare the target directory and permissions on the remote host
+  ssh ubuntu@YOUR_SERVER 'mkdir -p ~/.codex && chmod 700 ~/.codex'
+
+  # Copy from macOS to the remote host
+  scp ~/.codex/auth.json ubuntu@YOUR_SERVER:~/.codex/auth.json
+
+  # (Optional) Tighten file permissions on the remote host
+  ssh ubuntu@YOUR_SERVER 'chmod 600 ~/.codex/auth.json'
+  ```
+  - reference: [Hanminghao's solution](https://github.com/openai/codex/issues/2414#issuecomment-3239844074)
+- I suspect this issue is caused by proxy.
+
+## GitLens
+- `view staged changes`
+- `show commit graph`
+
+
+
+# Problem and Solution
+## `ctrl + alt + [key]` of `fzf` does not work in VSCode terminal in windows.
+In windows, I find a strange problem with the VSCode's integrated terminal. The key `ctrl + alt + [key]` just does not work. I suspected the problem is caused by some applications that intercepted those keys. Since I need to use `ctrl + alt + [key]` for `fzf`. I add the following in `keybindings.json` to define shortcuts
+```json
+    {
+        "key": "ctrl+alt+p",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+            "text": "\u001b\u0010"
+        }, 
+        "when": "terminalFocus"
+    },
+```
+With above definition, VSCode will intercept `ctrl + alt + p` and send the defined text to the terminal . `\u001b` is the unicode for `esc` and `\u0010` is the unicode for `ctrl + p`. `\u001b\u0010` is exactly the text that normally would be sent by pressing `ctrl + alt + p`. I find the text to send by using `showkey`. Run it with `showkey -a` command in terminal and it will echo the code entered in `decimal octal hexadecimal`. (`\u001b` is in hexadecimal.) 
+
+## Cannot `ssh` to a host
+Use the setting below fix the problem:
+```
+"remote.SSH.useLocalServer": false
+```
+
+Above solution is from [this answer](https://stackoverflow.com/questions/59978826/why-ssh-connection-timed-out-in-vscode).
+> One comment on this answer says that after the connection issue is fixed, it continues to work even this option is setted back to false. I haven't try it.
+
+## The installed font is not being used
+`VSCode` does not recognize fonts installed in `~/.local/share/fonts`. Move those fonts to `/usr/share/fonts` and run `fc-cache -f -v`.
+
 ## Compare different files with VSCode
 You can compare/diff two files with vscode. 
 1. Open the first file and focus on its window.
@@ -354,32 +403,3 @@ code --diff <file1> <file2>
 
 ## Send `ctrl + K` directly to the integrated terminal
 This behavior is controlled by "terminal.integrated.allowChords". You can set it to false to send `ctrl + K` directly to the integrated terminal. If it is set to true, then `ctrl + K` would be intercepted by VSCode.
-
-
-# Problems 
-## `ctrl + alt + [key]` of `fzf` does not work in VSCode terminal in windows.
-In windows, I find a strange problem with the VSCode's integrated terminal. The key `ctrl + alt + [key]` just does not work. I suspected the problem is caused by some applications that intercepted those keys. Since I need to use `ctrl + alt + [key]` for `fzf`. I add the following in `keybindings.json` to define shortcuts
-```json
-    {
-        "key": "ctrl+alt+p",
-        "command": "workbench.action.terminal.sendSequence",
-        "args": {
-            "text": "\u001b\u0010"
-        }, 
-        "when": "terminalFocus"
-    },
-```
-With above definition, VSCode will intercept `ctrl + alt + p` and send the defined text to the terminal . `\u001b` is the unicode for `esc` and `\u0010` is the unicode for `ctrl + p`. `\u001b\u0010` is exactly the text that normally would be sent by pressing `ctrl + alt + p`. I find the text to send by using `showkey`. Run it with `showkey -a` command in terminal and it will echo the code entered in `decimal octal hexadecimal`. (`\u001b` is in hexadecimal.) 
-
-## Cannot `ssh` to a host
-Use the setting below fix the problem:
-```
-"remote.SSH.useLocalServer": false
-```
-
-Above solution is from [this answer](https://stackoverflow.com/questions/59978826/why-ssh-connection-timed-out-in-vscode).
-> One comment on this answer says that after the connection issue is fixed, it continues to work even this option is setted back to false. I haven't try it.
-
-## The installed font is not being used
-`VSCode` does not recognize fonts installed in `~/.local/share/fonts`. Move those fonts to `/usr/share/fonts` and run `fc-cache -f -v`.
-
