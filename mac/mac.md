@@ -1,9 +1,13 @@
-# Desktop and Window Control
-## Desktop Control
+# Keyboard shortcut
+- cut a file
+    - `ctrl + c` to select the file to copy and `option + command + v` to paste the file and delete the original file.
+
+## Desktop and Window Control
+### Desktop Control
 - `ctrl + →/←` to move to right or left desktop.
     - For the active display (where the mouse is on)
 
-## Minimize, hide and switch
+### Window Control
 - I find [this reddit post](https://www.reddit.com/r/MacOS/comments/ra7jn1/comment/hngr92m/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button) explains the rule of minimize and hide quiet well. Here is the original post:
     > Command+Tab, Command+H, and Command+Option+H should be your most-keyboard shortcuts. Minimize is rarely used.
     > Use Hide whenever you intend to switch to another app, similar to Command Tab. When you return to the app, all of its windows will be restored just as you left them.
@@ -23,6 +27,7 @@
 - `ctrl + ↓`: show all windows of the current app.
   - After all windows are displayed, you can select the minimized window to bring them un-minimized.
 - `command + m` to minimize the front window to the dock.
+
 
 
 # Problems 
