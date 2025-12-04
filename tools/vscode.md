@@ -43,6 +43,7 @@
   - [Codex](#codex)
     - [Activate on remote computer](#activate-on-remote-computer)
   - [GitLens](#gitlens)
+  - [Latex-Workshop](#latex-workshop)
 - [Problem and Solution](#problem-and-solution)
   - [`ctrl + alt + [key]` of `fzf` does not work in VSCode terminal in windows.](#ctrl--alt--key-of-fzf-does-not-work-in-vscode-terminal-in-windows)
   - [Cannot `ssh` to a host](#cannot-ssh-to-a-host)
@@ -263,6 +264,7 @@ This could be useful when the C++ project is a subproject inside a large project
   - This command seems to have bug for notebook. The command from the command platte does not work. To use it, right click the tab and select it from `open changes`.
 
 
+
 # Markdown
 - [Official documentation](https://code.visualstudio.com/docs/languages/markdown) of supported markdown features.
 
@@ -347,6 +349,8 @@ IncludeBlocks: Preserve  # Prevents reordering of include blocks
 - `view staged changes`
 - `show commit graph`
 
+## Latex-Workshop
+- View latex pdf in web browser instead in the vscode tab, as viewing in vscode tab costs a lot of unnecessary GPT (weird and unnecessary).
 
 
 # Problem and Solution
