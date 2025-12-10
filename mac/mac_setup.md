@@ -72,6 +72,7 @@ git config --global core.editor "nvim"
 - `System Settings` > `Keyboard` > `Press 🌐 key to` > `Show Emoji & Symbols`
 ### Remember the last used input source for an APP
 - `System Settings` > `Keyboard` > `Edit` in `Input sources` > `Automatically switch to a document's input source`
+> Now I prefer to turn it off.
 ### Remap `caps lock` to `esc`
 - Apple > System Settings > Keyboard > Keyboard Shortcuts > Modifier
 
