@@ -350,8 +350,6 @@ IncludeBlocks: Preserve  # Prevents reordering of include blocks
 - `show commit graph`
 
 ## Latex-Workshop
-- View latex pdf in web browser instead in the vscode tab, as viewing in vscode tab costs a lot of unnecessary GPT (weird and unnecessary).
-
 
 # Problem and Solution
 ## `ctrl + alt + [key]` of `fzf` does not work in VSCode terminal in windows.
