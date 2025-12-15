@@ -11,8 +11,9 @@
   - [Delete a remote branch](#delete-a-remote-branch)
 - [Submodule management](#submodule-management)
 - [Remote management](#remote-management)
+- [Diff](#diff)
 - [Git message](#git-message)
-- [Other things](#other-things)
+- [Other usages](#other-usages)
   - [Use github issues to manage task lists](#use-github-issues-to-manage-task-lists)
   - [Move the git repository one level up in the file hierarchy](#move-the-git-repository-one-level-up-in-the-file-hierarchy)
 - [Problems](#problems)
@@ -113,11 +114,14 @@ Suppose you are merging `feature` branch into the `main` branch
 - Remove current origin `git remote remove origin`
 - Add origin `git remote add origin git@github.com:some_repo.git`
 
+# Diff
+- `git diff --word-diff` to show word-level diffs.
+
 # Git message
 TODO: finish this section when I have time  (how to write a git message)
 
 
-# Other things
+# Other usages
 ## Use github issues to manage task lists
 1. In github issues, you can have a tasks list. The markdown syntax is simple.
     ```markdown
