@@ -115,7 +115,7 @@ Follow steps below to generate the `stub` file:
     - `-p`: python package
     - `-o`: path to output the stub file
 
-As long as the generated `stub` file is in `PYTHONPATH`, vscode can recognize it. (Check [here](../tools/vscode.md#set-pythonpath) for how to set vscode's python path.)
+As long as the generated `stub` file is in `PYTHONPATH`, vscode can recognize it. (Check [here](../dev_tools/vscode.md#set-pythonpath) for how to set vscode's python path.)
 
 There are also another tool [pybind11-stubgen](https://github.com/sizmailov/pybind11-stubgen) for `stub` file generation.
 

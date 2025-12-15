@@ -1,0 +1,1 @@
+- `name in ~/path-to-dir` to search file inside a category.
