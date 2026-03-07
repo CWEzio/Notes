@@ -65,8 +65,12 @@ Notes
 - Check logs with `docker compose logs hbbr` and `docker compose logs hbbs`.
 
 ## Set on client
-- Got to `Setting` → `Network`. Set the `ID/Relay server` accordingly.
-- Optionally, also set the `Socks5/Http(s) Proxy`. This can be useful when the private server is outside of mainland China and your client is inside mainland.
+- Got to `Setting` → `Network`. Set 
+    - `ID server` to your server's IP 
+    - `Relay server` (same as above)
+    - Key (stored in `rustdesk/data/id_ed25519.pub`)
+    > No need to set `API server`.
+- Optionally, also set the `Socks5/Http(s) Proxy`. This can make the connection faster in certain scenarios (e.g., when the private server is outside of mainland China and your client is inside mainland).
 
 # Problem Shooting
 ## Cannot connect to other computer, even when both computers are ready

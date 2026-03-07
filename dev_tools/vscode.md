@@ -38,12 +38,12 @@
   - [`clangd`](#clangd)
     - [`clangd` formatting cause the change the include order](#clangd-formatting-cause-the-change-the-include-order)
   - [`path-intellisense`:](#path-intellisense)
+  - [`paste image`](#paste-image)
   - [Copilot](#copilot)
     - [Keybindings](#keybindings)
   - [Codex](#codex)
     - [Activate on remote computer](#activate-on-remote-computer)
   - [GitLens](#gitlens)
-  - [Latex-Workshop](#latex-workshop)
 - [Problem and Solution](#problem-and-solution)
   - [`ctrl + alt + [key]` of `fzf` does not work in VSCode terminal in windows.](#ctrl--alt--key-of-fzf-does-not-work-in-vscode-terminal-in-windows)
   - [Cannot `ssh` to a host](#cannot-ssh-to-a-host)
@@ -316,6 +316,9 @@ IncludeBlocks: Preserve  # Prevents reordering of include blocks
 "path-intellisense.absolutePathToWorkspace": false
 ```
 
+## `paste image`
+> - In `MacOS`, click the file and then `cmd + c` it will get the reference to this file inside the clipboard. This confuses `pngpaste` (depended by the extension), which expects bit file. The solution is open the file in preview, and copy it there.
+
 ## Copilot
 [Official guide for vscode](https://docs.github.com/en/copilot/using-github-copilot/getting-started-with-github-copilot?tool=vscode#prerequisites-2)
 ### Keybindings
@@ -348,8 +351,6 @@ IncludeBlocks: Preserve  # Prevents reordering of include blocks
 ## GitLens
 - `view staged changes`
 - `show commit graph`
-
-## Latex-Workshop
 
 # Problem and Solution
 ## `ctrl + alt + [key]` of `fzf` does not work in VSCode terminal in windows.

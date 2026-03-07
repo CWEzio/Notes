@@ -12,7 +12,7 @@
 - [Submodule management](#submodule-management)
 - [Remote management](#remote-management)
 - [Diff](#diff)
-- [Git message](#git-message)
+- [How to write the commit message](#how-to-write-the-commit-message)
 - [Other usages](#other-usages)
   - [Use github issues to manage task lists](#use-github-issues-to-manage-task-lists)
   - [Move the git repository one level up in the file hierarchy](#move-the-git-repository-one-level-up-in-the-file-hierarchy)
@@ -117,7 +117,7 @@ Suppose you are merging `feature` branch into the `main` branch
 # Diff
 - `git diff --word-diff` to show word-level diffs.
 
-# Git message
+# How to write the commit message
 TODO: finish this section when I have time  (how to write a git message)
 
 

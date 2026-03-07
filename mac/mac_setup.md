@@ -76,6 +76,15 @@ git config --global core.editor "nvim"
 ### Remap `caps lock` to `esc`
 - Apple > System Settings > Keyboard > Keyboard Shortcuts > Modifier
 
+## Proxy
+### `ssh` proxy
+Add 
+```
+ProxyCommand /usr/bin/nc -X 5 -x 127.0.0.1:7777 %h %p
+```
+as the first line to `~/.ssh/config`. If `config` does not exist, create a new one.
+> It should be noted that `ssh` is used by `git`. Without setting `ssh` proxy may cause `git push` fail since GFW has banned `github`.
+
 # Configure appearance
 ## Catppuccin
 ### `ITerm2`
