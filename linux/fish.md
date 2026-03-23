@@ -23,6 +23,7 @@ List default keybinding with:
 ```fish
 fzf_configure_bindings --help
 ```
+> fzf-find `search file` can get slow in large directory. For example, in `HOME`.
 
 # Custom user keybindings
 To save custom key bindings, put the bind statements into `config.fish`. Alternatively, fish also automatically executes a function called `fish_user_key_bindings` if it exists.
