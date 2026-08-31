@@ -30,14 +30,20 @@
 
 
 
-# Problems 
-## Use an external keyboard (MCHOSE)
-- Use [`Karabiner`](https://karabiner-elements.pqrs.org/)
+# Use external keyboard and mouse
+- [`Karabiner`](https://karabiner-elements.pqrs.org/)
+
+## Setting for external keyboard
+- `IKBC` keyboard
+  - <img src="./asset/mac/2026-04-13-14-40-54.png" width=300 />
+- For keyboard with `Super` key, map `Super` to `keycode::fn`.
+TODO: check whether the `Super` is displayed as `Super` in Karabinar.
 
 ## Mouse use natural scroll (reverse scroll)
 - Use `Karabiner` to reverse the mouse wheel vertical direction.
     - MacOS's setting will change the behavior for both the mouse and the trackpad, which is not desired.
 
+# Problems
 ## Apple could not verify “xxx” is free of malware that may harm your Mac or compromise your privacy.
 - Make sure this APP is safe.
 - Go to `System Setting` > `Privacy & Security`

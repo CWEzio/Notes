@@ -1,5 +1,6 @@
 # Steps to setup a new mac
 ## ITerm2
+- In `settings` -> `Profiles` -> `Keys`, set `Left Option key` to `Esc+`. Or the left option key will work as a modifier key and `ctrl + alt + f` would be interpreted as `ctrl + ƒ`. 
 
 ## Homebrew
 
@@ -32,6 +33,12 @@ git config --global user.name "chenwang"
 git config --global core.editor "nvim"
 ```
 
+## Download my dotfiles
+-
+    ```
+    git clone --recursive-submodules git@github.com:CWEzio/dotfile
+    ```
+
 ## Install `fish`
 1. `brew install fish`
 2. Set `fish` as the default shell
@@ -62,6 +69,9 @@ git config --global core.editor "nvim"
   ln -s <path-to-my-dotfiles>/nvim/ ~/.config/nvim
   ```
 
+## Karabiner
+- Install [karabiner](https://karabiner-elements.pqrs.org/)
+
 ## Clash for Windows
 - Download clash for windows from [this page](https://github.com/lantongxue/clash_for_windows_pkg/releases).
 - `sudo xattr -r -d com.apple.quarantine path-to-clash-for-windows-file` 
@@ -85,6 +95,15 @@ ProxyCommand /usr/bin/nc -X 5 -x 127.0.0.1:7777 %h %p
 as the first line to `~/.ssh/config`. If `config` does not exist, create a new one.
 > It should be noted that `ssh` is used by `git`. Without setting `ssh` proxy may cause `git push` fail since GFW has banned `github`.
 
+## Other custom settings
+- Tap to click
+    - `System Setting` -> `Trackpad` -> `Tap to click`
+> I now prefer the original setting.
+
+# Miscellany settings
+- Show path bar in finder
+    - press `cmd + alt + p`
+
 # Configure appearance
 ## Catppuccin
 ### `ITerm2`
@@ -105,3 +124,4 @@ as the first line to `~/.ssh/config`. If `config` does not exist, create a new o
 - `cmd + ,` to open setting
 - Go to profile, select text, select `Monaspace Neon` and `Light` under `Font`
 - Enable `use ligatures`, click the three dot icon in the right most and enable at least one feature (this will enable text healing).
+

@@ -11,7 +11,7 @@ Follow the following steps to install `CGAL` from source
     ```
     tar xf CGAL-5.6.2.tar.xz --directory="<target-directory>"
     ```
-- cd to `target-directory`
+- cd to `target-directory/CGAL-5.6.2`
 - install 
     ```
     mkdir build && cd build

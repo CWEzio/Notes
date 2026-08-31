@@ -1,4 +1,9 @@
 # Usage
+- Undo a blade
+  - Select the two clips, go to the `Trim` menu, select `Join Clips`
+
+- Copy a compound clip, then edit it without modifying the original version
+  - Select the copied compound clip, click `clip` menu, click `Reference New Parent Clip`
 
 # Problem
 ## FCP stop responding when open the project

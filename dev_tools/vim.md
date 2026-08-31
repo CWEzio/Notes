@@ -98,7 +98,7 @@ Many contents of this note comes from [The missing semester](https://missing.csa
 - `50z` will move the 50th line to the top of the screen. 50 can be other numbers
 - `z.` will move the current line to the middle of the screen
 - `z-` will move the current line to the bottom of the screen
-## Edit
+## Basic Edit
 - `i` enter insert mode
 - `o`/`O` (small o and captital O) insert line below/above
 - `d{motion}` delete {motion}
